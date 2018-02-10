@@ -31,12 +31,12 @@ AccountDAO accountDao;
 	@RequestMapping(value = "/daily", method = RequestMethod.GET)
 	public ModelAndView inquiryDailyHandle(@RequestParam Map param) throws Exception {
 		String date = (String)param.get("date");
-		ModelAndView mav = new ModelAndView("temp");
 		Map<String, List<InquiryVO>> map = inquiryDAO.daily(date);
-			List<IncomeVO> beginList = accountDao.readAll(date);
-			List<IncomeVO> endList = accountDao.readEnd(date);
-		Map<String, Integer> beginSum = SumCount.accountSum(beginList);
-		Map<String, Integer> endSum = SumCount.accountSum(endList);
+		List<IncomeVO> beginList = accountDao.readAll(date);
+			Map begin = SumCount.accountSum(beginList);
+		List<IncomeVO> endList = accountDao.readEnd(date);
+			Map end = SumCount.accountSum(endList);
+		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "inquiry/daily");
 		mav.addObject("date", date);
 		mav.addObject("size", map.size());
@@ -52,8 +52,8 @@ AccountDAO accountDao;
 		mav.addObject("out_kbe", map.get("out_kbe"));
 		mav.addObject("out_sh", map.get("out_sh"));
 		mav.addObject("out_km", map.get("out_km"));
-		mav.addObject("begin", beginSum);
-		mav.addObject("end", endSum);	
+		mav.addObject("begin", begin);
+		mav.addObject("end", end);	
 		return mav;
 	}
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
