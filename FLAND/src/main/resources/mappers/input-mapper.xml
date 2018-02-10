@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="input">
+	<insert id="incomeAdd">
+		insert into transaction(no, tran_date, account, client, item, detail, sum, etc, div)
+		values(seq_transaction.nextval,
+			#{INCOME_DATE},
+			#{ACCOUNT},
+			#{COMPANY},
+			#{ITEM},
+			#{DETAIL},
+			#{SUM},
+			#{ETC, jdbcType=VARCHAR},
+			'income'
+		)
+	</insert>
+	<insert id="expenseAdd">
+		insert into transaction(no, tran_date, account, method, client, item, detail, sum, etc, div)
+		values(seq_transaction.nextval,
+			#{EXPENSE_DATE},
+			#{ACCOUNT},
+			#{METHOD},
+			#{EMPLOYEE},
+			#{ITEM},
+			#{DETAIL},
+			-#{SUM},
+			#{ETC, jdbcType=VARCHAR},
+			'expense'
+		)
+	</insert>
+</mapper>

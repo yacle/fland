@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="account">
+	<insert id="insert">
+		insert into account 
+		values(#{NAME},#{ACCOUNT_NUM},#{BEGIN_BALANCE},#{INCOME_DATE},#{ETC, jdbcType=VARCHAR})
+	</insert>
+	<select id="readAll" resultType="com.fland.domain.IncomeVO">
+		select sum, account 
+			from TRANSACTION 
+			where
+			<![CDATA[
+				TRAN_DATE >= TO_DATE('2018-01-01', 'YYYY-MM-DD') 
+				and TRAN_DATE < TO_DATE(#{date}, 'YYYY-MM-DD')
+			]]>
+	</select>
+	<select id="readEnd" resultType="com.fland.domain.IncomeVO">
+		select sum, account 
+			from TRANSACTION 
+			where
+			<![CDATA[
+				TRAN_DATE >= TO_DATE('2018-01-01', 'YYYY-MM-DD') 
+				and TRAN_DATE <= TO_DATE(#{date}, 'YYYY-MM-DD')
+			]]>
+	</select>
+	<select id="readOne" resultType="int">
+		select begin_balance from account where name=#{account}
+	</select>
+	<update id="update">
+		UPDATE account set BEGIN_BALANCE = #{BEGIN_BALANCE} where NAME=#{NAME}
+	</update>
+	<select id="readInfo" resultType="com.fland.domain.AccountVO">
+		select NAME, ACCOUNT_NUM from account
+	</select>
+</mapper>
