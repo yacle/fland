@@ -30,12 +30,14 @@ public class SumCount {
 				km = list.get(i).getSUM();
 			}
 		}
+		int total = Integer.parseInt(nhi)+Integer.parseInt(nhe)+Integer.parseInt(kbi)+Integer.parseInt(kbe)+Integer.parseInt(sh)+Integer.parseInt(km);
 		accsum.put("nhe", nhe);
 		accsum.put("nhi", nhi);
 		accsum.put("kbe", kbe);
 		accsum.put("kbi", kbi);
 		accsum.put("sh", sh);
 		accsum.put("km", km);
+		accsum.put("total", String.valueOf(total));
 		return accsum;
 	}
 }

@@ -22,7 +22,7 @@
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
     <li class="active"><a href="">일일</a></li>
-    <li><a href="/inquiry/list">종합</a></li>
+    <li><a href="/inquiry/month?month=2018-01">종합</a></li>
     <form class="navbar-form navbar-right" action="/inquiry/daily">
       <div class="form-group">
         <input type="date" name="date" class="form-control" placeholder="Search">
@@ -41,14 +41,14 @@
 <div align="center">
 <table border="1" width="90%">
 	<thead>
-		<tr>
+		<tr style="background-color:#FFFF00">
 			<th rowspan="2">은행구분</th>
 			<th rowspan="2">기초잔액</th>
 			<th colspan="4">수입</th>
 			<th colspan="4">지출</th>
 			<th rowspan="2">기말잔액</th>
 		</tr>
-		<tr>
+		<tr style="background-color:#FFFF00">
 			<th>비목</th>
 			<th>내역</th>
 			<th>입금처</th>
@@ -61,7 +61,7 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td width="8%" rowspan="${in_nhi.size()+out_nhi.size()}">농협(매출)</td>
+			<td width="8%" rowspan="${in_nhi.size()+out_nhi.size()}" style="background-color:#E0FFFF">농협(매출)</td>
 			<td width="8%" class="num" rowspan="${in_nhi.size()+out_nhi.size()}"><fmt:formatNumber value="${begin.nhi}" groupingUsed="true"/></td>
 			<td width="7%">${in_nhi[0].ITEM }</td>
 			<td width="15%">${in_nhi[0].DETAIL }</td>
@@ -86,7 +86,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_nhe.size()+out_nhe.size()}">농협(경비)</td>
+			<td rowspan="${in_nhe.size()+out_nhe.size()}" style="background-color:#E0FFFF">농협(경비)</td>
 			<td rowspan="${in_nhe.size()+out_nhe.size()}" class="num"><fmt:formatNumber value="${begin.nhe}" groupingUsed="true"/></td>
 			<td>${in_nhe[0].ITEM }</td>
 			<td>${in_nhe[0].DETAIL }</td>
@@ -111,7 +111,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_kbi.size()+out_kbi.size()}">기업(매출)</td>
+			<td rowspan="${in_kbi.size()+out_kbi.size()}" style="background-color:#E0FFFF">기업(매출)</td>
 			<td rowspan="${in_kbi.size()+out_kbi.size()}" class="num"><fmt:formatNumber value="${begin.kbi}" groupingUsed="true"/></td>
 			<td>${in_kbi[0].ITEM }</td>
 			<td>${in_kbi[0].DETAIL }</td>
@@ -136,7 +136,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_kbe.size()+out_kbe.size()}">기업(경비)</td>
+			<td rowspan="${in_kbe.size()+out_kbe.size()}" style="background-color:#E0FFFF">기업(경비)</td>
 			<td class="num" rowspan="${in_kbe.size()+out_kbe.size()}"><fmt:formatNumber value="${begin.kbe}" groupingUsed="true"/></td>
 			<td>${in_kbe[0].ITEM }</td>
 			<td>${in_kbe[0].DETAIL }</td>
@@ -161,7 +161,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_sh.size()+out_sh.size()}">신한(매출)</td>
+			<td rowspan="${in_sh.size()+out_sh.size()}" style="background-color:#E0FFFF">신한(매출)</td>
 			<td rowspan="${in_sh.size()+out_sh.size()}" class="num"><fmt:formatNumber value="${begin.sh}" groupingUsed="true"/></td>
 			<td>${in_sh[0].ITEM }</td>
 			<td>${in_sh[0].DETAIL }</td>
@@ -186,7 +186,7 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_km.size()+out_km.size()}">국민(매출)</td>
+			<td rowspan="${in_km.size()+out_km.size()}" style="background-color:#E0FFFF">국민(매출)</td>
 			<td rowspan="${in_km.size()+out_km.size()}" class="num"><fmt:formatNumber value="${begin.km}" groupingUsed="true"/></td>
 			<td>${in_km[0].ITEM }</td>
 			<td>${in_km[0].DETAIL }</td>

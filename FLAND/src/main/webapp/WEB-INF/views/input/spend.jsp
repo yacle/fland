@@ -32,7 +32,7 @@
 <div align="center" >
 	<table style="width:80%">
 		<thead>
-			<tr>
+			<tr style="background-color:#E0FFFF">
 				<th width=15%>은행종류</th>
 				<th width=15%>계좌번호</th>
 				<th width=15%>기초잔액</th>
@@ -320,14 +320,15 @@ var sumarr = [];
 			"data":{
 				"date":$("#date").val()
 			},
-			success:function(accsum){
+			success:function(obj){
+				var accsum = JSON.parse(obj);
 				$("#bal01").html(comma(accsum.nhe));
 				$("#bal02").html(comma(accsum.nhi));
 				$("#bal03").html(comma(accsum.kbe));
 				$("#bal04").html(comma(accsum.kbi));
 				$("#bal05").html(comma(accsum.sh));
 				$("#bal06").html(comma(accsum.km));
-				$("#bal07").html(comma(accsum.nhe+accsum.nhi+accsum.kbe+accsum.kbi+accsum.sh+accsum.km));
+				$("#bal07").html(comma(accsum.total));
 			}
 		})
 		var sum01=0;	// 농협(매출)

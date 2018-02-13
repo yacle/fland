@@ -21,14 +21,17 @@ public class AccountDAO {
 	public int insert(AccountVO vo) throws Exception{
 		return session.insert("account.insert", vo);
 	}
-	public List<IncomeVO> readAll(String date) throws Exception{
-		return session.selectList("account.readAll", date);
+	public List<IncomeVO> readBegin(String date) throws Exception{
+		return session.selectList("account.readBegin", date);
 	}
 	public List<IncomeVO> readEnd(String date) throws Exception{
 		return session.selectList("account.readEnd", date);
 	}
-	public int readOne(String account) throws Exception{
-		return session.selectOne("account.readOne", account);
+	public int beginDailyBegin(Map map) throws Exception{
+		return session.selectOne("account.readDailyBegin", map);
+	}
+	public int beginDailyEnd(Map map) throws Exception{
+		return session.selectOne("account.readDailyEnd", map);
 	}
 	public int update(AccountVO vo) throws Exception{
 		return session.update("account.update", vo);

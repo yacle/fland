@@ -18,7 +18,7 @@ public class InquiryDAO {
 	private  SqlSessionTemplate session;
 	
 	// 일일 입출금조회
-	public Map<String, List<InquiryVO>> daily(String date) {
+	public Map<String, List<InquiryVO>> daily(String date) throws Exception{
 		List<InquiryVO> in_nhi = session.selectList("inquiry.income01", date);
 		List<InquiryVO> in_nhe = session.selectList("inquiry.income02", date);
 		List<InquiryVO> in_kbi = session.selectList("inquiry.income03", date);
@@ -45,5 +45,188 @@ public class InquiryDAO {
 		map.put("out_sh", out_sh);
 		map.put("out_km", out_km);
 		return map;
+	}
+	
+	public int item01(String date) throws Exception {
+		if(session.selectOne("month.item01", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item01", date);
+		}
+	}
+	public int item02(String date) throws Exception{
+		if(session.selectOne("month.item02", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item02", date);
+		}
+	}
+	public int item03(String date) throws Exception {
+		if(session.selectOne("month.item03", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item03", date);
+		}
+	}
+	public int item04(String date) throws Exception {
+		if(session.selectOne("month.item04", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item04", date);
+		}
+	}
+	public int item05(String date) throws Exception {
+		if(session.selectOne("month.item05", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item05", date);
+		}
+	}
+	public int item06(String date) throws Exception {
+		if(session.selectOne("month.item06", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item06", date);
+		}
+	}
+	public int item07(String date) throws Exception {
+		if(session.selectOne("month.item07", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item07", date);
+		}
+	}
+	public int item08(String date) throws Exception {
+		if(session.selectOne("month.item08", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item08", date);
+		}
+	}
+	public int item09(String date) throws Exception {
+		if(session.selectOne("month.item09", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item09", date);
+		}
+	}
+	public int item10(String date) throws Exception {
+		if(session.selectOne("month.item10", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item10", date);
+		}
+	}
+	public int item11(String date) throws Exception {
+		if(session.selectOne("month.item11", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item11", date);
+		}
+	}
+	public int item12(String date) throws Exception {
+		if(session.selectOne("month.item12", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item12", date);
+		}
+	}
+	public int item13(String date) throws Exception {
+		if(session.selectOne("month.item13", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item13", date);
+		}
+	}
+	public int item14(String date) throws Exception {
+		if(session.selectOne("month.item14", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item14", date);
+		}
+	}
+	public int item15(String date) throws Exception {
+		if(session.selectOne("month.item15", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item15", date);
+		}
+	}
+	public int item16(String date) throws Exception {
+		if(session.selectOne("month.item16", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item16", date);
+		}
+	}
+	public int item17(String date) throws Exception {
+		if(session.selectOne("month.item17", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item17", date);
+		}
+	}
+	public int item18(String date) throws Exception {
+		if(session.selectOne("month.item18", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item18", date);
+		}
+	}
+	public int item19(String date) throws Exception {
+		if(session.selectOne("month.item19", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item19", date);
+		}
+	}
+	public int item20(String date) throws Exception {
+		if(session.selectOne("month.item20", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item20", date);
+		}
+	}
+	public int item21(String date) throws Exception {
+		if(session.selectOne("month.item21", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item21", date);
+		}
+	}
+	public int item22(String date) throws Exception {
+		if(session.selectOne("month.item22", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item22", date);
+		}
+	}
+	public int item23(String date) throws Exception {
+		if(session.selectOne("month.item23", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item23", date);
+		}
+	}
+	public int item24(String date) throws Exception {
+		if(session.selectOne("month.item24", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item24", date);
+		}
+	}
+	public int item25(String date) throws Exception {
+		if(session.selectOne("month.item25", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item25", date);
+		}
+	}
+	public int item26(String date) throws Exception {
+		if(session.selectOne("month.item26", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item26", date);
+		}
 	}
 }

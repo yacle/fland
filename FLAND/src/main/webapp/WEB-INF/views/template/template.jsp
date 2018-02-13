@@ -21,9 +21,10 @@
 		<section style="min-height: 70%;">
 			<tiles:insertAttribute name="section" />
 		</section>
-		<footer>
+<%-- 		<footer>
 			<tiles:insertAttribute name="footer" />
 		</footer>
+		--%>
 	</div>
 </body>
 </html>

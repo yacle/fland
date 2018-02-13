@@ -52,6 +52,5 @@
 	if(dd<10){
 		dd = '0'+dd;
 	}
-	console.log(yy+mm+dd);
 	document.getElementById("daily").href="/inquiry/daily?date="+yy+"-"+mm+"-"+dd;
 </script>

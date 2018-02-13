@@ -43,12 +43,12 @@ SimpleDateFormat format;
 	
 	@RequestMapping(value = "/readAccount", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Integer> readAccountHandle(@RequestParam Map<String, String> map)throws Exception{
+	public String readAccountHandle(@RequestParam Map<String, String> map)throws Exception{
 		String date = (String)map.get("date");
-		List<IncomeVO> list = accountDao.readAll(date);
+		List<IncomeVO> list = accountDao.readBegin(date);
 		Map<String, Integer> accsum = SumCount.accountSum(list);
-		System.out.println(accsum.toString());
-		return accsum;
+		String jsonString = mapper.writeValueAsString(accsum);
+		return jsonString;
 	}
 	
 	// 수입 입력 DB 전송
