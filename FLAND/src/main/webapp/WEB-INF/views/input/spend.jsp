@@ -143,7 +143,7 @@
 	<div class="formgroup">
 		<div class="row">
 			<div class="col-lg-1">
-				<input type="date" min="2018-01-01" class="form-control" id="date" name="expense_date">
+				<input type="date" min="2017-12-31" class="form-control" id="date" name="expense_date">
 			</div>
 			<div class="col-lg-1">
 				<select class="form-control account" id="account" name="account">
@@ -158,15 +158,16 @@
 			</div>
 			<div class="col-lg-1">
 				<select class="form-control" id="employee" name="employee">
+					<option>공용</option>
 					<option>황수현</option>
 					<option>한정신</option>
 					<option>박성진</option>
-					<option>황용수</option>
 				</select>
 			</div>
 			<div class="col-lg-1">
 				<div class="form-group">
 					<select class="form-control" name="item">
+						<option>비목선택</option>
 						<option>거래처결제</option>
 						<option>이체</option>
 						<option>경비</option>
@@ -192,7 +193,6 @@
 			<div class="col-lg-1">
 				<select class="form-control" id="method" name="method">
 					<option>카드</option>
-					<option>현금</option>
 					<option>이체</option>
 				</select>
 			</div>
@@ -240,15 +240,16 @@
 			</div>
 			<div class="col-lg-1">
 				<select class="form-control" id="employee" name="employee">
+					<option>공용</option>
 					<option>황수현</option>
 					<option>한정신</option>
 					<option>박성진</option>
-					<option>황용수</option>
 				</select>
 			</div>
 			<div class="col-lg-1">
 				<div class="form-group">
 					<select class="form-control" name="item">
+						<option>비목선택</option>
 						<option>거래처결제</option>
 						<option>이체</option>
 						<option>경비</option>

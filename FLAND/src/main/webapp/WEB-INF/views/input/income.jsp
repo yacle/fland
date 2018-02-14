@@ -140,7 +140,7 @@
 		<div class="formgroup">
 			<div class="row">
 				<div class="col-lg-1">
-					<input type="date" min="2018-01-01" class="form-control" id="date" name="date">
+					<input type="date" min="2017-12-31" class="form-control" id="date" name="date">
 				</div>
 				<div class="col-lg-1">
 					<select class="form-control account" id="account" name="account">
