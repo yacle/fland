@@ -40,4 +40,12 @@ public class SumCount {
 		accsum.put("total", String.valueOf(total));
 		return accsum;
 	}
+	
+	public static int itemSum(List<Integer> list) {
+		int total=0;
+		for(int sum : list) {
+			total += sum;
+		}
+		return total;
+	}
 }

@@ -32,6 +32,9 @@
 	<select id="item07" resultType="int">
 		select SUM(sum) from TRANSACTION where item='세금환급' and tran_date = #{date}
 	</select>
+	<select id="incomeSum" resultType="int">
+		select SUM(sum) from TRANSACTION where div='income' and tran_date = #{date}
+	</select>
 <!-- 출금 -->
 	<!-- 거래처결재 -->
 	<select id="item08" resultType="int">
@@ -108,5 +111,8 @@
 	<!-- 4대보험 -->
 	<select id="item26" resultType="int">
 		select SUM(sum) from TRANSACTION where item='4대보험' and tran_date = #{date}
+	</select>
+	<select id="expenseSum" resultType="int">
+		select SUM(sum) from TRANSACTION where div='expense' and tran_date = #{date}
 	</select>
 </mapper>

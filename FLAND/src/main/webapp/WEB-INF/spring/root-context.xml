@@ -20,7 +20,7 @@
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="ds">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.4:1521:orcl" />
-		<property name="user" value="C#fland" />
+		<property name="user" value="C##fland" />
 		<property name="password" value="land1027" />
 	</bean>	
 	

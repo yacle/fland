@@ -210,6 +210,13 @@
 			<td class="num"><fmt:formatNumber value="${out_km[i].SUM }" groupingUsed="true"/></td>
 		</tr>
 		</c:forEach>
+		<tr>
+			<td style="background-color:#E0FFFF">소계(원화)</td>
+			<td><fmt:formatNumber value="${incomeSum }" groupingUsed="true"/></td>
+			<td colspan="4"><fmt:formatNumber value="${incomeSum }" groupingUsed="true"/></td>
+			<td colspan="4"><fmt:formatNumber value="${expenseSum }" groupingUsed="true"/></td>
+			<td></td>
+		</tr>
 	</tbody>
 </table>
 </div>

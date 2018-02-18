@@ -229,4 +229,18 @@ public class InquiryDAO {
 			return session.selectOne("month.item26", date);
 		}
 	}
+	public int incomeSum(String date) throws Exception {
+		if(session.selectOne("month.incomeSum", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.incomeSum", date);
+		}
+	}
+	public int expenseSum(String date) throws Exception {
+		if(session.selectOne("month.expenseSum", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.expenseSum", date);
+		}
+	}
 }

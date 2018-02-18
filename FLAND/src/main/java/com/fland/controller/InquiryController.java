@@ -38,6 +38,9 @@ AccountDAO accountDao;
 			Map begin = SumCount.accountSum(beginList);
 		List<IncomeVO> endList = accountDao.readEnd(date);
 			Map end = SumCount.accountSum(endList);
+		int incomeSum = inquiryDao.incomeSum(date);
+		int expenseSum = inquiryDao.expenseSum(date);
+			
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "inquiry/daily");
 		mav.addObject("date", date);
@@ -56,6 +59,8 @@ AccountDAO accountDao;
 		mav.addObject("out_km", map.get("out_km"));
 		mav.addObject("begin", begin);
 		mav.addObject("end", end);	
+		mav.addObject("incomeSum", incomeSum);
+		mav.addObject("expenseSum", expenseSum);
 		return mav;
 	}
 
@@ -92,6 +97,9 @@ AccountDAO accountDao;
 		List<Integer> item24 = new ArrayList<Integer>();	// 대출
 		List<Integer> item25 = new ArrayList<Integer>();	// 세금
 		List<Integer> item26 = new ArrayList<Integer>();	// 4대보험
+		List<Integer> incomeSum = new ArrayList<Integer>();	// 수입합계
+		List<Integer> expenseSum = new ArrayList<Integer>();	// 지출합계
+		
 		String month = (String)param.get("month");
 		for(int i=1; i<32; i++) {
 			String d="";
@@ -132,6 +140,8 @@ AccountDAO accountDao;
 			item24.add(inquiryDao.item24(day));	// 대출
 			item25.add(inquiryDao.item25(day));	// 세금
 			item26.add(inquiryDao.item26(day));	// 4대보험
+			incomeSum.add(inquiryDao.incomeSum(day));	// 세금
+			expenseSum.add(inquiryDao.expenseSum(day));	// 4대보험
 		}
 		//
 		mav.addObject("section", "inquiry/list");
@@ -139,31 +149,170 @@ AccountDAO accountDao;
 		mav.addObject("begin", begin);	// 기초잔액
 		mav.addObject("end", end);	// 기말잔액
 		mav.addObject("item01", item01);	// 매출
+		mav.addObject("item01Sum", SumCount.itemSum(item01));	// 매출 합계
 		mav.addObject("item02", item02);	// 업체환급v
+		mav.addObject("item02Sum", SumCount.itemSum(item02));	// 업체환급 합계
 		mav.addObject("item03", item03);	// 이체
+		mav.addObject("item03Sum", SumCount.itemSum(item03));	// 이체 합계
 		mav.addObject("item04", item04);	// 금융이자
+		mav.addObject("item04Sum", SumCount.itemSum(item04));	// 금융이자 합계
 		mav.addObject("item05", item05);	// 차입금
+		mav.addObject("item05Sum", SumCount.itemSum(item05));	// 차입금 합계
 		mav.addObject("item06", item06);	// 카드취소
+		mav.addObject("item06Sum", SumCount.itemSum(item06));	// 카드취소 합계
 		mav.addObject("item07", item07);	// 세금환급
+		mav.addObject("item07Sum", SumCount.itemSum(item07));	// 세금 환급 합계
 		mav.addObject("item08", item08);	// 거래처결제
+		mav.addObject("item08Sum", SumCount.itemSum(item08));	// 거래처 결재 합계
 		mav.addObject("item09", item09);	// 이체
+		mav.addObject("item09Sum", SumCount.itemSum(item09));	// 이체 합계
 		mav.addObject("item10", item10);	// 경비
+		mav.addObject("item10Sum", SumCount.itemSum(item10));	// 경비 합계
 		mav.addObject("item11", item11);	// 접대비
+		mav.addObject("item11Sum", SumCount.itemSum(item11));	// 접대비 합계
 		mav.addObject("item12", item12);	// 대표자경비
+		mav.addObject("item12Sum", SumCount.itemSum(item12));	// 대표자 경비 합계
 		mav.addObject("item13", item13);	// 대표자차량
+		mav.addObject("item13Sum", SumCount.itemSum(item13));	// 대표자 차량 합계
 		mav.addObject("item14", item14);	// 원단물류비
+		mav.addObject("item14Sum", SumCount.itemSum(item14));	// 원단 물류비 합계
 		mav.addObject("item15", item15);	// 기타
+		mav.addObject("item15Sum", SumCount.itemSum(item15));	// 기타 합계
 		mav.addObject("item16", item16);	// 식대
+		mav.addObject("item16Sum", SumCount.itemSum(item16));	// 식대 합계
 		mav.addObject("item17", item17);	// 한정신차량
+		mav.addObject("item17Sum", SumCount.itemSum(item17));	// 한정신 차량 합계
 		mav.addObject("item18", item18);	// 박성진차량
+		mav.addObject("item18Sum", SumCount.itemSum(item18));	// 박성진 차량 합계
 		mav.addObject("item19", item19);	// 박성진경비
+		mav.addObject("item19Sum", SumCount.itemSum(item19));	// 박성진 경비 합계
 		mav.addObject("item20", item20);	// 박성진식대
+		mav.addObject("item20Sum", SumCount.itemSum(item20));	// 박성진 식대 합계
 		mav.addObject("item21", item21);	// 임대관리비
+		mav.addObject("item21Sum", SumCount.itemSum(item21));	// 임대관리비 합계
 		mav.addObject("item22", item22);	// 급여
+		mav.addObject("item22Sum", SumCount.itemSum(item22));	// 급여 합계
 		mav.addObject("item23", item23);	// 차입금상환
+		mav.addObject("item23Sum", SumCount.itemSum(item23));	// 차입금상환합계
 		mav.addObject("item24", item24);	// 대출
+		mav.addObject("item24Sum", SumCount.itemSum(item24));	//대출 합계
 		mav.addObject("item25", item25);	// 세금
+		mav.addObject("item25Sum", SumCount.itemSum(item25));	// 세금합계
 		mav.addObject("item26", item26);	// 4대보험
+		mav.addObject("item26Sum", SumCount.itemSum(item26));	// 4대보험 합계
+		mav.addObject("incomeSum", incomeSum);	// 수입합계
+		mav.addObject("incomeTotal", SumCount.itemSum(incomeSum));	// 수입월합계
+		mav.addObject("expenseSum", expenseSum);	// 지출합계
+		mav.addObject("expenseTotal", SumCount.itemSum(expenseSum));	// 지출월합계
+		return mav;
+	}
+	
+	@RequestMapping(value = "/state", method = RequestMethod.GET)
+	public ModelAndView inquiryMonthStateHandle(@RequestParam Map param) throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		// 입금
+		List<Integer> item01 = new ArrayList<Integer>();	// 매출
+		List<Integer> item02 = new ArrayList<Integer>();	// 업체환급
+		List<Integer> item03 = new ArrayList<Integer>();	// 이체
+		List<Integer> item04 = new ArrayList<Integer>();	// 금융이자
+		List<Integer> item05 = new ArrayList<Integer>();	// 차입금
+		List<Integer> item06 = new ArrayList<Integer>();	// 카드취소
+		List<Integer> item07 = new ArrayList<Integer>();	// 세금환급
+		// 출금
+		List<Integer> item08 = new ArrayList<Integer>();	// 거래처결제
+		List<Integer> item09 = new ArrayList<Integer>();	// 이체
+		List<Integer> item10 = new ArrayList<Integer>();	// 경비
+		List<Integer> item11 = new ArrayList<Integer>();	// 접대비
+		List<Integer> item12 = new ArrayList<Integer>();	// 대표자경비
+		List<Integer> item13 = new ArrayList<Integer>();	// 대표자차량
+		List<Integer> item14 = new ArrayList<Integer>();	// 원단물류비
+		List<Integer> item15 = new ArrayList<Integer>();	// 기타
+		List<Integer> item16 = new ArrayList<Integer>();	// 식대
+		List<Integer> item17 = new ArrayList<Integer>();	// 한정신차량
+		List<Integer> item18 = new ArrayList<Integer>();	// 박성진차량
+		List<Integer> item19 = new ArrayList<Integer>();	// 박성진경비
+		List<Integer> item20 = new ArrayList<Integer>();	// 박성진식대
+		List<Integer> item21 = new ArrayList<Integer>();	// 임대관리비
+		List<Integer> item22 = new ArrayList<Integer>();	// 급여
+		List<Integer> item23 = new ArrayList<Integer>();	// 차입금상환
+		List<Integer> item24 = new ArrayList<Integer>();	// 대출
+		List<Integer> item25 = new ArrayList<Integer>();	// 세금
+		List<Integer> item26 = new ArrayList<Integer>();	// 4대보험
+		List<Integer> incomeSum = new ArrayList<Integer>();	// 수입합계
+		List<Integer> expenseSum = new ArrayList<Integer>();	// 지출합계
+		
+		String month = (String)param.get("month");
+		for(int i=1; i<32; i++) {
+			String d="";
+			if(i<10) {
+				d="0"+String.valueOf(i);
+			}else {
+				d=String.valueOf(i);
+			}
+			String day = month+"-"+d;
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("day", day);
+			map.put("month", month);
+			item01.add(inquiryDao.item01(day));	// 매출
+			item02.add(inquiryDao.item02(day));	// 업체환급
+			item03.add(inquiryDao.item03(day));	// 이체
+			item04.add(inquiryDao.item04(day));	// 금융이자
+			item05.add(inquiryDao.item05(day));	// 차입금
+			item06.add(inquiryDao.item06(day));	// 카드취소
+			item07.add(inquiryDao.item07(day));	// 세금환급
+			item08.add(inquiryDao.item08(day));	// 거래처결제
+			item09.add(inquiryDao.item09(day));	// 이체
+			item10.add(inquiryDao.item10(day));	// 경비
+			item11.add(inquiryDao.item11(day));	// 접대비
+			item12.add(inquiryDao.item12(day));	// 대표자경비
+			item13.add(inquiryDao.item13(day));	// 대표자차량
+			item14.add(inquiryDao.item14(day));	// 원단물류비
+			item15.add(inquiryDao.item15(day));	// 기타
+			item16.add(inquiryDao.item16(day));	// 식대
+			item17.add(inquiryDao.item17(day));	// 한정신차량
+			item18.add(inquiryDao.item18(day));	// 박성진차량
+			item19.add(inquiryDao.item19(day));	// 박성진경비
+			item20.add(inquiryDao.item20(day));	// 박성진식대
+			item21.add(inquiryDao.item21(day));	// 임대관리비
+			item22.add(inquiryDao.item22(day));	// 급여
+			item23.add(inquiryDao.item23(day));	// 차입금상환
+			item24.add(inquiryDao.item24(day));	// 대출
+			item25.add(inquiryDao.item25(day));	// 세금
+			item26.add(inquiryDao.item26(day));	// 4대보험
+			incomeSum.add(inquiryDao.incomeSum(day));	// 세금
+			expenseSum.add(inquiryDao.expenseSum(day));	// 4대보험
+		}
+		//
+		mav.addObject("section", "inquiry/stat");
+		mav.addObject("month", month);
+		mav.addObject("item01Sum", SumCount.itemSum(item01));	// 매출 합계
+		mav.addObject("item02Sum", SumCount.itemSum(item02));	// 업체환급 합계
+		mav.addObject("item03Sum", SumCount.itemSum(item03));	// 이체 합계
+		mav.addObject("item04Sum", SumCount.itemSum(item04));	// 금융이자 합계
+		mav.addObject("item05Sum", SumCount.itemSum(item05));	// 차입금 합계
+		mav.addObject("item06Sum", SumCount.itemSum(item06));	// 카드취소 합계
+		mav.addObject("item07Sum", SumCount.itemSum(item07));	// 세금 환급 합계
+		mav.addObject("item08Sum", SumCount.itemSum(item08));	// 거래처 결재 합계
+		mav.addObject("item09Sum", SumCount.itemSum(item09));	// 이체 합계
+		mav.addObject("item10Sum", SumCount.itemSum(item10));	// 경비 합계
+		mav.addObject("item11Sum", SumCount.itemSum(item11));	// 접대비 합계
+		mav.addObject("item12Sum", SumCount.itemSum(item12));	// 대표자 경비 합계
+		mav.addObject("item13Sum", SumCount.itemSum(item13));	// 대표자 차량 합계
+		mav.addObject("item14Sum", SumCount.itemSum(item14));	// 원단 물류비 합계
+		mav.addObject("item15Sum", SumCount.itemSum(item15));	// 기타 합계
+		mav.addObject("item16Sum", SumCount.itemSum(item16));	// 식대 합계
+		mav.addObject("item17Sum", SumCount.itemSum(item17));	// 한정신 차량 합계
+		mav.addObject("item18Sum", SumCount.itemSum(item18));	// 박성진 차량 합계
+		mav.addObject("item19Sum", SumCount.itemSum(item19));	// 박성진 경비 합계
+		mav.addObject("item20Sum", SumCount.itemSum(item20));	// 박성진 식대 합계
+		mav.addObject("item21Sum", SumCount.itemSum(item21));	// 임대관리비 합계
+		mav.addObject("item22Sum", SumCount.itemSum(item22));	// 급여 합계
+		mav.addObject("item23Sum", SumCount.itemSum(item23));	// 차입금상환합계
+		mav.addObject("item24Sum", SumCount.itemSum(item24));	//대출 합계
+		mav.addObject("item25Sum", SumCount.itemSum(item25));	// 세금합계
+		mav.addObject("item26Sum", SumCount.itemSum(item26));	// 4대보험 합계
+		mav.addObject("incomeTotal", SumCount.itemSum(incomeSum));	// 수입월합계
+		mav.addObject("expenseTotal", SumCount.itemSum(expenseSum));	// 지출월합계
 		return mav;
 	}
 }
