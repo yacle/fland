@@ -68,10 +68,10 @@
 			<td width="15%">${in_nhi[0].DETAIL }</td>
 			<td width="7%">${in_nhi[0].CLIENT }</td>
 			<td width="8%" class="num"><fmt:formatNumber value="${in_nhi[0].SUM }" groupingUsed="true"/></td>
-			<td width="7%">${outnhi[0].ITEM }</td>
-			<td width="15%">${outnhi[0].DETAIL }</td>
-			<td width="7%">${outnhi[0].CLIENT }</td>
-			<td width="8%" class="num"><fmt:formatNumber value="${outnhi[0].SUM }" groupingUsed="true"/></td>
+			<td width="7%">${out_nhi[0].ITEM }</td>
+			<td width="15%">${out_nhi[0].DETAIL }</td>
+			<td width="7%">${out_nhi[0].CLIENT }</td>
+			<td width="8%" class="num"><fmt:formatNumber value="${out_nhi[0].SUM }" groupingUsed="true"/></td>
 			<td width="10%" class="num" rowspan="${in_nhi.size()+out_nhi.size()}"><fmt:formatNumber value="${end.nhi}" groupingUsed="true"/></td>
 		</tr>
 		<c:forEach var="i" begin="1" end="${(in_nhi.size() + out_nhi.size())>0 ? (in_nhi.size() + out_nhi.size())-1 : (in_nhi.size()+out_nhi.size())}">
@@ -80,10 +80,10 @@
 			<td>${in_nhi[i].DETAIL }</td>
 			<td>${in_nhi[i].CLIENT }</td>
 			<td class="num"><fmt:formatNumber value="${in_nhi[i].SUM }" groupingUsed="true"/></td>
-			<td>${outnhi[i].ITEM }</td>
-			<td>${outnhi[i].DETAIL }</td>
-			<td>${outnhi[i].CLIENT }</td>
-			<td class="num"><fmt:formatNumber value="${outnhi[i].SUM }" groupingUsed="true"/></td>
+			<td>${out_nhi[i].ITEM }</td>
+			<td>${out_nhi[i].DETAIL }</td>
+			<td>${out_nhi[i].CLIENT }</td>
+			<td class="num"><fmt:formatNumber value="${out_nhi[i].SUM }" groupingUsed="true"/></td>
 		</tr>
 		</c:forEach>
 		<tr>
