@@ -21,8 +21,9 @@
 </style>
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
-    <li class="active"><a href="">일일</a></li>
-    <li><a href="/inquiry/month?month=2018-01">종합</a></li>
+    <li class="active"><a href="">일별</a></li>
+    <li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
+    <li><a href="/inquiry/yearly?year=2018">연별</a></li>
     <form class="navbar-form navbar-right" action="/inquiry/daily">
       <div class="form-group">
         <input type="date" name="date" class="form-control" placeholder="Search">

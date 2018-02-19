@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="year">
+<!-- 입금 -->
+	<!-- 영업수입 매출 -->
+	<select id="item01" resultType="int">
+		select SUM(sum) from TRANSACTION where item='매출' and tran_date like #{date} || '%'
+	</select>
+	<!-- 영업수입 업체환급 --> 
+	<select id="item02" resultType="int">
+		select SUM(sum) from TRANSACTION where item='업체환급' and tran_date like #{date} || '%'
+	</select>
+	<!-- 영업외수입 입금 이체 -->
+	<select id="item03" resultType="int">
+		select SUM(sum) from TRANSACTION where div='income' and item='이체' and tran_date like #{date} || '%'
+	</select>
+	<!-- 영업외수입 금융이자 -->
+	<select id="item04" resultType="int">
+		select SUM(sum) from TRANSACTION where item='금융이자' and tran_date like #{date} || '%'
+	</select>
+	<!-- 영업외수입 차입금 --> 
+	<select id="item05" resultType="int">
+		select SUM(sum) from TRANSACTION where item='차입금' and tran_date like #{date} || '%'
+	</select>
+	<!-- 영업외수입 카드취소 -->
+	<select id="item06" resultType="int">
+		select SUM(sum) from TRANSACTION where item='카드취소' and tran_date like #{date} || '%'
+	</select>
+	<!-- 영업외수입 세금환급 --> 
+	<select id="item07" resultType="int">
+		select SUM(sum) from TRANSACTION where item='세금환급' and tran_date like #{date} || '%'
+	</select>
+	<select id="incomeSum" resultType="int">
+		select SUM(sum) from TRANSACTION where div='income' and tran_date like #{date} || '%'
+	</select>
+<!-- 출금 -->
+	<!-- 거래처결재 -->
+	<select id="item08" resultType="int">
+		select SUM(sum) from TRANSACTION where item='거래처결제' and tran_date like #{date} || '%'
+	</select>
+	<!-- 이체 -->
+	<select id="item09" resultType="int">
+		select SUM(sum) from TRANSACTION where div='expense' and item='이체' and tran_date like #{date} || '%'
+	</select>
+	<!-- 경비 -->
+	<select id="item10" resultType="int">
+		select SUM(sum) from TRANSACTION where item='경비' and tran_date like #{date} || '%'
+	</select>
+	<!-- 경비 -->
+	<select id="item11" resultType="int">
+		select SUM(sum) from TRANSACTION where item='접대비' and tran_date like #{date} || '%'
+	</select>
+	<!-- 대표자경비 -->
+	<select id="item12" resultType="int">
+		select SUM(sum) from TRANSACTION where item='대표자경비' and tran_date like #{date} || '%'
+	</select>
+	<!-- 대표자차량 -->
+	<select id="item13" resultType="int">
+		select SUM(sum) from TRANSACTION where item='대표자차량' and tran_date like #{date} || '%'
+	</select>
+	<!-- 원단물류비 -->
+	<select id="item14" resultType="int">
+		select SUM(sum) from TRANSACTION where item='원단물류비' and tran_date like #{date} || '%'
+	</select>
+	<!-- 기타 -->
+	<select id="item15" resultType="int">
+		select SUM(sum) from TRANSACTION where item='기타' and tran_date like #{date} || '%'
+	</select>
+	<!-- 식대 -->
+	<select id="item16" resultType="int">
+		select SUM(sum) from TRANSACTION where item='식대' and tran_date like #{date} || '%'
+	</select>
+	<!-- 한정신차량 -->
+	<select id="item17" resultType="int">
+		select SUM(sum) from TRANSACTION where item='한정신차량' and tran_date like #{date} || '%'
+	</select>
+	<!-- 박성진차량 -->
+	<select id="item18" resultType="int">
+		select SUM(sum) from TRANSACTION where item='박성진차량' and tran_date like #{date} || '%'
+	</select>
+	<!-- 박성진경비 -->
+	<select id="item19" resultType="int">
+		select SUM(sum) from TRANSACTION where item='박성진경비' and tran_date like #{date} || '%'
+	</select>
+	<!-- 박성진식대 -->
+	<select id="item20" resultType="int">
+		select SUM(sum) from TRANSACTION where item='박성진식대' and tran_date like #{date} || '%'
+	</select>
+	<!-- 임대관리비 -->
+	<select id="item21" resultType="int">
+		select SUM(sum) from TRANSACTION where item='임대관리비' and tran_date like #{date} || '%'
+	</select>
+	<!-- 급여 -->
+	<select id="item22" resultType="int">
+		select SUM(sum) from TRANSACTION where item='급여' and tran_date like #{date} || '%'
+	</select>
+	<!-- 차입금상환 -->
+	<select id="item23" resultType="int">
+		select SUM(sum) from TRANSACTION where item='차입금상환' and tran_date like #{date} || '%'
+	</select>
+	<!-- 대출 -->
+	<select id="item24" resultType="int">
+		select SUM(sum) from TRANSACTION where item='대출' and tran_date like #{date} || '%'
+	</select>
+	<!-- 세금 -->
+	<select id="item25" resultType="int">
+		select SUM(sum) from TRANSACTION where item='세금' and tran_date like #{date} || '%'
+	</select>
+	<!-- 4대보험 -->
+	<select id="item26" resultType="int">
+		select SUM(sum) from TRANSACTION where item='4대보험' and tran_date like #{date} || '%'
+	</select>
+	<select id="expenseSum" resultType="int">
+		select SUM(sum) from TRANSACTION where div='expense' and tran_date like #{date} || '%'
+	</select>
+</mapper>

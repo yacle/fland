@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<header style="background-color:#ddd; margin:0px" class="jumbotron">
+		<header style="background-color:#ddd; height:140px;">
 			<tiles:insertAttribute name="header" />
 		</header>
 		<section style="min-height: 70%;">

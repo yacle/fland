@@ -243,4 +243,201 @@ public class InquiryDAO {
 			return session.selectOne("month.expenseSum", date);
 		}
 	}
+// 월별 item 합계
+	public int item01Year(String date) throws Exception {
+		if(session.selectOne("year.item01", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item01", date);
+		}
+	}
+	public int item02Year(String date) throws Exception{
+		if(session.selectOne("year.item02", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item02", date);
+		}
+	}
+	public int item03Year(String date) throws Exception {
+		if(session.selectOne("year.item03", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item03", date);
+		}
+	}
+	public int item04Year(String date) throws Exception {
+		if(session.selectOne("year.item04", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item04", date);
+		}
+	}
+	public int item05Year(String date) throws Exception {
+		if(session.selectOne("year.item05", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item05", date);
+		}
+	}
+	public int item06Year(String date) throws Exception {
+		if(session.selectOne("year.item06", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item06", date);
+		}
+	}
+	public int item07Year(String date) throws Exception {
+		if(session.selectOne("year.item07", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item07", date);
+		}
+	}
+	public int item08Year(String date) throws Exception {
+		if(session.selectOne("year.item08", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item08", date);
+		}
+	}
+	public int item09Year(String date) throws Exception {
+		if(session.selectOne("year.item09", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item09", date);
+		}
+	}
+	public int item10Year(String date) throws Exception {
+		if(session.selectOne("year.item10", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item10", date);
+		}
+	}
+	public int item11Year(String date) throws Exception {
+		if(session.selectOne("year.item11", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item11", date);
+		}
+	}
+	public int item12Year(String date) throws Exception {
+		if(session.selectOne("year.item12", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item12", date);
+		}
+	}
+	public int item13Year(String date) throws Exception {
+		if(session.selectOne("year.item13", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item13", date);
+		}
+	}
+	public int item14Year(String date) throws Exception {
+		if(session.selectOne("year.item14", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item14", date);
+		}
+	}
+	public int item15Year(String date) throws Exception {
+		if(session.selectOne("year.item15", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item15", date);
+		}
+	}
+	public int item16Year(String date) throws Exception {
+		if(session.selectOne("year.item16", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item16", date);
+		}
+	}
+	public int item17Year(String date) throws Exception {
+		if(session.selectOne("year.item17", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item17", date);
+		}
+	}
+	public int item18Year(String date) throws Exception {
+		if(session.selectOne("year.item18", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item18", date);
+		}
+	}
+	public int item19Year(String date) throws Exception {
+		if(session.selectOne("year.item19", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item19", date);
+		}
+	}
+	public int item20Year(String date) throws Exception {
+		if(session.selectOne("year.item20", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item20", date);
+		}
+	}
+	public int item21Year(String date) throws Exception {
+		if(session.selectOne("year.item21", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item21", date);
+		}
+	}
+	public int item22Year(String date) throws Exception {
+		if(session.selectOne("year.item22", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item22", date);
+		}
+	}
+	public int item23Year(String date) throws Exception {
+		if(session.selectOne("year.item23", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item23", date);
+		}
+	}
+	public int item24Year(String date) throws Exception {
+		if(session.selectOne("year.item24", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item24", date);
+		}
+	}
+	public int item25Year(String date) throws Exception {
+		if(session.selectOne("year.item25", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item25", date);
+		}
+	}
+	public int item26Year(String date) throws Exception {
+		if(session.selectOne("year.item26", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.item26", date);
+		}
+	}
+	public int incomeSumYear(String date) throws Exception {
+		if(session.selectOne("year.incomeSum", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.incomeSum", date);
+		}
+	}
+	public int expenseSumYear(String date) throws Exception {
+		if(session.selectOne("year.expenseSum", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("year.expenseSum", date);
+		}
+	}
 }
