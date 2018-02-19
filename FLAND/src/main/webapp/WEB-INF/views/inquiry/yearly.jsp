@@ -28,9 +28,9 @@ tr{
 <nav class="navbar navbar-inverse">
 	<ul class="nav navbar-nav">
 	    <li><a id="date" href="">일별</a></li>
-	    <li><a href="">월별</a></li>
+	    <li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
 	    <li class="active"><a href="">연별</a></li>
-	    <form class="navbar-form navbar-right" action="/inquiry/month">
+	    <form class="navbar-form navbar-right" action="/inquiry/yearly">
 			<div class="form-group">
 				<select class="form-control" name="year">
 					<option>2018</option>
