@@ -41,7 +41,7 @@ tr{
 <table border="0" cellspacing="0" cellpadding="0" id="tablefixed">
 	<tr valign="top">
 		<td align="right">
-			<table border="1" style="margin-right:-2;" width="220px">
+			<table border="1" style="margin-right:-2; background-color:yellow;" width="220px">
 				<tr>
 					<th width="50px">구분</th>
 					<th colspan="2">내역</th>

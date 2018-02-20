@@ -116,6 +116,13 @@ tr{
 		<td><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
+		<td>기타물류비</td>
+		<c:forEach var="i" begin="0" end="11">
+			<td style="text-align:right;"><fmt:formatNumber value="${item08[i]}" groupingUsed="true"/></td>
+		</c:forEach>
+		<td><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/></td>
+	</tr>
+	<tr>
 		<td rowspan="5">고정비</td>
 		<td>임대관리비</td>
 		<c:forEach var="i" begin="0" end="11">
