@@ -146,14 +146,15 @@ tr{
             <div style="width:1600px; overflow-x: auto;">
 				<table border="1">
 					<tr class="hover">
-						<th width="90px" rowspan="2">합계</th>
+						<th width="90px">합계</th>
 						<c:forEach var="i" begin="1" end="31">
 							<th class="sel-date" value="${i}">${i}</th>
 						</c:forEach>
 					</tr>
 					<tr class="hover">
+						<td width="90px"></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right;"><fmt:formatNumber value="${begin[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:2px;"><fmt:formatNumber value="${begin[i]}" groupingUsed="true"/></td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">
@@ -193,15 +194,15 @@ tr{
 						</c:forEach>
 					</tr>
 					<tr class="hover">
-						<td><fmt:formatNumber value="${item07Sum}" groupingUsed="true"/></td>
-						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right;"><fmt:formatNumber value="${item07[i]}" groupingUsed="true"/></td>
-						</c:forEach>
-					</tr>
-					<tr class="hover">
 						<td><fmt:formatNumber value="${incomeTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${incomeSum[i] }" groupingUsed="true"/></td>
+						</c:forEach>
+					</tr>
+					<tr class="hover">
+						<td><fmt:formatNumber value="${item07Sum}" groupingUsed="true"/></td>
+						<c:forEach var="i" begin="0" end="30">
+							<td style="text-align:right;"><fmt:formatNumber value="${item07[i]}" groupingUsed="true"/></td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">

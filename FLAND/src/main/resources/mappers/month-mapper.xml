@@ -37,11 +37,11 @@
 		select SUM(sum) from TRANSACTION where item='대금결제' and tran_date = #{date}
 	</select>
 	<!-- 기타물류비 -->
-	<select id="item8" resultType="int">
+	<select id="item08" resultType="int">
 		select SUM(sum) from TRANSACTION where item='기타물류비' and tran_date = #{date}
 	</select>
 	<!-- 임대관리비 -->
-	<select id="item9" resultType="int">
+	<select id="item09" resultType="int">
 		select SUM(sum) from TRANSACTION where item='임대관리비' and tran_date = #{date}
 	</select>
 	<!-- 급여 -->
