@@ -162,6 +162,7 @@
 							<option>매출</option>
 							<option>업체환급</option>
 							<option>이체</option>
+							<option>경비이체</option>
 							<option>금융이자</option>
 							<option>차입금</option>
 							<option>카드취소</option>

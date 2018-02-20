@@ -170,6 +170,7 @@
 						<option>비목선택</option>
 						<option>거래처결제</option>
 						<option>이체</option>
+						<option>경비이체</option>
 						<option>경비</option>
 						<option>접대비</option>
 						<option>대표자경비</option>
