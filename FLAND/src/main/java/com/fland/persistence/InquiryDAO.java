@@ -215,20 +215,6 @@ public class InquiryDAO {
 			return session.selectOne("month.item24", date);
 		}
 	}
-	public int item25(String date) throws Exception {
-		if(session.selectOne("month.item25", date)==null) {
-			return 0;
-		}else {
-			return session.selectOne("month.item25", date);
-		}
-	}
-	public int item26(String date) throws Exception {
-		if(session.selectOne("month.item26", date)==null) {
-			return 0;
-		}else {
-			return session.selectOne("month.item26", date);
-		}
-	}
 	public int incomeSum(String date) throws Exception {
 		if(session.selectOne("month.incomeSum", date)==null) {
 			return 0;
