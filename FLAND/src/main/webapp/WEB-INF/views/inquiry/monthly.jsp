@@ -47,10 +47,10 @@ tr{
 					<th colspan="2">내역</th>
                 </tr>
                 <tr>
-                	<td colspan="3">기초잔액(A)</td>
+                	<td colspan="3" style="padding:2px;">기초잔액(A)</td>
                 </tr>
                 <tr>
-                	<td rowspan="8">입 금</td>
+                	<td rowspan="7">입 금</td>
 					<td width="80px" rowspan="2">영업수입</td>
 					<td width="90px">매출</td>
                 </tr>
@@ -58,10 +58,7 @@ tr{
                 	<td>업체환급</td>
                 </tr>
 				<tr>
-					<td rowspan="5">영업외수입</td>
-					<td>이체</td>
-				</tr>
-				<tr>
+					<td rowspan="4">영업외수입</td>
 					<td>금융이자</td>
 				</tr>
 				<tr>
@@ -77,48 +74,15 @@ tr{
 					<td colspan="2">입금계(B)</td>
 				</tr>
 				<tr>
-					<td rowspan="20">출 금</td>
-					<td>매입출금</td>
-					<td>거래처결제</td>
+					<td rowspan="19">출 금</td>
+					<td rowspan="2">매입출금</td>
+					<td>대금결제</td>
 				</tr>
 				<tr>
-					<td rowspan="18">기타운영</td>
-					<td>이체</td>
+					<td>기타물류비</td>
 				</tr>
 				<tr>
-					<td>경비</td>
-				</tr>
-				<tr>
-					<td>접대비</td>
-				</tr>
-				<tr>
-					<td>대표자경비</td>
-				</tr>
-				<tr>
-					<td>대표자차량</td>
-				</tr>
-				<tr>
-					<td>원단물류비</td>
-				</tr>
-				<tr>
-					<td>기타</td>
-				</tr>
-				<tr>
-					<td>식대</td>
-				</tr>
-				<tr>
-					<td>한정신차량</td>
-				</tr>
-				<tr>
-					<td>박성진차량</td>
-				</tr>
-				<tr>
-					<td>박성진경비</td>
-				</tr>
-				<tr>
-					<td>박성진식대</td>
-				</tr>
-				<tr>
+					<td rowspan="5">고정비</td>
 					<td>임대관리비</td>
 				</tr>
 				<tr>
@@ -128,13 +92,44 @@ tr{
 					<td>차입금상환</td>
 				</tr>
 				<tr>
-					<td>대출</td>
-				</tr>
-				<tr>
 					<td>세금</td>
 				</tr>
 				<tr>
 					<td>4대보험</td>
+				</tr>
+				<tr>
+					<td rowspan="11">변동비</td>
+					<td>접대비</td>
+				</tr>
+				<tr>
+					<td>대표자-차량</td>
+				</tr>
+				<tr>
+					<td>대표자-경비</td>
+				</tr>
+				<tr>
+					<td>박성진-차량</td>
+				</tr>
+				<tr>
+					<td>박성진-식대</td>
+				</tr>
+				<tr>
+					<td>박성진-경비</td>
+				</tr>
+				<tr>
+					<td>한정신-차량</td>
+				</tr>
+				<tr>
+					<td>한정신-식대</td>
+				</tr>
+				<tr>
+					<td>한정신-경비</td>
+				</tr>
+				<tr>
+					<td>공용-식대</td>
+				</tr>
+				<tr>
+					<td>공용-경비</td>
 				</tr>
 				<tr>
 					<td colspan="2">출금계(C)</td>
@@ -151,10 +146,10 @@ tr{
             <div style="width:1600px; overflow-x: auto;">
 				<table border="1">
 					<tr class="hover">
+						<th width="90px" rowspan="2">합계</th>
 						<c:forEach var="i" begin="1" end="31">
 							<th class="sel-date" value="${i}">${i}</th>
 						</c:forEach>
-						<th width="90px" rowspan="2">합계</th>
 					</tr>
 					<tr class="hover">
 						<c:forEach var="i" begin="0" end="30">
@@ -162,184 +157,172 @@ tr{
 						</c:forEach>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item01Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item01[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item01Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item02Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item02[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item02Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item03Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item03[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item03Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item04Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item04[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item04Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item05Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item05[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item05Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item06Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item06[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item06Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item07Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item07[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item07Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${incomeTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${incomeSum[i] }" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${incomeTotal}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item08[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item09Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item09[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item09Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item10Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item10[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item10Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item11Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item11[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item11Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item12Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item12[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item12Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item13Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item13[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item13Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item14Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item14[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item14Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item15Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item15[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item15Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item16Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item16[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item16Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item17Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item17[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item17Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item18Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item18[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item18Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item19Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item19[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item19Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item20Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item20[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item20Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item21Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item21[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item21Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item22Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item22[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item22Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item23Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item23[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item23Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${item24Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${item24[i]}" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${item24Sum}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
-						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right;"><fmt:formatNumber value="${item25[i]}" groupingUsed="true"/></td>
-						</c:forEach>
-						<td><fmt:formatNumber value="${item25Sum}" groupingUsed="true"/></td>
-					</tr>
-					<tr class="hover">
-						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right;"><fmt:formatNumber value="${item26[i]}" groupingUsed="true"/></td>
-						</c:forEach>
-						<td><fmt:formatNumber value="${item26Sum}" groupingUsed="true"/></td>
-					</tr>
-					<tr class="hover">
+						<td><fmt:formatNumber value="${expenseTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${expenseSum[i] }" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${expenseTotal}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td><fmt:formatNumber value="${incomeTotal + expenseTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right; color:red;"><fmt:formatNumber value="${incomeSum[i] + expenseSum[i] }" groupingUsed="true"/></td>
 						</c:forEach>
-						<td><fmt:formatNumber value="${incomeTotal + expenseTotal}" groupingUsed="true"/></td>
 					</tr>
 					<tr class="hover">
+						<td></td>
 						<c:forEach var="i" begin="0" end="30">
 							<td style="text-align:right;"><fmt:formatNumber value="${end[i] }" groupingUsed="true"/></td>
 						</c:forEach>
-						<td></td>
 					</tr>
 				</table>
 			</div>

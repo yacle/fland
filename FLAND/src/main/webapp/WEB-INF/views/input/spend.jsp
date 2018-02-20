@@ -167,25 +167,16 @@
 			<div class="col-lg-1">
 				<div class="form-group">
 					<select class="form-control" name="item">
-						<option>비목선택</option>
-						<option>거래처결제</option>
-						<option>이체</option>
-						<option>경비이체</option>
+						<option>비목 선택</option>
+						<option>차량유지비</option>
 						<option>경비</option>
-						<option>접대비</option>
-						<option>대표자경비</option>
 						<option>식대</option>
-						<option>회식</option>
-						<option>대표자차량</option>
-						<option>원단물류비</option>
-						<option>기타</option>
+						<option>경비이체</option>
+						<option>대금결재</option>
+						<option>기타물류비</option>
 						<option>임대관리비</option>
-						<option>한정신차량</option>
-						<option>박성진차량</option>
-						<option>박성진식대</option>
 						<option>급여</option>
 						<option>차입금상환</option>
-						<option>대출</option>
 						<option>세금</option>
 						<option>4대보험</option>
 					</select>
@@ -250,24 +241,16 @@
 			<div class="col-lg-1">
 				<div class="form-group">
 					<select class="form-control" name="item">
-						<option>비목선택</option>
-						<option>거래처결제</option>
-						<option>이체</option>
+						<option>비목 선택</option>
+						<option>차량유지비</option>
 						<option>경비</option>
-						<option>접대비</option>
-						<option>대표자경비</option>
 						<option>식대</option>
-						<option>회식</option>
-						<option>대표자차량</option>
-						<option>원단물류비</option>
-						<option>기타</option>
+						<option>경비이체</option>
+						<option>대금결재</option>
+						<option>기타물류비</option>
 						<option>임대관리비</option>
-						<option>한정신차량</option>
-						<option>박성진차량</option>
-						<option>박성진식대</option>
 						<option>급여</option>
 						<option>차입금상환</option>
-						<option>대출</option>
 						<option>세금</option>
 						<option>4대보험</option>
 					</select>
