@@ -152,63 +152,63 @@ tr{
 		<td><fmt:formatNumber value="${item12Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>식대</td>
+		<td>대표자차량</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item13[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item13Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>회식</td>
+		<td>원단물류비</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item14[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item14Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>대표자차량</td>
+		<td>기타</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item15[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item15Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>원단물류비</td>
+		<td>식대</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item16[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item16Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>기타</td>
+		<td>한정신차량</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item17[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item17Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>임대관리비</td>
+		<td>박성진차량</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item18[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item18Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>한정신차량</td>
+		<td>박성진경비</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item19[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item19Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>박성진차량</td>
+		<td>박성진식대</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item20[i]}" groupingUsed="true"/></td>
 		</c:forEach>
 		<td><fmt:formatNumber value="${item20Sum}" groupingUsed="true"/></td>
 	</tr>
 	<tr>
-		<td>박성진식대</td>
+		<td>임대관리비</td>
 		<c:forEach var="i" begin="0" end="11">
 			<td style="text-align:right;"><fmt:formatNumber value="${item21[i]}" groupingUsed="true"/></td>
 		</c:forEach>
