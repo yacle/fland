@@ -213,13 +213,14 @@
 		</c:forEach>
 		<tr>
 			<td style="background-color:#E0FFFF">소계(원화)</td>
-			<td><fmt:formatNumber value="${begin.nhi + begin.nhe + begin.kbi + begin.kbi + begin.sh + begin.km }" groupingUsed="true"/></td>
+			<td><fmt:formatNumber value="${begin.nhi + begin.nhe + begin.kbi + begin.kbe + begin.sh + begin.km }" groupingUsed="true"/></td>
 			<td colspan="4"><fmt:formatNumber value="${incomeSum }" groupingUsed="true"/></td>
 			<td colspan="4"><fmt:formatNumber value="${expenseSum }" groupingUsed="true"/></td>
-			<td><fmt:formatNumber value="${end.nhi + end.nhe + end.kbi + end.kbi + end.sh + end.km }" groupingUsed="true"/></td>
+			<td><fmt:formatNumber value="${end.nhi + end.nhe + end.kbi + end.kbe + end.sh + end.km }" groupingUsed="true"/></td>
 		</tr>
 	</tbody>
 </table>
+<hr/>
 </div>
 
 <script>
