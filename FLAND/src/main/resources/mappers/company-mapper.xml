@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="company">
+	<insert id="add">
+		insert into client(div, name,, item, person, email, phone_cell, phone_com, fax, address, bank, account_num, account_name, license_num, type1, type2, ceo, class)
+		values(
+			#{DIV},
+			#{NAME},
+			#{ITEM},
+			#{PERSON, jdbcType=VARCHAR},
+			#{EMAIL, jdbcType=VARCHAR},
+			#{PHONE_CELL, jdbcType=VARCHAR},
+			#{PHONE_COM, jdbcType=VARCHAR},
+			#{FAX, jdbcType=VARCHAR},
+			#{ADDRESS, jdbcType=VARCHAR},
+			#{BANK, jdbcType=VARCHAR},
+			#{ACCOUNT_NUM, jdbcType=VARCHAR},
+			#{ACCOUNT_NAME, jdbcType=VARCHAR},
+			#{LICENSE_NUM, jdbcType=VARCHAR},
+			#{TYPE1, jdbcType=VARCHAR},
+			#{TYPE2, jdbcType=VARCHAR},
+			#{CEO, jdbcType=VARCHAR},
+			#{CLASS, jdbcType=VARCHAR}
+		)
+	</insert>
+	<select id="listRead" resultType="com.fland.domain.CompanyVO">
+		select * from client
+	</select>
+	<select id="companyRead" resultType="com.fland.domain.CompanyVO">
+		select * from client where name=#{NAME}
+	</select>
+</mapper>

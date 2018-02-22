@@ -38,7 +38,7 @@
 			<a class="btn" href="">계 좌</a>
 		</div>
 		<div class="col-lg-4" align="center">
-			<a class="btn" href="">거래처</a>
+			<a class="btn" href="/company/read">거래처</a>
 		</div>
 	</div>
 <script>
