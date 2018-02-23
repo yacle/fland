@@ -4,7 +4,7 @@ public class CompanyVO {
 	private String DIV;
 	private String NAME;
 	private String ITEM;
-	private String CLASS;
+	private String CLAS;
 	private String PERSON;
 	private String EMAIL;
 	private String PHONE_CELL;
@@ -37,10 +37,10 @@ public class CompanyVO {
 		ITEM = iTEM;
 	}
 	public String getCLASS() {
-		return CLASS;
+		return CLAS;
 	}
-	public void setCLASS(String cLASS) {
-		CLASS = cLASS;
+	public void setCLASS(String cLAS) {
+		CLAS = cLAS;
 	}
 	public String getPERSON() {
 		return PERSON;

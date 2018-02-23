@@ -28,11 +28,17 @@ public class CompanyController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "readOne", method = RequestMethod.GET)
+	@RequestMapping(value = "/readOne", method = RequestMethod.GET)
 	@ResponseBody
 	public CompanyVO oneReadHandle(@RequestParam Map param) throws Exception {
 		String name = (String)param.get("name");
 		CompanyVO vo = companydao.companyRead(name);
 		return vo;
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String companyUpdateHandle(@RequestParam Map param) {
+		
+		return "redirect:/company/read";
 	}
 }
