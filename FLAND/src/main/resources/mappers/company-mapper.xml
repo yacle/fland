@@ -4,31 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="company">
 	<insert id="add">
-		insert into client(div, name, item, person, email, phone_cell, phone_com, fax, address, bank, account_num, account_name, license_num, type1, type2, ceo, class)
+		insert into client(dvs, name, item, person, email, phone_cell, phone_com, fax, address, bank, account_num, account_name, license_num, type1, type2, ceo, clas, refer)
 		values(
-			#{DIV},
-			#{NAME},
-			#{ITEM},
-			#{PERSON, jdbcType=VARCHAR},
-			#{EMAIL, jdbcType=VARCHAR},
-			#{PHONE_CELL, jdbcType=VARCHAR},
-			#{PHONE_COM, jdbcType=VARCHAR},
-			#{FAX, jdbcType=VARCHAR},
-			#{ADDRESS, jdbcType=VARCHAR},
-			#{BANK, jdbcType=VARCHAR},
-			#{ACCOUNT_NUM, jdbcType=VARCHAR},
-			#{ACCOUNT_NAME, jdbcType=VARCHAR},
-			#{LICENSE_NUM, jdbcType=VARCHAR},
-			#{TYPE1, jdbcType=VARCHAR},
-			#{TYPE2, jdbcType=VARCHAR},
-			#{CEO, jdbcType=VARCHAR},
-			#{CLAS, jdbcType=VARCHAR}
+			#{dvs},
+			#{name},
+			#{item},
+			#{person, jdbcType=VARCHAR},
+			#{email, jdbcType=VARCHAR},
+			#{phone_cell, jdbcType=VARCHAR},
+			#{phone_com, jdbcType=VARCHAR},
+			#{fax, jdbcType=VARCHAR},
+			#{address, jdbcType=VARCHAR},
+			#{bank, jdbcType=VARCHAR},
+			#{account_num, jdbcType=VARCHAR},
+			#{account_name, jdbcType=VARCHAR},
+			#{license_num, jdbcType=VARCHAR},
+			#{type1, jdbcType=VARCHAR},
+			#{type2, jdbcType=VARCHAR},
+			#{ceo, jdbcType=VARCHAR},
+			#{clas, jdbcType=VARCHAR},
+			#{refer, jdbcType=VARCHAR}
 		)
 	</insert>
 	<select id="listRead" resultType="com.fland.domain.CompanyVO">
 		select * from client
 	</select>
 	<select id="companyRead" resultType="com.fland.domain.CompanyVO">
-		select div, name, item, person, email, phone_cell, phone_com, fax, address, bank, account_num, account_name, license_num, type1, type2, ceo, class as clas from client where name=#{NAME}
+		select * from client where name=#{NAME}
 	</select>
 </mapper>

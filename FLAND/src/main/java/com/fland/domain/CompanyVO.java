@@ -1,130 +1,131 @@
 package com.fland.domain;
 
 public class CompanyVO {
-	private String DIV;
-	private String NAME;
-	private String ITEM;
-	private String CLAS;
-	private String PERSON;
-	private String EMAIL;
-	private String PHONE_CELL;
-	private String PHONE_COM;
-	private String FAX;
-	private String ADDRESS;
-	private String BANK;
-	private String ACCOUNT_NUM;
-	private String ACCOUNT_NAME;
-	private String LICENSE_NUM;
-	private String TYPE1;
-	private String TYPE2;
-	private String CEO;
-	public String getDIV() {
-		return DIV;
+	public String getDvs() {
+		return dvs;
 	}
-	public void setDIV(String dIV) {
-		DIV = dIV;
+	public void setDvs(String dvs) {
+		this.dvs = dvs;
 	}
-	public String getNAME() {
-		return NAME;
+	public String getName() {
+		return name;
 	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getITEM() {
-		return ITEM;
+	public String getItem() {
+		return item;
 	}
-	public void setITEM(String iTEM) {
-		ITEM = iTEM;
+	public void setItem(String item) {
+		this.item = item;
 	}
-	public String getCLASS() {
-		return CLAS;
+	public String getClas() {
+		return clas;
 	}
-	public void setCLASS(String cLAS) {
-		CLAS = cLAS;
+	public void setClas(String clas) {
+		this.clas = clas;
 	}
-	public String getPERSON() {
-		return PERSON;
+	public String getPerson() {
+		return person;
 	}
-	public void setPERSON(String pERSON) {
-		PERSON = pERSON;
+	public void setPerson(String person) {
+		this.person = person;
 	}
-	public String getEMAIL() {
-		return EMAIL;
+	public String getEmail() {
+		return email;
 	}
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getPHONE_CELL() {
-		return PHONE_CELL;
+	public String getPhone_cell() {
+		return phone_cell;
 	}
-	public void setPHONE_CELL(String pHONE_CELL) {
-		PHONE_CELL = pHONE_CELL;
+	public void setPhone_cell(String phone_cell) {
+		this.phone_cell = phone_cell;
 	}
-	public String getPHONE_COM() {
-		return PHONE_COM;
+	public String getPhone_com() {
+		return phone_com;
 	}
-	public void setPHONE_COM(String pHONE_COM) {
-		PHONE_COM = pHONE_COM;
+	public void setPhone_com(String phone_com) {
+		this.phone_com = phone_com;
 	}
-	public String getFAX() {
-		return FAX;
+	public String getFax() {
+		return fax;
 	}
-	public void setFAX(String fAX) {
-		FAX = fAX;
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
-	public String getADDRESS() {
-		return ADDRESS;
+	public String getAddress() {
+		return address;
 	}
-	public void setADDRESS(String aDDRESS) {
-		ADDRESS = aDDRESS;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getBANK() {
-		return BANK;
+	public String getBank() {
+		return bank;
 	}
-	public void setBANK(String bANK) {
-		BANK = bANK;
+	public void setBank(String bank) {
+		this.bank = bank;
 	}
-	public String getACCOUNT_NUM() {
-		return ACCOUNT_NUM;
+	public String getAccount_num() {
+		return account_num;
 	}
-	public void setACCOUNT_NUM(String aCCOUNT_NUM) {
-		ACCOUNT_NUM = aCCOUNT_NUM;
+	public void setAccount_num(String account_num) {
+		this.account_num = account_num;
 	}
-	public String getACCOUNT_NAME() {
-		return ACCOUNT_NAME;
+	public String getAccount_name() {
+		return account_name;
 	}
-	public void setACCOUNT_NAME(String aCCOUNT_NAME) {
-		ACCOUNT_NAME = aCCOUNT_NAME;
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
 	}
-	public String getLICENSE_NUM() {
-		return LICENSE_NUM;
+	public String getLicense_num() {
+		return license_num;
 	}
-	public void setLICENSE_NUM(String lICENSE_NUM) {
-		LICENSE_NUM = lICENSE_NUM;
+	public void setLicense_num(String license_num) {
+		this.license_num = license_num;
 	}
-	public String getTYPE1() {
-		return TYPE1;
+	public String getType1() {
+		return type1;
 	}
-	public void setTYPE1(String tYPE1) {
-		TYPE1 = tYPE1;
+	public void setType1(String type1) {
+		this.type1 = type1;
 	}
-	public String getTYPE2() {
-		return TYPE2;
+	public String getType2() {
+		return type2;
 	}
-	public void setTYPE2(String tYPE2) {
-		TYPE2 = tYPE2;
+	public void setType2(String type2) {
+		this.type2 = type2;
 	}
-	public String getCEO() {
-		return CEO;
+	public String getCeo() {
+		return ceo;
 	}
-	public void setCEO(String cEO) {
-		CEO = cEO;
+	public void setCeo(String ceo) {
+		this.ceo = ceo;
 	}
-	@Override
-	public String toString() {
-		return "CustomerVO [DIV=" + DIV + ", NAME=" + NAME + ", ITEM=" + ITEM + ", PERSON=" + PERSON + ", EMAIL="
-				+ EMAIL + ", PHONE_CELL=" + PHONE_CELL + ", PHONE_COM=" + PHONE_COM + ", FAX=" + FAX + ", ADDRESS="
-				+ ADDRESS + ", BANK=" + BANK + ", ACCOUNT_NUM=" + ACCOUNT_NUM + ", ACCOUNT_NAME=" + ACCOUNT_NAME
-				+ ", LICENSE_NUM=" + LICENSE_NUM + ", TYPE1=" + TYPE1 + ", TYPE2=" + TYPE2 + ", CEO=" + CEO + "]";
+	public String getRefer() {
+		return refer;
 	}
+	public void setRefer(String refer) {
+		this.refer = refer;
+	}
+	private String dvs;
+	private String name;
+	private String item;
+	private String clas;
+	private String person;
+	private String email;
+	private String phone_cell;
+	private String phone_com;
+	private String fax;
+	private String address;
+	private String bank;
+	private String account_num;
+	private String account_name;
+	private String license_num;
+	private String type1;
+	private String type2;
+	private String ceo;
+	private String refer;
+	
 }
