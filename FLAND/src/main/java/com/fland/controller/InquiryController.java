@@ -79,7 +79,8 @@ AccountDAO accountDao;
 		List<Integer> item06 = new ArrayList<Integer>();	// 세금환급
 		// 출금
 		List<Integer> item07 = new ArrayList<Integer>();	// 대금결제
-		List<Integer> item08 = new ArrayList<Integer>();	// 기타물류비
+		List<Integer> item08 = new ArrayList<Integer>();	// 물류비
+		List<Integer> item081 = new ArrayList<Integer>();	// 에어물류비
 		List<Integer> item09 = new ArrayList<Integer>();	// 임대관리비
 		List<Integer> item10 = new ArrayList<Integer>();	// 급여
 		List<Integer> item11 = new ArrayList<Integer>();	// 차입금상환
@@ -120,7 +121,8 @@ AccountDAO accountDao;
 			item05.add(inquiryDao.item05(day));	// 카드취소
 			item06.add(inquiryDao.item06(day));	// 세금환급
 			item07.add(inquiryDao.item07(day));	// 대금결재
-			item08.add(inquiryDao.item08(day));	// 기타물류비
+			item08.add(inquiryDao.item08(day));	// 물류비
+			item081.add(inquiryDao.item081(day));	// 물류비
 			item09.add(inquiryDao.item09(day));	// 임대관리비
 			item10.add(inquiryDao.item10(day));	// 급여
 			item11.add(inquiryDao.item11(day));	// 차입금상환
@@ -158,7 +160,9 @@ AccountDAO accountDao;
 		mav.addObject("item07", item07);	
 		mav.addObject("item07Sum", SumCount.itemSum(item07));	
 		mav.addObject("item08", item08);	
-		mav.addObject("item08Sum", SumCount.itemSum(item08));	
+		mav.addObject("item08Sum", SumCount.itemSum(item08));
+		mav.addObject("item081", item081);	
+		mav.addObject("item081Sum", SumCount.itemSum(item081));	
 		mav.addObject("item09", item09);	
 		mav.addObject("item09Sum", SumCount.itemSum(item09));	
 		mav.addObject("item10", item10);	

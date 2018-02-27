@@ -272,10 +272,10 @@ var sumarr = [];
 			},
 			success:function(obj){
 				var accsum = JSON.parse(obj);
-				$("#bal01").html(comma(accsum.nhe));
-				$("#bal02").html(comma(accsum.nhi));
-				$("#bal03").html(comma(accsum.kbe));
-				$("#bal04").html(comma(accsum.kbi));
+				$("#bal01").html(comma(accsum.nhi));
+				$("#bal02").html(comma(accsum.nhe));
+				$("#bal03").html(comma(accsum.kbi));
+				$("#bal04").html(comma(accsum.kbe));
 				$("#bal05").html(comma(accsum.sh));
 				$("#bal06").html(comma(accsum.km));
 				$("#bal07").html(comma(accsum.total));

@@ -173,7 +173,7 @@
 						<option>식대</option>
 						<option>경비이체</option>
 						<option>대금결재</option>
-						<option>기타물류비</option>
+						<option>물류비</option>
 						<option>임대관리비</option>
 						<option>급여</option>
 						<option>차입금상환</option>
@@ -247,7 +247,7 @@
 						<option>식대</option>
 						<option>경비이체</option>
 						<option>대금결재</option>
-						<option>기타물류비</option>
+						<option>물류비</option>
 						<option>임대관리비</option>
 						<option>급여</option>
 						<option>차입금상환</option>

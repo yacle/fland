@@ -103,6 +103,13 @@ public class InquiryDAO {
 			return session.selectOne("month.item08", date);
 		}
 	}
+	public int item081(String date) throws Exception {
+		if(session.selectOne("month.item081", date)==null) {
+			return 0;
+		}else {
+			return session.selectOne("month.item081", date);
+		}
+	}
 	public int item09(String date) throws Exception {
 		if(session.selectOne("month.item09", date)==null) {
 			return 0;

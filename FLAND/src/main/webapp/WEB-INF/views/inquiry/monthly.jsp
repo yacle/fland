@@ -79,7 +79,7 @@ tr{
 					<td>대금결제</td>
 				</tr>
 				<tr>
-					<td>기타물류비</td>
+					<td>물류비(에어)</td>
 				</tr>
 				<tr>
 					<td rowspan="5">고정비</td>
@@ -206,9 +206,9 @@ tr{
 						</c:forEach>
 					</tr>
 					<tr class="hover">
-						<td><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/></td>
+						<td><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/>(<fmt:formatNumber value="${item081Sum}" groupingUsed="true"/>)</td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right;"><fmt:formatNumber value="${item08[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right;"><fmt:formatNumber value="${item08[i]}" groupingUsed="true"/>(<fmt:formatNumber value="${item081[i]}" groupingUsed="true"/>)</td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">
