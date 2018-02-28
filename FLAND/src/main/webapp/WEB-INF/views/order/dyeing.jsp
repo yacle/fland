@@ -25,6 +25,27 @@
     if (my_tbody.rows.length < 1) return;
     my_tbody.deleteRow( my_tbody.rows.length-1 );
   }
+  
+  function add_row2() {
+	    var my_tbody2 = document.getElementById('my-tbody2');
+	    var row = my_tbody2.insertRow( my_tbody2.rows.length );
+	    var cell1 = row.insertCell(0);
+	    var cell2 = row.insertCell(1);
+	    var cell3 = row.insertCell(2);
+	    var cell4 = row.insertCell(3);
+	    var cell5 = row.insertCell(4);
+	    cell1.innerHTML = '<input type="text" name="test-color">';
+	    cell2.innerHTML = '<input type="checkbox" name="test-fastness">';
+	    cell3.innerHTML = '<input type="checkbox" name="test-reduction">';
+	    cell4.innerHTML = '<input type="checkbox" name="test-feeling">';
+	    cell5.innerHTML = '<input type="checkbox" name="test-skewness">';
+	  }
+
+	  function delete_row2() {
+	    var my_tbody2 = document.getElementById('my-tbody2');
+	    if (my_tbody2.rows.length < 1) return;
+	    my_tbody2.deleteRow( my_tbody2.rows.length-1 );
+	  }
 </script>
 <style>
 table{
@@ -33,7 +54,7 @@ table{
 td{
 	padding:0px;
 	text-align:center;
-	font-size:10px;
+	font-size:20px;
 	border: 1px solid black;
 }
 th{
@@ -47,12 +68,14 @@ tr{
 	border: 1px solid black;
 	height: 40px;
 }
-input{
+input, select{
 	width:100%;
 	border: none;
 	margin: 0px 0;
 	box-sizing: border-box;
 	height: 39px;
+	font-size: 15px;
+	text-align: center;
 }
 #tablefixed {table-layout:fixed;}
 </style>
@@ -72,81 +95,56 @@ input{
 	</div>
 </nav>
 <div class="row">
-	<div class="col-lg-3">
-		<div class="form-group">
-			날짜 : <input type="date" class="form-control" name="order_date" required>
-		</div>
-		<div class="form-group">
-			Order NO : <input type="text" class="form-control" name="order_name" required>
-		</div>
-		<div class="form-group">
-			Sample NO : <input type="text" class="form-control" name="sample" required>
-		</div>
-		<div class="form-group">
-			생지출고처 : 
-			<select class="form-control" name="fabric">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-			</select>
-		</div>
-		<div class="form-group">
-			염색처: 
-			<select class="form-control" name="dyeing">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-			</select>
-		</div>
-		<div class="form-group">
-			품명 : <input type="text" class="form-control" name="name" required>
-		</div>
-		<div class="form-group">
-			가공폭 : <input type="number" class="form-control" name="f_width" required>
-		</div>
-		<div class="form-group">
-			가공중량 : <input type="number" class="form-control" name="f_weight" required>
-		</div>
-	</div>
-	<div class="col-lg-9 table-responsive" align="center">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10 table-responsive" align="center">
 		<h2>염색의뢰서</h2>
-		<table style="width:100%">
+		<table width=80%>
 			<tr>
 				<table width=90%>
 					<tr>
-						<td>날짜</td>
+						<td width=20%>날짜</td>
 						<td colspan="2">ORDER NO.</td>
-						<td>Sample NO.</td>
-						<td colspan="2"></td>
+						<td colspan="2">Sample NO.</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td colspan="2"></td>
-						<td></td>
-						<td colspan="2"></td>
+						<td><input type="date" name="order_date" style="text-align:right" required></td>
+						<td colspan="2"><input type="text" name="order_name" required></td>
+						<td colspan="2"><input type="text" name="sample" required></td>
 					</tr>
 					<tr>
-						<td colspan="3">생지출고처</td>
+						<td colspan="2">생지출고처</td>
 						<td colspan="3">염색처</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td colspan="2"></td>
-						<td></td>
+						<td>
+							<select name="fabric">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
+						</td>
+						<td width=30%></td>
+						<td width=20%>
+							<select name="dyeing">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
+						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<td colspan="3">품명</td>
+						<td colspan="2">품명</td>
 						<td>원단가공폭</td>
 						<td colspan="2">원단가공중량</td>
 					</tr>
 					<tr>
-						<td colspan="3"></td>
-						<td></td>
-						<td>g/m2</td>
-						<td>g/yd</td>
+						<td colspan="2"><input type="text" name="name" required></td>
+						<td><input type="number" name="f_width" required></td>
+						<td width=15%>g/m2</td>
+						<td width=15%><input type="number" name="f_weight" placeholder="g/yd" required></td>
 					</tr>
 				</table>
 			</tr>
@@ -156,15 +154,15 @@ input{
 						<td colspan="2">원단가공 세부사항</td>
 					</tr>
 					<tr>
-						<td>원단혼용율</td>
+						<td width=20%>&#9608; 원단혼용율</td>
 						<td><input type="text" name="mix"></td>
 					</tr>
 					<tr>
-						<td>가공방법</td>
+						<td>&#10112;가공방법</td>
 						<td><input type="text" name="method"></td>
 					</tr>
 					<tr>
-						<td>세부사항</td>
+						<td>&#10113;세부사항</td>
 						<td><input type="text" name="detail"></td>
 					</tr>
 				</table>
@@ -173,7 +171,7 @@ input{
 				<table width=90%>
 					<thead>
 						<tr>
-							<td rowspan="2">편직그룹<br/><br/>
+							<td rowspan="2">편직그룹<br/>
 								<button onclick="add_row()">add</button>
 								<button onclick="delete_row()">del</button>
 							</td>
@@ -202,7 +200,46 @@ input{
 				</table>
 			</tr>
 			<tr>
-			
+				<table width=90%>
+					<thead>
+						<tr>
+							<td colspan="5">&#10114;시험의뢰
+								<button onclick="add_row2()">add</button>
+								<button onclick="delete_row2()">del</button>
+							</td>
+						</tr>
+						<tr>
+							<td width=15%>색상</td>
+							<td width=15%>염색견뢰도</td>
+							<td width=15%>축률</td>
+							<td width=15%>필링</td>
+							<td width=15%>사행도</td>
+						</tr>
+					</thead>
+					<tbody id="my-tbody2">
+						<tr>
+							<td><input type="text" name="test-color"></td>
+							<td><input type="checkbox" name="test-fastness"></td>
+							<td><input type="checkbox" name="test-reduction"></td>
+							<td><input type="checkbox" name="test-feeling"></td>
+							<td><input type="checkbox" name="test-skewness"></td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>&#10115;기타사항</td>
+							<td colspan="5"><input type="text" name="etc"></td>
+						</tr>
+						<tr>
+							<td>&#10116;주의사항</td>
+							<td colspan="5"><input type="text" name="caution"></td>
+						</tr>
+						<tr>
+							<td>&#10117;출고처</td>
+							<td colspan="5"><input type="text" name="delivery"></td>
+						</tr>
+					</tbody>
+				</table>
 			</tr>
 		</table>
 	</div>
