@@ -41,6 +41,7 @@ tr{
 		</form>
 	</ul>
 </nav>
+<div id="print">
 <div align="center">
 	<h2>[<span id="year">${year}</span>년 자금 실적서]</h2>
 </div>
@@ -252,6 +253,8 @@ tr{
 	</tr>
 </table>
 </div>
+</div>
+<button type="button" onclick="javascript:divPrint()">출력</button>
 <script>
 // 일일 조회로 이동
 	var date=new Date();
@@ -276,4 +279,17 @@ tr{
 		window.location ="/inquiry/monthly?month="+year+"-"+mon;
 	})
 	
+// 프린트
+	function divPrint(){
+	var initBody = document.body.innerHTML;
+	printID1.style.display = "none";
+	printID2.style.display = "none";
+	window.onbeforeprint = function(){
+		document.body.innerHTML = document.getElementById('print').innerHTML;
+	}
+	window.onafterprint = function(){
+		document.body.innerHTML = initBody;
+	}
+	window.print();
+}
 </script>
