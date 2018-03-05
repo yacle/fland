@@ -180,7 +180,7 @@ function add_row() {
 				</td>
 				<td>
 					<select id="account" name="account" class="account">
-						<option>계좌명</option>
+						<option></option>
 						<option>농협(매출)</option>
 						<option>농협(경비)</option>
 						<option>기업(매출)</option>
@@ -194,13 +194,14 @@ function add_row() {
 				</td>
 				<td>
 					<select name="item">
-						<option>매출</option>
+						<option></option>
 						<option>업체환급</option>
 						<option>경비이체</option>
 						<option>금융이자</option>
 						<option>차입금</option>
 						<option>카드취소</option>
 						<option>세금환급</option>
+						<option>기타</option>
 					</select>
 				</td>
 				<td>
