@@ -199,7 +199,7 @@
 <div id="formgroupcopy" style="display:none;">
 	<div class="formgroup">
 		<div class="row">
-			<div class="col-lg-1"></div>
+			<div class="col-lg-2"></div>
 			<div class="col-lg-1">
 				<select class="form-control account" id="account" name="account">
 					<option>계좌명</option>

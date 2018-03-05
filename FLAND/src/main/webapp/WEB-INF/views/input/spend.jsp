@@ -198,7 +198,7 @@
 					<input type="number" class="form-control sum" id="sum" name="sum" required>
 				</div>
 			</div>
-			<div class="col-lg-1">
+			<div class="col-lg-2">
 				<div class="form-group">
 					<input type="text" class="form-control" name="etc">
 				</div>
