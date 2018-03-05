@@ -21,7 +21,6 @@
 	td{
 		padding-right:20px;
 	}
-	
 </style>
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
