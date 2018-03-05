@@ -112,7 +112,7 @@
 	<h2><b>일일 지출자금 실적</b></h2>
 </div>
 <div class="row">
-	<div class="col-lg-1">
+	<div class="col-lg-2">
 		<h5>지출일자</h5>
 	</div>
 	<div class="col-lg-1">

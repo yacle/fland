@@ -38,7 +38,7 @@ SimpleDateFormat format;
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView incomeAdd() throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
-		mav.addObject("section", "input/income");
+		mav.addObject("section", "input/income2");
 		return mav;
 	}
 	
@@ -79,7 +79,7 @@ SimpleDateFormat format;
 	@RequestMapping(value = "/expense", method = RequestMethod.GET)
 	public ModelAndView spendAdd() throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
-		mav.addObject("section", "input/spend");
+		mav.addObject("section", "input/expense");
 		return mav;
 	}
 	

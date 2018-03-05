@@ -20,17 +20,20 @@
 	}
 </style>
 <nav class="navbar navbar-inverse">
-  <ul class="nav navbar-nav">
-    <li class="active"><a href="">일별</a></li>
-    <li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
-    <li><a href="/inquiry/yearly?year=2018">연별</a></li>
-    <form class="navbar-form navbar-right" action="/inquiry/daily">
-      <div class="form-group">
-        <input type="date" name="date" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">조회</button>
-    </form>
-  </ul>
+	<ul class="nav navbar-nav">
+		<li class="active"><a href="">일별</a></li>
+		<li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
+		<li><a href="/inquiry/yearly?year=2018">연별</a></li>
+		<form class="navbar-form navbar-right" action="/inquiry/daily">
+			<div class="form-group">
+				<input type="date" name="date" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-default">조회</button>
+		</form>
+	</ul>
+	<ul class="nav navbar-nav navbar-right" style="padding-right: 50px;">
+		<li><a href="/input"><b>입력</b></a></li>
+    </ul>
 </nav>
 <div class="title">
 	<h2><b>일일자금수지 실적표</b> [${date}]</h2>
