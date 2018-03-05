@@ -22,38 +22,43 @@
 		<table width=95%>
 			<tr>
 				<td width=20%>Order No</td>
-				<td><input type="text" class="form-control" id="orderNo"></td>
+				<td colspan="2"><input type="text" class="form-control" id="orderNo"></td>
 			</tr>
 			<tr>
 				<td>발주처 담당자</td>
-				<td><input type="text" class="form-control" id="company"></td>
+				<td colspan="2"><input type="text" class="form-control" id="company"></td>
 			</tr>
 			<tr>
 				<td>S/#</td>
-				<td><input type="text" class="form-control" id="sn"></td>
+				<td colspan="2"><input type="text" class="form-control" id="sn"></td>
 			</tr>
 			<tr>
 				<td>발주일</td>
-				<td><input type="text" class="form-control" id="orderDate"></td>
+				<td colspan="2"><input type="text" class="form-control" id="orderDate"></td>
 			</tr>
 			<tr>
 				<td>납기일</td>
-				<td><input type="text" class="form-control" id="endDate"></td>
+				<td colspan="2"><input type="text" class="form-control" id="endDate"></td>
 			</tr>
 			<tr>
 				<td>원단명</td>
-				<td><input type="text" class="form-control" id="fabric"></td>
+				<td colspan="2"><input type="text" class="form-control" id="fabric"></td>
 			</tr>
 			<tr>
 				<td>가공폭</td>
-				<td><input type="text" class="form-control" id="width"></td>
+				<td colspan="2"><input type="text" class="form-control" id="width"></td>
 			</tr>
 			<tr>
 				<td>가공중량</td>
-				<td><input type="text" class="form-control" id="weight"></td>
+				<td colspan="2"><input type="text" class="form-control" id="weight"></td>
 			</tr>
 			<tr>
 				<td>컬러</td>
+				<td>Order Length</td>
+				<td>BT No.</td>
+			</tr>
+			<tr>
+				
 				<td><input type="text" class="form-control" id="color">/td>
 			</tr>
 			<tr>
