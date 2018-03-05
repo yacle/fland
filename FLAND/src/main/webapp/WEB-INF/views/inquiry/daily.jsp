@@ -31,7 +31,7 @@
 			<button type="submit" class="btn btn-default">조회</button>
 		</form>
 	</ul>
-	<ul class="nav navbar-nav navbar-right" style="padding-right: 50px;">
+	<ul class="nav navbar-nav" style="padding-right: 50px;">
 		<li><a href="/input"><b>입력</b></a></li>
     </ul>
 </nav>

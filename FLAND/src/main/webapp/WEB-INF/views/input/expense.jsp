@@ -14,7 +14,7 @@ function add_row() {
 	var cell8 = row.insertCell(7);
 	var cell9 = row.insertCell(8);
 	cell1.innerHTML = '';
-	cell2.innerHTML = '<select id="account" name="account" required>'+
+	cell2.innerHTML = '<select class="account" name="account" required>'+
 						'<option></option>'+
 						'<option>농협(매출)</option>'+
 						'<option>농협(경비)</option>'+
@@ -50,7 +50,7 @@ function add_row() {
 						'<option>이체</option>'+
 					'</select>';
     cell6.innerHTML = '<input type="text" name="detail" required>';
-    cell7.innerHTML = '<input type="number" class=" sum" id="sum" name="sum" required>';
+    cell7.innerHTML = '<input type="number" class="sum" id="sum" name="sum" required>';
     cell8.innerHTML = '<input type="text" name="etc">';
     cell9.innerHTML = '<button onclick="delete_row()">삭제</button>';
   }
