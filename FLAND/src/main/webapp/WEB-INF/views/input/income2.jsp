@@ -14,8 +14,8 @@ function add_row() {
     var cell7 = row.insertCell(6);
     var cell8 = row.insertCell(7);
     cell1.innerHTML = '';
-    cell2.innerHTML = '<select id="account" name="account">'+
-						'<option>계좌명</option>'+
+    cell2.innerHTML = '<select class="account" name="account" required>'+
+						'<option></option>'+
 						'<option>농협(매출)</option>'+
 						'<option>농협(경비)</option>'+
 						'<option>기업(매출)</option>'+
@@ -24,8 +24,8 @@ function add_row() {
 						'<option>국민(매출)</option>'+
 					'</select>';
     cell3.innerHTML = '<input type="text" name="company" required>';
-    cell4.innerHTML = '<select name="item">'+
-						'<option>매출</option>'+
+    cell4.innerHTML = '<select name="item" required>'+
+						'<option></option>'+
 						'<option>업체환급</option>'+
 						'<option>경비이체</option>'+
 						'<option>금융이자</option>'+
@@ -35,7 +35,7 @@ function add_row() {
 						'<option>기타</option>'+
 					'</select>';
     cell5.innerHTML = '<input type="text" name="detail" required>';
-    cell6.innerHTML = '<input type="number" id="sum" name="sum" required>';
+    cell6.innerHTML = '<input type="number" class="sum" name="sum" required>';
     cell7.innerHTML = '<input type="text" name="etc">';
     cell8.innerHTML = '<button onclick="delete_row()">삭제</button>';
   }
@@ -176,10 +176,10 @@ function add_row() {
 		<tbody id="my-tbody">
 			<tr>
 				<td>
-					<input type="date" min="2017-12-31" id="date" name="date">
+					<input type="date" min="2017-12-31" id="date" name="date" required>
 				</td>
 				<td>
-					<select id="account" name="account" class="account">
+					<select name="account" class="account" required>
 						<option></option>
 						<option>농협(매출)</option>
 						<option>농협(경비)</option>
@@ -193,7 +193,7 @@ function add_row() {
 					<input type="text" name="company" required>
 				</td>
 				<td>
-					<select name="item">
+					<select name="item" required>
 						<option></option>
 						<option>업체환급</option>
 						<option>경비이체</option>
@@ -208,7 +208,7 @@ function add_row() {
 					<input type="text" name="detail" required>
 				</td>
 				<td>
-					<input type="number" class="sum" id="sum" name="sum" required>
+					<input type="number" class="sum" name="sum" required>
 				</td>
 				<td>
 					<input type="text" name="etc">
@@ -273,7 +273,7 @@ var sumarr = [];
 		$("#income07").html(0);
 		var acc=document.getElementsByClassName("account");
 		var sum=document.getElementsByClassName("sum");
-		for(var i=0; i<acc.length-1; i++){
+		for(var i=0; i<acc.length; i++){
 			var s = sum[i].value;
 			if(acc[i].value=="농협(매출)"){
 				sum01 += parseInt(s);

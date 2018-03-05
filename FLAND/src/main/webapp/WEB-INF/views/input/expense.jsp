@@ -14,8 +14,8 @@ function add_row() {
 	var cell8 = row.insertCell(7);
 	var cell9 = row.insertCell(8);
 	cell1.innerHTML = '';
-	cell2.innerHTML = '<select id="account" name="account">'+
-						'<option>계좌명</option>'+
+	cell2.innerHTML = '<select id="account" name="account" required>'+
+						'<option></option>'+
 						'<option>농협(매출)</option>'+
 						'<option>농협(경비)</option>'+
 						'<option>기업(매출)</option>'+
@@ -23,14 +23,15 @@ function add_row() {
 						'<option>신한(매출)</option>'+
 						'<option>국민(매출)</option>'+
 					'</select>';
-    cell3.innerHTML = '<select id="employee" name="employee">'+
+    cell3.innerHTML = '<select id="employee" name="employee" required>'+
+    					'<option></option>'+
 						'<option>공용</option>'+
 						'<option>황수현</option>'+
 						'<option>한정신</option>'+
 						'<option>박성진</option>'+
 					'</select>';
-    cell4.innerHTML = '<select name="item">'+
-						'<option>비목 선택</option>'+
+    cell4.innerHTML = '<select name="item" required>'+
+						'<option></option>'+
 						'<option>차량유지비</option>'+
 						'<option>경비</option>'+
 						'<option>식대</option>'+
@@ -43,7 +44,8 @@ function add_row() {
 						'<option>세금</option>'+
 						'<option>4대보험</option>'+
 					'</select>';
-    cell5.innerHTML = '<select id="method" name="method">'+
+    cell5.innerHTML = '<select id="method" name="method" required>'+
+    					'<option></option>'+
 						'<option>카드</option>'+
 						'<option>이체</option>'+
 					'</select>';
