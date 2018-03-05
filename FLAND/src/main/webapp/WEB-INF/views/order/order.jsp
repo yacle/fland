@@ -19,45 +19,55 @@
 <div class="row">
 	<div class="col-lg-3">
 		<h1>발주서</h1>
-		<div class="form-group">
-			<label for="orderNo">ORDER NO.:</label>
-			<input type="text" class="form-control" id="orderNo">
-		</div>
-		<div class="form-group">
-			<label for="company">발주처 담당자:</label>
-			<input type="text" class="form-control" id="company">
-		</div>
-		<div class="form-group">
-			<label for="sn">S/#:</label>
-			<input type="text" class="form-control" id="sn">
-		</div>
-		<div class="form-group">
-			<label for="orderDate">발주일:</label>
-			<input type="text" class="form-control" id="orderDate">
-		</div>
-		<div class="form-group">
-			<label for="endDate">납기일:</label>
-			<input type="text" class="form-control" id="endDate">
-		</div>
-		<div class="form-group">
-			<label for="fabric">원단명:</label>
-			<input type="text" class="form-control" id="fabric">
-		</div>
-		<div class="form-group">
-			<label for="width">가공폭:</label>
-			<input type="text" class="form-control" id="width">
-		</div>
-		<div class="form-group">
-			<label for="weight">가공중량:</label>
-			<input type="text" class="form-control" id="weight">
-		</div>
+		<table width=95%>
+			<tr>
+				<td width=20%>Order No</td>
+				<td><input type="text" class="form-control" id="orderNo"></td>
+			</tr>
+			<tr>
+				<td>발주처 담당자</td>
+				<td><input type="text" class="form-control" id="company"></td>
+			</tr>
+			<tr>
+				<td>S/#</td>
+				<td><input type="text" class="form-control" id="sn"></td>
+			</tr>
+			<tr>
+				<td>발주일</td>
+				<td><input type="text" class="form-control" id="orderDate"></td>
+			</tr>
+			<tr>
+				<td>납기일</td>
+				<td><input type="text" class="form-control" id="endDate"></td>
+			</tr>
+			<tr>
+				<td>원단명</td>
+				<td><input type="text" class="form-control" id="fabric"></td>
+			</tr>
+			<tr>
+				<td>가공폭</td>
+				<td><input type="text" class="form-control" id="width"></td>
+			</tr>
+			<tr>
+				<td>가공중량</td>
+				<td><input type="text" class="form-control" id="weight"></td>
+			</tr>
+			<tr>
+				<td>컬러</td>
+				<td><input type="text" class="form-control" id="color">/td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
 		<h3>Color</h3>
 		<div id="addhtml">
 			<div class="row">
 				<div class="col-md-3">
 					<div class="form-group">
 						<label for="color">컬러:</label>
-						<input type="text" class="form-control" id="color">
+						
 					</div>
 				</div>
 				<div class="col-md-4">

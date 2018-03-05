@@ -194,7 +194,7 @@ function add_row() {
 				</td>
 				<td>
 					<select class="account" id="account" name="account">
-						<option>계좌명</option>
+						<option></option>
 						<option>농협(매출)</option>
 						<option>농협(경비)</option>
 						<option>기업(매출)</option>
@@ -205,6 +205,7 @@ function add_row() {
 				</td>
 				<td>
 					<select id="employee" name="employee">
+						<option></option>
 						<option>공용</option>
 						<option>황수현</option>
 						<option>한정신</option>
@@ -213,7 +214,7 @@ function add_row() {
 				</td>
 				<td>
 					<select name="item">
-						<option>비목 선택</option>
+						<option></option>
 						<option>차량유지비</option>
 						<option>경비</option>
 						<option>식대</option>
@@ -229,6 +230,7 @@ function add_row() {
 				</td>
 				<td>
 					<select id="method" name="method">
+						<option></option>
 						<option>카드</option>
 						<option>이체</option>
 					</select>
@@ -298,7 +300,7 @@ var sumarr = [];
 		$("#spend07").html(0);
 		var acc=document.getElementsByClassName("account");
 		var sum=document.getElementsByClassName("sum");
-		for(var i=0; i<acc.length-1; i++){
+		for(var i=0; i<acc.length; i++){
 			var s = sum[i].value;
 			if(acc[i].value=="농협(매출)"){
 				sum01 += parseInt(s);
