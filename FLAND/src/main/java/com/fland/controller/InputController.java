@@ -46,7 +46,7 @@ SimpleDateFormat format;
 	@ResponseBody
 	public String readAccountHandle(@RequestParam Map<String, String> map)throws Exception{
 		String date = (String)map.get("date");
-		List<IncomeVO> list = accountDao.readBegin(date);
+		List<IncomeVO> list = accountDao.readBeginDaily(date);
 		Map<String, Integer> accsum = SumCount.accountSum(list);
 		String jsonString = mapper.writeValueAsString(accsum);
 		return jsonString;

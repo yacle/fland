@@ -24,6 +24,9 @@ public class AccountDAO {
 	public List<IncomeVO> readBegin(String date) throws Exception{
 		return session.selectList("account.readBegin", date);
 	}
+	public List<IncomeVO> readBeginDaily(String date) throws Exception{
+		return session.selectList("account.readBeginDaily", date);
+	}
 	public List<IncomeVO> readEnd(String date) throws Exception{
 		return session.selectList("account.readEnd", date);
 	}

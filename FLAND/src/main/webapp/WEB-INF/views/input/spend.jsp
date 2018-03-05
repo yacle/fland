@@ -142,7 +142,7 @@
 <div id="addhtml">
 	<div class="formgroup">
 		<div class="row">
-			<div class="col-lg-1">
+			<div class="col-lg-2">
 				<input type="date" min="2017-12-31" class="form-control" id="date" name="expense_date">
 			</div>
 			<div class="col-lg-1">
@@ -198,7 +198,7 @@
 					<input type="number" class="form-control sum" id="sum" name="sum" required>
 				</div>
 			</div>
-			<div class="col-lg-2">
+			<div class="col-lg-1">
 				<div class="form-group">
 					<input type="text" class="form-control" name="etc">
 				</div>
@@ -218,7 +218,7 @@
 <div id="formgroupcopy" style="display:none;">
 	<div class="formgroup">
 		<div class="row">
-			<div class="col-lg-1"></div>
+			<div class="col-lg-2"></div>
 			<div class="col-lg-1">
 				<select class="form-control account" id="account" name="account">
 					<option>계좌명</option>
@@ -273,7 +273,7 @@
 					<input type="number" class="form-control sum" id="sum" name="sum" required>
 				</div>
 			</div>
-			<div class="col-lg-2">
+			<div class="col-lg-1">
 				<div class="form-group">
 					<input type="text" class="form-control" name="etc">
 				</div>
@@ -307,10 +307,10 @@ var sumarr = [];
 			},
 			success:function(obj){
 				var accsum = JSON.parse(obj);
-				$("#bal01").html(comma(accsum.nhe));
-				$("#bal02").html(comma(accsum.nhi));
-				$("#bal03").html(comma(accsum.kbe));
-				$("#bal04").html(comma(accsum.kbi));
+				$("#bal01").html(comma(accsum.nhi));
+				$("#bal02").html(comma(accsum.nhe));
+				$("#bal03").html(comma(accsum.kbi));
+				$("#bal04").html(comma(accsum.kbe));
 				$("#bal05").html(comma(accsum.sh));
 				$("#bal06").html(comma(accsum.km));
 				$("#bal07").html(comma(accsum.total));

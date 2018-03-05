@@ -7,6 +7,17 @@
 		insert into account 
 		values(#{NAME},#{ACCOUNT_NUM},#{BEGIN_BALANCE},#{INCOME_DATE},#{ETC, jdbcType=VARCHAR})
 	</insert>
+	<select id="readBeginDaily" resultType="com.fland.domain.IncomeVO">
+		select SUM(sum) as SUM, ACCOUNT 
+			from TRANSACTION 
+			where
+			<![CDATA[
+				TRAN_DATE >= TO_DATE('2017-12-31', 'YYYY-MM-DD') 
+				and TRAN_DATE <= TO_DATE(#{date}, 'YYYY-MM-DD')
+				and account in ('농협(매출)','농협(경비)','기업(매출)','기업(경비)','신한(매출)','국민(매출)')
+ 				group by account
+			]]>
+	</select>
 	<select id="readBegin" resultType="com.fland.domain.IncomeVO">
 		select SUM(sum) as SUM, ACCOUNT 
 			from TRANSACTION 

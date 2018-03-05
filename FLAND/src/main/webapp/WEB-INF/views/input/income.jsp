@@ -112,7 +112,7 @@
 	<h2><b>일일 수입자금 실적</b></h2>
 </div>
 <div class="row">
-	<div class="col-lg-1">
+	<div class="col-lg-2">
 		<h5>입금일자</h5>
 	</div>
 	<div class="col-lg-1">
@@ -139,8 +139,8 @@
 	<div id="addhtml">
 		<div class="formgroup">
 			<div class="row">
-				<div class="col-lg-1">
-					<input type="date" min="2017-12-31" class="form-control" id="date" name="date">
+				<div class="col-lg-2">
+					<input type="date" min="2017-12-31" class="form-control" id="date" name="date" size="10">
 				</div>
 				<div class="col-lg-1">
 					<select class="form-control account" id="account" name="account">
