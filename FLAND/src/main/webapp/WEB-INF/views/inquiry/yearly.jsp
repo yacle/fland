@@ -280,10 +280,10 @@ tr{
 	})
 	
 // 프린트
-	function divPrint(){
+function divPrint(){
 	var initBody = document.body.innerHTML;
-	printID1.style.display = "none";
-	printID2.style.display = "none";
+//	printID1.style.display = "none";
+//	printID2.style.display = "none";
 	window.onbeforeprint = function(){
 		document.body.innerHTML = document.getElementById('print').innerHTML;
 	}

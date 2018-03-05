@@ -35,7 +35,7 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4" align="center">
-			<a class="btn" href="/order/dyeing"><b>ORDER</b></a>
+			<a class="btn" href="/order/order"><b>ORDER</b></a>
 		</div>
 		<div class="col-lg-4" align="center">
 			<a class="btn" href="/company/read">거래처</a>

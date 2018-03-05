@@ -94,7 +94,7 @@ input, select{
 		</ul>
 	</div>
 </nav>
-<div class="row">
+<div class="row" id="print">
 	<div class="col-lg-1"></div>
 	<div class="col-lg-10 table-responsive" align="center">
 		<h2>염색의뢰서</h2>
@@ -244,3 +244,17 @@ input, select{
 		</table>
 	</div>
 </div>
+<button type="button" onclick="javascript:divPrint()">출력</button>
+<script>
+//프린트
+function divPrint(){
+	var initBody = document.body.innerHTML;
+	window.onbeforeprint = function(){
+		document.body.innerHTML = document.getElementById('print').innerHTML;
+	}
+	window.onafterprint = function(){
+		document.body.innerHTML = initBody;
+	}
+	window.print();
+}
+</script>

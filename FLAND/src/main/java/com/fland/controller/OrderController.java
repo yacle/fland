@@ -7,10 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-	@RequestMapping(value = "/dyeing", method = RequestMethod.GET)
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public ModelAndView incomeAdd() throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
-		mav.addObject("section", "order/dyeing");
+		mav.addObject("section", "order/order");
 		return mav;
 	}
 	
