@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fland.domain.ExpenseVO;
 import com.fland.domain.IncomeVO;
 import com.fland.domain.InquiryVO;
@@ -31,6 +32,8 @@ public class InquiryController {
 InquiryDAO inquiryDao;
 @Inject
 AccountDAO accountDao;
+@Inject
+ObjectMapper mapper;
 
 	@RequestMapping(value = "/daily", method = RequestMethod.GET)
 	public ModelAndView inquiryDailyHandle(@RequestParam Map param) throws Exception {
@@ -416,11 +419,19 @@ AccountDAO accountDao;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	@ResponseBody
-	public List<InquiryVO> inquirySearchPostHandle(SearchVO vo) throws Exception {
+	public String inquirySearchPostHandle(SearchVO vo) throws Exception {
+		List<InquiryVO> list = new ArrayList<InquiryVO>();
 		System.out.println(vo.toString());
-		String item = vo.getItem();
-		
-		List<InquiryVO> param = inquiryDao.search(vo);
-		return param;
+		int item = vo.getItem();
+		switch(item) {
+		case '1':
+			list = inquiryDao.search1(vo); System.out.println(list.toString()); break;
+		case '2':
+			list = inquiryDao.search2(vo); System.out.println(list.toString()); break;
+		case '3':
+			list = inquiryDao.search3(vo); System.out.println(list.toString()); break;
+		}
+		String jsonString = mapper.writeValueAsString(list);
+		return jsonString;
 	}
 }

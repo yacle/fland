@@ -57,9 +57,9 @@ select{
 		<td width="15%">
 			<select id="item">
 				<option></option>
-				<option value="detail">내용</option>
-				<option value="etc">비고</option>
-				<option value="sum">금액</option>
+				<option value="1">내용</option>
+				<option value="2">비고</option>
+				<option value="3">금액</option>
 			</select>
 		</td>
 		<td><input type="search" id="detail"></td>
@@ -76,21 +76,33 @@ $("#btn").click(function(){
 	var endDate = $("#endDate").val();
 	var item = $("#item").val();
 	var detail = $("#detail").val();
-	$.getJSON("/inquiry/search?div="+div+"&&startDate="+startDate+"&&endDate="+endDate+"&&item="+item+"&&detail="+detail, function(data){
-		var str="";
-		$(data).each(function(){
-			console.log(this);
-				str +="<div class='row'>"
-							+"<div class='col-lg-1'>"+this.tran_date+"</div>"
-							+"<div class='col-lg-2'>"+this.account+"</div>"
-							+"<div class='col-lg-1'>"+this.item+"</div>"
-							+"<div class='col-lg-1'>"+this.client+"</div>"
-							+"<div class='col-lg-4'>"+this.detail+"</div>"
-							+"<div class='col-lg-1'>"+this.sum+"</div>"
-							+"<div class='col-lg-2'>"+this.etc+"</div>"
-					+"</div><hr/>"
-			})
-		$("#div1").html(str);
+	$.ajax({
+		"type":"post",
+		"async":false,
+		"url":"/inquiry/search",
+		"data":{
+			"div": div,
+			"startDate": startDate,
+			"endDate": endDate,
+			"item": item,
+			"detail": detail
+		},
+		success:function(data){
+			console.log(data);
+		}
+//		var str="";
+//		$(data).each(function(){
+//				str +="<div class='row'>"
+//							+"<div class='col-lg-1'>"+this.tran_date+"</div>"
+//							+"<div class='col-lg-2'>"+this.account+"</div>"
+//							+"<div class='col-lg-1'>"+this.item+"</div>"
+//							+"<div class='col-lg-1'>"+this.client+"</div>"
+//							+"<div class='col-lg-4'>"+this.detail+"</div>"
+//							+"<div class='col-lg-1'>"+this.sum+"</div>"
+//							+"<div class='col-lg-2'>"+this.etc+"</div>"
+//					+"</div><hr/>"
+//			})
+//		$("#div1").html(str);
 	})
 })
 </script>

@@ -435,7 +435,13 @@ public class InquiryDAO {
 		}
 	}
 	
-	public List<InquiryVO> search(SearchVO vo) throws Exception{
-		return session.selectList("inquiry.search", vo);
+	public List<InquiryVO> search1(SearchVO vo) throws Exception{
+		return session.selectList("inquiry.search1", vo);
+	}
+	public List<InquiryVO> search2(SearchVO vo) throws Exception{
+		return session.selectList("inquiry.search2", vo);
+	}
+	public List<InquiryVO> search3(SearchVO vo) throws Exception{
+		return session.selectList("inquiry.search3", vo);
 	}
 }
