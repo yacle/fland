@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fland.domain.ExpenseVO;
 import com.fland.domain.IncomeVO;
 import com.fland.domain.InquiryVO;
+import com.fland.domain.SearchVO;
 import com.fland.domain.SumCount;
 import com.fland.persistence.AccountDAO;
 import com.fland.persistence.InquiryDAO;
@@ -403,5 +405,20 @@ AccountDAO accountDao;
 		mav.addObject("incomeSum", incomeSum);
 		mav.addObject("expenseSum", expenseSum);
 		return mav;
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView inquirySearchHandle() throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		mav.addObject("section", "inquiry/search");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@ResponseBody
+	public List<InquiryVO> inquirySearchPostHandle(SearchVO vo) throws Exception {
+		System.out.println(vo.toString());
+		List<InquiryVO> param = inquiryDao.search(vo);
+		return param;
 	}
 }

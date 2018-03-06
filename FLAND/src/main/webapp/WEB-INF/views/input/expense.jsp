@@ -237,6 +237,7 @@ function add_row() {
 						<option></option>
 						<option>카드</option>
 						<option>이체</option>
+						<option>현금</option>
 					</select>
 				</td>
 				<td>

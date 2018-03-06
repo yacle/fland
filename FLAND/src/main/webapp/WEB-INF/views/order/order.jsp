@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 function add_row() {
-	var my_tbody = document.getElementById('my-tbody');
-	var row = my_tbody.insertRow( my_tbody.rows.length );
+	var my_tbody1 = document.getElementById('my-tbody1');
+	var row = my_tbody1.insertRow( my_tbody.rows.length );
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
@@ -26,7 +26,7 @@ function add_row() {
 }
 #table1{
 	border-collapse: separate;
-	border-spacing: 15px;
+	border-spacing: 10px;
 }
 td{
 	text-align: center;
@@ -50,11 +50,11 @@ td{
 			</tr>
 			<tr>
 				<td>발주일</td>
-				<td colspan="2"><input type="text" class="form-control" id="orderDate"></td>
+				<td colspan="2"><input type="date" class="form-control" id="orderDate"></td>
 			</tr>
 			<tr>
 				<td>납기일</td>
-				<td colspan="2"><input type="text" class="form-control" id="endDate"></td>
+				<td colspan="2"><input type="date" class="form-control" id="endDate"></td>
 			</tr>
 			<tr>
 				<td>원단명</td>
@@ -69,11 +69,11 @@ td{
 				<td colspan="2"><input type="text" class="form-control" id="weight"></td>
 			</tr>
 			<tr align="center">
-				<td>컬러</td>
-				<td>Order Length</td>
-				<td>BT No.</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">Order Length</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">BT No.</td>
 			</tr>
-			<tbody id="my-tbody">
+			<tbody id="my-tbody1">
 				<tr>
 					<td><input type="text" class="form-control" id="color"></td>
 					<td><input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD"></td>
@@ -90,8 +90,8 @@ td{
 				</td>
 			</tr>
 			<tr>
-				<td>[Order Total :</td>
-				<td><span id="ttl"></span>YD]</td>
+				<td>[Order Total</td>
+				<td><span id="ttl"></span> &#8194;YD]</td>
 			</tr>
 			<tr>
 				<td>단가</td>
@@ -101,7 +101,22 @@ td{
 		<button type="button" class="btn btn-primary">저장</button>
 	</div>
 	<div class="col-lg-3">
-		염색의뢰서
+		<h1 align="center"><strong>[염색의뢰서]</strong></h1>
+		<table width=95% id="table2">
+			<tr>
+				<td>LOSS %</td>
+				<td><input type="number" id="loss" name="loss"></td>
+				<td>Kg/절</td>
+				<td colspan="2"><input type="number" id="perkg" name="perkg"></td>
+			</tr>
+			<tr>
+				<td>색상</td>
+				<td>수량</td>
+				<td>절수</td>
+				<td>BT NO</td>
+				<td>발주량</td>
+			</tr>
+		</table>
 	</div>
 	<div class="col-lg-3">
 		편직의뢰서
@@ -110,34 +125,12 @@ td{
 		원사발주서
 	</div>
 </div>
-<!-- 컬러 추가 HTML -->
-<div id="formgroupcopy" style="display:none;">
-	<div class="row">
-		<div class="col-md-3">
-			<div class="form-group">
-				<input type="text" class="form-control" id="color">
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="form-group" >
-				<input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD">
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="form-group">
-				<input type="text" class="form-control" id="colorBT">
-			</div>
-		</div>
-		<div class="col-md-1" style="padding: 5px 0;">
-			<button type="button" class="del">삭제</button>
-		</div>
-	</div>
-</div>				
+	
 <script>
-$(".ttl").change(function(){
+$(document).on('change','.ttl', function(){
 	var total=0;
 	var sum=document.getElementsByClassName("ttl");
-	for(var i=0; i<sum.length-1; i++){
+	for(var i=0; i<sum.length; i++){
 		var s = sum[i].value;
 		total += parseInt(s);
 	};

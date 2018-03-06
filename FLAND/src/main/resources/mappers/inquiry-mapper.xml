@@ -40,4 +40,13 @@
 	<select id="out06" resultType="com.fland.domain.InquiryVO">
 		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='국민(매출)' and div='expense' order by no desc
 	</select>
+	<select id="search"  parameterType="com.fland.domain.SearchVO" resultType="com.fland.domain.InquiryVO">
+		select * from transaction where
+		<![CDATA[
+				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
+				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
+				and div=#{div} 
+				and #{item} like '%' || #{detail} || '%'
+			]]>
+	</select>
 </mapper>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fland.domain.IncomeVO;
 import com.fland.domain.InquiryVO;
+import com.fland.domain.SearchVO;
 
 @Repository
 public class InquiryDAO {
@@ -432,5 +433,9 @@ public class InquiryDAO {
 		}else {
 			return session.selectOne("year.expenseSum", date);
 		}
+	}
+	
+	public List<InquiryVO> search(SearchVO vo) throws Exception{
+		return session.selectList("inquiry.search", vo);
 	}
 }
