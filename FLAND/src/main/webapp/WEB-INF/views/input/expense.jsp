@@ -38,6 +38,7 @@ function add_row() {
 						'<option>경비이체</option>'+
 						'<option>대금결재</option>'+
 						'<option>물류비</option>'+
+						'<option>접대비</option>'+
 						'<option>임대관리비</option>'+
 						'<option>급여</option>'+
 						'<option>차입금상환</option>'+
@@ -223,6 +224,7 @@ function add_row() {
 						<option>경비이체</option>
 						<option>대금결재</option>
 						<option>물류비</option>
+						<option>접대비</option>
 						<option>임대관리비</option>
 						<option>급여</option>
 						<option>차입금상환</option>

@@ -29,11 +29,9 @@
 				<input type="date" name="date" class="form-control" placeholder="Search">
 			</div>
 			<button type="submit" class="btn btn-default">조회</button>
+			<a href="/input"><button type="button" class="btn btn-info">입력</button></a>
 		</form>
 	</ul>
-	<ul class="nav navbar-nav" style="padding-right: 50px;">
-		<li><a href="/input"><b>입력</b></a></li>
-    </ul>
 </nav>
 <div class="title">
 	<h2><b>일일자금수지 실적표</b> [${date}]</h2>
