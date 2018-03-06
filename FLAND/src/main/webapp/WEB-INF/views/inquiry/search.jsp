@@ -42,8 +42,8 @@ select{
 		<td>
 			<select id="division">
 				<option></option>
-				<option>수입</option>
-				<option>지출</option>
+				<option value="income">수입</option>
+				<option value="expense">지출</option>
 			</select>
 		</td>
 		<td width="12%">
@@ -57,9 +57,9 @@ select{
 		<td width="15%">
 			<select id="item">
 				<option></option>
-				<option value="1">내용</option>
-				<option value="2">비고</option>
-				<option value="3">금액</option>
+				<option value="내용">내용</option>
+				<option value="비고">비고</option>
+				<option value="금액">금액</option>
 			</select>
 		</td>
 		<td><input type="search" id="detail"></td>
@@ -89,20 +89,10 @@ $("#btn").click(function(){
 		},
 		success:function(data){
 			console.log(data);
+			for(var i=0; i<data.length; i++){
+				console.log(JSON.parse(data[i]));
+			}
 		}
-//		var str="";
-//		$(data).each(function(){
-//				str +="<div class='row'>"
-//							+"<div class='col-lg-1'>"+this.tran_date+"</div>"
-//							+"<div class='col-lg-2'>"+this.account+"</div>"
-//							+"<div class='col-lg-1'>"+this.item+"</div>"
-//							+"<div class='col-lg-1'>"+this.client+"</div>"
-//							+"<div class='col-lg-4'>"+this.detail+"</div>"
-//							+"<div class='col-lg-1'>"+this.sum+"</div>"
-//							+"<div class='col-lg-2'>"+this.etc+"</div>"
-//					+"</div><hr/>"
-//			})
-//		$("#div1").html(str);
 	})
 })
 </script>

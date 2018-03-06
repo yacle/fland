@@ -4,7 +4,7 @@ public class SearchVO {
 	private String div;
 	private String startDate;
 	private String endDate;
-	private int item;
+	private String item;
 	private String detail;
 	public String getDiv() {
 		return div;
@@ -24,10 +24,10 @@ public class SearchVO {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public int getItem() {
+	public String getItem() {
 		return item;
 	}
-	public void setItem(int item) {
+	public void setItem(String item) {
 		this.item = item;
 	}
 	public String getDetail() {

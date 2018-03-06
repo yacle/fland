@@ -419,19 +419,17 @@ ObjectMapper mapper;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	@ResponseBody
-	public String inquirySearchPostHandle(SearchVO vo) throws Exception {
+	public List<InquiryVO> inquirySearchPostHandle(SearchVO vo) throws Exception {
+		String item = vo.getItem();
 		List<InquiryVO> list = new ArrayList<InquiryVO>();
-		System.out.println(vo.toString());
-		int item = vo.getItem();
 		switch(item) {
-		case '1':
-			list = inquiryDao.search1(vo); System.out.println(list.toString()); break;
-		case '2':
-			list = inquiryDao.search2(vo); System.out.println(list.toString()); break;
-		case '3':
-			list = inquiryDao.search3(vo); System.out.println(list.toString()); break;
+		case "내용":
+			list = inquiryDao.search1(vo); break;
+		case "비고":
+			list = inquiryDao.search2(vo); break;
+		case "금액":
+			list = inquiryDao.search3(vo); break;
 		}
-		String jsonString = mapper.writeValueAsString(list);
-		return jsonString;
+		return list;
 	}
 }
