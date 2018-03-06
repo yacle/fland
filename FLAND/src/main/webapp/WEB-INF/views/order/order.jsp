@@ -1,31 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-	$(document).on('click','.add', function(){
-		var getHtml = $('#formgroupcopy').html();
-		$('#addhtml').append(getHtml);
-	});
-	$(document).on('click','.del', function(){
-		$(this).parent().parent().remove();
-	})
+function add_row() {
+	var my_tbody = document.getElementById('my-tbody');
+	var row = my_tbody.insertRow( my_tbody.rows.length );
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	cell1.innerHTML = '<input type="text" class="form-control" id="color">' ;
+	cell2.innerHTML = '<input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD">';
+    cell3.innerHTML = '<input type="text" class="form-control" id="colorBT">';
+  }
+
+  function del_row() {
+    var my_tbody = document.getElementById('my-tbody');
+    if (my_tbody.rows.length < 1) return;
+    my_tbody.deleteRow( my_tbody.rows.length-1 );
+  }	
 </script>
 <style>
 .col-lg-3{
 	border: 2px solid red;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
+}
+#table1{
+	border-collapse: separate;
+	border-spacing: 15px;
+}
+td{
+	text-align: center;
 }
 </style>
 <div class="row">
 	<div class="col-lg-3">
-		<h1>발주서</h1>
-		<table width=95%>
+		<h1 align="center"><strong>[발주서]</strong></h1>
+		<table width=95% id="table1">
 			<tr>
-				<td width=20%>Order No</td>
+				<td width=30%>Order No</td>
 				<td colspan="2"><input type="text" class="form-control" id="orderNo"></td>
 			</tr>
 			<tr>
-				<td>발주처 담당자</td>
+				<td>발주처</td>
 				<td colspan="2"><input type="text" class="form-control" id="company"></td>
 			</tr>
 			<tr>
@@ -52,51 +68,36 @@
 				<td>가공중량</td>
 				<td colspan="2"><input type="text" class="form-control" id="weight"></td>
 			</tr>
-			<tr>
+			<tr align="center">
 				<td>컬러</td>
 				<td>Order Length</td>
 				<td>BT No.</td>
 			</tr>
+			<tbody id="my-tbody">
+				<tr>
+					<td><input type="text" class="form-control" id="color"></td>
+					<td><input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD"></td>
+					<td><input type="text" class="form-control" id="colorBT"></td>
+				</tr>
+			</tbody>
 			<tr>
-				
-				<td><input type="text" class="form-control" id="color">/td>
+				<td>
+					<small><button type="button" onclick="add_row()" class="btn btn-xs">추가</button></small>
+				</td>
+				<td></td>
+				<td align="right">
+					<small><button type="button" onclick="del_row()" class="btn btn-xs">삭제</button></small>
+				</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
+				<td>[Order Total :</td>
+				<td><span id="ttl"></span>YD]</td>
+			</tr>
+			<tr>
+				<td>단가</td>
+				<td colspan="2"><input type="text" class="form-control" id="price"></td>
 			</tr>
 		</table>
-		<h3>Color</h3>
-		<div id="addhtml">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label for="color">컬러:</label>
-						
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group" >
-						<label for="colorTTL">컬러별 오더:</label>
-						<input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label for="colorBT">컬러별 BT:</label>
-						<input type="text" class="form-control" id="colorBT">
-					</div>
-				</div>
-				<div class="col-md-1" style="padding: 29px 0;">
-					<button type="button" class="add">추가</button>
-				</div>
-			</div>
-		</div>
-		<b>Order Total :<span id="ttl"></span></b><br/>
-		<div class="form-group">
-			<label for="price">단가:</label>
-			<input type="text" class="form-control" id="price">
-		</div>
 		<button type="button" class="btn btn-primary">저장</button>
 	</div>
 	<div class="col-lg-3">

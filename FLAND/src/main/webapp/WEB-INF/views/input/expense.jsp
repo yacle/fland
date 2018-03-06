@@ -49,8 +49,8 @@ function add_row() {
 						'<option>카드</option>'+
 						'<option>이체</option>'+
 					'</select>';
-    cell6.innerHTML = '<input type="text" name="detail" required>';
-    cell7.innerHTML = '<input type="number" class="sum" id="sum" name="sum" required>';
+    cell6.innerHTML = '<input type="text" name="detail" style="text-align: left" required>';
+    cell7.innerHTML = '<input type="number" class="sum" style="text-align: right" name="sum" required>';
     cell8.innerHTML = '<input type="text" name="etc">';
     cell9.innerHTML = '<button onclick="delete_row()">삭제</button>';
   }
@@ -82,6 +82,8 @@ function add_row() {
 		height: 39px;
 		font-size: 15px;
 		text-align: center;
+	}
+	select{
 		text-align-last:center;
 	}
 </style>
@@ -236,10 +238,10 @@ function add_row() {
 					</select>
 				</td>
 				<td>
-					<input type="text" name="detail" required>
+					<input type="text" style="text-align: left" name="detail" required>
 				</td>
 				<td>
-					<input type="number" class=" sum" id="sum" name="sum" required>
+					<input type="number" class="sum" style="text-align: right" name="sum" required>
 				</td>
 				<td>
 					<input type="text" name="etc">

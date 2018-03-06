@@ -34,8 +34,8 @@ function add_row() {
 						'<option>세금환급</option>'+
 						'<option>기타</option>'+
 					'</select>';
-    cell5.innerHTML = '<input type="text" name="detail" required>';
-    cell6.innerHTML = '<input type="number" class="sum" name="sum" required>';
+    cell5.innerHTML = '<input type="text" style="text-align: left" name="detail" required>';
+    cell6.innerHTML = '<input type="number" class="sum" style="text-align: right" name="sum" required>';
     cell7.innerHTML = '<input type="text" name="etc">';
     cell8.innerHTML = '<button onclick="delete_row()">삭제</button>';
   }
@@ -67,6 +67,8 @@ function add_row() {
 		height: 39px;
 		font-size: 15px;
 		text-align: center;
+	}
+	select{
 		text-align-last:center;
 	}
 </style>
@@ -195,6 +197,7 @@ function add_row() {
 				<td>
 					<select name="item" required>
 						<option></option>
+						<option>매출</option>
 						<option>업체환급</option>
 						<option>경비이체</option>
 						<option>금융이자</option>
@@ -205,10 +208,10 @@ function add_row() {
 					</select>
 				</td>
 				<td>
-					<input type="text" name="detail" required>
+					<input type="text" style="text-align: left" name="detail" required>
 				</td>
 				<td>
-					<input type="number" class="sum" name="sum" required>
+					<input type="number" class="sum" style="text-align: right" name="sum" required>
 				</td>
 				<td>
 					<input type="text" name="etc">
