@@ -49,6 +49,7 @@ function add_row() {
     					'<option></option>'+
 						'<option>카드</option>'+
 						'<option>이체</option>'+
+						'<option>현금</option>'+
 					'</select>';
     cell6.innerHTML = '<input type="text" name="detail" style="text-align: left" required>';
     cell7.innerHTML = '<input type="number" class="sum" style="text-align: right" name="sum" required>';

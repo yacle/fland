@@ -418,6 +418,8 @@ AccountDAO accountDao;
 	@ResponseBody
 	public List<InquiryVO> inquirySearchPostHandle(SearchVO vo) throws Exception {
 		System.out.println(vo.toString());
+		String item = vo.getItem();
+		
 		List<InquiryVO> param = inquiryDao.search(vo);
 		return param;
 	}
