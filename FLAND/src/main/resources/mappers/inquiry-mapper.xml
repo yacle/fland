@@ -42,19 +42,17 @@
 	</select>
 	<select id="search1" resultType="com.fland.domain.InquiryVO">
 		select * from transaction where
-			detail like '%'|| #{detail} ||'%'
 		<![CDATA[
-			and	TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
+				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
 				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
+				and detail like '%' || #{detail} || '%'
 			]]>
-				and div=#{div} 
 	</select>
 	<select id="search2" resultType="com.fland.domain.InquiryVO">
 		select * from transaction where
 		<![CDATA[
 				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
 				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
-				and div=#{div} 
 				and etc like '%' || #{detail} || '%'
 			]]>
 	</select>
@@ -63,7 +61,6 @@
 		<![CDATA[
 				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
 				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
-				and div=#{div} 
 				and sum=#{detail}
 			]]>
 	</select>

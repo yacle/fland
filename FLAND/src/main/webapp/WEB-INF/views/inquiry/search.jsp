@@ -1,98 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
-table{
-	text-align: center;
-}
-input, select{
-	width:95%;
-	border: 1px solid LightGray;
-	border-radius: 4px;
-	margin: 0px 0;
-	box-sizing: border-box;
-	height: 39px;
-	font-size: 15px;
-	text-align: center;
-}
-select{
-	text-align-last:center;
-}
+	table, th, td{
+		text-align:center;
+		border: 1px solid DodgerBlue;
+		height:40px;
+	}
+	tr:hover {background-color:#f5f5f5;}
 </style>
 <nav class="navbar navbar-inverse">
 	<ul class="nav navbar-nav">
 		<li><a href="">일별</a></li>
 		<li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
 		<li><a href="/inquiry/yearly?year=2018">연별</a></li>
-		<li class="active"><a href="/inquiry/search">조건검색</a></li>
+		<form class="navbar-form navbar-right" action="/inquiry/daily" >
+			<div class="form-group">
+				<input type="date" name="date" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-default">조회</button>
+			<a href="/input"><button type="button" class="btn btn-info">입력</button></a>
+		</form>
+	</ul>
+<!-- 검색부분 -->
+	<ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
+		<form class="navbar-form navbar-right" action="/inquiry/search" method="post">
+			<div class="form-group">
+				<input name="startDate" placeholder="시작일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+			</div>
+			<div class="form-group">
+				<input name="endDate" placeholder="종료일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+			</div>
+			<div class="form-group">
+				<select name="condition"  class="form-control input-sm">
+					<option>조건선택</option>
+					<option value="내용">내용</option>
+					<option value="비고">비고</option>
+					<option value="금액">금액</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input name="detail" type="search" class="form-control input-sm" placeholder="검색내용">
+			</div>
+			<button type="submit" class="btn btn-success">조회</button>
+		</form>
 	</ul>
 </nav>
-
 <div align="center">
-<form action="/inquiry/search" method="POST">
-<table width="70%">
-	<tr>
-		<td height="50px" width="10%">구분</td>
-		<td colspan="4">조회기간</td>
-		<td>조회구분</td>
-		<td>내용</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>
-			<select id="division">
-				<option></option>
-				<option value="income">수입</option>
-				<option value="expense">지출</option>
-			</select>
-		</td>
-		<td width="12%">
-			<input type="date" id="startDate">
-		</td>
-		<td style="text-align:left">부터</td>
-		<td width="12%">
-			<input type="date" id="endDate">
-		</td>
-		<td style="text-align:left">까지</td>
-		<td width="15%">
-			<select id="item">
-				<option></option>
-				<option value="내용">내용</option>
-				<option value="비고">비고</option>
-				<option value="금액">금액</option>
-			</select>
-		</td>
-		<td><input type="search" id="detail"></td>
-		<td><button type="button" id="btn">조회</button></td>
-	</tr>
-</table>
-</form>
+	<h1>검색결과</h1><hr/>
+	<table width=90% border="1">
+		<tr>
+			<th>시작일자</th>
+			<th>종료일자</th>
+			<th>검색조건</th>
+			<th>검색내용</th>
+		</tr>
+		<tr>
+			<td>${vo.startDate }</td>
+			<td>${vo.endDate }</td>
+			<td>${vo.condition }</td>
+			<td>${vo.detail }</td>
+		</tr>	
+	</table><hr/>
+	<table width=90%>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Account</th>
+				<th>Method</th>
+				<th>Name</th>
+				<th>Item</th>
+				<th>Detail</th>
+				<th>Sum</th>
+				<th>ETC</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<c:forEach items="${list}" var="i">
+				<tr>
+					<td>${i.TRAN_DATE}</td>
+					<td>${i.ACCOUNT}</td>
+					<td>${i.METHOD}</td>
+					<td>${i.CLIENT}</td>
+					<td>${i.ITEM}</td>
+					<td>${i.DETAIL}</td>
+					<td>${i.SUM}</td>
+					<td>${i.ETC}</td>
+			</c:forEach>
+		</tfoot>
+	</table>
 </div>
-<div id="div1"></div>
-<script>
-$("#btn").click(function(){
-	var div = $("#division").val();
-	var startDate = $("#startDate").val();
-	var endDate = $("#endDate").val();
-	var item = $("#item").val();
-	var detail = $("#detail").val();
-	$.ajax({
-		"type":"post",
-		"async":false,
-		"url":"/inquiry/search",
-		"data":{
-			"div": div,
-			"startDate": startDate,
-			"endDate": endDate,
-			"item": item,
-			"detail": detail
-		},
-		success:function(data){
-			console.log(data);
-			for(var i=0; i<data.length; i++){
-				console.log(JSON.parse(data[i]));
-			}
-		}
-	})
-})
-</script>

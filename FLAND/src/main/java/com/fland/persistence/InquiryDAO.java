@@ -444,4 +444,7 @@ public class InquiryDAO {
 	public List<InquiryVO> search3(SearchVO vo) throws Exception{
 		return session.selectList("inquiry.search3", vo);
 	}
+	public List<InquiryVO> search4(SearchVO vo) throws Exception{
+		return session.selectList("inquiry.search4", vo);
+	}
 }

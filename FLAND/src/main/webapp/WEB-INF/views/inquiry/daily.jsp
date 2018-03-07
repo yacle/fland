@@ -24,13 +24,38 @@
 		<li class="active"><a href="">일별</a></li>
 		<li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
 		<li><a href="/inquiry/yearly?year=2018">연별</a></li>
-		<li><a href="/inquiry/search">조건검색</a></li>
-		<form class="navbar-form navbar-right" action="/inquiry/daily">
+		<form class="navbar-form navbar-right" action="/inquiry/daily" >
 			<div class="form-group">
 				<input type="date" name="date" class="form-control" placeholder="Search">
 			</div>
 			<button type="submit" class="btn btn-default">조회</button>
-			<a href="/input"><button type="button" class="btn btn-info">입력</button></a>
+			<a href="/input"><button type="button" class="btn btn-info" style="margin-left: 10px;">입력</button></a>
+		</form>
+	</ul>
+<!-- 검색부분 -->
+	<ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
+		<form class="navbar-form navbar-right" action="/inquiry/search" method="post">
+			<div class="form-group">
+				<div style="color: white; font-size: 17px; margin-right: 10px;">조건검색</div>
+			</div>
+			<div class="form-group">
+				<input name="startDate" placeholder="시작일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+			</div>
+			<div class="form-group">
+				<input name="endDate" placeholder="종료일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+			</div>
+			<div class="form-group">
+				<select name="condition"  class="form-control input-sm">
+					<option value="내용">조건선택</option>
+					<option value="내용">내용</option>
+					<option value="비고">비고</option>
+					<option value="금액">금액</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input name="detail" type="search" class="form-control input-sm" placeholder="검색내용">
+			</div>
+			<button type="submit" class="btn btn-success">조회</button>
 		</form>
 	</ul>
 </nav>
@@ -251,4 +276,18 @@ $("#next").click(function(){
 	var nextday = dateAddDel('${date}', 1);
 	window.location.href="/inquiry/daily?date="+nextday;
 })
+<script>
+// 일일 조회로 이동
+	var date=new Date();
+	var yy=date.getFullYear();
+	var mm=date.getMonth()+1;
+	if(mm<10){
+		mm = '0'+mm;
+	}
+	var dd=date.getDate();
+	if(dd<10){
+		dd = '0'+dd;
+	}
+	document.getElementById("date").href="/inquiry/daily?date="+yy+"-"+mm+"-"+dd;
+	
 </script>

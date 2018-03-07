@@ -1,17 +1,10 @@
 package com.fland.domain;
 
 public class SearchVO {
-	private String div;
 	private String startDate;
 	private String endDate;
-	private String item;
+	private String condition;
 	private String detail;
-	public String getDiv() {
-		return div;
-	}
-	public void setDiv(String div) {
-		this.div = div;
-	}
 	public String getStartDate() {
 		return startDate;
 	}
@@ -24,11 +17,11 @@ public class SearchVO {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getItem() {
-		return item;
+	public String getCondition() {
+		return condition;
 	}
-	public void setItem(String item) {
-		this.item = item;
+	public void setCondition(String condition) {
+		this.condition = condition;
 	}
 	public String getDetail() {
 		return detail;
@@ -38,8 +31,8 @@ public class SearchVO {
 	}
 	@Override
 	public String toString() {
-		return "SearchVO [div=" + div + ", startDate=" + startDate + ", endDate=" + endDate + ", item=" + item
-				+ ", detail=" + detail + "]";
+		return "SearchVO [startDate=" + startDate + ", endDate=" + endDate + ", condition="
+				+ condition + ", detail=" + detail + "]";
 	}
 	
 }

@@ -418,9 +418,10 @@ ObjectMapper mapper;
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	@ResponseBody
-	public List<InquiryVO> inquirySearchPostHandle(SearchVO vo) throws Exception {
-		String item = vo.getItem();
+	public ModelAndView inquirySearchPostHandle(SearchVO vo) throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		System.out.println(vo.toString());
+		String item = vo.getCondition();
 		List<InquiryVO> list = new ArrayList<InquiryVO>();
 		switch(item) {
 		case "내용":
@@ -429,7 +430,12 @@ ObjectMapper mapper;
 			list = inquiryDao.search2(vo); break;
 		case "금액":
 			list = inquiryDao.search3(vo); break;
+		default :
+			list = inquiryDao.search1(vo); break;	
 		}
-		return list;
+		mav.addObject("section", "inquiry/search");
+		mav.addObject("list", list);
+		mav.addObject("vo", vo);
+		return mav;
 	}
 }
