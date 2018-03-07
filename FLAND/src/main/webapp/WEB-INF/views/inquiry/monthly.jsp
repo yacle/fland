@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<head>
+	<script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+</head>
 <style>
 table{
 	border-collapse: collapse;
@@ -34,14 +37,17 @@ tr{
 		</form>
 	</ul>
 </nav>
-<div align="center">
-	<h2>[<span id="mon">${month}</span>월 자금 실적서]<small><a href="/inquiry/state?month=${month}">[통계자료]</a></small></h2>
+<div class="row">
+	<div class="col-lg-1"><button type="button" class="btn btn-success" id="print">EXCEL</button></div>
+	<div class="col-lg-10" align="center">
+		<h2>[<span id="mon">${month}</span>월 자금 실적서]<small><a href="/inquiry/state?month=${month}">[통계자료]</a></small></h2>
+	</div>
 </div>
 <div>
 <table border="0" cellspacing="0" cellpadding="0" id="tablefixed">
 	<tr valign="top">
 		<td align="right">
-			<table border="1" style="margin-right:-2; background-color:#E0FFFF;" width="220px">
+			<table id="export1" border="1" style="margin-right:-2; background-color:#E0FFFF;" width="220px">
 				<tr>
 					<th width="50px">구분</th>
 					<th colspan="2">내역</th>
@@ -147,7 +153,7 @@ tr{
         </td>
         <td align="left">
             <div style="width:1600px; overflow-x: auto;">
-				<table border="1">
+				<table id="export2" border="1">
 					<tr class="hover">
 						<th width="90px">합계</th>
 						<c:forEach var="i" begin="1" end="31">
@@ -363,5 +369,27 @@ tr{
 		var mon = $("#mon").html();
 		window.location ="/inquiry/daily?date="+mon+"-"+day;
 	})
-	
+// excel file 출력
+	$("#print").click(function(e){
+		$(function() {
+			$("#export1").table2excel({
+				name: "Excel Document Name",
+				filename: "myFileName" + new Date().toISOString().replace(/[\-\:\.]/g, ""),
+				fileext: ".xls",
+				exclude_img: true,
+				exclude_links: true,
+				exclude_inputs: true
+			});
+		});
+		$(function() {
+			$("#export2").table2excel({
+				name: "Excel Document Name",
+				filename: "myFileName" + new Date().toISOString().replace(/[\-\:\.]/g, ""),
+				fileext: ".xls",
+				exclude_img: true,
+				exclude_links: true,
+				exclude_inputs: true
+			});
+		});
+	})
 </script>
