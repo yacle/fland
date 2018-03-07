@@ -420,7 +420,6 @@ ObjectMapper mapper;
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView inquirySearchPostHandle(SearchVO vo) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
-		System.out.println(vo.toString());
 		String item = vo.getCondition();
 		List<InquiryVO> list = new ArrayList<InquiryVO>();
 		switch(item) {

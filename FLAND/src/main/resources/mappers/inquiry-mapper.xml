@@ -45,7 +45,7 @@
 		<![CDATA[
 				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
 				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
-				and detail like '%' || #{detail} || '%'
+				and UPPER(detail) like UPPER('%' || #{detail} || '%')
 			]]>
 	</select>
 	<select id="search2" resultType="com.fland.domain.InquiryVO">
@@ -53,7 +53,7 @@
 		<![CDATA[
 				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
 				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
-				and etc like '%' || #{detail} || '%'
+				and UPPER(etc) like UPPER('%' || #{detail} || '%')
 			]]>
 	</select>
 	<select id="search3" resultType="com.fland.domain.InquiryVO">
