@@ -276,7 +276,6 @@ $("#next").click(function(){
 	var nextday = dateAddDel('${date}', 1);
 	window.location.href="/inquiry/daily?date="+nextday;
 })
-<script>
 // 일일 조회로 이동
 	var date=new Date();
 	var yy=date.getFullYear();

@@ -1,6 +1,5 @@
 package com.fland.domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,4 +47,18 @@ public class SumCount {
 		}
 		return total;
 	}
+	
+	public static String orderSum(String a) {
+		String color[] = a.split("/");
+		String html="";
+		for(int i=0; i<color.length; i++) {
+			html += "<tr>"+
+					"<td>"+color[i]+"</td>"+
+					"<td><input type='number' id='roll"+i+"' class='form-control ttl2' style='text-align: right;'></td>"+
+					"<td><input type='text' id='kg"+i+"' class='form-control'></td>"+
+				"<tr>";
+		}
+		return html;
+	}
+
 }

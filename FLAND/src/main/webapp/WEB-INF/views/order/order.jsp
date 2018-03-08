@@ -7,34 +7,21 @@ function add_row() {
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
-	cell1.innerHTML = '<input type="text" class="form-control" id="color">' ;
+	cell1.innerHTML = '<input type="text" class="form-control color">' ;
 	cell2.innerHTML = '<input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD">';
-    cell3.innerHTML = '<input type="text" class="form-control" id="colorBT">';
+    cell3.innerHTML = '<input type="text" class="form-control colorBt">';
     
-    var my_tbody2 = document.getElementById('my-tbody2');
-	var row2 = my_tbody2.insertRow(my_tbody2.rows.length);
-	var cell21 = row2.insertCell(0);
-	var cell22 = row2.insertCell(1);
-	var cell23 = row2.insertCell(2);
-	cell21.innerHTML = '<input type="text" id="color" class="form-control">' ;
-	cell22.innerHTML = '<input type="number" id="roll" class="form-control ttl2" style="text-align: right;" placeholder="절">';
-    cell23.innerHTML = '<input type="text" id="kg" class="form-control" placeholder="KG">';
   }
 
   function del_row() {
     var my_tbody1 = document.getElementById('my-tbody1');
     if (my_tbody1.rows.length < 1) return;
     my_tbody1.deleteRow( my_tbody1.rows.length-1 );
-    
-    var my_tbody2 = document.getElementById('my-tbody2');
-    if (my_tbody2.rows.length < 1) return;
-    my_tbody2.deleteRow( my_tbody2.rows.length-1 );
   }	
 </script>
 <style>
 .col-lg-3{
-	border: 2px solid red;
-    border-radius: 5px;
+	border: none;
     padding: 10px;
 }
 #table1, #table2{
@@ -77,11 +64,11 @@ td{
 			</tr>
 			<tr>
 				<td>가공폭</td>
-				<td colspan="2"><input type="text" class="form-control" id="width"></td>
+				<td colspan="2"><input type="text" class="form-control" id="workWidth"></td>
 			</tr>
 			<tr>
 				<td>가공중량</td>
-				<td colspan="2"><input type="text" class="form-control" id="weight"></td>
+				<td colspan="2"><input type="text" class="form-control" id="workWeight"></td>
 			</tr>
 			<tr align="center">
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
@@ -91,9 +78,9 @@ td{
 			</tbody>
 			<tbody id="my-tbody1">
 				<tr>
-					<td><input type="text" class="form-control" id="color"></td>
-					<td><input type="number" class="form-control ttl" id="orderLength" style="text-align: right;" placeholder="YD"></td>
-					<td><input type="text" class="form-control" id="colorBt"></td>
+					<td><input type="text" class="form-control color"></td>
+					<td><input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD"></td>
+					<td><input type="text" class="form-control colorBt"></td>
 				</tr>
 			</tbody>
 			<tbody>
@@ -137,11 +124,11 @@ td{
 			</tr>
 			<tbody id="my-tbody2">
 				<tr>
-					<td><input type="text" id="color" class="form-control"></td>
+					<td><span class="dyeColor"></span></td>
 					<td><input type="number" id="roll" class="form-control ttl2" style="text-align: right;" placeholder="절"></td>
 					<td><input type="text" id="kg" class="form-control"></td>
+				<tr>
 			</tbody>
-			<tr>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">원단혼용율</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;" colspan="2"><input type="text" class="form-control"></td>
 			</tr>
@@ -190,8 +177,42 @@ $(document).on('change','.ttl', function(){
 	};
 	$("#ttl").val(total);
 })
+
+
 $("#orderBtn").click(function(){
-	var html = $("#my-tbody1").html();
-	$('#my-tbody2').append(html);
+	
+	var colorList=document.getElementsByClassName("color");
+	var orderLengthList=document.getElementsByClassName("ttl");
+	var colorBtList=document.getElementsByClassName("colorBt");
+	var color = colorList[0].value;;
+	var orderLength = orderLengthList[0].value;
+	var colorBt = colorBtList[0].value;
+	for(var i=1; i<colorList.length; i++){
+		color += "/"+colorList[i].value;
+		orderLength += "/"+orderLengthList[i].value;
+		colorBt += "/"+colorBtList[i].value;
+	}
+	$.ajax({
+		"type":"POST",
+		"async":false,
+		"url":"/order/order",
+		"data":{
+			"orderNo":$("#orderNo").val(),
+			"company":$("#company").val(),
+			"sn":$("#sn").val(),
+			"orderDate":$("#orderDate").val(),
+			"endDate":$("#endDate").val(),
+			"fabric":$("#fabric").val(),
+			"workWidth":$("#workWidth").val(),
+			"workWeight":$("#workWeight").val(),
+			"price":$("#price").val(),
+			"color":color,
+			"orderLength":orderLength,
+			"colorBt":colorBt
+		},
+		success:function(obj){
+			$("#my-tbody2").html(obj);
+		}
+	})
 })
 </script>
