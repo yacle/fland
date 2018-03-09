@@ -81,7 +81,7 @@
 				<h2><input id="name" name="name" placeholder="회사명" value="" size="44"/></h2>
 			</div>
 			<div class="modal-body" style="padding:20px 30px;">
-				<form role="form" action="/company/update">
+				<form role="form" action="/company/update" method="post">
 					<table>
 						<tr>
 							<td>분류</td>

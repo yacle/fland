@@ -16,7 +16,14 @@ import com.fland.domain.SearchVO;
 public class InquiryDAO {
 	@Inject
 	private  SqlSessionTemplate session;
-	
+	// 수정
+	public InquiryVO modify(Map map) throws Exception{
+		return session.selectOne("inquiry.modify", map);
+	}
+	// 수정입력
+	public void update(InquiryVO vo) throws Exception{
+		session.update("inquiry.update", vo);
+	}
 	// 일일 입출금조회
 	public Map<String, List<InquiryVO>> daily(String date) throws Exception{
 		List<InquiryVO> in_nhi = session.selectList("inquiry.income01", date);

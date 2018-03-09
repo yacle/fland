@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fland.domain.CompanyVO;
 import com.fland.domain.IncomeVO;
 import com.fland.domain.InquiryVO;
 import com.fland.domain.SearchVO;
@@ -426,5 +428,17 @@ ObjectMapper mapper;
 		mav.addObject("list", list);
 		mav.addObject("vo", vo);
 		return mav;
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	@ResponseBody
+	public InquiryVO inquiryModifyHandle(@RequestParam Map param) throws Exception {
+		InquiryVO vo = inquiryDao.modify(param);
+		return vo;
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public void inquiryUpdateHandle(InquiryVO vo) throws Exception{
+		inquiryDao.update(vo);
 	}
 }

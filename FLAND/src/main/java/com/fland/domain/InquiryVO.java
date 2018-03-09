@@ -2,6 +2,7 @@ package com.fland.domain;
 
 public class InquiryVO {
 	private int NO;	
+	private String div;
 	private String TRAN_DATE;	
 	private String ACCOUNT;	
 	private String METHOD;	
@@ -16,6 +17,12 @@ public class InquiryVO {
 	}
 	public void setNO(int nO) {
 		NO = nO;
+	}
+	public String getDiv() {
+		return div;
+	}
+	public void setDiv(String div) {
+		this.div = div;
 	}
 	public String getTRAN_DATE() {
 		return TRAN_DATE;
@@ -71,10 +78,4 @@ public class InquiryVO {
 	public void setBEGIN_BAL(int bEGIN_BAL) {
 		BEGIN_BAL = bEGIN_BAL;
 	}
-	@Override
-	public String toString() {
-		return "InquiryVO [NO=" + NO + ", TRAN_DATE=" + TRAN_DATE + ", ACCOUNT=" + ACCOUNT + ", METHOD=" + METHOD
-				+ ", CLIENT=" + CLIENT + ", ITEM=" + ITEM + ", DETAIL=" + DETAIL + ", SUM=" + SUM + ", ETC=" + ETC
-				+ "]";
-	}	
 }

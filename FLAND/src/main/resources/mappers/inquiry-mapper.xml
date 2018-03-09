@@ -3,42 +3,48 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="inquiry">
+	<select id="modify" resultType="com.fland.domain.InquiryVO">
+		select * from transaction where no = #{no}
+	</select>
+	<update id="update">
+		update transaction set div=#{div}, method=#{method, jdbcType=VARCHAR}, client=#{client}, item=#{item}, detail=#{detail}, sum=#{sum}, etc=#{etc, jdbcType=VARCHAR} where no=#{no}
+	</update>
 	<select id="income01" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(매출)' and div='income' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(매출)' and div='income' order by no desc
 	</select>
 	<select id="income02" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(경비)' and div='income' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(경비)' and div='income' order by no desc
 	</select>
 	<select id="income03" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(매출)' and div='income' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(매출)' and div='income' order by no desc
 	</select>
 	<select id="income04" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(경비)' and div='income' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(경비)' and div='income' order by no desc
 	</select>
 	<select id="income05" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='신한(매출)' and div='income' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='신한(매출)' and div='income' order by no desc
 	</select>
 	<select id="income06" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='국민(매출)' and div='income' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='국민(매출)' and div='income' order by no desc
 	</select>
 	
 	<select id="out01" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(매출)' and div='expense' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(매출)' and div='expense' order by no desc
 	</select>
 	<select id="out02" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(경비)' and div='expense' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='농협(경비)' and div='expense' order by no desc
 	</select>
 	<select id="out03" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(매출)' and div='expense' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(매출)' and div='expense' order by no desc
 	</select>
 	<select id="out04" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(경비)' and div='expense' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='기업(경비)' and div='expense' order by no desc
 	</select>
 	<select id="out05" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='신한(매출)' and div='expense' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='신한(매출)' and div='expense' order by no desc
 	</select>
 	<select id="out06" resultType="com.fland.domain.InquiryVO">
-		select account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='국민(매출)' and div='expense' order by no desc
+		select no, account, method, client, item, detail, sum, etc from transaction where tran_date = #{date} and account='국민(매출)' and div='expense' order by no desc
 	</select>
 	<select id="search1" resultType="com.fland.domain.InquiryVO">
 		select * from transaction where
