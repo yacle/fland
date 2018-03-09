@@ -30,5 +30,12 @@ public class OrderController {
 		return html;
 	}
 	
+	@RequestMapping(value = "/dyeSum", method = RequestMethod.POST)
+	@ResponseBody
+	public String dyeSum(@RequestParam Map map)  throws Exception {
+		System.out.println(map.toString());
+		String rollList = SumCount.dyeSum(map);
+		return rollList;
+	}
 	
 }

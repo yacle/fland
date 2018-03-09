@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.fland.domain.IncomeVO;
 import com.fland.domain.InquiryVO;
 import com.fland.domain.SearchVO;
 

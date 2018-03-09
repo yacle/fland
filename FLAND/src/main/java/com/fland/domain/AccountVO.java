@@ -1,6 +1,5 @@
 package com.fland.domain;
 
-import java.util.Date;
 
 public class AccountVO {
 	private String NAME;	

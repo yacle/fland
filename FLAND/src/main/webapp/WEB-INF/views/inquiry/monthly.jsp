@@ -277,13 +277,13 @@ tr{
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item17Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;""><fmt:formatNumber value="${item17[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item17[i]}" groupingUsed="true"/></td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item18Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;""><fmt:formatNumber value="${item18[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item18[i]}" groupingUsed="true"/></td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">

@@ -1,5 +1,6 @@
 package com.fland.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,11 +54,42 @@ public class SumCount {
 		String html="";
 		for(int i=0; i<color.length; i++) {
 			html += "<tr>"+
-					"<td>"+color[i]+"</td>"+
-					"<td><input type='number' id='roll"+i+"' class='form-control ttl2' style='text-align: right;'></td>"+
+					"<td><input type='text' class='form-control color2' value='"+color[i]+"' readonly></td>"+
+					"<td><input type='number' id='roll"+i+"' class='form-control' style='text-align: right;'></td>"+
 					"<td><input type='text' id='kg"+i+"' class='form-control'></td>"+
 				"<tr>";
 		}
+		return html;
+	}
+	
+	public static String dyeSum(Map map) {
+		String colors = (String) map.get("color");
+		String color[] = colors.split("/");
+		String orderLengths = (String) map.get("orderLength");
+		String orderLength[] = orderLengths.split("/");
+		String html="";
+		Double workWeight = Double.parseDouble((String) map.get("workWeight"));
+		Double loss = Double.parseDouble((String) map.get("loss"));
+		Double perkg = Double.parseDouble((String)map.get("perkg"));
+		Double rollTotal=0.0;
+		Double perkgTotal=0.0;
+		for(int i=0; i<orderLength.length; i++) {
+			Double length = Double.parseDouble(orderLength[i]);
+			Double a = (loss*length*(workWeight/1000))/perkg;
+			html += "<tr>"+
+						"<td>"+color[i]+"</td>"+
+						"<td>"+Math.ceil(a)+"</td>"+
+						"<td>"+(Math.ceil(a)*perkg)+
+							"(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
+					"<tr>";
+			rollTotal += Math.ceil(a);
+			perkgTotal += Math.ceil(a)*perkg;
+		}
+		html += "<tr>"+
+				"<td>TOTAL</td>"+
+				"<td>"+rollTotal+"</td>"+
+				"<td>"+perkgTotal+"</td>"+
+			"<tr>";
 		return html;
 	}
 
