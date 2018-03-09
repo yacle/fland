@@ -13,11 +13,31 @@ function add_row() {
     
   }
 
-  function del_row() {
-    var my_tbody1 = document.getElementById('my-tbody1');
-    if (my_tbody1.rows.length < 1) return;
-    my_tbody1.deleteRow( my_tbody1.rows.length-1 );
-  }	
+function del_row() {
+	var my_tbody1 = document.getElementById('my-tbody1');
+	if (my_tbody1.rows.length < 1) return;
+	my_tbody1.deleteRow( my_tbody1.rows.length-1 );
+}	
+  
+function add_test(){
+	var test_tbody = document.getElementById('test-tbody');
+	var test_row = test_tbody.insertRow(test_tbody.rows.length);
+	var cell1 = test_row.insertCell(0);
+	var cell2 = test_row.insertCell(1);
+	var cell3 = test_row.insertCell(2);
+	var cell4 = test_row.insertCell(3);
+	var cell5 = test_row.insertCell(4);
+	cell1.innerHTML = '<input type="text" size="6" class="testColor" style="text-align: center;">';
+	cell2.innerHTML = '<input type="checkbox" class="fastness">';
+	cell3.innerHTML = '<input type="checkbox" class="reduction">';
+    cell4.innerHTML = '<input type="checkbox" class="feeling">';
+    cell5.innerHTML = '<input type="checkbox" class="skewness">';
+}
+function del_test(){
+	var test_tbody = document.getElementById('test-tbody');
+	if (test_tbody.rows.length < 1) return;
+	test_tbody.deleteRow( test_tbody.rows.length-1 );
+}
 </script>
 <style>
 .col-lg-3{
@@ -152,21 +172,23 @@ input{
 		<table id="table3">
 			<tr>
 				<td>시험의뢰&#8192;
-					<button type="button" width="7px" height="7px" id="testPlus">+</button>&#8192;
-					<button type="button" width="7px" height="7px" id="testMinus">&#8210;</button>
+					<button type="button" onclick="add_test()" style="border-radius:5px; font-size: 13px;">+</button>&nbsp;
+					<button type="button" onclick="del_test()" style="border-radius:5px; font-size: 13px;">&#8210;</button>
 				</td>
 				<td>염색견뢰도</td>
 				<td>축률</td>
 				<td>필링</td>
 				<td>사행도</td>
 			</tr>
-			<tr>
-				<td><input type="text" size="6" name="testColor"></td>
-				<td><input type="checkbox" name="fastness"></td>
-				<td><input type="checkbox" name="reduction"></td>
-				<td><input type="checkbox" name="feeling"></td>
-				<td><input type="checkbox" name="skewness" ></td>
-			</tr>
+			<tbody id="test-tbody">
+				<tr>
+					<td><input type="text" size="6" class="testColor" style="text-align: center;"></td>
+					<td><input type="checkbox" class="fastness"></td>
+					<td><input type="checkbox" class="reduction"></td>
+					<td><input type="checkbox" class="feeling"></td>
+					<td><input type="checkbox" class="skewness" ></td>
+				</tr>
+			</tbody>
 			<tr>
 				<td>기타사항</td>
 				<td colspan="4"><input type="text" class="form-control" style="text-align:left;"></td>

@@ -39,10 +39,10 @@
 				<div style="color: white; font-size: 17px; margin-right: 10px;">조건검색</div>
 			</div>
 			<div class="form-group">
-				<input name="startDate" placeholder="시작일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+				<input name="startDate" placeholder="시작일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="7">
 			</div>
 			<div class="form-group">
-				<input name="endDate" placeholder="종료일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+				<input name="endDate" placeholder="종료일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="7">
 			</div>
 			<div class="form-group">
 				<select name="condition"  class="form-control input-sm">
