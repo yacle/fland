@@ -94,7 +94,11 @@ input{
 				<td colspan="2"><input type="number" class="form-control" id="workWeight" placeholder="g/yd"></td>
 			</tr>
 			<tr align="center">
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">
+					컬러
+					<button type="button" onclick="add_row()" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
+					<button type="button" onclick="del_row()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
+				</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">Order Length</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">BT No.</td>
 			</tr>
@@ -108,22 +112,17 @@ input{
 			</tbody>
 			<tbody>
 			<tr>
-				<td>Order Total</td>
-				<td><input type="text" class="form-control" id="ttl" readonly></td>
-				<td style="text-align:left;">YD</td>
-			</tr>
-			<tr>
-				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;">
-					<small><button type="button" onclick="add_row()" class="btn btn-xs">추가</button></small>
-				</td>
-				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"></td>
-				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;" align="right">
-					<small><button type="button" onclick="del_row()" class="btn btn-xs">삭제</button></small>
-				</td>
+				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;">Order Total</td>
+				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><input type="text" class="form-control" id="ttl" readonly></td>
+				<td  style="border-bottom: 1px solid blue; padding:0px 0px 5px; text-align:left;">YD</td>
 			</tr>
 			<tr>
 				<td>단가</td>
 				<td colspan="2"><input type="text" class="form-control" id="price"></td>
+			</tr>
+			<tr>
+				<td>기타</td>
+				<td colspan="2"><textarea class="form-control" id="etc"></textarea></td>
 			</tr>
 			</tbody>
 		</table>
@@ -182,7 +181,7 @@ input{
 			</tr>
 			<tbody id="test-tbody">
 				<tr>
-					<td><input type="text" size="5" class="testColor" style="text-align: center; box-sizing: border-box;"></td>
+					<td><input type="text" size="5" class="form-control testColor" style="text-align: center; box-sizing: border-box;"></td>
 					<td><input type="checkbox" class="fastness"></td>
 					<td><input type="checkbox" class="reduction"></td>
 					<td><input type="checkbox" class="feeling"></td>
@@ -254,6 +253,7 @@ $("#orderBtn").click(function(){
 			"color":color,
 			"orderLength":orderLength,
 			"colorBt":colorBt
+			"etc":$("#etc").html();
 		},
 		success:function(obj){
 			$("#my-tbody2").html(obj);
@@ -293,19 +293,20 @@ $("#dyeSum").click(function(){
 $("#dyeBtn").click(function(){
 	var testColorList=document.getElementsByClassName("testColor");
 	var fastnessList=document.getElementsByClassName("fastness");
-	var colorBtList=document.getElementsByClassName("colorBt");
-	var color = colorList[0].value;;
-	var orderLength = orderLengthList[0].value;
-	var colorBt = colorBtList[0].value;
-	for(var i=1; i<colorList.length; i++){
-		color += "/"+colorList[i].value;
-		orderLength += "/"+orderLengthList[i].value;
-		colorBt += "/"+colorBtList[i].value;
+	var reductionList=document.getElementsByClassName("reduction");
+	var feelingList=document.getElementsByClassName("feeling");
+	var skewnessList=document.getElementsByClassName("skewness");
+	var testColor = testColorList[0].value;;
+	var fastness = fastnessList[0].value;;
+	var reduction = reductionList[0].value;;
+	var feeling = feelingList[0].value;
+	var skewness = skewnessList[0].value;
+	for(var i=1; i<testColorList.length; i++){
+		testColor += "/"+testColorList[i].value;
+		fastness += "/"+fastnessList[i].value;
+		reduction += "/"+reductionList[i].value;
+		feeling += "/"+feelingList[i].value;
+		skewness += "/"+skewnessList[i].value;
 	}
 })
-<td><input type="text" size="5" class="testColor" style="text-align: center; box-sizing: border-box;"></td>
-					<td><input type="checkbox" class="fastness"></td>
-					<td><input type="checkbox" class="reduction"></td>
-					<td><input type="checkbox" class="feeling"></td>
-					<td><input type="checkbox" class="skewness" ></td>
 </script>

@@ -2,6 +2,7 @@ package com.fland.domain;
 
 
 public class OrderVO {
+	private int no;
 	private String orderNo;		// order 번호
 	private String company;		// 발주처
 	private String sn;			// 시리얼번호
@@ -14,6 +15,13 @@ public class OrderVO {
 	private String orderLength;	// 발주량
 	private String colorBt;		// B/T
 	private int price;			// 단가
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getOrderNo() {
 		return orderNo;
 	}

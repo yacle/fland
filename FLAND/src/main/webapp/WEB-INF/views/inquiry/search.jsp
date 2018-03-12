@@ -77,14 +77,14 @@
 		<tfoot>
 			<c:forEach items="${list}" var="i">
 				<tr>
-					<td>${i.TRAN_DATE}</td>
-					<td>${i.ACCOUNT}</td>
-					<td>${i.METHOD}</td>
-					<td>${i.CLIENT}</td>
-					<td>${i.ITEM}</td>
-					<td>${i.DETAIL}</td>
-					<td>${i.SUM}</td>
-					<td>${i.ETC}</td>
+					<td>${i.tran_date}</td>
+					<td>${i.account}</td>
+					<td>${i.method}</td>
+					<td>${i.client}</td>
+					<td>${i.item}</td>
+					<td>${i.detail}</td>
+					<td>${i.sum}</td>
+					<td>${i.etc}</td>
 			</c:forEach>
 		</tfoot>
 	</table>
