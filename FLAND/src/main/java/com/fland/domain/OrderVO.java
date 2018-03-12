@@ -15,7 +15,6 @@ public class OrderVO {
 	private String orderLength;	// 발주량
 	private String colorBt;		// B/T
 	private int price;			// 단가
-	
 	public int getNo() {
 		return no;
 	}
@@ -76,13 +75,6 @@ public class OrderVO {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	@Override
-	public String toString() {
-		return "OrderVO [orderNo=" + orderNo + ", company=" + company + ", sn=" + sn + ", orderDate=" + orderDate
-				+ ", endDate=" + endDate + ", fabric=" + fabric + ", workWidth=" + workWidth + ", workWeight="
-				+ workWeight + ", color=" + color + ", orderLength=" + orderLength + ", colorBt=" + colorBt + ", price="
-				+ price + "]";
-	}
 	public String getOrderLength() {
 		return orderLength;
 	}
@@ -100,5 +92,12 @@ public class OrderVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	@Override
+	public String toString() {
+		return "OrderVO [no=" + no + ", orderNo=" + orderNo + ", company=" + company + ", sn=" + sn + ", orderDate="
+				+ orderDate + ", endDate=" + endDate + ", fabric=" + fabric + ", workWidth=" + workWidth
+				+ ", workWeight=" + workWeight + ", color=" + color + ", orderLength=" + orderLength + ", colorBt="
+				+ colorBt + ", price=" + price + "]";
 	}
 }

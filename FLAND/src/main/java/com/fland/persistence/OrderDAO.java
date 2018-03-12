@@ -12,7 +12,15 @@ public class OrderDAO {
 	@Inject
 	private  SqlSessionTemplate session;
 	
-	public int orderAdd(Map map) {
-		return session.insert("order.add", map);
+	public void orderAdd(Map map) {
+		session.insert("order.add", map);
+	}
+	
+	public int orderRead(String orderno) {
+		return session.selectOne("order.read", orderno);
+	}
+	
+	public void orderUpdate(Map map) {
+		session.update("order.update", map);
 	}
 }

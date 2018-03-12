@@ -4,21 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
 	<insert id="add">
-		insert into order_tbl(no, orderno, company, serial, orderdate, enddate, fabric, workwidth, workweight, price, color, orderlength, colorbt, etc)
-		values(seq_order.nextval,
+		insert into ORDER_TBL (no,orderno,company,serial,orderdate,enddate,fabric,workwidth,workweight,price,color,orderlength,colorbt,etc)
+		values (seq_order.nextval,
 			#{orderno},
 			#{company},
 			#{serial},
 			#{orderdate},
-			#{enddate},
+			#{enddate, jdbcType=VARCHAR},
 			#{fabric},
 			#{workwidth},
 			#{workweight},
-			#{price},
+			#{price, jdbcType=VARCHAR},
 			#{color},
 			#{orderlength},
-			#{colorbt},
-			#{etc}
+			#{colorbt, jdbcType=VARCHAR},
+			#{etc, jdbcType=VARCHAR}
 		)
 	</insert>
+	<select id="read" resultType="int">
+		select count(*) from ORDER_TBL where orderno = #{orderno}
+	</select>
+	<update id="update">
+		update ORDER_TBL set 
+			company=#{company},
+			serial=#{serial},
+			orderdate=#{orderdate},
+			enddate=#{enddate, jdbcType=VARCHAR},
+			fabric=#{fabric},
+			workwidth=#{workwidth},
+			workweight=#{workweight},
+			price=#{price, jdbcType=VARCHAR},
+			color=#{color},
+			orderlength=#{orderlength},
+			colorbt=#{colorbt, jdbcType=VARCHAR},
+			etc=#{etc, jdbcType=VARCHAR}
+		where orderno=#{orderno}
+	</update>
 </mapper>

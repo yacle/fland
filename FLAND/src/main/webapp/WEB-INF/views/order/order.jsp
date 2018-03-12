@@ -9,7 +9,7 @@ function add_row() {
 	var cell3 = row.insertCell(2);
 	cell1.innerHTML = '<input type="text" class="form-control color">' ;
 	cell2.innerHTML = '<input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD">';
-    cell3.innerHTML = '<input type="number" class="form-control colorBt">';
+    cell3.innerHTML = '<input type="text" class="form-control colorBt">';
     
   }
 
@@ -24,14 +24,8 @@ function add_test(){
 	var test_row = test_tbody.insertRow(test_tbody.rows.length);
 	var cell1 = test_row.insertCell(0);
 	var cell2 = test_row.insertCell(1);
-	var cell3 = test_row.insertCell(2);
-	var cell4 = test_row.insertCell(3);
-	var cell5 = test_row.insertCell(4);
-	cell1.innerHTML = '<input type="text" size="6" class="testColor" style="text-align: center;">';
-	cell2.innerHTML = '<input type="checkbox" class="fastness">';
-	cell3.innerHTML = '<input type="checkbox" class="reduction">';
-    cell4.innerHTML = '<input type="checkbox" class="feeling">';
-    cell5.innerHTML = '<input type="checkbox" class="skewness">';
+	cell1.innerHTML = '<input type="text" size="5" class="form-control testColor" style="text-align: center; box-sizing: border-box;">';
+	cell2.innerHTML = '<input type="text" class="form-control test">';
 }
 function del_test(){
 	var test_tbody = document.getElementById('test-tbody');
@@ -112,8 +106,8 @@ input{
 			</tbody>
 			<tbody>
 			<tr>
-				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;">Order Total</td>
-				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><input type="text" class="form-control" id="ttl" readonly></td>
+				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><b>Order Total</b></td>
+				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><span id="ttl" style="color: red;"></span></td>
 				<td  style="border-bottom: 1px solid blue; padding:0px 0px 5px; text-align:left;">YD</td>
 			</tr>
 			<tr>
@@ -155,16 +149,16 @@ input{
 			<tr>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">원단혼용율</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;" colspan="2">
-					<input type="text" class="form-control" style="text-align:left;">
+					<input type="text" id="mixed" class="form-control" style="text-align:center;" >
 				</td>
 			</tr>
 			<tr>
 				<td>가공방법</td>
-				<td colspan="2"><input type="text" class="form-control" style="text-align:left;"></td>
+				<td colspan="2"><input type="text" id="method" class="form-control" style="text-align:center;"></td>
 			</tr>
 			<tr>
 				<td>세부사항</td>
-				<td colspan="2"><input type="text" class="form-control" style="text-align:left;"></td>
+				<td colspan="2"><input type="text" id="detail" class="form-control" style="text-align:center;"></td>
 			</tr>
 			<tr>
 		</table>
@@ -174,31 +168,25 @@ input{
 					<button type="button" onclick="add_test()" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
 					<button type="button" onclick="del_test()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
 				</td>
-				<td>염색견뢰도</td>
-				<td>축률</td>
-				<td>필링</td>
-				<td>사행도</td>
+				<td>염색견뢰도/축률/필링/사행도</td>
 			</tr>
 			<tbody id="test-tbody">
 				<tr>
 					<td><input type="text" size="5" class="form-control testColor" style="text-align: center; box-sizing: border-box;"></td>
-					<td><input type="checkbox" class="fastness"></td>
-					<td><input type="checkbox" class="reduction"></td>
-					<td><input type="checkbox" class="feeling"></td>
-					<td><input type="checkbox" class="skewness" ></td>
+					<td><input type="text" class="form-control test"></td>
 				</tr>
 			</tbody>
 			<tr>
 				<td>기타사항</td>
-				<td colspan="4"><textarea class="form-control" rows="3">야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람</textarea></td>
+				<td><textarea id="etc" class="form-control" rows="3">야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람</textarea></td>
 			</tr>
 			<tr>
 				<td>주의사항</td>
-				<td colspan="4"><textarea class="form-control" rows="2">포장전 B/T 색상과 자체 비교 요망</textarea></td>
+				<td><textarea id="caution" class="form-control" rows="2">포장전 B/T 색상과 자체 비교 요망</textarea></td>
 			</tr>
 			<tr>
 				<td>출고처</td>
-				<td colspan="4"><input type="text" class="form-control" style="text-align:left;"></td>
+				<td><input type="text" id="delivery" class="form-control" style="text-align:left;"></td>
 			</tr>
 		</table>
 		<button type="button" class="btn btn-primary" id="dyeBtn">저장</button>
@@ -219,7 +207,7 @@ $(document).on('change','.ttl', function(){
 		var s = sum[i].value;
 		total += parseInt(s);
 	};
-	$("#ttl").val(total);
+	$("#ttl").html("<b>"+total+"</b>");
 })
 
 
@@ -241,19 +229,19 @@ $("#orderBtn").click(function(){
 		"async":false,
 		"url":"/order/order",
 		"data":{
-			"orderNo":$("#orderNo").val(),
+			"orderno":$("#orderNo").val(),
 			"company":$("#company").val(),
 			"serial":$("#serial").val(),
-			"orderDate":$("#orderDate").val(),
-			"endDate":$("#endDate").val(),
+			"orderdate":$("#orderDate").val(),
+			"enddate":$("#endDate").val(),
 			"fabric":$("#fabric").val(),
-			"workWidth":$("#workWidth").val(),
-			"workWeight":$("#workWeight").val(),
+			"workwidth":$("#workWidth").val(),
+			"workweight":$("#workWeight").val(),
 			"price":$("#price").val(),
 			"color":color,
-			"orderLength":orderLength,
-			"colorBt":colorBt
-			"etc":$("#etc").html();
+			"orderlength":orderLength,
+			"colorbt":colorBt,
+			"etc":$("#etc").html()
 		},
 		success:function(obj){
 			$("#my-tbody2").html(obj);
@@ -266,13 +254,12 @@ $("#dyeSum").click(function(){
 	var color = colorList[0].value;;
 	var orderLength = orderLengthList[0].value;
 	for(var i=1; i<colorList.length; i++){
-		color += "/"+colorList[i].value;
-		orderLength += "/"+orderLengthList[i].value;
+		color += "&"+colorList[i].value;
+		orderLength += "&"+orderLengthList[i].value;
 	}
 	var workWeight = $("#workWeight").val();
 	var loss = $("#loss").val();
 	var perkg = $("#perkg").val();
-	console.log(workWeight);
 	$.ajax({
 		"type":"POST",
 		"async":false,
@@ -292,21 +279,33 @@ $("#dyeSum").click(function(){
 
 $("#dyeBtn").click(function(){
 	var testColorList=document.getElementsByClassName("testColor");
-	var fastnessList=document.getElementsByClassName("fastness");
-	var reductionList=document.getElementsByClassName("reduction");
-	var feelingList=document.getElementsByClassName("feeling");
-	var skewnessList=document.getElementsByClassName("skewness");
-	var testColor = testColorList[0].value;;
-	var fastness = fastnessList[0].value;;
-	var reduction = reductionList[0].value;;
-	var feeling = feelingList[0].value;
-	var skewness = skewnessList[0].value;
+	var testList=document.getElementsByClassName("test");
+	var testColor = testColorList[0].value;
+	var test = testList[0].value;
 	for(var i=1; i<testColorList.length; i++){
 		testColor += "/"+testColorList[i].value;
-		fastness += "/"+fastnessList[i].value;
-		reduction += "/"+reductionList[i].value;
-		feeling += "/"+feelingList[i].value;
-		skewness += "/"+skewnessList[i].value;
+		test += "/"+ testList[i].value;
 	}
+	$.ajax({
+		"type":"POST",
+		"async":false,
+		"url":"/order/dye",
+		"data":{
+			"orderno":$("#orderNo").val(),
+			"loss":$("#loss").val(),
+			"perkg":$("#perkg").val(),
+			"mixed":$("#mixed").val(),
+			"method":$("#method").val(),
+			"detail":$("#detail").val(),
+			"etc":$("#etc").html(),
+			"caution":$("#caution").html(),
+			"delivery":$("#delivery").val(),
+			"testcolor":testColor,
+			"test":test
+		},
+		success:function(){
+			console.log("dye");
+		}
+	})
 })
 </script>
