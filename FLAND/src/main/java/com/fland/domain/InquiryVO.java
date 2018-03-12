@@ -1,22 +1,22 @@
 package com.fland.domain;
 
 public class InquiryVO {
-	private int NO;	
+	private int no;	
 	private String div;
-	private String TRAN_DATE;	
-	private String ACCOUNT;	
-	private String METHOD;	
-	private String CLIENT;	
-	private String ITEM;	
-	private String DETAIL;
-	private int BEGIN_BAL;
-	private int SUM;	
-	private String ETC;
-	public int getNO() {
-		return NO;
+	private String tran_date;	
+	private String account;	
+	private String method;	
+	private String client;	
+	private String item;	
+	private String detail;
+	private int begin_bal;
+	private int sum;	
+	private String etc;
+	public int getNo() {
+		return no;
 	}
-	public void setNO(int nO) {
-		NO = nO;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getDiv() {
 		return div;
@@ -24,64 +24,64 @@ public class InquiryVO {
 	public void setDiv(String div) {
 		this.div = div;
 	}
-	public String getTRAN_DATE() {
-		return TRAN_DATE;
+	public String getTran_date() {
+		return tran_date;
 	}
-	public void setTRAN_DATE(String tRAN_DATE) {
-		TRAN_DATE = tRAN_DATE;
+	public void setTran_date(String tran_date) {
+		this.tran_date = tran_date;
 	}
-	public String getACCOUNT() {
-		return ACCOUNT;
+	public String getAccount() {
+		return account;
 	}
-	public void setACCOUNT(String aCCOUNT) {
-		ACCOUNT = aCCOUNT;
+	public void setAccount(String account) {
+		this.account = account;
 	}
-	public String getMETHOD() {
-		return METHOD;
+	public String getMethod() {
+		return method;
 	}
-	public void setMETHOD(String mETHOD) {
-		METHOD = mETHOD;
+	public void setMethod(String method) {
+		this.method = method;
 	}
-	public String getCLIENT() {
-		return CLIENT;
+	public String getClient() {
+		return client;
 	}
-	public void setCLIENT(String cLIENT) {
-		CLIENT = cLIENT;
+	public void setClient(String client) {
+		this.client = client;
 	}
-	public String getITEM() {
-		return ITEM;
+	public String getItem() {
+		return item;
 	}
-	public void setITEM(String iTEM) {
-		ITEM = iTEM;
+	public void setItem(String item) {
+		this.item = item;
 	}
-	public String getDETAIL() {
-		return DETAIL;
+	public String getDetail() {
+		return detail;
 	}
-	public void setDETAIL(String dETAIL) {
-		DETAIL = dETAIL;
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
-	public int getSUM() {
-		return SUM;
+	public int getBegin_bal() {
+		return begin_bal;
 	}
-	public void setSUM(int sUM) {
-		SUM = sUM;
+	public void setBegin_bal(int begin_bal) {
+		this.begin_bal = begin_bal;
 	}
-	public String getETC() {
-		return ETC;
+	public int getSum() {
+		return sum;
 	}
-	public void setETC(String eTC) {
-		ETC = eTC;
+	public void setSum(int sum) {
+		this.sum = sum;
 	}
-	public int getBEGIN_BAL() {
-		return BEGIN_BAL;
+	public String getEtc() {
+		return etc;
 	}
-	public void setBEGIN_BAL(int bEGIN_BAL) {
-		BEGIN_BAL = bEGIN_BAL;
+	public void setEtc(String etc) {
+		this.etc = etc;
 	}
 	@Override
 	public String toString() {
-		return "InquiryVO [NO=" + NO + ", div=" + div + ", TRAN_DATE=" + TRAN_DATE + ", ACCOUNT=" + ACCOUNT
-				+ ", METHOD=" + METHOD + ", CLIENT=" + CLIENT + ", ITEM=" + ITEM + ", DETAIL=" + DETAIL + ", BEGIN_BAL="
-				+ BEGIN_BAL + ", SUM=" + SUM + ", ETC=" + ETC + "]";
+		return "InquiryVO [no=" + no + ", div=" + div + ", tran_date=" + tran_date + ", account=" + account
+				+ ", method=" + method + ", client=" + client + ", item=" + item + ", detail=" + detail + ", begin_bal="
+				+ begin_bal + ", sum=" + sum + ", etc=" + etc + "]";
 	}
 }

@@ -24,6 +24,10 @@ public class InquiryDAO {
 	public void update(InquiryVO vo) throws Exception{
 		session.update("inquiry.update", vo);
 	}
+	// 삭제
+		public void delete(InquiryVO vo) throws Exception{
+			session.delete("inquiry.delete", vo);
+		}
 	// 일일 입출금조회
 	public Map<String, List<InquiryVO>> daily(String date) throws Exception{
 		List<InquiryVO> in_nhi = session.selectList("inquiry.income01", date);

@@ -437,11 +437,17 @@ ObjectMapper mapper;
 		return vo;
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
 	public String inquiryUpdateHandle(InquiryVO vo) throws Exception{
-		System.out.println(vo.toString());
-		int no = vo.getNO();
+		String date = vo.getTran_date();
 		inquiryDao.update(vo);
-		return "redirect: /inquiry/daily?no="+no;
+		return "redirect: /inquiry/daily?date="+date;
+	}
+	
+	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String inquiryDeleteHandle(InquiryVO vo) throws Exception{
+		String date = vo.getTran_date();
+		inquiryDao.delete(vo);
+		return "redirect: /inquiry/daily?date="+date;
 	}
 }

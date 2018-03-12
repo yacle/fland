@@ -71,7 +71,7 @@ input{
 			</tr>
 			<tr>
 				<td>S/#</td>
-				<td colspan="2"><input type="text" class="form-control" id="sn"></td>
+				<td colspan="2"><input type="text" class="form-control" id="serial"></td>
 			</tr>
 			<tr>
 				<td>발주일</td>
@@ -171,9 +171,9 @@ input{
 		</table>
 		<table id="table3">
 			<tr>
-				<td>시험의뢰&#8192;
-					<button type="button" onclick="add_test()" style="border-radius:5px; font-size: 13px;">+</button>&nbsp;
-					<button type="button" onclick="del_test()" style="border-radius:5px; font-size: 13px;">&#8210;</button>
+				<td>시험의뢰&nbsp;
+					<button type="button" onclick="add_test()" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
+					<button type="button" onclick="del_test()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
 				</td>
 				<td>염색견뢰도</td>
 				<td>축률</td>
@@ -182,7 +182,7 @@ input{
 			</tr>
 			<tbody id="test-tbody">
 				<tr>
-					<td><input type="text" size="6" class="testColor" style="text-align: center;"></td>
+					<td><input type="text" size="5" class="testColor" style="text-align: center; box-sizing: border-box;"></td>
 					<td><input type="checkbox" class="fastness"></td>
 					<td><input type="checkbox" class="reduction"></td>
 					<td><input type="checkbox" class="feeling"></td>
@@ -191,11 +191,11 @@ input{
 			</tbody>
 			<tr>
 				<td>기타사항</td>
-				<td colspan="4"><input type="text" class="form-control" style="text-align:left;"></td>
+				<td colspan="4"><textarea class="form-control" rows="3">야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람</textarea></td>
 			</tr>
 			<tr>
 				<td>주의사항</td>
-				<td colspan="4"><input type="text" class="form-control" style="text-align:left;"></td>
+				<td colspan="4"><textarea class="form-control" rows="2">포장전 B/T 색상과 자체 비교 요망</textarea></td>
 			</tr>
 			<tr>
 				<td>출고처</td>
@@ -244,7 +244,7 @@ $("#orderBtn").click(function(){
 		"data":{
 			"orderNo":$("#orderNo").val(),
 			"company":$("#company").val(),
-			"sn":$("#sn").val(),
+			"serial":$("#serial").val(),
 			"orderDate":$("#orderDate").val(),
 			"endDate":$("#endDate").val(),
 			"fabric":$("#fabric").val(),
@@ -289,4 +289,23 @@ $("#dyeSum").click(function(){
 		}
 	})
 })
+
+$("#dyeBtn").click(function(){
+	var testColorList=document.getElementsByClassName("testColor");
+	var fastnessList=document.getElementsByClassName("fastness");
+	var colorBtList=document.getElementsByClassName("colorBt");
+	var color = colorList[0].value;;
+	var orderLength = orderLengthList[0].value;
+	var colorBt = colorBtList[0].value;
+	for(var i=1; i<colorList.length; i++){
+		color += "/"+colorList[i].value;
+		orderLength += "/"+orderLengthList[i].value;
+		colorBt += "/"+colorBtList[i].value;
+	}
+})
+<td><input type="text" size="5" class="testColor" style="text-align: center; box-sizing: border-box;"></td>
+					<td><input type="checkbox" class="fastness"></td>
+					<td><input type="checkbox" class="reduction"></td>
+					<td><input type="checkbox" class="feeling"></td>
+					<td><input type="checkbox" class="skewness" ></td>
 </script>
