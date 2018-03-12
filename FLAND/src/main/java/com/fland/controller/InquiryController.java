@@ -438,7 +438,10 @@ ObjectMapper mapper;
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public void inquiryUpdateHandle(InquiryVO vo) throws Exception{
+	public String inquiryUpdateHandle(InquiryVO vo) throws Exception{
+		System.out.println(vo.toString());
+		int no = vo.getNO();
 		inquiryDao.update(vo);
+		return "redirect: /inquiry/daily?no="+no;
 	}
 }

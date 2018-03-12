@@ -25,7 +25,7 @@
 	<div class="row" style="margin-top: 100px">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4" align="center">
-			<a class="btn" href="/input">입 력</a>
+			<a class="btn" href="/input/expense">입 력</a>
 		</div>
 		<div class="col-lg-4" align="center">
 			<a class="btn" id="daily" href="">조 회</a>

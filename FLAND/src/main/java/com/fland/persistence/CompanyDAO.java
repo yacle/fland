@@ -24,4 +24,8 @@ public class CompanyDAO {
 	public CompanyVO companyRead(String NAME) {
 		return session.selectOne("company.companyRead", NAME);
 	}
+	
+	public void companyUpdate(CompanyVO vo) {
+		session.update("company.update", vo);
+	}
 }

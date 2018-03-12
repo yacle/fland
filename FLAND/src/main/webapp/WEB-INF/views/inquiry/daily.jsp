@@ -263,8 +263,8 @@
 	<div class="modal-dialog">
 <!-- Modal content-->
 		<div class="modal-content">
-			<div class="modal-body" style="padding:20px 30px;">
-				<form role="form" action="/inquiry/update" method="post">
+			<div class="modal-body" style="padding:20px 30px; text-align: center;">
+				<form role="form" action="/inquiry/update" method="POST">
 					<table width="100%">
 						<tr>
 							<td>구분</td>
@@ -294,9 +294,10 @@
 							<td>비고</td>
 							<td><input type="text" name="ETC" id="etc" value=""></td>
 						</tr>
-					</table>
+					</table><br/>
 					<input type="hidden" name="NO" value="">
-					<button type="submit" class="btn btn-success btn-block">수정</button>
+					<button type="submit" class="btn btn-success">수정</button>
+					<button type="button" class="btn btn-warning">삭제</button>
 				</form>
 			</div>
 		</div>

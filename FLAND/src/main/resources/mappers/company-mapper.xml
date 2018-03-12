@@ -32,4 +32,13 @@
 	<select id="companyRead" resultType="com.fland.domain.CompanyVO">
 		select * from client where name=#{NAME}
 	</select>
+	<update id="update">
+		update  client set dvs=#{dvs, jdbcType=VARCHAR}, item=#{item, jdbcType=VARCHAR}, person=#{person, jdbcType=VARCHAR}, 
+			email=#{email, jdbcType=VARCHAR}, phone_cell=#{phone_cell, jdbcType=VARCHAR}, phone_com=#{phone_com, jdbcType=VARCHAR}, 
+			fax=#{fax, jdbcType=VARCHAR}, address=#{address, jdbcType=VARCHAR}, bank=#{bank, jdbcType=VARCHAR},
+			account_num=#{account_num, jdbcType=VARCHAR}, account_name=#{account_name, jdbcType=VARCHAR}, 
+			license_num=#{license_num, jdbcType=VARCHAR}, type1=#{type1, jdbcType=VARCHAR}, type2=#{type2, jdbcType=VARCHAR}, 
+			ceo=#{ceo, jdbcType=VARCHAR}, clas=#{clas, jdbcType=VARCHAR}, refer=#{refer, jdbcType=VARCHAR}
+		where name=#{name}	
+	</update>
 </mapper>

@@ -37,8 +37,8 @@ public class CompanyController {
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String companyUpdateHandle(@RequestParam Map param) {
-		
+	public String companyUpdateHandle(CompanyVO vo) {
+		companydao.companyUpdate(vo);
 		return "redirect:/company/read";
 	}
 }

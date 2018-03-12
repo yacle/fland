@@ -91,8 +91,8 @@ function add_row() {
 </style>
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
-    <li><a href="/input"><b>수입</b></a></li>
     <li class="active"><a href=""><b>지출</b></a></li>
+    <li><a href="/input"><b>수입</b></a></li>
   </ul>
 </nav>
 <div align="center" >

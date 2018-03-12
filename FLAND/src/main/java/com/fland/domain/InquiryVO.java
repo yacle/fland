@@ -78,4 +78,10 @@ public class InquiryVO {
 	public void setBEGIN_BAL(int bEGIN_BAL) {
 		BEGIN_BAL = bEGIN_BAL;
 	}
+	@Override
+	public String toString() {
+		return "InquiryVO [NO=" + NO + ", div=" + div + ", TRAN_DATE=" + TRAN_DATE + ", ACCOUNT=" + ACCOUNT
+				+ ", METHOD=" + METHOD + ", CLIENT=" + CLIENT + ", ITEM=" + ITEM + ", DETAIL=" + DETAIL + ", BEGIN_BAL="
+				+ BEGIN_BAL + ", SUM=" + SUM + ", ETC=" + ETC + "]";
+	}
 }
