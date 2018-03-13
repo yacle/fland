@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
+// 발주서 컬러별 수량
 function add_row() {
 	var my_tbody1 = document.getElementById('my-tbody1');
 	var row = my_tbody1.insertRow(my_tbody1.rows.length);
@@ -8,17 +9,15 @@ function add_row() {
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 	cell1.innerHTML = '<input type="text" class="form-control color">' ;
-	cell2.innerHTML = '<input type="number" class="form-control ttl" style="text-align: right;" placeholder="YD">';
+	cell2.innerHTML = '<input type="number" class="form-control ttl" placeholder="YD">';
     cell3.innerHTML = '<input type="text" class="form-control colorBt">';
-    
-  }
-
+}
 function del_row() {
 	var my_tbody1 = document.getElementById('my-tbody1');
 	if (my_tbody1.rows.length < 1) return;
 	my_tbody1.deleteRow( my_tbody1.rows.length-1 );
 }	
-  
+// 염색의뢰서 테스트 의뢰  
 function add_test(){
 	var test_tbody = document.getElementById('test-tbody');
 	var test_row = test_tbody.insertRow(test_tbody.rows.length);
@@ -32,32 +31,81 @@ function del_test(){
 	if (test_tbody.rows.length < 1) return;
 	test_tbody.deleteRow( test_tbody.rows.length-1 );
 }
+// 편직의뢰서 01
+function add_knit1() {
+	var my_tbody4 = document.getElementById('my-tbody4');
+	var row4 = my_tbody4.insertRow(my_tbody4.rows.length);
+	var cell41 = row4.insertCell(0);
+	var cell42 = row4.insertCell(1);
+	var cell43 = row4.insertCell(2);
+	var cell44 = row4.insertCell(3);
+	cell41.innerHTML = '<input type="text" class="form-control thread1" placeholder="사종">';
+	cell42.innerHTML = '<input type="number" class="form-control ratio1" placeholder="%">';
+	cell43.innerHTML = '<input type="text" class="form-control thread_com1" placeholder="원사업체">';
+	cell44.innerHTML = '<input type="text" class="form-control lot1" placeholder="lot">';
+}
+function del_knit1(){
+	var my_tbody4 = document.getElementById('my-tbody4');
+	if (my_tbody4.rows.length < 1) return;
+	my_tbody4.deleteRow( my_tbody4.rows.length-1 );
+}
+//편직의뢰서 02
+function add_knit2() {
+	var my_tbody5 = document.getElementById('my-tbody5');
+	var row5 = my_tbody5.insertRow(my_tbody5.rows.length);
+	var cell51 = row5.insertCell(0);
+	var cell52 = row5.insertCell(1);
+	var cell53 = row5.insertCell(2);
+	var cell54 = row5.insertCell(3);
+	cell51.innerHTML = '<input type="text" class="form-control thread2" placeholder="사종">';
+	cell52.innerHTML = '<input type="number" class="form-control ratio2" placeholder="%">';
+	cell53.innerHTML = '<input type="text" class="form-control thread_com2" placeholder="원사업체">';
+	cell54.innerHTML = '<input type="text" class="form-control lot2" placeholder="lot">';
+}
+function del_knit1(){
+	var my_tbody4 = document.getElementById('my-tbody4');
+	if (my_tbody4.rows.length < 1) return;
+	my_tbody4.deleteRow( my_tbody4.rows.length-1 );
+}
 </script>
 <style>
-.col-lg-3{
+.col-lg-4{
 	border: none;
     padding: 10px;
+    text-align: center;
 }
-#table1, #table2, #table3{
+.table1, .table2, .table3, .table4, .table5{
 	border-collapse: separate;
 	border-spacing: 10px;
 	width: 95%;
 }
-td{
+td, th{
 	text-align: center;
 }
 input{
 	text-align: right;
+	box-sizing: border-box;
+	text-align:center;
+}
+.title{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #A9A9A9;
+    color: black;
+    text-align: center;
 }
 </style>
 <div class="row">
-	<div class="col-lg-3">	
-		<h1 align="center"><strong>[발주서]</strong></h1>
-		<table id="table1">
+	<div class="col-lg-4">	
+		<h3 class="title">발주서</h3>
+		<table class="table1">
 		<tbody>
 			<tr>
 				<td width=30%>Order No</td>
-				<td colspan="2"><input type="text" class="form-control" id="orderNo"></td>
+				<td colspan="2"><input type="text" class="form-control" id="orderNo" required></td>
 			</tr>
 			<tr>
 				<td>발주처</td>
@@ -85,7 +133,7 @@ input{
 			</tr>
 			<tr>
 				<td>가공중량</td>
-				<td colspan="2"><input type="number" class="form-control" id="workWeight" placeholder="g/yd"></td>
+				<td colspan="2"><input type="number" class="form-control" id="workWeight" placeholder="g/yd" required></td>
 			</tr>
 			<tr align="center">
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">
@@ -122,49 +170,45 @@ input{
 		</table>
 		<button type="button" class="btn btn-primary" id="orderBtn">저장</button>
 	</div>
-	<div class="col-lg-3">
-		<h1 align="center"><strong>[염색의뢰서]</strong></h1>
-		<table id="table2">
+	<div class="col-lg-4">
+		<h3 class="title">염색의뢰서</h3>
+		<table class="table2">
 			<tr>
 				<td width="30%">LOSS %</td>
-				<td width="30%"><input type="number" class="form-control" id="loss"></td>
-				<td rowspan="2"><button type="button" id="dyeSum">계산</button></td>
+				<td width="30%"><input type="number" class="form-control" id="loss" placeholder="ex)1.15"></td>
+				<td colspan="2" rowspan="2"><button type="button" id="dyeSum" class="btn btn-success">계산</button></td>
 			</tr>
 			<tr>
 				<td>KG/절</td>
 				<td ><input type="number" class="form-control" id="perkg"></td>
 			</tr>
 			<tr align="center">
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">편직그룹</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">절수</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">수량(KG)</td>
 			</tr>
 			<tbody id="my-tbody2">
-				<tr>
-					<td><span class="dyeColor"></span></td>
-					<td><input type="number" id="roll" class="form-control ttl2" placeholder="절"></td>
-					<td><input type="number" id="kg" class="form-control" placeholder="KG"></td>
-				</tr>
 			</tbody>
 			<tr>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">원단혼용율</td>
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;" colspan="2">
-					<input type="text" id="mixed" class="form-control" style="text-align:center;" >
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;" colspan="3">
+					<input type="text" id="mixed" class="form-control">
 				</td>
 			</tr>
 			<tr>
 				<td>가공방법</td>
-				<td colspan="2"><input type="text" id="method" class="form-control" style="text-align:center;"></td>
+				<td colspan="3"><input type="text" id="method" class="form-control"></td>
 			</tr>
 			<tr>
 				<td>세부사항</td>
-				<td colspan="2"><input type="text" id="detail" class="form-control" style="text-align:center;"></td>
+				<td colspan="3"><input type="text" id="detail" class="form-control"></td>
 			</tr>
 			<tr>
 		</table>
-		<table id="table3">
+		<table class="table3">
 			<tr>
-				<td>시험의뢰&nbsp;
+				<td width="30%">시험의뢰&nbsp;
 					<button type="button" onclick="add_test()" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
 					<button type="button" onclick="del_test()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
 				</td>
@@ -172,8 +216,8 @@ input{
 			</tr>
 			<tbody id="test-tbody">
 				<tr>
-					<td><input type="text" size="5" class="form-control testColor" style="text-align: center; box-sizing: border-box;"></td>
-					<td><input type="text" class="form-control test"></td>
+					<td><input type="text" size="5" class="form-control testColor" placeholder="컬러명"></td>
+					<td><input type="text" class="form-control test" placeholder="테스트내용"></td>
 				</tr>
 			</tbody>
 			<tr>
@@ -185,17 +229,132 @@ input{
 				<td><textarea id="caution" class="form-control" rows="2">포장전 B/T 색상과 자체 비교 요망</textarea></td>
 			</tr>
 			<tr>
+				<td>생지출고처</td>
+				<td><input type="text" id="knitcompany" class="form-control" style="text-align:left;"></td>
+			</tr>
+			<tr>
+				<td>염색처</td>
+				<td><input type="text" id="dyecompany" class="form-control" style="text-align:left;"></td>
+			</tr>
+			<tr>
 				<td>출고처</td>
 				<td><input type="text" id="delivery" class="form-control" style="text-align:left;"></td>
 			</tr>
 		</table>
 		<button type="button" class="btn btn-primary" id="dyeBtn">저장</button>
 	</div>
-	<div class="col-lg-3">
-		편직의뢰서
-	</div>
-	<div class="col-lg-3">
-		원사발주서
+	<div class="col-lg-4">
+		<h3 class="title">편직의뢰서</h3>
+		<table class="table4">
+			<thead>
+				<tr>
+					<th colspan="4">편직의뢰서 01</th>
+				</tr>
+				<tr>
+					<th>&#10020; 절수</th>
+					<th><input type="number" name="roll"class="form-control" placeholder="절"></th>
+					<th>&#10020; 총중량</th>
+					<th><input type="number" name="kgttl"class="form-control" placeholder="kg"></th>
+				</tr>
+				<tr>
+					<th>편직처</th>
+					<th colspan="3"><input type="text" name="knitcompany1" class="form-control" placeholder="편직처"></th>
+				</tr>
+				<tr>
+					<th>사종
+						<button type="button" onclick="add_knit1()" style="border-radius:5px; font-size: 10px;">+</button>
+						<button type="button" onclick="del_knit1()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
+					</th>
+					<th>비율</th>
+					<th>업체</th>
+					<th>LOT</th>
+				</tr>
+			</thead>
+			<tbody class="my-tbody4">
+				<tr>
+					<td><input type="text" class="form-control thread1" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio1" placeholder="%"></td>
+					<td><input type="text" class="form-control thread_com1" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control lot1" placeholder="lot"></td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table4" style="display: none;">
+			<tr>
+				<th>인치</th>
+				<th>게이지</th>
+				<th>침수</th>
+				<th>조직</th>
+				<th>루프장</th>
+			</tr>
+			<tr>
+				<td><input type="number" name="inch" class="form-control"></td>
+				<td><input type="number" name="gage" class="form-control"></td>
+				<td><input type="number" name="niddle" class="form-control"></td>
+				<td><input type="text" name="organ" class="form-control"></td>
+				<td><input type="number" name="loop" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>출고처</td>
+				<td colspan="4"><input type="text" name="delivery" class="form-control"></td>
+			</tr>
+		</table>
+		<hr/>
+		<table class="table5" style="display: none;">
+			<thead>
+				<tr>
+					<th colspan="4">[편직의뢰서 02]</th>
+				</tr>
+				<tr>
+					<th>&#10020; 절수</th>
+					<th><input type="number" name="roll"class="form-control" placeholder="절"></th>
+					<th>&#10020; 총중량</th>
+					<th><input type="number" name="kgttl"class="form-control" placeholder="kg"></th>
+				</tr>
+				<tr>
+					<th>편직처</th>
+					<th colspan="3"><input type="text" name="knitcompany2" class="form-control" placeholder="편직처"></th>
+				</tr>
+				<tr>
+					<th>사종
+						<button type="button" onclick="add_knit2()" style="border-radius:5px; font-size: 10px;">+</button>
+						<button type="button" onclick="del_knit2()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
+					</th>
+					<th>비율</th>
+					<th>업체</th>
+					<th>LOT</th>
+				</tr>
+			</thead>
+			<tbody id="my-tbody5">
+				<tr>
+					<td><input type="text" class="form-control thread2" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio2" placeholder="%"></td>
+					<td><input type="text" class="form-control thread_com2" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control lot2" placeholder="lot"></td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table5" style="display: none;">
+			<tr>
+				<th>인치</th>
+				<th>게이지</th>
+				<th>침수</th>
+				<th>조직</th>
+				<th>루프장</th>
+			</tr>
+			<tr>
+				<td><input type="number" name="inch" class="form-control"></td>
+				<td><input type="number" name="gage" class="form-control"></td>
+				<td><input type="number" name="niddle" class="form-control"></td>
+				<td><input type="text" name="organ" class="form-control"></td>
+				<td><input type="number" name="loop" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>출고처</td>
+				<td colspan="4"><input type="text" name="delivery" class="form-control"></td>
+			</tr>
+		</table>
+		<button type="button" class="btn btn-primary" id="knitBtn">저장</button>
 	</div>
 </div>
 	
@@ -210,9 +369,8 @@ $(document).on('change','.ttl', function(){
 	$("#ttl").html("<b>"+total+"</b>");
 })
 
-
+// 발주서 저장버튼
 $("#orderBtn").click(function(){
-	
 	var colorList=document.getElementsByClassName("color");
 	var orderLengthList=document.getElementsByClassName("ttl");
 	var colorBtList=document.getElementsByClassName("colorBt");
@@ -248,14 +406,15 @@ $("#orderBtn").click(function(){
 		}
 	})
 })
+// 염색의뢰서 컬러별 절수계산 버튼
 $("#dyeSum").click(function(){
 	var colorList=document.getElementsByClassName("color");
 	var orderLengthList=document.getElementsByClassName("ttl");
 	var color = colorList[0].value;;
 	var orderLength = orderLengthList[0].value;
 	for(var i=1; i<colorList.length; i++){
-		color += "&"+colorList[i].value;
-		orderLength += "&"+orderLengthList[i].value;
+		color += "/"+colorList[i].value;
+		orderLength += "/"+orderLengthList[i].value;
 	}
 	var workWeight = $("#workWeight").val();
 	var loss = $("#loss").val();
@@ -272,19 +431,19 @@ $("#dyeSum").click(function(){
 			"workWeight": workWeight
 		},
 		success:function(obj){
-			$("#my-tbody2").html(obj);
+//			$("#my-tbody2").html(obj);
 		}
 	})
 })
-
+// 염색의뢰서 저장 버튼
 $("#dyeBtn").click(function(){
 	var testColorList=document.getElementsByClassName("testColor");
 	var testList=document.getElementsByClassName("test");
 	var testColor = testColorList[0].value;
 	var test = testList[0].value;
 	for(var i=1; i<testColorList.length; i++){
-		testColor += "/"+testColorList[i].value;
-		test += "/"+ testList[i].value;
+		testColor += "&"+testColorList[i].value;
+		test += "&"+ testList[i].value;
 	}
 	$.ajax({
 		"type":"POST",
@@ -304,8 +463,21 @@ $("#dyeBtn").click(function(){
 			"test":test
 		},
 		success:function(){
-			console.log("dye");
+			var groupList = document.getElementsByClassName("group");
+			var sum=0;
+			for(var i=0; i<groupList.length; i++){
+				sum += groupList[i].value;					
+			}
+			if(sum>groupList.length){
+				$(".table5").css("display", "inline");
+			}else{
+				$(".table5").css("display", "none");
+			}
 		}
 	})
+})
+// 편직의뢰서 저장버튼
+$("#knitBtn").click(function(){
+	
 })
 </script>

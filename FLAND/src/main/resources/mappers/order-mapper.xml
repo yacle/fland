@@ -40,4 +40,8 @@
 			etc=#{etc, jdbcType=VARCHAR}
 		where orderno=#{orderno}
 	</update>
+	<insert id="dyeadd">
+		insert into dye_tbl (orderno,loss,perkg,mixed,method,detail,etc,caution,delivery,testcolor,test)
+			values(#{orderno},#{loss},#{perkg},#{mixed},#{method},#{detail},#{etc},#{caution},#{delivery},#{testcolor},#{test})
+	</insert>
 </mapper>

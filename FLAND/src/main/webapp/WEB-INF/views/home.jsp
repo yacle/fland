@@ -35,7 +35,9 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4" align="center">
-			<a class="btn" href="/order/order"><b>ORDER</b></a>
+			<div class="btn" style="padding:30px 80px 50px 80px;"><b>ORDER</b><br/>
+				<span style="font-size: 35px;"><a href="/order/new">NEW</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/order/orderList">LIST</a></span>
+			</div>
 		</div>
 		<div class="col-lg-4" align="center">
 			<a class="btn" href="/company/read">거래처</a>

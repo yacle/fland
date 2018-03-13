@@ -77,7 +77,13 @@ public class SumCount {
 			Double length = Double.parseDouble(orderLength[i]);
 			Double a = (loss*length*(workWeight/1000))/perkg;
 			html += "<tr>"+
-						"<td>"+color[i]+"</td>"+
+						"<td width='10%' style='text-align:left'>"+
+							"<select class='form-control group'>"+
+								"<option>1</option>"+
+								"<option>2</option>"+
+							"</select>"+
+						"</td>"+
+						"<td>"+color[i]+"</td>"+	
 						"<td>"+Math.ceil(a)+"</td>"+
 						"<td>"+(Math.ceil(a)*perkg)+
 							"(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
@@ -86,10 +92,10 @@ public class SumCount {
 			perkgTotal += Math.ceil(a)*perkg;
 		}
 		html += "<tr>"+
-				"<td>TOTAL</td>"+
-				"<td>"+rollTotal+"</td>"+
-				"<td>"+perkgTotal+"</td>"+
-			"<tr>";
+					"<td colspan='2'>TOTAL</td>"+
+					"<td><b>"+rollTotal+"</b></td>"+
+					"<td><b><span id='perkgTotal'>"+perkgTotal+"</span></b></td>"+
+				"<tr>";
 		return html;
 	}
 

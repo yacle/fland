@@ -23,4 +23,8 @@ public class OrderDAO {
 	public void orderUpdate(Map map) {
 		session.update("order.update", map);
 	}
+	
+	public void dyeAdd(Map map) {
+		session.insert("order.dyeadd", map);
+	}
 }

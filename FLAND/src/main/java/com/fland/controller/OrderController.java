@@ -21,10 +21,17 @@ public class OrderController {
 	@Inject
 	OrderDAO orderdao;
 	
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView incomeAdd() throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "order/order");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
+	public ModelAndView orderList() throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		mav.addObject("section", "order/orderList");
 		return mav;
 	}
 	
