@@ -32,37 +32,21 @@ function del_test(){
 	test_tbody.deleteRow( test_tbody.rows.length-1 );
 }
 // 편직의뢰서 01
-function add_knit1() {
+function add_knit() {
 	var my_tbody4 = document.getElementById('my-tbody4');
 	var row4 = my_tbody4.insertRow(my_tbody4.rows.length);
 	var cell41 = row4.insertCell(0);
 	var cell42 = row4.insertCell(1);
 	var cell43 = row4.insertCell(2);
 	var cell44 = row4.insertCell(3);
-	cell41.innerHTML = '<input type="text" class="form-control thread1" placeholder="사종">';
-	cell42.innerHTML = '<input type="number" class="form-control ratio1" placeholder="%">';
-	cell43.innerHTML = '<input type="text" class="form-control thread_com1" placeholder="원사업체">';
-	cell44.innerHTML = '<input type="text" class="form-control lot1" placeholder="lot">';
+	var cell45 = row4.insertCell(4);
+	cell41.innerHTML = '<input type="text" class="form-control thread" placeholder="사종">';
+	cell42.innerHTML = '<input type="number" class="form-control ratio" placeholder="%">';
+	cell43.innerHTML = '<input type="number" class="form-control Knitweight" placeholder="kg">';
+	cell44.innerHTML = '<input type="text" class="form-control thread_com" placeholder="원사업체">';
+	cell45.innerHTML = '<input type="text" class="form-control lot" placeholder="lot">';
 }
-function del_knit1(){
-	var my_tbody4 = document.getElementById('my-tbody4');
-	if (my_tbody4.rows.length < 1) return;
-	my_tbody4.deleteRow( my_tbody4.rows.length-1 );
-}
-//편직의뢰서 02
-function add_knit2() {
-	var my_tbody5 = document.getElementById('my-tbody5');
-	var row5 = my_tbody5.insertRow(my_tbody5.rows.length);
-	var cell51 = row5.insertCell(0);
-	var cell52 = row5.insertCell(1);
-	var cell53 = row5.insertCell(2);
-	var cell54 = row5.insertCell(3);
-	cell51.innerHTML = '<input type="text" class="form-control thread2" placeholder="사종">';
-	cell52.innerHTML = '<input type="number" class="form-control ratio2" placeholder="%">';
-	cell53.innerHTML = '<input type="text" class="form-control thread_com2" placeholder="원사업체">';
-	cell54.innerHTML = '<input type="text" class="form-control lot2" placeholder="lot">';
-}
-function del_knit1(){
+function del_knit(){
 	var my_tbody4 = document.getElementById('my-tbody4');
 	if (my_tbody4.rows.length < 1) return;
 	my_tbody4.deleteRow( my_tbody4.rows.length-1 );
@@ -70,7 +54,6 @@ function del_knit1(){
 </script>
 <style>
 .col-lg-4{
-	border: none;
     padding: 10px;
     text-align: center;
 }
@@ -79,8 +62,16 @@ function del_knit1(){
 	border-spacing: 10px;
 	width: 95%;
 }
+.center{
+	border-left: 1px dotted blue;
+	border-right: 1px dotted blue;
+}
+.table5{
+	display: none;
+}
 td, th{
 	text-align: center;
+	font-weight: bold;
 }
 input{
 	text-align: right;
@@ -109,7 +100,8 @@ input{
 			</tr>
 			<tr>
 				<td>발주처</td>
-				<td colspan="2"><input type="text" class="form-control" id="company"></td>
+				<td><input type="text" class="form-control" id="company" placeholder="발주회사"></td>
+				<td><input type="text" class="form-control" id="person" placeholder="담당자"></td>
 			</tr>
 			<tr>
 				<td>S/#</td>
@@ -170,20 +162,19 @@ input{
 		</table>
 		<button type="button" class="btn btn-primary" id="orderBtn">저장</button>
 	</div>
-	<div class="col-lg-4">
+	<div class="col-lg-4 center">
 		<h3 class="title">염색의뢰서</h3>
 		<table class="table2">
 			<tr>
 				<td width="30%">LOSS %</td>
 				<td width="30%"><input type="number" class="form-control" id="loss" placeholder="ex)1.15"></td>
-				<td colspan="2" rowspan="2"><button type="button" id="dyeSum" class="btn btn-success">계산</button></td>
+				<td rowspan="2"><button type="button" id="dyeSum" class="btn btn-success">계산</button></td>
 			</tr>
 			<tr>
 				<td>KG/절</td>
 				<td ><input type="number" class="form-control" id="perkg"></td>
 			</tr>
 			<tr align="center">
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">편직그룹</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">절수</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">수량(KG)</td>
@@ -192,17 +183,17 @@ input{
 			</tbody>
 			<tr>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">원단혼용율</td>
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;" colspan="3">
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px;" colspan="2">
 					<input type="text" id="mixed" class="form-control">
 				</td>
 			</tr>
 			<tr>
 				<td>가공방법</td>
-				<td colspan="3"><input type="text" id="method" class="form-control"></td>
+				<td colspan="2"><input type="text" id="method" class="form-control"></td>
 			</tr>
 			<tr>
 				<td>세부사항</td>
-				<td colspan="3"><input type="text" id="detail" class="form-control"></td>
+				<td colspan="2"><input type="text" id="detail" class="form-control"></td>
 			</tr>
 			<tr>
 		</table>
@@ -222,7 +213,7 @@ input{
 			</tbody>
 			<tr>
 				<td>기타사항</td>
-				<td><textarea id="etc" class="form-control" rows="3">야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람</textarea></td>
+				<td><textarea id="dyeetc" class="form-control" rows="3">야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람</textarea></td>
 			</tr>
 			<tr>
 				<td>주의사항</td>
@@ -246,114 +237,58 @@ input{
 	<div class="col-lg-4">
 		<h3 class="title">편직의뢰서</h3>
 		<table class="table4">
-			<thead>
-				<tr>
-					<th colspan="4">편직의뢰서 01</th>
-				</tr>
-				<tr>
-					<th>&#10020; 절수</th>
-					<th><input type="number" name="roll"class="form-control" placeholder="절"></th>
-					<th>&#10020; 총중량</th>
-					<th><input type="number" name="kgttl"class="form-control" placeholder="kg"></th>
-				</tr>
-				<tr>
-					<th>편직처</th>
-					<th colspan="3"><input type="text" name="knitcompany1" class="form-control" placeholder="편직처"></th>
-				</tr>
-				<tr>
-					<th>사종
-						<button type="button" onclick="add_knit1()" style="border-radius:5px; font-size: 10px;">+</button>
-						<button type="button" onclick="del_knit1()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
-					</th>
-					<th>비율</th>
-					<th>업체</th>
-					<th>LOT</th>
-				</tr>
-			</thead>
-			<tbody class="my-tbody4">
-				<tr>
-					<td><input type="text" class="form-control thread1" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio1" placeholder="%"></td>
-					<td><input type="text" class="form-control thread_com1" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control lot1" placeholder="lot"></td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table4" style="display: none;">
 			<tr>
-				<th>인치</th>
-				<th>게이지</th>
-				<th>침수</th>
-				<th>조직</th>
-				<th>루프장</th>
+				<td width="15%">&#10020; 절수</td>
+				<td><input type="number" id="roll"class="form-control" placeholder="절" readonly></td>
+				<td width="15%">&#10020; 총중량</td>
+				<td><input type="number" id="kgttl"class="form-control" placeholder="kg" readonly></td>
 			</tr>
 			<tr>
-				<td><input type="number" name="inch" class="form-control"></td>
-				<td><input type="number" name="gage" class="form-control"></td>
-				<td><input type="number" name="niddle" class="form-control"></td>
-				<td><input type="text" name="organ" class="form-control"></td>
-				<td><input type="number" name="loop" class="form-control"></td>
+				<td>편직처</td>
+				<td colspan="3"><input type="text" id="knitcompany" class="form-control" placeholder="편직처"></td>
 			</tr>
 			<tr>
 				<td>출고처</td>
-				<td colspan="4"><input type="text" name="delivery" class="form-control"></td>
+				<td colspan="3"><input type="text" id="delivery" class="form-control" placeholder="출고처"></td>
 			</tr>
 		</table>
-		<hr/>
-		<table class="table5" style="display: none;">
-			<thead>
+		<table class="table4">
+			<tr>
+				<td>인치</td>
+				<td>게이지</td>
+				<td>침수</td>
+				<td>조직</td>
+				<td>루프장</td>
+			</tr>
+			<tr>
+				<td><input type="number" id="inch" class="form-control"></td>
+				<td><input type="number" id="gage" class="form-control"></td>
+				<td><input type="number" id="niddle" class="form-control"></td>
+				<td><input type="text" id="organ" class="form-control"></td>
+				<td><input type="number" id="loop" class="form-control"></td>
+			</tr>
+		</table>
+		<table class="table4">
+			<tr>
+				<td width="35%">사종
+					<button type="button" onclick="add_knit()" style="border-radius:5px; font-size: 10px;">+</button>
+					<button type="button" onclick="del_knit()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
+				</td>
+				<td width="15%">비율</td>
+				<td width="15%">중량</td>
+				<td width="25%">업체</td>
+				<td width="10%">LOT</td>
+			</tr>	
+			<tbody id="my-tbody4">
 				<tr>
-					<th colspan="4">[편직의뢰서 02]</th>
-				</tr>
-				<tr>
-					<th>&#10020; 절수</th>
-					<th><input type="number" name="roll"class="form-control" placeholder="절"></th>
-					<th>&#10020; 총중량</th>
-					<th><input type="number" name="kgttl"class="form-control" placeholder="kg"></th>
-				</tr>
-				<tr>
-					<th>편직처</th>
-					<th colspan="3"><input type="text" name="knitcompany2" class="form-control" placeholder="편직처"></th>
-				</tr>
-				<tr>
-					<th>사종
-						<button type="button" onclick="add_knit2()" style="border-radius:5px; font-size: 10px;">+</button>
-						<button type="button" onclick="del_knit2()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
-					</th>
-					<th>비율</th>
-					<th>업체</th>
-					<th>LOT</th>
-				</tr>
-			</thead>
-			<tbody id="my-tbody5">
-				<tr>
-					<td><input type="text" class="form-control thread2" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio2" placeholder="%"></td>
-					<td><input type="text" class="form-control thread_com2" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control lot2" placeholder="lot"></td>
+					<td><input type="text" class="form-control thread" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" placeholder="%"></td>
+					<td><input type="number" class="form-control Knitweight" placeholder="kg"></td>
+					<td><input type="text" class="form-control thread_com" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control lot" placeholder="lot"></td>
 				</tr>
 			</tbody>
-		</table>
-		<table class="table5" style="display: none;">
-			<tr>
-				<th>인치</th>
-				<th>게이지</th>
-				<th>침수</th>
-				<th>조직</th>
-				<th>루프장</th>
-			</tr>
-			<tr>
-				<td><input type="number" name="inch" class="form-control"></td>
-				<td><input type="number" name="gage" class="form-control"></td>
-				<td><input type="number" name="niddle" class="form-control"></td>
-				<td><input type="text" name="organ" class="form-control"></td>
-				<td><input type="number" name="loop" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>출고처</td>
-				<td colspan="4"><input type="text" name="delivery" class="form-control"></td>
-			</tr>
-		</table>
+		</table><hr/>
 		<button type="button" class="btn btn-primary" id="knitBtn">저장</button>
 	</div>
 </div>
@@ -389,6 +324,7 @@ $("#orderBtn").click(function(){
 		"data":{
 			"orderno":$("#orderNo").val(),
 			"company":$("#company").val(),
+			"person":$("#person").val(),
 			"serial":$("#serial").val(),
 			"orderdate":$("#orderDate").val(),
 			"enddate":$("#endDate").val(),
@@ -402,7 +338,12 @@ $("#orderBtn").click(function(){
 			"etc":$("#etc").html()
 		},
 		success:function(obj){
-			$("#my-tbody2").html(obj);
+			if(obj=='new'){
+				window.alert("신규저장 완료");
+			}else{
+				window.alert("업데이트 완료");
+			}
+			$("#orderNo").attr("disabled", true);
 		}
 	})
 })
@@ -431,7 +372,7 @@ $("#dyeSum").click(function(){
 			"workWeight": workWeight
 		},
 		success:function(obj){
-//			$("#my-tbody2").html(obj);
+			$("#my-tbody2").html(obj);
 		}
 	})
 })
@@ -448,7 +389,7 @@ $("#dyeBtn").click(function(){
 	$.ajax({
 		"type":"POST",
 		"async":false,
-		"url":"/order/dye",
+		"url":"/order/dyeAdd",
 		"data":{
 			"orderno":$("#orderNo").val(),
 			"loss":$("#loss").val(),
@@ -456,28 +397,79 @@ $("#dyeBtn").click(function(){
 			"mixed":$("#mixed").val(),
 			"method":$("#method").val(),
 			"detail":$("#detail").val(),
-			"etc":$("#etc").html(),
+			"dyeetc":$("#dyeetc").html(),
 			"caution":$("#caution").html(),
+			"knitcompany":$("#knitcompany").val(),
+			"dyecompany":$("#dyecompany").val(),
 			"delivery":$("#delivery").val(),
 			"testcolor":testColor,
 			"test":test
 		},
 		success:function(){
-			var groupList = document.getElementsByClassName("group");
-			var sum=0;
-			for(var i=0; i<groupList.length; i++){
-				sum += groupList[i].value;					
-			}
-			if(sum>groupList.length){
-				$(".table5").css("display", "inline");
-			}else{
-				$(".table5").css("display", "none");
-			}
+			var rollTotal = $("#rollTotal").html();
+			var perkgTotal = $("#perkgTotal").html();
+			$("#roll").val(rollTotal);
+			$("#kgttl").val(perkgTotal);
 		}
 	})
 })
+// 편직의뢰서 저장 function
+function knitAdd1(){
+	var thread=[];
+	var ratio=[];
+	var weight=[];
+	var thread_com=[];
+	var lot=[];
+	var thread1 = document.getElementsByClassName("thread");
+	var ratio1 = document.getElementsByClassName("ratio");
+	var weight1 = document.getElementsByClassName("knitweight");
+	var thread_com1 = document.getElementsByClassName("thread_com");
+	var lot1 = document.getElementsByClassName("lot");
+	for(var i=0; i<thread1.length; i++){
+		thread.push(thread1[i].value);
+		ratio.push(ratio1[i].value);
+		weight.push(weight1[i].value);
+		thread_com.push(thread_com1[i].value);
+		lot.push(lot1[i].value);
+	}
+	var thread1_json = JSON.stringify(thread);
+	var ratio1_json = JSON.stringify(ratio);
+	var weitht1_json = JSON.stringify(weight)
+	var thread_com1_json = JSON.stringify(thread_com);
+	var lot1_json = JSON.stringify(lot);
+	$.ajax({
+		"type":"POST",
+		"async":false,
+		"url":"/order/knitAdd",
+		"data":{
+			"orderno":$("#orderNo").val(),
+			"thread":thread1_json,
+			"ratio":ratio1_json,
+			"weight":weight_json,
+			"thread_com":thread_com1_json,
+			"lot":lot1_json,
+			"roll":$("#roll").val(),
+			"kgttl":$("#kgttl").val(),
+			"knitcompany":$("#knitcompany").val(),
+			"delivery":$("#delivery").val(),
+			"inch":$("#inch").val(),
+			"gage":$("#gage").val(),
+			"niddle":$("#niddle").val(),
+			"organ":$("#organ").val(),
+			"loop":$("#loop").val()
+		},
+		success:function(){
+			
+		}
+	})
+}
 // 편직의뢰서 저장버튼
 $("#knitBtn").click(function(){
-	
+	var ratio = document.getElementsByClassName("ratio");
+	var total = 0;
+	for(var i=0; i<ratio.length; i++){
+		total += parseInt(ratio[i].value);
+	}
+	knitAdd1();
 })
 </script>

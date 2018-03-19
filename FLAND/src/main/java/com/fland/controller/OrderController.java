@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fland.domain.Criteria;
+import com.fland.domain.PageMaker;
 import com.fland.domain.SumCount;
 import com.fland.persistence.CompanyDAO;
 import com.fland.persistence.OrderDAO;
@@ -29,28 +31,28 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
-	public ModelAndView orderList() throws Exception {
+	public ModelAndView orderList(Criteria cri) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "order/orderList");
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(orderdao.countPaging(cri));
+		mav.addObject("list", orderdao.listCriteria(cri));
+		mav.addObject("pageMaker", pageMaker);
 		return mav;
 	}
 	
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	@ResponseBody
 	public String orderAdd(@RequestParam Map map)  throws Exception {
-		String color = (String) map.get("color");
-		String html = SumCount.orderSum(color);
 		String orderno = (String)map.get("orderno");
-		if(orderno==null) {
-			return html;
+		int r = orderdao.orderRead(orderno);
+		if(r==0) {
+			orderdao.orderAdd(map);
+			return "new";
 		}else {
-			int r = orderdao.orderRead(orderno);
-			if(r==0) {
-				orderdao.orderAdd(map);
-			}else {
-				orderdao.orderUpdate(map);
-			}
-			return html;
+			orderdao.orderUpdate(map);
+			return "update";
 		}
 	}
 	
@@ -61,10 +63,17 @@ public class OrderController {
 		return rollList;
 	}
 	
-	@RequestMapping(value = "/dye", method = RequestMethod.POST)
+	@RequestMapping(value = "/dyeAdd", method = RequestMethod.POST)
 	@ResponseBody
 	public String dyeAdd(@RequestParam Map map) throws Exception{
-		System.out.println(map.toString());
+		orderdao.dyeAdd(map);
+		return "";
+	}
+	
+	@RequestMapping(value = "/knitAdd", method = RequestMethod.POST)
+	@ResponseBody
+	public String knitAdd(@RequestParam Map map) throws Exception{
+		orderdao.knitAdd(map);
 		return "";
 	}
 }

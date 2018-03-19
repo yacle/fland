@@ -3,29 +3,32 @@ package com.fland.domain;
 
 public class OrderVO {
 	private int no;
-	private String orderNo;		// order 번호
+	private String orderno;		// order 번호
 	private String company;		// 발주처
 	private String sn;			// 시리얼번호
-	private String orderDate;	// 발주일자
-	private String endDate;		// 마감일자
+	private String orderdate;	// 발주일자
+	private String enddate;		// 마감일자
 	private String fabric;		// 품명
-	private int workWidth;		// 가공폭
-	private int workWeight;		// 가공중량
+	private int workwidth;		// 가공폭
+	private int workweight;		// 가공중량
 	private String color;	// 색상
-	private String orderLength;	// 발주량
-	private String colorBt;		// B/T
+	private String orderlength;	// 발주량
+	private String colorbt;		// B/T
 	private int price;			// 단가
+	private String etc;			// 기타
+	private String person;		// 발주
+	
 	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getOrderNo() {
-		return orderNo;
+	public String getOrderno() {
+		return orderno;
 	}
-	public void setOrderNo(String orderNo) {
-		this.orderNo = orderNo;
+	public void setOrderno(String orderno) {
+		this.orderno = orderno;
 	}
 	public String getCompany() {
 		return company;
@@ -39,17 +42,17 @@ public class OrderVO {
 	public void setSn(String sn) {
 		this.sn = sn;
 	}
-	public String getOrderDate() {
-		return orderDate;
+	public String getOrderdate() {
+		return orderdate;
 	}
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getEnddate() {
+		return enddate;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
 	}
 	public String getFabric() {
 		return fabric;
@@ -57,17 +60,17 @@ public class OrderVO {
 	public void setFabric(String fabric) {
 		this.fabric = fabric;
 	}
-	public int getWorkWidth() {
-		return workWidth;
+	public int getWorkwidth() {
+		return workwidth;
 	}
-	public void setWorkWidth(int workWidth) {
-		this.workWidth = workWidth;
+	public void setWorkwidth(int workwidth) {
+		this.workwidth = workwidth;
 	}
-	public int getWorkWeight() {
-		return workWeight;
+	public int getWorkweight() {
+		return workweight;
 	}
-	public void setWorkWeight(int workWeight) {
-		this.workWeight = workWeight;
+	public void setWorkweight(int workweight) {
+		this.workweight = workweight;
 	}
 	public String getColor() {
 		return color;
@@ -75,17 +78,17 @@ public class OrderVO {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public String getOrderLength() {
-		return orderLength;
+	public String getOrderlength() {
+		return orderlength;
 	}
-	public void setOrderLength(String orderLength) {
-		this.orderLength = orderLength;
+	public void setOrderlength(String orderlength) {
+		this.orderlength = orderlength;
 	}
-	public String getColorBt() {
-		return colorBt;
+	public String getColorbt() {
+		return colorbt;
 	}
-	public void setColorBt(String colorBt) {
-		this.colorBt = colorBt;
+	public void setColorbt(String colorbt) {
+		this.colorbt = colorbt;
 	}
 	public int getPrice() {
 		return price;
@@ -93,11 +96,23 @@ public class OrderVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public String getEtc() {
+		return etc;
+	}
+	public void setEtc(String etc) {
+		this.etc = etc;
+	}
+	public String getPerson() {
+		return person;
+	}
+	public void setPerson(String person) {
+		this.person = person;
+	}
 	@Override
 	public String toString() {
-		return "OrderVO [no=" + no + ", orderNo=" + orderNo + ", company=" + company + ", sn=" + sn + ", orderDate="
-				+ orderDate + ", endDate=" + endDate + ", fabric=" + fabric + ", workWidth=" + workWidth
-				+ ", workWeight=" + workWeight + ", color=" + color + ", orderLength=" + orderLength + ", colorBt="
-				+ colorBt + ", price=" + price + "]";
+		return "OrderVO [no=" + no + ", orderno=" + orderno + ", company=" + company + ", sn=" + sn + ", orderdate="
+				+ orderdate + ", enddate=" + enddate + ", fabric=" + fabric + ", workwidth=" + workwidth
+				+ ", workweight=" + workweight + ", color=" + color + ", orderlength=" + orderlength + ", colorbt="
+				+ colorbt + ", price=" + price +", etc=" + etc +  "]";
 	}
 }

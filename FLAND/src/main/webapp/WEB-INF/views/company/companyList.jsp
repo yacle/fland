@@ -9,13 +9,21 @@
 		border: 1px solid DodgerBlue;
 		height:40px;
 		padding:0px;
+		font-weight: bold;
 	}
 	tr:hover {background-color:#f5f5f5;}
 	input{
+		width: 100%;
 		height:39px;
 		border: none;
+		margin:0px 0;
 		box-sizing: border-box;
-		margin:0px;
+	}
+	textarea{
+		width: 100%;
+	    padding: 12px 20px;
+	    margin: 0px 0;
+	    box-sizing: border-box;
 	}
 </style>
 <div align="center">
@@ -82,11 +90,11 @@
 			</div>
 			<div class="modal-body" style="padding:20px 30px;">
 				<form role="form" action="/company/update" method="post">
-					<table>
+					<table width="95%">
 						<tr>
-							<td>분류</td>
-							<td colspan="2"><input id="dvs" name="dvs" placeholder="구분" value="" size="44"></td>
-							<td colspan="2"><input id="item" name="item" placeholder="품목" value="" size="44"/></td>
+							<td width="15%">분류</td>
+							<td colspan="2"><input id="dvs" name="dvs" placeholder="구분" value=""></td>
+							<td colspan="2"><input id="item" name="item" placeholder="품목" value=""/></td>
 						</tr>
 						<tr>
 							<td>담당자</td>
@@ -97,18 +105,18 @@
 						</tr>
 						<tr>
 							<td>Email/Fax</td>
-							<td colspan="2"><input id="email" name="email" placeholder="이메일" value="" size="44"></td>
-							<td colspan="2"><input id="fax" name="fax" placeholder="팩스번호" value="" size="44"></td>
+							<td colspan="2"><input id="email" name="email" placeholder="이메일" value=""></td>
+							<td colspan="2"><input id="fax" name="fax" placeholder="팩스번호" value=""></td>
 						</tr>
 						<tr>
 							<td>주소</td>
-							<td colspan="4"><input id="address" name="address" placeholder="회사주소" value="" size="90"></td>
+							<td colspan="4"><input id="address" name="address" placeholder="회사주소" value=""></td>
 						</tr>
 						<tr>
 							<td>계좌</td>
 							<td><input id="bank" name="bank" placeholder="은행" value=""></td>
 							<td><input id="account_name" name="account_name" placeholder="예금주" value=""></td>
-							<td colspan="2"><input id="account_num" name="account_num" placeholder="계좌번호" value="" size="44"></td>
+							<td colspan="2"><input id="account_num" name="account_num" placeholder="계좌번호" value=""></td>
 						</tr>
 						<tr>
 							<td>사업자</td>
@@ -118,7 +126,7 @@
 							<td><input id="license_num" name="license_num" placeholder="사업자번호" value=""></td>
 						</tr>
 						<tr>
-							<td colspan="5"><textarea id="refer" name="refer" placeholder="참고사항" rows="5" cols="110"></textarea></td>
+							<td colspan="5"><textarea id="refer" name="refer" placeholder="참고사항" rows="5"></textarea></td>
 						</tr>
 					</table>
 					<button type="submit" class="btn btn-success btn-block">저장</button>
