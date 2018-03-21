@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fland.domain.CompanyVO;
 import com.fland.domain.IncomeVO;
 import com.fland.domain.InquiryVO;
 import com.fland.domain.SearchVO;
@@ -413,13 +412,21 @@ ObjectMapper mapper;
 	public ModelAndView inquirySearchPostHandle(SearchVO vo) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
 		String item = vo.getCondition();
+		int r = 0;
+		if(item.equals("내용")) {
+			r=1;
+		}else if(item.equals("비고")) {
+			r=2;
+		}else if(item.equals("금액")) {
+			r=3;
+		}
 		List<InquiryVO> list = new ArrayList<InquiryVO>();
-		switch(item) {
-		case "내용":
+		switch(r) {
+		case 1:
 			list = inquiryDao.search1(vo); break;
-		case "비고":
+		case 2:
 			list = inquiryDao.search2(vo); break;
-		case "금액":
+		case 3:
 			list = inquiryDao.search3(vo); break;
 		default :
 			list = inquiryDao.search1(vo); break;	

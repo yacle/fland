@@ -48,9 +48,6 @@
 	
 	<!-- about converter -->
 	<beans:bean class="com.fasterxml.jackson.databind.ObjectMapper" />
-	<beans:bean class="java.text.SimpleDateFormat">
-		<beans:constructor-arg name="pattern" value="yyyyMMdd"/>
-	</beans:bean>
 	<!-- multipartResolver -->
 	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
 		<beans:property value="/temp" name="uploadTempDir"/>

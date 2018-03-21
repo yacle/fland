@@ -12,8 +12,8 @@
 			from TRANSACTION 
 			where
 			<![CDATA[
-				TRAN_DATE >= TO_DATE('2017-12-31', 'YYYY-MM-DD') 
-				and TRAN_DATE <= TO_DATE(#{date}, 'YYYY-MM-DD')
+				TRAN_DATE >= STR_TO_DATE('2017-12-31', '%Y-%m-%d') 
+				and TRAN_DATE <= STR_TO_DATE(#{date}, '%Y-%m-%d')
 				and account in ('농협(매출)','농협(경비)','기업(매출)','기업(경비)','신한(매출)','국민(매출)')
  				group by account
 			]]>
@@ -23,8 +23,8 @@
 			from TRANSACTION 
 			where
 			<![CDATA[
-				TRAN_DATE >= TO_DATE('2017-12-31', 'YYYY-MM-DD') 
-				and TRAN_DATE < TO_DATE(#{date}, 'YYYY-MM-DD')
+				TRAN_DATE >= STR_TO_DATE('2017-12-31', '%Y-%m-%d') 
+				and TRAN_DATE < STR_TO_DATE(#{date}, '%Y-%m-%d')
 				and account in ('농협(매출)','농협(경비)','기업(매출)','기업(경비)','신한(매출)','국민(매출)')
  				group by account
 			]]>
@@ -34,8 +34,8 @@
 			from TRANSACTION 
 			where
 			<![CDATA[
-				TRAN_DATE >= TO_DATE('2017-12-31', 'YYYY-MM-DD') 
-				and TRAN_DATE <= TO_DATE(#{date}, 'YYYY-MM-DD')
+				TRAN_DATE >= STR_TO_DATE('2017-12-31', '%Y-%m-%d') 
+				and TRAN_DATE <= STR_TO_DATE(#{date}, '%Y-%m-%d')
 				and account in ('농협(매출)','농협(경비)','기업(매출)','기업(경비)','신한(매출)','국민(매출)')
  				group by account
 			]]>
@@ -44,22 +44,22 @@
 		select SUM(sum)
 		    from TRANSACTION 
 			<![CDATA[
-		    where TRAN_DATE >= TO_DATE('2017-12-31', 'YYYY-MM-DD') 
-		    and TRAN_DATE < TO_DATE(
+		    where TRAN_DATE >= STR_TO_DATE('2017-12-31', '%Y-%m-%d') 
+		    and TRAN_DATE < STR_TO_DATE(
 		    least(
-		        #{day}, to_char(last_day(to_date(#{month}, 'YYYY-MM')),'YYYY-MM-DD')
-		        ),'YYYY-MM-DD')
+		        #{day}, DATE_FORMAT(last_day(str_to_date(#{month}, '%Y-%m')),'%Y-%m-%d')
+		        ),'%Y-%m-%d')
 			]]>
 	</select>
 	<select id="readDailyEnd" resultType="int">
 		select SUM(sum)
 		    from TRANSACTION 
 			<![CDATA[
-		    where TRAN_DATE >= TO_DATE('2017-12-31', 'YYYY-MM-DD') 
-		    and TRAN_DATE <= TO_DATE(
+		    where TRAN_DATE >= STR_TO_DATE('2017-12-31', '%Y-%m-%d') 
+		    and TRAN_DATE <= STR_TO_DATE(
 		    least(
-		        #{day}, to_char(last_day(to_date(#{month}, 'YYYY-MM')),'YYYY-MM-DD')
-		        ),'YYYY-MM-DD')
+		        #{day}, DATE_FORMAT(last_day(to_date(#{month}, '%Y-%m')),'%Y-%m-%d')
+		        ),'%Y-%m-%d')
 			]]>
 	</select>
 	<select id="readInfo" resultType="com.fland.domain.AccountVO">

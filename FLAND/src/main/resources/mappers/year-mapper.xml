@@ -29,7 +29,7 @@
 		select SUM(sum) from TRANSACTION where item='세금환급' and tran_date like #{date} || '%'
 	</select>
 	<select id="incomeSum" resultType="int">
-		select SUM(sum) from TRANSACTION where div='income' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where divi='income' and tran_date like #{date} || '%'
 	</select>
 <!-- 출금 -->
 	<!-- 대금결재 -->
@@ -105,6 +105,6 @@
 		select SUM(sum) from TRANSACTION where client='공용' and item='경비' and tran_date like #{date} || '%'
 	</select>
 	<select id="expenseSum" resultType="int">
-		select SUM(sum) from TRANSACTION where div='expense' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where divi='expense' and tran_date like #{date} || '%'
 	</select>
 </mapper>

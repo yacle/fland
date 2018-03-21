@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fland.domain.Criteria;
 import com.fland.domain.PageMaker;
 import com.fland.domain.SumCount;
-import com.fland.persistence.CompanyDAO;
 import com.fland.persistence.OrderDAO;
 
 @Controller

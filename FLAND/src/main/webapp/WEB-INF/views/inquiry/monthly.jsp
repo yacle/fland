@@ -8,6 +8,11 @@
 table{
 	border-collapse: collapse;
 }
+.mainTbl{
+	 border: none;
+	 cellspacing: 0;
+	 cellpadding: 0;
+}
 td{
 	padding:0px;
 	text-align:center;
@@ -29,7 +34,7 @@ tr{
 	    <li><a id="date" href="">일별</a></li>
 	    <li class="active"><a href="">월별</a></li>
 	    <li><a href="/inquiry/yearly?year=2018">연별</a></li>
-	    <form class="navbar-form navbar-right" action="/inquiry/monthly">
+		<form class="navbar-form navbar-right" action="/inquiry/monthly">
 			<div class="form-group">
 				<input type="month" name="month" class="form-control" placeholder="Search">
 			</div>
@@ -44,7 +49,7 @@ tr{
 	</div>
 </div>
 <div>
-<table border="0" cellspacing="0" cellpadding="0" id="tablefixed">
+<table class=" mainTbl" id="tablefixed">
 	<tr valign="top">
 		<td align="right">
 			<table id="export1" border="1" style="margin-right:-2; background-color:#E0FFFF;" width="220px">
