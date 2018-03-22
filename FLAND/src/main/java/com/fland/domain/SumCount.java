@@ -40,10 +40,12 @@ public class SumCount {
 		return accsum;
 	}
 	
-	public static int itemSum(List<Integer> list) {
+	public static int itemSum(List<Map<String, Integer>> list) {
 		int total=0;
-		for(int sum : list) {
-			total += sum;
+		for(Map<String, Integer> m : list) {
+			for(String key : m.keySet()) {
+				total += Integer.parseInt(String.valueOf(m.get(key)));
+			}
 		}
 		return total;
 	}

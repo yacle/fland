@@ -6,105 +6,105 @@
 <!-- 입금 -->
 	<!-- 영업수입 매출 -->
 	<select id="item01" resultType="int">
-		select SUM(sum) from TRANSACTION where item='매출' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='매출' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 영업수입 업체환급 --> 
 	<select id="item02" resultType="int">
-		select SUM(sum) from TRANSACTION where item='업체환급' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='업체환급' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 영업외수입 금융이자 -->
 	<select id="item03" resultType="int">
-		select SUM(sum) from TRANSACTION where item='금융이자' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='금융이자' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 영업외수입 차입금 --> 
 	<select id="item04" resultType="int">
-		select SUM(sum) from TRANSACTION where item='차입금' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='차입금' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 영업외수입 카드취소 -->
 	<select id="item05" resultType="int">
-		select SUM(sum) from TRANSACTION where item='카드취소' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='카드취소' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 영업외수입 세금환급 --> 
 	<select id="item06" resultType="int">
-		select SUM(sum) from TRANSACTION where item='세금환급' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='세금환급' and tran_date like concat(#{date},'%')
 	</select>
 	<select id="incomeSum" resultType="int">
-		select SUM(sum) from TRANSACTION where divi='income' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where divi='income' and tran_date like concat(#{date},'%')
 	</select>
 <!-- 출금 -->
 	<!-- 대금결재 -->
 	<select id="item07" resultType="int">
-		select SUM(sum) from TRANSACTION where item='대금결제' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='대금결제' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 기타물류비 -->
 	<select id="item08" resultType="int">
-		select SUM(sum) from TRANSACTION where item='기타물류비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='기타물류비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 임대관리비 -->
 	<select id="item09" resultType="int">
-		select SUM(sum) from TRANSACTION where item='임대관리비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='임대관리비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 급여 -->
 	<select id="item10" resultType="int">
-		select SUM(sum) from TRANSACTION where item='급여' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='급여' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 차입금상환 -->
 	<select id="item11" resultType="int">
-		select SUM(sum) from TRANSACTION where item='차입금상환' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='차입금상환' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 세금 -->
 	<select id="item12" resultType="int">
-		select SUM(sum) from TRANSACTION where item='세금' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='세금' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 4대보험 -->
 	<select id="item13" resultType="int">
-		select SUM(sum) from TRANSACTION where item='4대보험' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='4대보험' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 접대비 -->
 	<select id="item14" resultType="int">
-		select SUM(sum) from TRANSACTION where item='접대비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where item='접대비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 대표자차량 -->
 	<select id="item15" resultType="int">
-		select SUM(sum) from TRANSACTION where client='황수현' and item='차량유지비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='황수현' and item='차량유지비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 대표자경비 -->
 	<select id="item16" resultType="int">
-		select SUM(sum) from TRANSACTION where client='황수현' and item='경비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='황수현' and item='경비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 박성진차량 -->
 	<select id="item17" resultType="int">
-		select SUM(sum) from TRANSACTION where client='박성진' and item='차량유지비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='박성진' and item='차량유지비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 박성진식대 -->
 	<select id="item18" resultType="int">
-		select SUM(sum) from TRANSACTION where client='박성진' and item='식대' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='박성진' and item='식대' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 박성진경비 -->
 	<select id="item19" resultType="int">
-		select SUM(sum) from TRANSACTION where client='박성진' and item='경비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='박성진' and item='경비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 한정신차량 -->
 	<select id="item20" resultType="int">
-		select SUM(sum) from TRANSACTION where client='한정신' and item='차량유지비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='한정신' and item='차량유지비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 한정신식대 -->
 	<select id="item21" resultType="int">
-		select SUM(sum) from TRANSACTION where client='한정신' and item='식대' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='한정신' and item='식대' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 한정신경비 -->
 	<select id="item22" resultType="int">
-		select SUM(sum) from TRANSACTION where client='한정신' and item='경비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='한정신' and item='경비' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 공용식대 -->
 	<select id="item23" resultType="int">
-		select SUM(sum) from TRANSACTION where client='공용' and item='식대' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='공용' and item='식대' and tran_date like concat(#{date},'%')
 	</select>
 	<!-- 공용경비 -->
 	<select id="item24" resultType="int">
-		select SUM(sum) from TRANSACTION where client='공용' and item='경비' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where client='공용' and item='경비' and tran_date like concat(#{date},'%')
 	</select>
 	<select id="expenseSum" resultType="int">
-		select SUM(sum) from TRANSACTION where divi='expense' and tran_date like #{date} || '%'
+		select SUM(sum) from TRANSACTION where divi='expense' and tran_date like concat(#{date},'%')
 	</select>
 </mapper>

@@ -168,181 +168,268 @@ tr{
 					<tr class="hover">
 						<td width="90px"></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${begin[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${begin[i]}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 영업수입 매출 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item01Sum}" groupingUsed="true"/></td>
-						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item01[i]}" groupingUsed="true"/></td>
+						<c:forEach var="i" begin="1" end="31">
+							<td style="text-align:right; padding:3px;">${i == item01[i-1].day ? item01[i-1].sum : 0}
+								<fmt:formatNumber value="${i == item01[i-1].day ? item01[i-1].sum : 0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 영업수입 업체환급 --> 
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item02Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item02[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item02[i].day==i ? item02[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 영업외수입 금융이자 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item03Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item03[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item03[i].day==i ? item03[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 영업외수입 차입금 --> 
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item04Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item04[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item04[i].day==i ? item04[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 영업외수입 카드취소 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item05Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item05[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item05[i].day==i ? item05[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 영업외수입 세금환급 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item06Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item06[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item06[i].day==i ? item06[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 수입 합계 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${incomeTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${incomeSum[i] }" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${incomeSum[i].day==i ? incomeSum[i].sum:0 }" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 대금결재 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item07Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item07[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item07[i].day==i ? item07[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 물류비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item08Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item08[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item08[i].day==i ? item08[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 에어물류비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item081Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item081[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item081[i].day==i ? item081[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 임대관리비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item09Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item09[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item09[i].day==i ? item09[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 급여 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item10Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item10[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item10[i].day==i ? item10[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 차입금상환 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item11Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item11[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item11[i].day==i ? item11[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 세금 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item12Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item12[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item12[i].day==i ? item12[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 4대보험 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item13Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item13[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item13[i].day==i ? item13[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 접대비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item14Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item14[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item14[i].day==i ? item14[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 대표자차량 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item15Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item15[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item15[i].day==i ? item15[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 대표자경비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item16Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item16[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item16[i].day==i ? item17[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 박성진차량 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item17Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item17[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item17[i].day==i ? item17[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 박성진식대 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item18Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item18[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item18[i].day==i ? item18[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 박성진경비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item19Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item19[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item19[i].day==i ? item19[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 한정신차량 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item20Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item20[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item20[i].day==i ? item20[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 한정신식대 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item21Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item21[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item21[i].day==i ? item21[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 한정신경비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item22Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item22[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item22[i].day==i ? item22[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 공용식대 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item23Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item23[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item23[i].day==i ? item23[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 공용경비 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item24Sum}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${item24[i]}" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${item24[i].day==i ? item24[i].sum:0}" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
+					<!-- 지출합계 -->
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${expenseTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${expenseSum[i] }" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${expenseSum[i].day==i ? sxpenseSum[i].sum:0 }" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">
 						<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${incomeTotal + expenseTotal}" groupingUsed="true"/></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px; color:red;"><fmt:formatNumber value="${incomeSum[i] + expenseSum[i] }" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px; color:red;">
+								<fmt:formatNumber value="${incomeSum[i].sum + expenseSum[i].sum }" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
 					<tr class="hover">
 						<td></td>
 						<c:forEach var="i" begin="0" end="30">
-							<td style="text-align:right; padding:3px;"><fmt:formatNumber value="${end[i] }" groupingUsed="true"/></td>
+							<td style="text-align:right; padding:3px;">
+								<fmt:formatNumber value="${end[i] }" groupingUsed="true"/>
+							</td>
 						</c:forEach>
 					</tr>
 				</table>

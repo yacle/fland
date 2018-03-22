@@ -52,24 +52,24 @@
 	<select id="search1" resultType="com.fland.domain.InquiryVO">
 		select * from transaction where
 		<![CDATA[
-				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
-				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
-				and UPPER(detail) like UPPER('%' || #{detail} || '%')
+				TRAN_DATE >= STR_TO_DATE(#{startDate}, '%Y-%m-%d') 
+				and TRAN_DATE <= STR_TO_DATE(#{endDate}, '%Y-%m-%d')
+				and UPPER(detail) like UPPER(concat('%',#{detail},'%'))
 			]]>
 	</select>
 	<select id="search2" resultType="com.fland.domain.InquiryVO">
 		select * from transaction where
 		<![CDATA[
-				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
-				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
-				and UPPER(etc) like UPPER('%' || #{detail} || '%')
+				TRAN_DATE >= STR_TO_DATE(#{startDate}, '%Y-%m-%d') 
+				and TRAN_DATE <= STR_TO_DATE(#{endDate}, '%Y-%m-%d')
+				and UPPER(etc) like UPPER(concat('%',#{detail},'%'))
 			]]>
 	</select>
 	<select id="search3" resultType="com.fland.domain.InquiryVO">
 		select * from transaction where
 		<![CDATA[
-				TRAN_DATE >= TO_DATE(#{startDate}, 'YYYY-MM-DD') 
-				and TRAN_DATE <= TO_DATE(#{endDate}, 'YYYY-MM-DD')
+				TRAN_DATE >= STR_TO_DATE(#{startDate}, '%Y-%m-%d') 
+				and TRAN_DATE <= STR_TO_DATE(#{endDate}, '%Y-%m-%d')
 				and sum=#{detail}
 			]]>
 	</select>

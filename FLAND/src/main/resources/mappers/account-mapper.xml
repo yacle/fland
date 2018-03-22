@@ -40,6 +40,8 @@
  				group by account
 			]]>
 	</select>
+	
+	<!-- 월간 기초잔액 -->
 	<select id="readDailyBegin" resultType="int">
 		select SUM(sum)
 		    from TRANSACTION 
@@ -51,6 +53,7 @@
 		        ),'%Y-%m-%d')
 			]]>
 	</select>
+	<!-- 월간 기말잔액 -->
 	<select id="readDailyEnd" resultType="int">
 		select SUM(sum)
 		    from TRANSACTION 
@@ -58,7 +61,7 @@
 		    where TRAN_DATE >= STR_TO_DATE('2017-12-31', '%Y-%m-%d') 
 		    and TRAN_DATE <= STR_TO_DATE(
 		    least(
-		        #{day}, DATE_FORMAT(last_day(to_date(#{month}, '%Y-%m')),'%Y-%m-%d')
+		        #{day}, DATE_FORMAT(last_day(str_to_date(#{month}, '%Y-%m')),'%Y-%m-%d')
 		        ),'%Y-%m-%d')
 			]]>
 	</select>

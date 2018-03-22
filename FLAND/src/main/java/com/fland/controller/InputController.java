@@ -30,8 +30,6 @@ InputDAO inputDao;
 AccountDAO accountDao;
 @Inject
 ObjectMapper mapper;
-@Inject
-SimpleDateFormat format;
 
 	// 입력 수입
 	@RequestMapping(value = "", method = RequestMethod.GET)

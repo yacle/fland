@@ -41,8 +41,8 @@ ObjectMapper mapper;
 			Map begin = SumCount.accountSum(beginList);
 		List<IncomeVO> endList = accountDao.readEnd(date);
 			Map end = SumCount.accountSum(endList);
-		int incomeSum = inquiryDao.incomeSum(date);
-		int expenseSum = inquiryDao.expenseSum(date);
+		int incomeSum = inquiryDao.incomeSumDaily(date);
+		int expenseSum = inquiryDao.expenseSumDaily(date);
 			
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "inquiry/daily");
@@ -66,7 +66,93 @@ ObjectMapper mapper;
 		mav.addObject("expenseSum", expenseSum);
 		return mav;
 	}
-
+	
+	@RequestMapping(value = "/monthly", method = RequestMethod.GET)
+	public ModelAndView inquiryMonthHandle(@RequestParam Map param) throws Exception {
+		List<Integer> begin = new ArrayList<Integer>();		// ±‚√ ¿‹æ◊
+		List<Integer> end = new ArrayList<Integer>();		// ±‚∏ª¿‹æ◊
+		ModelAndView mav = new ModelAndView("temp");
+		String date = (String)param.get("month") + "-01";
+		String month = (String)param.get("month");
+		for(int i=1; i<32; i++) {
+			String d="";
+			if(i<10) {
+				d="0"+String.valueOf(i);
+			}else {
+				d=String.valueOf(i);
+			}
+			String day = month+"-"+d;
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("day", day);
+			map.put("month", month);
+			begin.add(accountDao.beginDailyBegin(map));	// ±‚√ ¿‹æ◊
+			end.add(accountDao.beginDailyEnd(map));	// ±‚√ ¿‹æ◊
+		}
+		
+		List<Map<String, Integer>> list = inquiryDao.item01(date);
+		for(Map<String, Integer> m : list) {
+			System.out.println(m.toString());
+		}
+		
+		mav.addObject("item01", inquiryDao.item01(date));
+		mav.addObject("item01Sum", SumCount.itemSum(inquiryDao.item01(date)));
+		mav.addObject("item02", inquiryDao.item02(date));
+		mav.addObject("item02Sum", SumCount.itemSum(inquiryDao.item02(date)));
+		mav.addObject("item03", inquiryDao.item03(date));
+		mav.addObject("item03Sum", SumCount.itemSum(inquiryDao.item03(date)));
+		mav.addObject("item04", inquiryDao.item04(date));
+		mav.addObject("item04Sum", SumCount.itemSum(inquiryDao.item04(date)));
+		mav.addObject("item05", inquiryDao.item05(date));
+		mav.addObject("item05Sum", SumCount.itemSum(inquiryDao.item05(date)));
+		mav.addObject("item06", inquiryDao.item06(date));
+		mav.addObject("item06Sum", SumCount.itemSum(inquiryDao.item06(date)));
+		mav.addObject("item07", inquiryDao.item07(date));
+		mav.addObject("item07Sum", SumCount.itemSum(inquiryDao.item07(date)));
+		mav.addObject("item08", inquiryDao.item08(date));
+		mav.addObject("item08Sum", SumCount.itemSum(inquiryDao.item08(date)));
+		mav.addObject("item09", inquiryDao.item09(date));
+		mav.addObject("item09Sum", SumCount.itemSum(inquiryDao.item09(date)));
+		mav.addObject("item10", inquiryDao.item10(date));
+		mav.addObject("item10Sum", SumCount.itemSum(inquiryDao.item10(date)));
+		mav.addObject("item11", inquiryDao.item11(date));
+		mav.addObject("item11Sum", SumCount.itemSum(inquiryDao.item11(date)));
+		mav.addObject("item12", inquiryDao.item12(date));
+		mav.addObject("item12Sum", SumCount.itemSum(inquiryDao.item12(date)));
+		mav.addObject("item13", inquiryDao.item13(date));
+		mav.addObject("item13Sum", SumCount.itemSum(inquiryDao.item13(date)));
+		mav.addObject("item14", inquiryDao.item14(date));
+		mav.addObject("item14Sum", SumCount.itemSum(inquiryDao.item14(date)));
+		mav.addObject("item15", inquiryDao.item15(date));
+		mav.addObject("item15Sum", SumCount.itemSum(inquiryDao.item15(date)));
+		mav.addObject("item16", inquiryDao.item16(date));
+		mav.addObject("item16Sum", SumCount.itemSum(inquiryDao.item16(date)));
+		mav.addObject("item17", inquiryDao.item17(date));
+		mav.addObject("item17Sum", SumCount.itemSum(inquiryDao.item17(date)));
+		mav.addObject("item18", inquiryDao.item18(date));
+		mav.addObject("item18Sum", SumCount.itemSum(inquiryDao.item18(date)));
+		mav.addObject("item19", inquiryDao.item19(date));
+		mav.addObject("item19Sum", SumCount.itemSum(inquiryDao.item19(date)));
+		mav.addObject("item20", inquiryDao.item20(date));
+		mav.addObject("item20Sum", SumCount.itemSum(inquiryDao.item20(date)));
+		mav.addObject("item21", inquiryDao.item21(date));
+		mav.addObject("item21Sum", SumCount.itemSum(inquiryDao.item21(date)));
+		mav.addObject("item22", inquiryDao.item22(date));
+		mav.addObject("item22Sum", SumCount.itemSum(inquiryDao.item22(date)));
+		mav.addObject("item23", inquiryDao.item23(date));
+		mav.addObject("item23Sum", SumCount.itemSum(inquiryDao.item23(date)));
+		mav.addObject("item24", inquiryDao.item24(date));
+		mav.addObject("item24Sum", SumCount.itemSum(inquiryDao.item24(date)));
+		mav.addObject("incomeSum", inquiryDao.incomeSum(date));	
+		mav.addObject("incomeTotal", SumCount.itemSum(inquiryDao.incomeSum(date)));	
+		mav.addObject("expenseSum", inquiryDao.expenseSum(date));	
+		mav.addObject("expenseTotal", SumCount.itemSum(inquiryDao.expenseSum(date)));	
+		mav.addObject("month", (String)param.get("month"));
+		mav.addObject("begin", begin);	// ±‚√ ¿‹æ◊
+		mav.addObject("end", end);
+		mav.addObject("section", "inquiry/monthly");
+		return mav;
+	}
+/*
 	@RequestMapping(value = "/monthly", method = RequestMethod.GET)
 	public ModelAndView inquiryMonthHandle(@RequestParam Map param) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
@@ -204,7 +290,8 @@ ObjectMapper mapper;
 		mav.addObject("expenseTotal", SumCount.itemSum(expenseSum));	
 		return mav;
 	}
-	
+*/
+	/*
 	@RequestMapping(value = "/state", method = RequestMethod.GET)
 	public ModelAndView inquiryMonthStateHandle(@RequestParam Map param) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
@@ -307,7 +394,7 @@ ObjectMapper mapper;
 		mav.addObject("expenseTotal", SumCount.itemSum(expenseSum));	// ¡ˆ√‚ø˘«’∞Ë
 		return mav;
 	}
-	
+*/	
 	@RequestMapping(value = "/yearly", method = RequestMethod.GET)
 	public ModelAndView inquiryYearHandle(@RequestParam Map param) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");

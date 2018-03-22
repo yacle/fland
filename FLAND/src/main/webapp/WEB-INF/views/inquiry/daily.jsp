@@ -4,9 +4,8 @@
 <head> <base target="_self" /> </head>
 <style>
 	table, th, td{
-		text-align:center;
+		text-align: center;
 		border: 1px solid DodgerBlue;
-		height:40px;
 	}
 	.num{
 		padding-right:10px;
@@ -23,10 +22,20 @@
 		width:100%;
 		border: none;
 		margin: 0px 0;
-		box-sizing: border-box;
+		box-sizing: border-box; 
 		height: 35px;
 		font-size: 15px;
 		text-align: center;
+	}
+	tr{
+		display: table-row;
+		height: 40px;
+	}
+	#mainTable{
+		width: 100%;
+	}
+	#modalTable{
+		width: 100%;
 	}
 </style>
 <nav class="navbar navbar-inverse">
@@ -77,7 +86,7 @@
 	</ul>
 </div>
 <div align="center">
-<table border="1" width="90%">
+<table id="mainTable">
 	<thead>
 		<tr style="background-color:#FFFF00">
 			<th rowspan="2">은행구분</th>
@@ -266,7 +275,7 @@
 		<div class="modal-content">
 			<div class="modal-body" style="padding:20px 30px; text-align: center;">
 				<form role="form" id="updateModal">
-					<table width="100%">
+					<table id="modalTable">
 						<tr>
 							<td>구분</td>
 							<td><input type="text" name="div" id="div" value=""></td>

@@ -28,12 +28,15 @@ public class AccountDAO {
 	public List<IncomeVO> readEnd(String date) throws Exception{
 		return session.selectList("account.readEnd", date);
 	}
+	// 월간데이터 기초잔액
 	public int beginDailyBegin(Map map) throws Exception{
 		return session.selectOne("account.readDailyBegin", map);
 	}
+	// 월간데이터 마감잔액
 	public int beginDailyEnd(Map map) throws Exception{
 		return session.selectOne("account.readDailyEnd", map);
 	}
+	
 	public int update(AccountVO vo) throws Exception{
 		return session.update("account.update", vo);
 	}
