@@ -52,6 +52,10 @@ function add_row() {
 		border: 1px solid DodgerBlue;
 		height:39px;
 	}
+	#table01{
+		width:90%;
+		border:0;
+	}
 	nav{
 		margin:0px;
 	}
@@ -162,7 +166,7 @@ function add_row() {
 </div>
 <div align="center">
 <form action="/input/incomeAdd"	method="POST">
-	<table width=90% border="0">
+	<table  id="table01">
 		<thead>
 			<tr>
 				<th width=10%>입금일자</th>

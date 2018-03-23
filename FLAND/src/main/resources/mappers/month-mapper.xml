@@ -53,7 +53,7 @@
 	</select>
 	<!-- 에어물류비 -->
 	<select id="item081" resultType="hashmap">
-		select day(tran_date) as day, SUM(sum) as sum from TRANSACTION where item='물류비' and etc like concat('%에어%') and tran_date between #{date} and last_day(#{date}) group by tran_date 
+		select day(tran_date) as day, SUM(sum) as sum from TRANSACTION where item='물류비' and etc like concat('%','에어','%') and tran_date between #{date} and last_day(#{date}) group by tran_date 
 	</select>
 	<!-- 임대관리비 -->
 	<select id="item09" resultType="hashmap">
@@ -122,4 +122,8 @@
 	<select id="expenseSum" resultType="hashmap">
 		select day(tran_date) as day, SUM(sum) as sum from TRANSACTION where DIVI='expense' and tran_date between #{date} and last_day(#{date}) group by tran_date 
 	</select>
+	<select id="sumTotal" resultType="hashmap">
+		select day(tran_date) as day, SUM(sum) as sum from TRANSACTION where tran_date between #{date} and last_day(#{date}) group by tran_date 
+	</select>
+	
 </mapper>

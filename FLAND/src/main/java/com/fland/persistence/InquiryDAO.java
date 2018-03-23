@@ -153,6 +153,9 @@ public class InquiryDAO {
 	public List<Map<String, Integer>> expenseSum(String date) throws Exception {
 		return session.selectList("month.expenseSum", date);
 	}
+	public List<Map<String, Integer>> sumTotal(String date) throws Exception {
+		return session.selectList("month.sumTotal", date);
+	}
 // 월별 item 합계
 	public int item01Year(String date) throws Exception {
 		if(session.selectOne("year.item01", date)==null) {

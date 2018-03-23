@@ -21,14 +21,14 @@ import com.fland.persistence.OrderDAO;
 public class OrderController {
 	@Inject
 	OrderDAO orderdao;
-	
+	// new 발주서
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView incomeAdd() throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "order/order");
 		return mav;
 	}
-	
+	// 발주서 리스트
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
 	public ModelAndView orderList(Criteria cri) throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
@@ -40,7 +40,7 @@ public class OrderController {
 		mav.addObject("pageMaker", pageMaker);
 		return mav;
 	}
-	
+	// 발주서 저장, 업데이트
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	@ResponseBody
 	public String orderAdd(@RequestParam Map map)  throws Exception {
@@ -54,21 +54,21 @@ public class OrderController {
 			return "update";
 		}
 	}
-	
+	// 염색의뢰 수량 계산
 	@RequestMapping(value = "/dyeSum", method = RequestMethod.POST)
 	@ResponseBody
 	public String dyeSum(@RequestParam Map map)  throws Exception {
 		String rollList = SumCount.dyeSum(map);
 		return rollList;
 	}
-	
+	// 염색의뢰서 저장
 	@RequestMapping(value = "/dyeAdd", method = RequestMethod.POST)
 	@ResponseBody
 	public String dyeAdd(@RequestParam Map map) throws Exception{
 		orderdao.dyeAdd(map);
 		return "";
 	}
-	
+	// 편직의뢰서 저장
 	@RequestMapping(value = "/knitAdd", method = RequestMethod.POST)
 	@ResponseBody
 	public String knitAdd(@RequestParam Map map) throws Exception{

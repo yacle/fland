@@ -69,6 +69,9 @@ function add_row() {
 		border: 1px solid DodgerBlue;
 		height:39px;
 	}
+	#table2{
+		width: 90%;
+	}
 	nav{
 		margin:0px;
 	}
@@ -96,7 +99,7 @@ function add_row() {
   </ul>
 </nav>
 <div align="center" >
-	<table style="width:80%" class="t1">
+	<table  style="width:80%;" class="t1">
 		<thead>
 			<tr style="background-color:#E0FFFF">
 				<th class="t1" width=15%>은행종류</th>
@@ -177,7 +180,7 @@ function add_row() {
 <div align="center">
 	<h2><b>일일 지출자금 실적</b></h2>
 <form action="/input/expenseAdd" method="POST">
-	<table width=90%>
+	<table id="table2">
 		<thead>
 			<tr>
 				<th width=10%>지출일자</th>
