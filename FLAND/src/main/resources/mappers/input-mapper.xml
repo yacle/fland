@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="input">
 	<insert id="incomeAdd">
-		insert into transaction(no, tran_date, account, client, item, detail, sum, etc, divi)
-		values(seq_transaction.nextval,
+		insert into transaction(tran_date, account, client, item, detail, sum, etc, divi)
+		values(
 			#{INCOME_DATE},
 			#{ACCOUNT},
 			#{COMPANY},
@@ -17,8 +17,8 @@
 		)
 	</insert>
 	<insert id="expenseAdd">
-		insert into transaction(no, tran_date, account, method, client, item, detail, sum, etc, divi)
-		values(seq_transaction.nextval,
+		insert into transaction(tran_date, account, method, client, item, detail, sum, etc, divi)
+		values(
 			#{EXPENSE_DATE},
 			#{ACCOUNT},
 			#{METHOD},
