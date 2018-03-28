@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.fland.domain.Criteria;
+import com.fland.domain.KnitVO;
 import com.fland.domain.OrderVO;
 
 @Repository
@@ -32,15 +33,21 @@ public class OrderDAO {
 		session.insert("order.dyeadd", map);
 	}
 	
-	public void knitAdd(Map map) throws Exception {
-		session.insert("order.knitadd", map);
+	public void knitAdd(KnitVO vo) throws Exception {
+		session.insert("order.knitadd", vo);
 	}
 	
-	// paging
-	public List<OrderVO> listCriteria(Criteria cri) throws Exception {
+	// paging oracle
+	public List<OrderVO> listCriteriaOracle(Criteria cri) throws Exception {
 		return session.selectList("order.pageList", cri);
+	}
+	// paging MySQL
+	public List<OrderVO> listCriteria(Criteria cri) throws Exception {
+		return session.selectList("order.listCriteria", cri);
 	}
 	public int countPaging(Criteria cri) throws Exception {
 		return session.selectOne("order.countPaging", cri);
 	}
+	
+	
 }

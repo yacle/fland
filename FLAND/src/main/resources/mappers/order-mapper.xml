@@ -5,7 +5,7 @@
 <mapper namespace="order">
 	<insert id="add">
 		insert into ORDER_TBL (no,orderno,company,serial,orderdate,enddate,fabric,workwidth,workweight,price,color,orderlength,colorbt,etc,person)
-		values (seq_order.nextval,
+		values (null,
 			#{orderno},
 			#{company},
 			#{serial},
@@ -44,7 +44,7 @@
 	</update>
 	<insert id="dyeadd">
 		insert into dye_tbl (dyeno,orderno,loss,perkg,mixed,method,detail,dyeetc,caution,delivery,testcolor,test,knitcompany,dyecompany)
-			values(seq_dye.nextval,
+			values(null,
 				#{orderno},
 				#{loss},
 				#{perkg},
@@ -56,18 +56,19 @@
 				#{delivery, jdbcType=VARCHAR},
 				#{testcolor, jdbcType=VARCHAR},
 				#{test, jdbcType=VARCHAR},
-				#{knitcompany, jdbcType=VARCHAR}
-				,#{dyecompany, jdbcType=VARCHAR}
+				#{knitcompany, jdbcType=VARCHAR},
+				#{dyecompany, jdbcType=VARCHAR}
 				)
 	</insert>
 	<insert id="knitadd">
-		insert into knit_tbl (knitno,orderno,thread,ratio,thread_com,lot,roll,kgttl,knitcompany,delivery,inch,gage,niddle,organ,loop)
-			values(seq_knit.nextval,
+		insert into knit_tbl (knitno,orderno,thread,ratio,weight,thread_com,con,roll,kgttl,knitcompany,delivery,inch,gage,niddle,organ,looplength,lot)
+			values(null,
 				#{orderno},
 				#{thread},
 				#{ratio},
+				#{weight},
 				#{thread_com, jdbcType=VARCHAR},
-				#{lot, jdbcType=VARCHAR},
+				#{con},
 				#{roll},
 				#{kgttl},
 				#{knitcompany},
@@ -76,9 +77,11 @@
 				#{gage, jdbcType=INTEGER},
 				#{niddle, jdbcType=INTEGER},
 				#{organ, jdbcType=VARCHAR},
-				#{loop, jdbcType=VARCHAR}
+				#{looplength, jdbcType=VARCHAR},
+				#{lot, jdbcType=VARCHAR}
 			)
 	</insert>
+<!-- paging ORACLE -->
 	<!-- 목록 조회 (페이징) -->
 	<select id="pageList" resultType="com.fland.domain.OrderVO" >
 		SELECT * FROM (
@@ -87,9 +90,18 @@
 				) A WHERE ROWNUM <![CDATA[<]]>= #{page} * #{perPageNum}
 			) WHERE rnum <![CDATA[>]]>  (#{page} -1) * #{perPageNum}
 	</select>
-	
 	<!-- 목록 총 개수 조회 (전체 조회)-->
 	<select id="countPaging" resultType="int">
 		SELECT COUNT(no) count FROM ORDER_TBL where no <![CDATA[>]]> 0
+	</select>
+	
+<!-- paging MySQL -->
+	<select id="listCriteria" resultType="com.fland.domain.OrderVO">
+		<![CDATA[
+		select * from order_tbl
+		where no > 0
+		order by no desc
+		limit #{pageStart}, #{perPageNum}
+		]]>
 	</select>
 </mapper>

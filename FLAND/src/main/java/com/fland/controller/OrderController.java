@@ -1,6 +1,9 @@
 package com.fland.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Spliterator;
 
 import javax.inject.Inject;
 
@@ -11,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fland.domain.Criteria;
+import com.fland.domain.KnitVO;
 import com.fland.domain.PageMaker;
 import com.fland.domain.SumCount;
+import com.fland.domain.VoEdit;
 import com.fland.persistence.OrderDAO;
 
 @Controller
@@ -21,6 +27,9 @@ import com.fland.persistence.OrderDAO;
 public class OrderController {
 	@Inject
 	OrderDAO orderdao;
+	@Inject
+	ObjectMapper mapper;
+	
 	// new 발주서
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView incomeAdd() throws Exception {
@@ -46,10 +55,10 @@ public class OrderController {
 	public String orderAdd(@RequestParam Map map)  throws Exception {
 		String orderno = (String)map.get("orderno");
 		int r = orderdao.orderRead(orderno);
-		if(r==0) {
+		if(r==0) {	// orderno 가 없는 경우
 			orderdao.orderAdd(map);
 			return "new";
-		}else {
+		}else {		// 기존 orderno가 있는 경우
 			orderdao.orderUpdate(map);
 			return "update";
 		}
@@ -71,8 +80,28 @@ public class OrderController {
 	// 편직의뢰서 저장
 	@RequestMapping(value = "/knitAdd", method = RequestMethod.POST)
 	@ResponseBody
-	public String knitAdd(@RequestParam Map map) throws Exception{
-		orderdao.knitAdd(map);
-		return "";
+	public Map knitAdd(@RequestParam Map map) throws Exception{
+		KnitVO vo = VoEdit.knitvoEdit(map);
+		orderdao.knitAdd(vo);
+		Map<String, Object> orderVal = new HashMap<String, Object>();
+		orderVal.put("ratio", vo.getRatio());
+		orderVal.put("kgttl", vo.getKgttl());
+		orderVal.put("thread", vo.getThread());
+		return orderVal;
+	}
+	
+	@RequestMapping(value = "/thread", method = { RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView threadOrder(@RequestParam Map map) throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		String thread = (String)map.get("thread");
+		String[] threadArr = thread.split("/");
+		String ratio = (String)map.get("ratio");
+		String[] ratioArr = ratio.split("/");
+		String kgttl = (String)map.get("kgttl");
+		mav.addObject("section", "order/thread_order");
+		mav.addObject("threadArr", threadArr);
+		mav.addObject("ratioArr", ratioArr);
+		mav.addObject("kgttl", kgttl);
+		return mav;
 	}
 }

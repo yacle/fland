@@ -60,7 +60,7 @@ function del_knit(){
 .table1, .table2, .table3, .table4, .table5{
 	border-collapse: separate;
 	border-spacing: 10px;
-	width: 95%;
+	width: 100%;
 }
 .center{
 	border-left: 1px dotted blue;
@@ -120,12 +120,13 @@ input{
 				<td colspan="2"><input type="text" class="form-control" id="fabric"></td>
 			</tr>
 			<tr>
-				<td>가공폭</td>
+				<td>가공폭(inch)</td>
 				<td colspan="2"><input type="number" class="form-control" id="workWidth"></td>
 			</tr>
 			<tr>
 				<td>가공중량</td>
-				<td colspan="2"><input type="number" class="form-control" id="workWeight" placeholder="g/yd" required></td>
+				<td><input type="text" class="form-control" id="workWeight" placeholder="g/yd" required></td>
+				<td><input type="text" class="form-control" id="mWeight" placeholder="g/m2" required></td>
 			</tr>
 			<tr align="center">
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">
@@ -265,27 +266,49 @@ input{
 				<td><input type="number" id="gage" class="form-control"></td>
 				<td><input type="number" id="niddle" class="form-control"></td>
 				<td><input type="text" id="organ" class="form-control"></td>
-				<td><input type="number" id="loop" class="form-control"></td>
+				<td><input type="number" id="looplength" class="form-control"></td>
 			</tr>
 		</table>
 		<table class="table4">
 			<tr>
-				<td width="35%">사종
-					<button type="button" onclick="add_knit()" style="border-radius:5px; font-size: 10px;">+</button>
-					<button type="button" onclick="del_knit()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
-				</td>
+				<td width="35%">사종</td>
 				<td width="15%">비율</td>
 				<td width="15%">중량</td>
 				<td width="25%">업체</td>
-				<td width="10%">LOT</td>
+				<td width="10%">CONE</td>
 			</tr>	
 			<tbody id="my-tbody4">
 				<tr>
 					<td><input type="text" class="form-control thread" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio" placeholder="%"></td>
-					<td><input type="number" class="form-control Knitweight" placeholder="kg"></td>
+					<td><input type="number" class="form-control ratio" id="ratio01" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight01" placeholder="kg" readonly></td>
 					<td><input type="text" class="form-control thread_com" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control lot" placeholder="lot"></td>
+					<td><input type="text" class="form-control con" placeholder="cone"></td>
+				</tr>
+				<tr>
+					<td><input type="text" class="form-control thread" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio02" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight02" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" placeholder="cone"></td>
+				</tr><tr>
+					<td><input type="text" class="form-control thread" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio03" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight03" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" placeholder="cone"></td>
+				</tr><tr>
+					<td><input type="text" class="form-control thread" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio04" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight04" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" placeholder="cone"></td>
+				</tr><tr>
+					<td><input type="text" class="form-control thread" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio05" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight05" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" placeholder="cone"></td>
 				</tr>
 			</tbody>
 		</table><hr/>
@@ -294,6 +317,23 @@ input{
 </div>
 	
 <script>
+// yard 중량 입력
+$("#workWeight").change(function(){
+	var gperyd = $("#workWeight").val();
+	var width = $("#workWidth").val();
+	var gperm = (parseInt(gperyd)/0.465/(parseInt(width)/2))*10;
+	$("#mWeight").val(Math.round(gperm)+" g/m2");
+	$("#workWeight").val(gperyd+" g/yd");
+})
+// m2 중량 입력
+$("#mWeight").change(function(){
+	var gperm = $("#mWeight").val();
+	var width = $("#workWidth").val();
+	var gperyd = (parseInt(gperm)*0.465*(parseInt(width)/2))/10;
+	$("#workWeight").val(Math.round(gperyd)+" g/yd");
+	$("#mWeight").val(gperm+" g/m2");
+})
+
 $(document).on('change','.ttl', function(){
 	var total=0;
 	var sum=document.getElementsByClassName("ttl");
@@ -330,7 +370,7 @@ $("#orderBtn").click(function(){
 			"enddate":$("#endDate").val(),
 			"fabric":$("#fabric").val(),
 			"workwidth":$("#workWidth").val(),
-			"workweight":$("#workWeight").val(),
+			"workweight":parseInt($("#workWeight").val()),
 			"price":$("#price").val(),
 			"color":color,
 			"orderlength":orderLength,
@@ -369,7 +409,7 @@ $("#dyeSum").click(function(){
 			"perkg": perkg,
 			"color":color,
 			"orderLength":orderLength,
-			"workWeight": workWeight
+			"workWeight": parseInt(workWeight)
 		},
 		success:function(obj){
 			$("#my-tbody2").html(obj);
@@ -419,35 +459,35 @@ function knitAdd1(){
 	var ratio=[];
 	var weight=[];
 	var thread_com=[];
-	var lot=[];
-	var thread1 = document.getElementsByClassName("thread");
-	var ratio1 = document.getElementsByClassName("ratio");
-	var weight1 = document.getElementsByClassName("knitweight");
-	var thread_com1 = document.getElementsByClassName("thread_com");
-	var lot1 = document.getElementsByClassName("lot");
-	for(var i=0; i<thread1.length; i++){
-		thread.push(thread1[i].value);
-		ratio.push(ratio1[i].value);
-		weight.push(weight1[i].value);
-		thread_com.push(thread_com1[i].value);
-		lot.push(lot1[i].value);
+	var con=[];
+	var threadArr = document.getElementsByClassName("thread");
+	var ratioArr = document.getElementsByClassName("ratio");
+	var weightArr = document.getElementsByClassName("knitweight");
+	var thread_comArr = document.getElementsByClassName("thread_com");
+	var conArr = document.getElementsByClassName("con");
+	for(var i=0; i<threadArr.length; i++){
+		thread.push(threadArr[i].value);
+		ratio.push(ratioArr[i].value);
+		weight.push(weightArr[i].value);	
+		thread_com.push(thread_comArr[i].value);
+		con.push(conArr[i].value);
 	}
-	var thread1_json = JSON.stringify(thread);
-	var ratio1_json = JSON.stringify(ratio);
-	var weitht1_json = JSON.stringify(weight)
-	var thread_com1_json = JSON.stringify(thread_com);
-	var lot1_json = JSON.stringify(lot);
+	var thread_json = JSON.stringify(thread);
+	var ratio_json = JSON.stringify(ratio);
+	var weight_json = JSON.stringify(weight)
+	var thread_com_json = JSON.stringify(thread_com);
+	var con_json = JSON.stringify(con);
 	$.ajax({
 		"type":"POST",
 		"async":false,
 		"url":"/order/knitAdd",
 		"data":{
 			"orderno":$("#orderNo").val(),
-			"thread":thread1_json,
-			"ratio":ratio1_json,
+			"thread":thread_json,
+			"ratio":ratio_json,
 			"weight":weight_json,
-			"thread_com":thread_com1_json,
-			"lot":lot1_json,
+			"thread_com":thread_com_json,
+			"con":con_json,
 			"roll":$("#roll").val(),
 			"kgttl":$("#kgttl").val(),
 			"knitcompany":$("#knitcompany").val(),
@@ -456,20 +496,67 @@ function knitAdd1(){
 			"gage":$("#gage").val(),
 			"niddle":$("#niddle").val(),
 			"organ":$("#organ").val(),
-			"loop":$("#loop").val()
+			"looplength":$("#looplength").val()
 		},
-		success:function(){
-			
+		success:function(map){
+			window.location.href="/order/thread?ratio="+map.ratio+"&&kgttl="+map.kgttl+"&&thread="+map.thread;
 		}
 	})
 }
 // 편직의뢰서 저장버튼
+$("#ratio01").change(function(){
+	var kgttl = $("#kgttl").val();
+	var ratio01 = $("#ratio01").val();
+	var weight = parseInt(ratio01)*parseInt(kgttl)/100;
+	$("#Knitweight01").val(weight);
+})
+$("#ratio02").change(function(){
+	var kgttl = $("#kgttl").val();
+	var ratio02 = $("#ratio02").val();
+	var weight2 = parseInt(ratio02)*parseInt(kgttl)/100;
+	$("#Knitweight02").val(weight2);
+})
+$("#ratio03").change(function(){
+	var kgttl = $("#kgttl").val();
+	var ratio03 = $("#ratio03").val();
+	var weight3 = parseInt(ratio03)*parseInt(kgttl)/100;
+	$("#Knitweight03").val(weight3);
+})
+$("#ratio04").change(function(){
+	var kgttl = $("#kgttl").val();
+	var ratio04 = $("#ratio04").val();
+	var weight4 = parseInt(ratio04)*parseInt(kgttl)/100;
+	$("#Knitweight04").val(weight4);
+})
+$("#ratio05").change(function(){
+	var kgttl = $("#kgttl").val();
+	var ratio05 = $("#ratio05").val();
+	var weight5 = parseInt(ratio05)*parseInt(kgttl)/100;
+	$("#Knitweight05").val(weight5);
+})
 $("#knitBtn").click(function(){
-	var ratio = document.getElementsByClassName("ratio");
-	var total = 0;
-	for(var i=0; i<ratio.length; i++){
-		total += parseInt(ratio[i].value);
+	var ratio01 = $("#ratio01").val();
+	var ratio02 = $("#ratio02").val();
+	var ratio03 = $("#ratio03").val();
+	var ratio04 = $("#ratio04").val();
+	var ratio05 = $("#ratio05").val();
+	var total = parseInt(ratio01);
+	if($("#ratio02").val()!=""){
+		total+=parseInt(ratio02);
 	}
-	knitAdd1();
+	if($("#ratio03").val()!=""){
+		total+=parseInt(ratio03);
+	}
+	if($("#ratio04").val()!=""){
+		total+=parseInt(ratio04);
+	}
+	if($("#ratio05").val()!=""){
+		total+=parseInt(ratio05);
+	}
+	if(total!=100){
+		window.alert(total+"/비율 합계가 100% 가 아닙니다. 확인바랍니다.");
+	}else{
+		knitAdd1();
+	}
 })
 </script>
