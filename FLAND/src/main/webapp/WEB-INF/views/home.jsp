@@ -7,21 +7,37 @@
 		height:180px;
 	}
 	.btn{
-	width:400px;
-	height:180px;
-	border: 1px solid black;
-	text-decoration: none;
-	font-size:5rem;
-	font-weight: bold;
-	color: navy ;
-	padding:50px 80px 50px 80px;
-	margin:20px;
-	display:inline-block;
-	border-radius: 10px;
-	font-family:  "Times New Roman", "맑은 고딕", serif;
-	background-color: #ddd;
+		width:400px;
+		height:180px;
+		border: 1px solid black;
+		text-decoration: none;
+		font-size:5rem;
+		font-weight: bold;
+		color: navy ;
+		padding:50px 80px 50px 80px;
+		margin:20px;
+		display:inline-block;
+		border-radius: 10px;
+		font-family:  "Times New Roman", "맑은 고딕", serif;
+		background-color: #ddd;
+    }
+    li{
+    	font-size: 20px;
     }
 </style>
+<!-- nav -->
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav" style="padding-left: 670px;">
+			<li><a href="/input/expense">입력</a></li>
+			<li><a  id="daily" href="">조회</a></li>
+			<li><a href="/order/new"> NEW ORDER</a></li>
+			<li><a href="/order/orderList">ORDER LIST</a></li>
+			<li><a href="/company/read">거래처</a></li>
+		</ul>
+	</div>
+</nav>
+<!-- body -->
 	<div class="row" style="margin-top: 100px">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4" align="center">

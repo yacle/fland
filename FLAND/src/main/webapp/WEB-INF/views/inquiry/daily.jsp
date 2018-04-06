@@ -81,8 +81,8 @@
 <div class="title">
 	<h2><b>일일자금수지 실적표</b> [<span id="modalDate">${date}</span>]</h2>
 	<ul class="pager">
-		<li class="previous" id="pre"><a href="#">Previous</a></li>
-		<li class="next" id="next"><a href="#">Next</a></li>
+		<li id="pre"><a href="#">Previous</a></li>
+		<li id="next"><a href="#">Next</a></li>
 	</ul>
 </div>
 <div align="center">
@@ -120,7 +120,7 @@
 			<td width="8%" class="num"><fmt:formatNumber value="${out_nhi[0].sum}" groupingUsed="true"/></td>
 			<td width="10%" class="num" rowspan="${in_nhi.size()+out_nhi.size()}"><fmt:formatNumber value="${end.nhi}" groupingUsed="true"/></td>
 		</tr>
-		<c:forEach var="i" begin="1" end="${(in_nhi.size() + out_nhi.size())>0 ? (in_nhi.size() + out_nhi.size())-1 : (in_nhi.size()+out_nhi.size())}">
+		<c:forEach var="i" begin="1" end="${ in_nhi.size() + out_nhi.size() >0 ? (in_nhi.size() + out_nhi.size())-1 : (in_nhi.size()+out_nhi.size())}">
 			<tr>
 				<td>${in_nhi[i].item }</td>
 				<td class="sel-com" data="${in_nhi[i].no}">${in_nhi[i].detail}</td>
@@ -145,7 +145,7 @@
 			<td class="num"><fmt:formatNumber value="${out_nhe[0].sum }" groupingUsed="true"/></td>
 			<td class="num" rowspan="${in_nhe.size()+out_nhe.size()}"><fmt:formatNumber value="${end.nhe}" groupingUsed="true"/></td>
 		</tr>
-		<c:forEach var="i" begin="1" end="${(in_nhe.size() + out_nhe.size())>0 ? (in_nhe.size() + out_nhe.size())-1 : (in_nhe.size()+out_nhe.size())}">
+		<c:forEach var="i" begin="1" end="${in_nhe.size() + out_nhe.size()>0 ? (in_nhe.size() + out_nhe.size())-1 : (in_nhe.size()+out_nhe.size())}">
 			<tr>
 				<td>${in_nhe[i].item }</td>
 				<td class="sel-com" data="${in_nhe[i].no }">${in_nhe[i].detail }</td>

@@ -6,8 +6,8 @@ public class KnitVO {
 	private String ratio;
 	private String thread_com;
 	private String con;
-	private Integer roll;
-	private Integer kgttl;
+	private Integer rolltotal;
+	private Integer perkgtotal;
 	private String knitcompany;
 	private String delivery;
 	private String inch;
@@ -17,6 +17,19 @@ public class KnitVO {
 	private String looplength;
 	private String weight;
 	private String lot;
+	
+	public Integer getRolltotal() {
+		return rolltotal;
+	}
+	public void setRolltotal(Integer rolltotal) {
+		this.rolltotal = rolltotal;
+	}
+	public Integer getPerkgtotal() {
+		return perkgtotal;
+	}
+	public void setPerkgtotal(Integer perkgtotal) {
+		this.perkgtotal = perkgtotal;
+	}
 	public String getOrderno() {
 		return orderno;
 	}
@@ -46,18 +59,6 @@ public class KnitVO {
 	}
 	public void setCon(String con) {
 		this.con = con;
-	}
-	public Integer getRoll() {
-		return roll;
-	}
-	public void setRoll(Integer roll) {
-		this.roll = roll;
-	}
-	public Integer getKgttl() {
-		return kgttl;
-	}
-	public void setKgttl(Integer kgttl) {
-		this.kgttl = kgttl;
 	}
 	public String getKnitcompany() {
 		return knitcompany;
@@ -113,11 +114,5 @@ public class KnitVO {
 	public void setLot(String lot) {
 		this.lot = lot;
 	}
-	@Override
-	public String toString() {
-		return "KnitVO [orderno=" + orderno + ", thread=" + thread + ", ratio=" + ratio + ", thread_com=" + thread_com
-				+ ", con=" + con + ", roll=" + roll + ", kgttl=" + kgttl + ", knitcompany=" + knitcompany
-				+ ", delivery=" + delivery + ", inch=" + inch + ", gage=" + gage + ", niddle=" + niddle + ", organ="
-				+ organ + ", looplength=" + looplength + ", weight=" + weight + ", lot=" + lot + "]";
-	}
+	
 }

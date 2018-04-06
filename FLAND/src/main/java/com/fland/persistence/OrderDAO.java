@@ -22,21 +22,40 @@ public class OrderDAO {
 	}
 	
 	public int orderRead(String orderno) throws Exception {
-		return session.selectOne("order.read", orderno);
+		return session.selectOne("order.orderread", orderno);
+	}
+	
+	public int dyeRead(String orderno) throws Exception {
+		return session.selectOne("order.dyeread", orderno);
 	}
 	
 	public void orderUpdate(Map map) throws Exception {
-		session.update("order.update", map);
+		session.update("order.orderupdate", map);
 	}
 	
 	public void dyeAdd(Map map) throws Exception {
 		session.insert("order.dyeadd", map);
 	}
 	
+	public void dyeUpdate(Map map) throws Exception {
+		session.update("order.dyeupdate", map);
+	}
+	// dye Search
+	public Map<String, String> dyeSearch(String orderno) throws Exception {
+		return session.selectOne("order.dyesearch", orderno);
+	}
+	
 	public void knitAdd(KnitVO vo) throws Exception {
 		session.insert("order.knitadd", vo);
 	}
-	
+	// knit Search
+	public List<Map<String, String>> knitSearch(String orderno) throws Exception {
+		return session.selectList("order.knitsearch", orderno);
+	}
+	// knit new
+	public Map<String, Object> knitNew(Object object) throws Exception{
+		return session.selectOne("order.knitnew", object);
+	}
 	// paging oracle
 	public List<OrderVO> listCriteriaOracle(Criteria cri) throws Exception {
 		return session.selectList("order.pageList", cri);

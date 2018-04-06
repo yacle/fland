@@ -14,7 +14,7 @@
 <title><tiles:getAsString name="title" />-${auth_id }</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="class=container-fluid">
 		<header style="background-color:#ddd; height:140px;">
 			<tiles:insertAttribute name="header" />
 		</header>

@@ -52,35 +52,39 @@ public class SumCount {
 	}
 	
 	public static String dyeSum(Map map) {
-		String colors = (String) map.get("color");
+		String colors = (String) map.get("COLOR");
 		String color[] = colors.split("/");
-		String orderLengths = (String) map.get("orderLength");
+		String orderLengths = (String) map.get("ORDERLENGTH");
 		String orderLength[] = orderLengths.split("/");
 		String html="";
-		Double workWeight = Double.parseDouble((String) map.get("workWeight"));
-		Double loss = Double.parseDouble((String) map.get("loss"));
-		Double perkg = Double.parseDouble((String)map.get("perkg"));
+		Double workWeight = Double.parseDouble(String.valueOf(map.get("WORKWEIGHT")));
+		Double loss = Double.parseDouble(String.valueOf(map.get("LOSS")));
+		Double perkg = Double.parseDouble(String.valueOf(map.get("PERKG")));
 		Double rollttl=0.0;
 		Double perkgttl=0.0;
+		int orderttl=0;
 		for(int i=0; i<orderLength.length; i++) {
 			Double length = Double.parseDouble(orderLength[i]);
 			Double a = (loss*length*(workWeight/1000))/perkg;
 			html += "<tr>"+
-						"<td>"+color[i]+"</td>"+	
-						"<td>"+Math.ceil(a)+"</td>"+
-						"<td>"+(Math.ceil(a)*perkg)+
-							"(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
-					"<tr>";
+							"<td>"+color[i]+"</td>"+	
+							"<td>"+Math.ceil(a)+"</td>"+
+							"<td>"+(Math.ceil(a)*perkg)+
+								"(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
+							"<td>"+orderLength[i]+"</td>"+							
+						"<tr>";
 			rollttl += Math.ceil(a);
 			perkgttl += Math.ceil(a)*perkg;
+			orderttl +=Integer.parseInt(orderLength[i]);
 		}
 		int rollTotal = Integer.parseInt(String.valueOf(Math.round(rollttl))); 
 		int perkgTotal = Integer.parseInt(String.valueOf(Math.round(perkgttl))); 
 		html += "<tr>"+
-					"<td>TOTAL</td>"+
-					"<td><b><span id='rollTotal'>"+rollTotal+"</span></b></td>"+
-					"<td><b><span id='perkgTotal'>"+perkgTotal+"</span></b></td>"+
-				"<tr>";
+						"<td>TOTAL</td>"+
+						"<td><b><span id='rollTotal'>"+rollTotal+"</span></b></td>"+
+						"<td><b><span id='perkgTotal'>"+perkgTotal+"</span></b></td>"+
+						"<td><b><span id='orderLength'>"+orderttl+"</span></b></td>"+
+					"<tr>";
 		return html;
 	}
 
