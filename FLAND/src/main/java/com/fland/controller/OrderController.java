@@ -72,7 +72,7 @@ public class OrderController {
 		mav.addObject("map", param);
 		return mav;
 	}
-	// knit settion
+	// knit setting
 	@RequestMapping(value = "/knitNew", method = RequestMethod.POST)
 	@ResponseBody
 	public String knitNewSet(@RequestParam Map<String, Object> param) throws Exception {
@@ -89,8 +89,10 @@ public class OrderController {
 			 Map<String, Object> map = orderdao.knitNew(param.get("orderno"));
 			 String rollList = SumCount.dyeSum(map);
 			 List<Map<String, String>> list = orderdao.knitSearch(param.get("orderno"));
+			 Map<String, List<String>> data = SumCount.knitData(list.get(0));
 			 mav.addObject("section", "order/knit");
 			 mav.addObject("list", list.get(0));
+			 mav.addObject("data", data);
 			 mav.addObject("html", rollList);
 			 mav.addObject("map", param);
 			 return mav;

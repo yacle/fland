@@ -87,5 +87,32 @@ public class SumCount {
 					"<tr>";
 		return html;
 	}
-
+	
+	public static Map<String, List<String>> knitData(Map<String, String> data){
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
+		List<String> thread = new ArrayList<String>();
+		List<String> ratio = new ArrayList<String>();
+		List<String> knitweight = new ArrayList<String>();
+		List<String> thread_com = new ArrayList<String>();
+		List<String> con = new ArrayList<String>();
+		String[] threadArr = data.get("thread").split("/");
+		String[] ratioArr = data.get("ratio").split("/");
+		String[] KnitweightArr = data.get("Knitweight").split("/");
+		String[] thread_comArr = data.get("thread_com").split("/");
+		String[] conArr = data.get("con").split("/");
+		
+		for(int i=0; i<threadArr.length; i++) {
+			thread.add(threadArr[i]);
+			ratio.add(ratioArr[i]);
+			knitweight.add(KnitweightArr[i]);
+			thread_com.add(thread_comArr[i]);
+			con.add(conArr[i]);
+		}
+		map.put("thread", thread);
+		map.put("ratio", ratio);
+		map.put("knitweight", knitweight);
+		map.put("thread_com", thread_com);
+		map.put("con", con);
+		return map;
+	}
 }
