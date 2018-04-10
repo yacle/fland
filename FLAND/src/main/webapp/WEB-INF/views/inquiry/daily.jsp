@@ -32,7 +32,7 @@
 		height: 40px;
 	}
 	#mainTable{
-		width: 100%;
+		width: 95%;
 	}
 	#modalTable{
 		width: 100%;

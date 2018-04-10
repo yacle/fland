@@ -52,18 +52,38 @@ public class OrderController {
 		return mav;
 	}
 	// 염색의뢰서 Search
-	@RequestMapping(value = "/dye", method = RequestMethod.POST)
-	public ModelAndView dyeSearch(@RequestParam Map<String, String> param) throws Exception {
-		ModelAndView mav = new ModelAndView("temp");
-		Map<String, String> map = orderdao.dyeSearch(param.get("orderno"));
-		mav.addObject("section", "order/dye");
-		mav.addObject("color", map.get("color"));
-		mav.addObject("workWeight", map.get("workweight"));
-		mav.addObject("orderLength", map.get("orderlength"));
-		mav.addObject("orderno", param.get("orderno"));
-		return mav;
+		@RequestMapping(value = "/dye", method = RequestMethod.POST)
+		public ModelAndView dyeSearch(@RequestParam Map<String, String> param) throws Exception {
+			ModelAndView mav = new ModelAndView("temp");
+			Map<String, String> map = orderdao.dyeSearch(param.get("orderno"));
+			mav.addObject("section", "order/dye");
+			mav.addObject("color", map.get("COLOR"));
+			mav.addObject("workWeight", map.get("WORKWEIGHT"));
+			mav.addObject("orderLength", map.get("ORDERLENGTH"));
+			mav.addObject("orderno", param.get("orderno"));
+			return mav;
+		}
+	// 염색의뢰 수량 계산
+	@RequestMapping(value = "/dyeSum", method = RequestMethod.POST)
+	@ResponseBody
+	public String dyeSum(@RequestParam Map map)  throws Exception {
+		String rollList = SumCount.dyeSum(map);
+		return rollList;
 	}
-	
+
+	// 염색의뢰서 저장
+	@RequestMapping(value = "/dyeAdd", method = RequestMethod.POST)
+	@ResponseBody
+	public String dyeAdd(@RequestParam Map<String, String> map) throws Exception{
+		int r = orderdao.dyeRead( map.get("orderno"));
+		if(r==0) {	// orderno 가 없는 경우
+			orderdao.dyeAdd(map);
+			return "new";
+		}else {		// 기존 orderno가 있는 경우
+			orderdao.dyeUpdate(map);
+			return "update";
+		}
+	}
 	// new knit 
 	@RequestMapping(value = "/knit", method = RequestMethod.GET)
 	public ModelAndView knitNew(@RequestParam Map<String, String> param) throws Exception {
@@ -80,23 +100,44 @@ public class OrderController {
 		 String rollList = SumCount.dyeSum(map);
 		 return rollList;
 	}
-	
+	// 편직의뢰서 저장
+		@RequestMapping(value = "/knitAdd", method = RequestMethod.POST)
+		@ResponseBody
+		public void knitAdd(@RequestParam Map<String, String> map) throws Exception{
+			KnitVO vo = VoEdit.knitvoSave(map);
+			System.out.println(map.get("knitno"));
+			if(map.get("knitno").equals("0")){
+				orderdao.knitAdd(vo);
+				System.out.println("add");
+			}else {
+				orderdao.knitUpdate(vo);
+				System.out.println("update");
+			}
+		}
+		
 	// knit search
-		@RequestMapping(value = "/knitSearch", method = RequestMethod.POST)
+		@RequestMapping(value = "/knitSearch", method = {RequestMethod.GET, RequestMethod.POST})
 		@ResponseBody
 		public ModelAndView knitSearch(@RequestParam Map<String, String> param) throws Exception {
 			ModelAndView mav = new ModelAndView("temp");
 			 Map<String, Object> map = orderdao.knitNew(param.get("orderno"));
 			 String rollList = SumCount.dyeSum(map);
 			 List<Map<String, String>> list = orderdao.knitSearch(param.get("orderno"));
-			 Map<String, List<String>> data = SumCount.knitData(list.get(0));
+			 String index = "0";
+			 if(!param.get("index").equals("0")) {
+				 index = param.get("index");
+			 }
+			 Map<String, List<String>> data = SumCount.knitData(list.get(Integer.parseInt(index)));
 			 mav.addObject("section", "order/knit");
-			 mav.addObject("list", list.get(0));
+			 mav.addObject("list", list.get(Integer.parseInt(index)));
+			 mav.addObject("size", list.size());
+			 mav.addObject("index", index);
 			 mav.addObject("data", data);
 			 mav.addObject("html", rollList);
 			 mav.addObject("map", param);
 			 return mav;
 		}
+		
 	// 발주서 리스트
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
 	public ModelAndView orderList(Criteria cri) throws Exception {
@@ -123,39 +164,7 @@ public class OrderController {
 			return "update";
 		}
 	}
-	// 염색의뢰 수량 계산
-	@RequestMapping(value = "/dyeSum", method = RequestMethod.POST)
-	@ResponseBody
-	public String dyeSum(@RequestParam Map map)  throws Exception {
-		String rollList = SumCount.dyeSum(map);
-		return rollList;
-	}
-	// 염색의뢰서 저장
-	@RequestMapping(value = "/dyeAdd", method = RequestMethod.POST)
-	@ResponseBody
-	public String dyeAdd(@RequestParam Map<String, String> map) throws Exception{
-		String orderno = map.get("orderno");
-		int r = orderdao.dyeRead(orderno);
-		if(r==0) {	// orderno 가 없는 경우
-			orderdao.dyeAdd(map);
-			return "new";
-		}else {		// 기존 orderno가 있는 경우
-			orderdao.dyeUpdate(map);
-			return "update";
-		}
-	}
-	// 편직의뢰서 저장
-	@RequestMapping(value = "/knitAdd", method = RequestMethod.POST)
-	@ResponseBody
-	public Map knitAdd(@RequestParam Map map) throws Exception{
-		KnitVO vo = VoEdit.knitvoSave(map);
-		orderdao.knitAdd(vo);
-		Map<String, Object> orderVal = new HashMap<String, Object>();
-		orderVal.put("ratio", vo.getRatio());
-		orderVal.put("perkgtotal", vo.getPerkgtotal());
-		orderVal.put("thread", vo.getThread());
-		return orderVal;
-	}
+	
 	
 	@RequestMapping(value = "/thread", method = { RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView threadOrder(@RequestParam Map<String, String> map) throws Exception {

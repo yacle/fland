@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jsoup.select.Evaluator.IsEmpty;
+
 public class SumCount {
 	static String nhe;
 	static String nhi;
@@ -95,24 +97,31 @@ public class SumCount {
 		List<String> knitweight = new ArrayList<String>();
 		List<String> thread_com = new ArrayList<String>();
 		List<String> con = new ArrayList<String>();
-		String[] threadArr = data.get("thread").split("/");
-		String[] ratioArr = data.get("ratio").split("/");
-		String[] KnitweightArr = data.get("Knitweight").split("/");
-		String[] thread_comArr = data.get("thread_com").split("/");
-		String[] conArr = data.get("con").split("/");
-		
+		String[] threadArr = data.get("THREAD").split("/");
+		String[] ratioArr = data.get("RATIO").split("/");
+		String[] KnitweightArr = data.get("WEIGHT").split("/");
+		String[] thread_comArr = data.get("THREAD_COM").split("/");
+		String[] conArr = data.get("CON").split("/");
 		for(int i=0; i<threadArr.length; i++) {
 			thread.add(threadArr[i]);
 			ratio.add(ratioArr[i]);
 			knitweight.add(KnitweightArr[i]);
+			if(thread_comArr.length!=0) {
 			thread_com.add(thread_comArr[i]);
+			}
+			if(conArr.length!=0) {
 			con.add(conArr[i]);
+			}
 		}
 		map.put("thread", thread);
 		map.put("ratio", ratio);
 		map.put("knitweight", knitweight);
-		map.put("thread_com", thread_com);
-		map.put("con", con);
+		if(!thread_com.isEmpty()) {
+			map.put("thread_com", thread_com);
+		}
+		if(!con.isEmpty()) {
+			map.put("con", con);
+		}
 		return map;
 	}
 }

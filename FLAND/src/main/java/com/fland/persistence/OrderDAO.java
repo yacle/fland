@@ -25,12 +25,12 @@ public class OrderDAO {
 		return session.selectOne("order.orderread", orderno);
 	}
 	
-	public int dyeRead(String orderno) throws Exception {
-		return session.selectOne("order.dyeread", orderno);
-	}
-	
 	public void orderUpdate(Map map) throws Exception {
 		session.update("order.orderupdate", map);
+	}
+	
+	public int dyeRead(String orderno) throws Exception {
+		return session.selectOne("order.dyeread", orderno);
 	}
 	
 	public void dyeAdd(Map map) throws Exception {
@@ -47,6 +47,10 @@ public class OrderDAO {
 	
 	public void knitAdd(KnitVO vo) throws Exception {
 		session.insert("order.knitadd", vo);
+	}
+	// knit update
+	public void knitUpdate(KnitVO vo) throws Exception {
+		session.update("order.knitupdate", vo);
 	}
 	// knit Search
 	public List<Map<String, String>> knitSearch(String orderno) throws Exception {

@@ -144,6 +144,7 @@ input{
 		<button type="button" class="btn btn-primary" id="orderBtn">저장</button>
 	</div>
 </div>	
+
 <script>
 // yard 중량 입력
 $("#workWeight").change(function(){

@@ -44,7 +44,7 @@
 			<a class="btn" href="/input/expense">입 력</a>
 		</div>
 		<div class="col-lg-4" align="center">
-			<a class="btn" id="daily" href="">조 회</a>
+			<a class="btn" id="daily2" href="">조 회</a>
 		</div>
 	</div>
 	<div class="row"></div>
@@ -71,4 +71,5 @@
 		dd = '0'+dd;
 	}
 	document.getElementById("daily").href="/inquiry/daily?date="+yy+"-"+mm+"-"+dd;
+	document.getElementById("daily2").href="/inquiry/daily?date="+yy+"-"+mm+"-"+dd;
 </script>

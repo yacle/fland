@@ -1,6 +1,7 @@
 package com.fland.domain;
 
 public class KnitVO {
+	private String knitno;
 	private String orderno;
 	private String thread;
 	private String ratio;
@@ -18,6 +19,12 @@ public class KnitVO {
 	private String weight;
 	private String lot;
 	
+	public String getKnitno() {
+		return knitno;
+	}
+	public void setKnitno(String knitno) {
+		this.knitno = knitno;
+	}
 	public Integer getRolltotal() {
 		return rolltotal;
 	}

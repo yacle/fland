@@ -57,17 +57,19 @@ input{
 <div class="row">
 	<div class="col-lg-4">	
 		<form action="/order/knitSearch" method="POST">
+			<input type="hidden" name="knitno"	id="knitno" value="${list.KNITNO }">
+			<input type="hidden" name="index" id="index" value="0">
 			<table class="table2" style="margin-top:50px; border-spacing: 30px;">
 				<tr>
 					<td width="5%"></td>
 					<td width="25%">Order NO</td>
 					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${map.orderno }"></td>
-					<td width="20%"><button type="submit" class="btn btn-info">Search</button></td>
+					<td width="20%"><button type="submit" id="knitsearchBtn" class="btn btn-info">Search</button></td>
 				</tr>
-				<c:forEach var="i" begin="1" end="${list.size() }" step="1">
+				<c:forEach var="i" begin="1" end="${size}" step="1">
 					<tr>
 						<td colspan="4">
-							<button type="button" size="5" class="btn knitBtn" value="${i }">편직의뢰서 ${i }</button>
+							<button type="button" size="5" class="btn knitBtn" value="${i-1}">편직의뢰서 ${i}</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -80,21 +82,21 @@ input{
 		</form>
 	</div>
 	<div class="col-lg-4">
-		<h3 class="title">편직의뢰서 1</h3>
+		<h3>편직의뢰서<span id="title">${index+1 }</span></h3>
 		<table class="table4">
 			<tr>
 				<td width="15%">&#10020; 절수</td>
-				<td><input type="text" id="rttl" value="${list.rolltotal }class="form-control" readonly></td>
+				<td><input type="text" id="rttl" value="${list.ROLLTOTAL }" class="form-control" readonly></td>
 				<td width="15%">&#10020; 총중량</td>
-				<td><input type="text" id="pkttl" value="${list.perkgtotal }" class="form-control" readonly></td>
+				<td><input type="text" id="pkttl" value="${list.PERKGTOTAL }" class="form-control" readonly></td>
 			</tr>
 			<tr>
 				<td>편직처</td>
-				<td colspan="3"><input type="text" id="knitcompany" value="${ }" class="form-control" placeholder="편직처"></td>
+				<td colspan="3"><input type="text" id="knitcompany"  value="${list.KNITCOMPANY }" class="form-control" placeholder="편직처"></td>
 			</tr>
 			<tr>
 				<td>출고처</td>
-				<td colspan="3"><input type="text" id="delivery" value="${ }" class="form-control" placeholder="출고처"></td>
+				<td colspan="3"><input type="text" id="delivery" value="${list.DELIVERY }" class="form-control" placeholder="출고처"></td>
 			</tr>
 		</table>
 		<table class="table4">
@@ -106,11 +108,11 @@ input{
 				<td>루프장</td>
 			</tr>
 			<tr>
-				<td><input type="number" id="inch" value="${ }" class="form-control"></td>
-				<td><input type="number" id="gage" value="${ }" class="form-control"></td>
-				<td><input type="number" id="niddle" value="${ }" class="form-control"></td>
-				<td><input type="text" id="organ" value="${ }" class="form-control"></td>
-				<td><input type="number" id="looplength" value="${ }" class="form-control"></td>
+				<td><input type="number" id="inch" value="${list.INCH }" class="form-control"></td>
+				<td><input type="number" id="gage" value="${list.GAGE }"  class="form-control"></td>
+				<td><input type="number" id="niddle" value="${list.NIDDLE }"  class="form-control"></td>
+				<td><input type="text" id="organ" value="${list.ORGAN }"  class="form-control"></td>
+				<td><input type="number" id="looplength" value="${list.LOOPLENGTH }"  class="form-control"></td>
 			</tr>
 		</table>
 		<table class="table4">
@@ -123,36 +125,36 @@ input{
 			</tr>	
 			<tbody id="my-tbody4">
 				<tr>
-					<td><input type="text" class="form-control thread" value="${data.THREAD[0] }" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio" id="ratio01" value="${data.RATIO[0]" placeholder="%"></td>
-					<td><input type="text" class="form-control Knitweight" id="Knitweight01" value="${data.KNITWEIGHT[0] }" placeholder="kg" readonly></td>
-					<td><input type="text" class="form-control thread_com" value="${data.THREAD_COM[0] }" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control con" value="${data.CON[0] }" placeholder="cone"></td>
+					<td><input type="text" class="form-control thread" value="${data.thread[0] }" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio01" value="${data.ratio[0]}" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight01" value="${data.knitweight[0] }" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" value="${data.thread_com[0] }" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" value="${data.con[0] }" placeholder="cone"></td>
 				</tr>
 				<tr>
-					<td><input type="text" class="form-control thread" value="${data.THREAD[1] }" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio" id="ratio02" value="${data.RATIO[1] }" placeholder="%"></td>
-					<td><input type="text" class="form-control Knitweight" id="Knitweight02" value="${data.KNITWEIGHT[1] }" placeholder="kg" readonly></td>
-					<td><input type="text" class="form-control thread_com" value="${data.THREAD_COM[1] }" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control con" value="${data.CON[1] }" placeholder="cone"></td>
+					<td><input type="text" class="form-control thread" value="${data.thread[1] }" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio02" value="${data.ratio[1] }" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight02" value="${data.knitweight[1] }" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" value="${data.thread_com[1] }" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" value="${data.con[1] }" placeholder="cone"></td>
 				</tr><tr>
-					<td><input type="text" class="form-control thread" value="${data.THREAD[2] }" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio" id="ratio03" value="${data.RATIO[2] }" placeholder="%"></td>
-					<td><input type="text" class="form-control Knitweight" id="Knitweight03" value="${data.KNITWEIGHT[2] }" placeholder="kg" readonly></td>
-					<td><input type="text" class="form-control thread_com" value="${data.THREAD_COM[2] }" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control con" value="${data.CON[2] }" placeholder="cone"></td>
+					<td><input type="text" class="form-control thread" value="${data.thread[2] }" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio03" value="${data.ratio[2] }" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight03" value="${data.knitweight[2] }" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" value="${data.thread_com[2] }" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" value="${data.con[2] }" placeholder="cone"></td>
 				</tr><tr>
-					<td><input type="text" class="form-control thread" value="${data.THREAD[3] }" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio" id="ratio04" value="${data.RATIO[3] }" placeholder="%"></td>
-					<td><input type="text" class="form-control Knitweight" id="Knitweight04" value="${data.KNITWEIGHT[3] }" placeholder="kg" readonly></td>
-					<td><input type="text" class="form-control thread_com" value="${data.THREAD_COM[3] }" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control con" value="${data.CON[3] }" placeholder="cone"></td>
+					<td><input type="text" class="form-control thread" value="${data.thread[3] }" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio04" value="${data.ratio[3] }" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight04" value="${data.knitweight[3] }" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" value="${data.thread_com[3] }" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" value="${data.con[3] }" placeholder="cone"></td>
 				</tr><tr>
-					<td><input type="text" class="form-control thread" value="${data.THREAD[4] }" placeholder="사종"></td>
-					<td><input type="number" class="form-control ratio" id="ratio05" value="${data.RATIO[4] }" placeholder="%"></td>
-					<td><input type="text" class="form-control Knitweight" id="Knitweight05" value="${data.KNITWEIGHT[4] }" placeholder="kg" readonly></td>
-					<td><input type="text" class="form-control thread_com" value="${data.THREAD_COM[4] }" placeholder="원사업체"></td>
-					<td><input type="text" class="form-control con" value="${data.CON[4] }" placeholder="cone"></td>
+					<td><input type="text" class="form-control thread" value="${data.thread[4] }" placeholder="사종"></td>
+					<td><input type="number" class="form-control ratio" id="ratio05" value="${data.ratio[4] }" placeholder="%"></td>
+					<td><input type="text" class="form-control Knitweight" id="Knitweight05" value="${data.knitweight[4] }" placeholder="kg" readonly></td>
+					<td><input type="text" class="form-control thread_com" value="${data.thread_com[4] }" placeholder="원사업체"></td>
+					<td><input type="text" class="form-control con" value="${data.con[4] }" placeholder="cone"></td>
 				</tr>
 			</tbody>
 		</table><hr/>
@@ -162,7 +164,7 @@ input{
 		<div>
 			<h4></h4>
 		</div>
-		<table class="table table-bordered">
+		<table style="width:90%;" class="table table-bordered">
 			<tr>
 				<td width="20%">컬러</td>
 				<td width="20%">절수</td>
@@ -198,10 +200,28 @@ $(document).ready(function(){
 	}
 });
 // search
-$("#knitBtn").click(function(){
+$(".knitBtn").click(function(){
 	var index = $(this).val();
+	$("#index").val(index);
+	console.log(index+"/"+$("#index").val());
+	$("#knitsearchBtn").click();
 })
-
+// knitNew
+$("#knitNew").click(function(){
+	$("#knitno").val(0),
+	$(".thread").val(""),
+	$(".ratio").val(""),
+	$(".Knitweight").val(""),
+	$(".thread_com").val(""),
+	$(".con").val(""),
+	$("#knitcompany").val(""),
+	$("#delivery").val(""),
+	$("#inch").val(""),
+	$("#gage").val(""),
+	$("#niddle").val(""),
+	$("#organ").val(""),
+	$("#looplength").val("")
+})
 // yard 중량 입력
 $("#workWeight").change(function(){
 	var gperyd = $("#workWeight").val();
@@ -259,14 +279,15 @@ function knitAdd1(){
 		"async":false,
 		"url":"/order/knitAdd",
 		"data":{
+			"knitno":$("#knitno").val(),
 			"orderno":$("#orderno").val(),
 			"thread":thread_json,
 			"ratio":ratio_json,
 			"weight":weight_json,
 			"thread_com":thread_com_json,
 			"con":con_json,
-			"rolltotal":parseInt($("#rolltotal").val()),
-			"perkgtotal":parseInt($("#perkgtotal").val()),
+			"rolltotal":parseInt($("#rttl").val()),
+			"perkgtotal":parseInt($("#pkttl").val()),
 			"knitcompany":$("#knitcompany").val(),
 			"delivery":$("#delivery").val(),
 			"inch":$("#inch").val(),
@@ -275,8 +296,8 @@ function knitAdd1(){
 			"organ":$("#organ").val(),
 			"looplength":$("#looplength").val()
 		},
-		success:function(map){
-			window.location.href="/order/thread?orderno="$("#orderno").val();
+		success:function(){
+			$("#knitsearchBtn").click();
 		}
 	})
 }

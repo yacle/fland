@@ -1,22 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-// 발주서 컬러별 수량
-function add_row() {
-	var my_tbody1 = document.getElementById('my-tbody1');
-	var row = my_tbody1.insertRow(my_tbody1.rows.length);
-	var cell1 = row.insertCell(0);
-	var cell2 = row.insertCell(1);
-	var cell3 = row.insertCell(2);
-	cell1.innerHTML = '<input type="text" class="form-control color">' ;
-	cell2.innerHTML = '<input type="number" class="form-control ttl" placeholder="YD">';
-    cell3.innerHTML = '<input type="text" class="form-control colorBt">';
-}
-function del_row() {
-	var my_tbody1 = document.getElementById('my-tbody1');
-	if (my_tbody1.rows.length < 1) return;
-	my_tbody1.deleteRow( my_tbody1.rows.length-1 );
-}	
+	
 // 염색의뢰서 테스트 의뢰  
 function add_test(){
 	var test_tbody = document.getElementById('test-tbody');
@@ -31,26 +16,7 @@ function del_test(){
 	if (test_tbody.rows.length < 1) return;
 	test_tbody.deleteRow( test_tbody.rows.length-1 );
 }
-// 편직의뢰서 01
-function add_knit() {
-	var my_tbody4 = document.getElementById('my-tbody4');
-	var row4 = my_tbody4.insertRow(my_tbody4.rows.length);
-	var cell41 = row4.insertCell(0);
-	var cell42 = row4.insertCell(1);
-	var cell43 = row4.insertCell(2);
-	var cell44 = row4.insertCell(3);
-	var cell45 = row4.insertCell(4);
-	cell41.innerHTML = '<input type="text" class="form-control thread" placeholder="사종">';
-	cell42.innerHTML = '<input type="number" class="form-control ratio" placeholder="%">';
-	cell43.innerHTML = '<input type="number" class="form-control Knitweight" placeholder="kg">';
-	cell44.innerHTML = '<input type="text" class="form-control thread_com" placeholder="원사업체">';
-	cell45.innerHTML = '<input type="text" class="form-control lot" placeholder="lot">';
-}
-function del_knit(){
-	var my_tbody4 = document.getElementById('my-tbody4');
-	if (my_tbody4.rows.length < 1) return;
-	my_tbody4.deleteRow( my_tbody4.rows.length-1 );
-}
+
 </script>
 <style>
 .col-lg-4{
@@ -248,7 +214,7 @@ $("#dyeBtn").click(function(){
 				window.alert("업데이트 완료");
 			}
 			var html = $("#my-tbody2").html();
-			window.location.href="/order/knit?orderno="+$("#orderno").val();
+			window.location.href="/order/knitSearch?orderno="+$("#orderno").val()+"&&index=0";
 		}
 	})
 })

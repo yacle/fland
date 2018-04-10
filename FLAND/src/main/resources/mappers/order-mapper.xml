@@ -81,6 +81,7 @@
 			dyecompany=#{dyecompany, jdbcType=VARCHAR},
 			rolltotal=#{rolltotal},
 			perkgtotal=#{perkgtotal}
+		where orderno=#{orderno}
 	</update>
 	<insert id="knitadd">
 		insert into knit_tbl (knitno,orderno,thread,ratio,weight,thread_com,con,rolltotal,perkgtotal,knitcompany,delivery,inch,gage,niddle,organ,looplength,lot)
@@ -103,11 +104,46 @@
 				#{lot, jdbcType=VARCHAR}
 			)
 	</insert>
+	<update id="knitupdate">
+		update knit_tbl set
+				THREAD=#{thread},
+				RATIO=#{ratio},
+				WEIGHT=#{weight},
+				THREAD_COM=#{thread_com, jdbcType=VARCHAR},
+				CON=#{con},
+				ROLLTOTAL=#{rolltotal},
+				PERKGTOTAL=#{perkgtotal},
+				KNITCOMPANY=#{knitcompany},
+				DELIVERY=#{delivery},
+				INCH=#{inch, jdbcType=INTEGER},
+				GAGE=#{gage, jdbcType=INTEGER},
+				NIDDLE=#{niddle, jdbcType=INTEGER},
+				ORGAN=#{organ, jdbcType=VARCHAR},
+				LOOPLENGTH=#{looplength, jdbcType=VARCHAR},
+				LOT=#{lot, jdbcType=VARCHAR}
+			where KNITNO=#{knitno}	
+	</update>
 	<select id="dyesearch" resultType="HashMap">
-		select workweight, orderlength, color from order_tbl where orderno=#{orderno}
+		select o.WORKWEIGHT, 
+			o.ORDERLENGTH, 
+			o.COLOR, 
+			d.CAUTION, 
+			d.DELIVERY, 
+			d.DETAIL, 
+			d.DYECOMPANY, 
+			d.DYEETC, 
+			d.KNITCOMPANY, 
+			d.METHOD,
+			d.MIXED,
+			d.TEST,
+			d.TESTCOLOR
+		from order_tbl o 
+		join dye_tbl d 
+		on o.ORDERNO=d.ORDERNO 
+		where o.ORDERNO=#{orderno}
 	</select>
 	<select id="knitsearch" resultType="HashMap">
-		select * from knit_tbl where orderno = #{orderno} order by knitno desc
+		select * from knit_tbl where orderno = #{orderno} order by knitno asc
 	</select>
 	<select id="knitnew" resultType="HashMap">
 		select o.COLOR, o.ORDERLENGTH, o.WORKWEIGHT, d.LOSS, d.PERKG 
