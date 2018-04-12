@@ -143,12 +143,23 @@
 		where o.ORDERNO=#{orderno}
 	</select>
 	<select id="knitsearch" resultType="HashMap">
-		select * from knit_tbl where orderno = #{orderno} order by knitno asc
+		select * from knit_tbl where orderno = #{orderno} order by KNITNO asc
 	</select>
 	<select id="knitnew" resultType="HashMap">
 		select o.COLOR, o.ORDERLENGTH, o.WORKWEIGHT, d.LOSS, d.PERKG 
 			from order_tbl o join dye_tbl d on o.orderno=d.ORDERNO 
 			where o.orderno=#{orderno}
+	</select>
+	<select id="threadsearch" resultType="HashMap">
+		SELECT KNITNO, THREAD, WEIGHT, PERKGTOTAL, RATIO
+		FROM knit_tbl
+		WHERE ORDERNO=#{orderno} order by KNITNO asc
+	</select>
+	<select id="thread" resultType="com.fland.domain.ThreadVO">
+		select * from thread_tbl where orderno = #{orderno} order by threadno asc
+	</select>
+	<select id="threadcheck" resultType="int">
+		select count(*) from thread_tbl where orderno=#{orderno}
 	</select>
 <!-- paging ORACLE -->
 	<!-- 목록 조회 (페이징) -->

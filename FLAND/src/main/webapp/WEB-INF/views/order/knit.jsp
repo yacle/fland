@@ -50,12 +50,13 @@ input{
 		<ul class="nav navbar-nav">
 			<li><a href="/order/new">발주서</a></li>
 			<li><a href="/order/dye">염색의뢰서</a></li>
-			<li><a href="#">편직의뢰서</a></li>
+			<li class="active"><a href="#">편직의뢰서</a></li>
+			<li><a href="/order/thread">원사발주서</a></li>
 		</ul>
 	</div>
 </nav>
 <div class="row">
-	<div class="col-lg-4">	
+	<div class="col-lg-3">	
 		<form action="/order/knitSearch" method="POST">
 			<input type="hidden" name="knitno"	id="knitno" value="${list.KNITNO }">
 			<input type="hidden" name="index" id="index" value="0">
@@ -66,10 +67,10 @@ input{
 					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${map.orderno }"></td>
 					<td width="20%"><button type="submit" id="knitsearchBtn" class="btn btn-info">Search</button></td>
 				</tr>
-				<c:forEach var="i" begin="1" end="${size}" step="1">
+				<c:forEach var="map" items="${no }" varStatus="status">
 					<tr>
 						<td colspan="4">
-							<button type="button" size="5" class="btn knitBtn" value="${i-1}">편직의뢰서 ${i}</button>
+							<button type="button" size="5" class="btn knitBtn" value="${status.index}">편직의뢰서 ${map.KNITNO}</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -81,8 +82,8 @@ input{
 			</table>
 		</form>
 	</div>
-	<div class="col-lg-4">
-		<h3>편직의뢰서<span id="title">${index+1 }</span></h3>
+	<div class="col-lg-5">
+		<h3>편직의뢰서<span id="title">${list.KNITNO}</span></h3>
 		<table class="table4">
 			<tr>
 				<td width="15%">&#10020; 절수</td>
@@ -203,7 +204,6 @@ $(document).ready(function(){
 $(".knitBtn").click(function(){
 	var index = $(this).val();
 	$("#index").val(index);
-	console.log(index+"/"+$("#index").val());
 	$("#knitsearchBtn").click();
 })
 // knitNew

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.fland.domain.Criteria;
 import com.fland.domain.KnitVO;
 import com.fland.domain.OrderVO;
+import com.fland.domain.ThreadVO;
 
 @Repository
 public class OrderDAO {
@@ -60,6 +61,23 @@ public class OrderDAO {
 	public Map<String, Object> knitNew(Object object) throws Exception{
 		return session.selectOne("order.knitnew", object);
 	}
+	// thread search
+	public List<Map<String, String>> threadSearch(String orderno)throws Exception{
+		return session.selectList("order.threadsearch", orderno);
+	}
+	// thread
+	public List<ThreadVO> thread(String orderno)throws Exception{
+		return session.selectList("order.thread", orderno);
+	}
+	// threadCheck
+	public int threadCheck(String orderno)throws Exception{
+		return session.selectOne("order.threadcheck", orderno);
+	}
+	
+	
+	
+	
+	
 	// paging oracle
 	public List<OrderVO> listCriteriaOracle(Criteria cri) throws Exception {
 		return session.selectList("order.pageList", cri);

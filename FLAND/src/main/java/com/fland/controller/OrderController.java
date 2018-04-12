@@ -20,6 +20,7 @@ import com.fland.domain.Criteria;
 import com.fland.domain.KnitVO;
 import com.fland.domain.PageMaker;
 import com.fland.domain.SumCount;
+import com.fland.domain.ThreadVO;
 import com.fland.domain.VoEdit;
 import com.fland.persistence.OrderDAO;
 
@@ -131,6 +132,7 @@ public class OrderController {
 			 mav.addObject("section", "order/knit");
 			 mav.addObject("list", list.get(Integer.parseInt(index)));
 			 mav.addObject("size", list.size());
+			 mav.addObject("no", list);
 			 mav.addObject("index", index);
 			 mav.addObject("data", data);
 			 mav.addObject("html", rollList);
@@ -167,17 +169,28 @@ public class OrderController {
 	
 	
 	@RequestMapping(value = "/thread", method = { RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView threadOrder(@RequestParam Map<String, String> map) throws Exception {
+	public ModelAndView threadOrderGet() throws Exception {
 		ModelAndView mav = new ModelAndView("temp");
-		String thread = map.get("thread");
-		String[] threadArr = thread.split("/");
-		String ratio = map.get("ratio");
-		String[] ratioArr = ratio.split("/");
-		String kgttl = map.get("kgttl");
 		mav.addObject("section", "order/thread_order");
-		mav.addObject("threadArr", threadArr);
-		mav.addObject("ratioArr", ratioArr);
-		mav.addObject("kgttl", kgttl);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/threadSearch", method = RequestMethod.GET)
+	public ModelAndView threadSearch(@RequestParam Map<String, String> map) throws Exception{
+		ModelAndView mav = new ModelAndView("temp");
+		String orderno = map.get("orderno");
+		// 편직의뢰서 data
+		List<Map<String, String>> list =  orderdao.threadSearch(orderno);
+		List<Map<String, Object>> rstlist = SumCount.threadData(list);
+		mav.addObject("section", "order/thread_order");
+		mav.addObject("orderno", map.get("orderno"));
+		mav.addObject("list", rstlist);
+		// if 원사발주서 있을 경우
+		int r = orderdao.threadCheck(orderno);
+		if(r!=0) {
+			List<ThreadVO> volist = orderdao.thread(orderno);
+			mav.addObject("volist", volist);
+		}
+		return mav;
+	}	
 }

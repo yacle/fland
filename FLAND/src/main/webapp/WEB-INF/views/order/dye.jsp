@@ -47,11 +47,12 @@ input{
 			<li><a href="/order/new">발주서</a></li>
 			<li class="active"><a href="#">염색의뢰서</a></li>
 			<li><a href="/order/knit">편직의뢰서</a></li>
+			<li><a href="/order/thread">원사발주서</a></li>
 		</ul>
 	</div>
 </nav>
 <div class="row">
-	<div class="col-lg-4">	
+	<div class="col-lg-3">	
 		<form action="/order/dye" method="POST">
 			<table class="table2" style="margin-top:50px;">
 				<tr>
@@ -63,11 +64,11 @@ input{
 			</table>
 		</form>
 	</div>
-	<div class="col-lg-4 center">
+	<div class="col-lg-5 center">
 		<table class="table2">
 			<tr>
 				<td width="30%">LOSS %</td>
-				<td width="30%"><input type="number" class="form-control" id="loss" placeholder="ex)1.15" required></td>
+				<td width="30%"><input type="number" class="form-control" id="loss" placeholder="ex)10% => 10" required></td>
 				<td rowspan="2"><button type="button" id="dyeSum" class="btn btn-success">계산</button></td>
 			</tr>
 			<tr>
@@ -158,7 +159,7 @@ $("#dyeSum").click(function(){
 	var color = $("#color").val();
 	var workWeight = $("#workWeight").val();
 	var orderLength = $("#orderLength").val();
-	var loss = $("#loss").val();
+	var loss = 1+$("#loss").val()/100;
 	var perkg = $("#perkg").val();
 	$.ajax({
 		"type":"POST",

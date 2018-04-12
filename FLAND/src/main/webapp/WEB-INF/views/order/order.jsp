@@ -59,11 +59,12 @@ input{
 			<li class="active"><a href="#">발주서</a></li>
 			<li><a href="/order/dye">염색의뢰서</a></li>
 			<li><a href="/order/knit">편직의뢰서</a></li>
+			<li><a href="/order/thread">원사발주서</a></li>
 		</ul>
 	</div>
 </nav>
 <div class="row">
-	<div class="col-lg-4">
+	<div class="col-lg-3">
 		<form action="/order/searchOrder" method="POST">
 			<table class="table2" style="margin-top:50px;">
 				<tr>
@@ -75,7 +76,7 @@ input{
 			</table>
 		</form>
 	</div>	
-	<div class="col-lg-4">
+	<div class="col-lg-5">
 		<table id="table1">
 			<tr>
 				<td width=30%>Order No</td>

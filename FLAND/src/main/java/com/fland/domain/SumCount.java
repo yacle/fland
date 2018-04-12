@@ -124,4 +124,29 @@ public class SumCount {
 		}
 		return map;
 	}
+	
+	public static List<Map<String, Object>> threadData(List<Map<String, String>> list){
+		List<Map<String, Object>> rstlist = new ArrayList<Map<String, Object>>();
+		for(Map<String, String> map : list) {
+			Map<String, Object> data = new HashMap<String, Object>	();
+			String[] threadArr = map.get("THREAD").split("/");
+			String[] weightArr = map.get("WEIGHT").split("/");
+			String[] ratioArr = map.get("RATIO").split("/");
+			List<String> thread = new ArrayList<String>();
+			List<String> weight = new ArrayList<String>();
+			List<String> ratio = new ArrayList<String>();
+			for(int i=0; i<threadArr.length; i++) {
+				thread.add(threadArr[i]);
+				weight.add(weightArr[i]);
+				ratio.add(ratioArr[i]);
+			}
+			data.put("thread", thread);
+			data.put("weight", weight);
+			data.put("ratio", ratio);
+			data.put("knitno", map.get("KNITNO"));
+			data.put("perkgtotal", map.get("PERKGTOTAL"));
+			rstlist.add(data);
+		}
+		return rstlist;
+	}
 }
