@@ -30,46 +30,64 @@ public class OrderDAO {
 		session.update("order.orderupdate", map);
 	}
 	
+	// 염색의뢰서 체크
 	public int dyeRead(String orderno) throws Exception {
 		return session.selectOne("order.dyeread", orderno);
 	}
-	
+	// 염색의뢰서 저장
 	public void dyeAdd(Map map) throws Exception {
 		session.insert("order.dyeadd", map);
 	}
-	
+	// 염색의뢰서 업데이트
 	public void dyeUpdate(Map map) throws Exception {
 		session.update("order.dyeupdate", map);
 	}
-	// dye Search
+	// 염색의뢰서 검색
 	public Map<String, String> dyeSearch(String orderno) throws Exception {
 		return session.selectOne("order.dyesearch", orderno);
 	}
 	
+	// 편직의뢰서 저장
 	public void knitAdd(KnitVO vo) throws Exception {
 		session.insert("order.knitadd", vo);
 	}
-	// knit update
+	// 편진의뢰서 업데이트
 	public void knitUpdate(KnitVO vo) throws Exception {
 		session.update("order.knitupdate", vo);
 	}
-	// knit Search
+	// 편직의뢰서 삭제
+	public int knitDel(String knitno)throws Exception{
+		return session.delete("order.knitdel", knitno);
+	}
+	// 편직의뢰서 검색
 	public List<Map<String, String>> knitSearch(String orderno) throws Exception {
 		return session.selectList("order.knitsearch", orderno);
 	}
-	// knit new
+	// 편직의뢰서 데이터
 	public Map<String, Object> knitNew(Object object) throws Exception{
 		return session.selectOne("order.knitnew", object);
 	}
-	// thread search
-	public List<Map<String, String>> threadSearch(String orderno)throws Exception{
+	// 원사발주서 저장
+	public void threadAdd(Map map)throws Exception{
+		session.insert("order.threadadd", map);
+	}
+	// 원사발주서 삭제
+	public int threadDel(String threadno)throws Exception{
+		return session.delete("order.threaddel", threadno);
+	}
+	// 원사발주서 업데이트
+	public int threadUpdate(Map map)throws Exception{
+		return session.update("order.threadupdate", map);
+	}
+	// 원사발주서 편직데이터
+	public List<Map<String, String>> threadData(String orderno)throws Exception{
+		return session.selectList("order.threaddata", orderno);
+	}
+	// 원사발주서 검색
+	public List<ThreadVO> threadList(String orderno)throws Exception{
 		return session.selectList("order.threadsearch", orderno);
 	}
-	// thread
-	public List<ThreadVO> thread(String orderno)throws Exception{
-		return session.selectList("order.thread", orderno);
-	}
-	// threadCheck
+	// 원사발주서 체크
 	public int threadCheck(String orderno)throws Exception{
 		return session.selectOne("order.threadcheck", orderno);
 	}

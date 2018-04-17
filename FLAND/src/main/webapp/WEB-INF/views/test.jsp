@@ -45,7 +45,7 @@ input{
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/home">Admin</a>
+			<a class="navbar-brand" href="/">HOME</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="/order/new">발주서</a></li>
@@ -64,14 +64,13 @@ input{
 				<tr>
 					<td width="5%"></td>
 					<td width="25%">Order NO</td>
-					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${map.orderno }" required></td>
+					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${map.orderno }"></td>
 					<td width="20%"><button type="submit" id="knitsearchBtn" class="btn btn-info">Search</button></td>
 				</tr>
 				<c:forEach var="map" items="${no }" varStatus="status">
 					<tr>
 						<td colspan="4">
 							<button type="button" size="5" class="btn knitBtn" value="${status.index}">편직의뢰서 ${map.KNITNO}</button>
-							<button type="button" size="5" class="btn btn-danger btn-xs delBtn" value="${map.KNITNO}">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -177,42 +176,35 @@ input{
 			</tbody>
 		</table>
 	</div>
-	<input type="hidden" id="Html" value="${Html }">
 </div>
 	
 <script>
-
 $(document).ready(function(){
 	if($("#orderno").val()==""){
 		window.alert("Order No를 입력해주세요");
 	}else{
-		$("#tbody").html($("#Html").val());
-		var rttl = $("#rollTotal").html();
-		var pkttl = $("#perkgTotal").html();
-		$("#rttl").val(rttl);
-		$("#pkttl").val(pkttl);
+		$.ajax({
+			"type":"POST",
+			"async":false,
+			"url":"/order/knitNew",
+			"data":{
+				"orderno":$("#orderno").val(),
+			},
+			success:function(obj){
+				$("#tbody").html(obj);
+				var rttl = $("#rollTotal").html();
+				var pkttl = $("#perkgTotal").html();
+				$("#rttl").val(rttl);
+				$("#pkttl").val(pkttl);
+			}
+		})
 	}
 });
-// 편직의뢰서 선택
+// search
 $(".knitBtn").click(function(){
 	var index = $(this).val();
 	$("#index").val(index);
 	$("#knitsearchBtn").click();
-})
-// 편직의뢰서 삭제
-$(".delBtn").click(function(){
-	var knitno = $(this).val();
-	$.ajax({
-		"type":"POST",
-		"async":false,
-		"url":"/order/knitDel",
-		"data":{
-			"knitno":knitno
-		},
-		success:function(){
-			$("#knitsearchBtn").click();
-		}
-	})
 })
 // knitNew
 $("#knitNew").click(function(){

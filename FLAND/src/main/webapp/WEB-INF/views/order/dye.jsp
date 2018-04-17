@@ -41,7 +41,7 @@ input{
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/">HOME</a>
+			<a class="navbar-brand" href="/home">Admin</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="/order/new">발주서</a></li>
@@ -58,22 +58,23 @@ input{
 				<tr>
 					<td width="5%"></td>
 					<td width="25%">Order NO</td>
-					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${orderno }"></td>
+					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${orderno }" required></td>
 					<td width="20%"><button type="submit" class="btn btn-info">Search</button></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<div class="col-lg-5 center">
+	<div class="col-lg-5" align="center">
+		<h3>[염색의뢰서]</h3>
 		<table class="table2">
 			<tr>
 				<td width="30%">LOSS %</td>
-				<td width="30%"><input type="number" class="form-control" id="loss" placeholder="ex)10% => 10" required></td>
+				<td width="30%"><input type="number" class="form-control" id="loss" value="${map.LOSS }" placeholder="ex)10% => 10" required></td>
 				<td rowspan="2"><button type="button" id="dyeSum" class="btn btn-success">계산</button></td>
 			</tr>
 			<tr>
 				<td>KG/절</td>
-				<td ><input type="number" class="form-control" id="perkg" required></td>
+				<td ><input type="number" class="form-control" id="perkg" value="${map.PERKG }" required></td>
 			</tr>
 		</table>
 		<table  class="table2">
@@ -88,16 +89,16 @@ input{
 			<tr>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">원단혼용율</td>
 				<td colspan="3" style="border-top: 1px solid blue; padding:5px 0px 0px;">
-					<input type="text" id="mixed" class="form-control">
+					<input type="text" id="mixed" value="${map.MIXED }" class="form-control">
 				</td>
 			</tr>
 			<tr>
 				<td>가공방법</td>
-				<td colspan="3"><input type="text" id="method" class="form-control"></td>
+				<td colspan="3"><input type="text" id="method" value="${map.METHOD }" class="form-control"></td>
 			</tr>
 			<tr>
 				<td>세부사항</td>
-				<td colspan="3"><input type="text" id="detail" class="form-control"></td>
+				<td colspan="3"><input type="text" id="detail" value="${map.DETAIL }" class="form-control"></td>
 			</tr>
 			<tr>
 		</table>
@@ -117,31 +118,33 @@ input{
 			</tbody>
 			<tr>
 				<td>기타사항</td>
-				<td><textarea id="dyeetc" class="form-control" rows="3">야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람</textarea></td>
+				<td><textarea id="dyeetc"  class="form-control" rows="3">${map.DYEETC !=null ? map.DYEETC : '야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람' }</textarea></td>
 			</tr>
 			<tr>
 				<td>주의사항</td>
-				<td><textarea id="caution" class="form-control" rows="2">포장전 B/T 색상과 자체 비교 요망</textarea></td>
+				<td><textarea id="caution" class="form-control" rows="2">${map.CAUTION !=null ? map.CAUTION : '포장전 B/T 색상과 자체 비교 요망' }</textarea></td>
 			</tr>
 			<tr>
 				<td>생지출고처</td>
-				<td><input type="text" id="knitcompany" class="form-control" style="text-align:left;"></td>
+				<td><input type="text" id="knitcompany" value="${map.KNITCOMPANY }" class="form-control" style="text-align:left;"></td>
 			</tr>
 			<tr>
 				<td>염색처</td>
-				<td><input type="text" id="dyecompany" class="form-control" style="text-align:left;"></td>
+				<td><input type="text" id="dyecompany" value="${map.DYECOMPANY }" class="form-control" style="text-align:left;"></td>
 			</tr>
 			<tr>
 				<td>출고처</td>
-				<td><input type="text" id="delivery" class="form-control" style="text-align:left;"></td>
+				<td><input type="text" id="delivery" value="${map.DELIVERY }" class="form-control" style="text-align:left;"></td>
 			</tr>
 		</table>
 		<button type="button" class="btn btn-primary" id="dyeBtn">저장</button>
 	</div>
 	<div class="col-lg-4">
-		<input type="hidden" id="color" value="${color }">
-		<input type="hidden" id="workWeight" value="${workWeight }">
-		<input type="hidden" id="orderLength" value="${orderLength }">
+		<input type="hidden" id="color" value="${map.COLOR }">
+		<input type="hidden" id="workWeight" value="${map.WORKWEIGHT }">
+		<input type="hidden" id="orderLength" value="${map.ORDERLENGTH }">
+		<input type="hidden" id="testcolor"	value="${map.TESTCOLOR }">
+		<input type="hidden" id="test"	value="${map.TEST }">
 	</div>
 </div>
 	
@@ -150,8 +153,25 @@ $(document).ready(function(){
 	if($("#orderno").val()==""){
 		window.alert("Order No를 입력해주세요");
 	}else{
-	    window.alert("Loss와 kg/절을 입력해주세요");
-	    $("#loss").focus();
+		if($("#loss").val()==""){
+		    window.alert("Loss와 kg/절을 입력해주세요");
+		    $("#loss").focus();
+		}else{
+			var testcolor = $("#testcolor").val();
+			var test = $("#test").val();
+			var colorArr = testcolor.split('/');
+			var testArr = test.split(',');
+			for(var i=1; i<colorArr.length; i++){
+				add_test();
+			}
+			var colorClass = document.getElementsByClassName("testColor");
+			var testClass = document.getElementsByClassName("test");
+			for(var i=0; i<colorArr.length; i++){
+				colorClass[i].value=colorArr[i];
+				testClass[i].value=testArr[i];
+			}
+			$("#dyeSum").click();
+		}
 	}
 });
 // 염색의뢰서 컬러별 절수계산 버튼
@@ -159,7 +179,7 @@ $("#dyeSum").click(function(){
 	var color = $("#color").val();
 	var workWeight = $("#workWeight").val();
 	var orderLength = $("#orderLength").val();
-	var loss = 1+$("#loss").val()/100;
+	var loss = $("#loss").val();
 	var perkg = $("#perkg").val();
 	$.ajax({
 		"type":"POST",
@@ -184,8 +204,8 @@ $("#dyeBtn").click(function(){
 	var testColor = testColorList[0].value;
 	var test = testList[0].value;
 	for(var i=1; i<testColorList.length; i++){
-		testColor += "&"+testColorList[i].value;
-		test += "&"+ testList[i].value;
+		testColor += "/"+testColorList[i].value;
+		test += ","+ testList[i].value;
 	}
 	$.ajax({
 		"type":"POST",
@@ -193,7 +213,7 @@ $("#dyeBtn").click(function(){
 		"url":"/order/dyeAdd",
 		"data":{
 			"orderno":$("#orderno").val(),
-			"loss":$("#loss").val(),
+			"loss": $("#loss").val(),
 			"perkg":$("#perkg").val(),
 			"mixed":$("#mixed").val(),
 			"method":$("#method").val(),

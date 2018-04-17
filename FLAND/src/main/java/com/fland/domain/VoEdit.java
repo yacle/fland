@@ -26,11 +26,11 @@ public class VoEdit {
 			ArrayList conList = new ObjectMapper().readValue(map.get("con"), ArrayList.class);
 			for(int i=0; i<threadList.size(); i++) {
 				if(i!=threadList.size()) {
-					thread += threadList.get(i)+"/";
-					ratio += ratioList.get(i)+"/";
-					weight += weightList.get(i)+"/";
-					thread_com += thread_comList.get(i)+"/";
-					con += conList.get(i)+"/";
+					thread += threadList.get(i)+"&&";
+					ratio += ratioList.get(i)+"&&";
+					weight += weightList.get(i)+"&&";
+					thread_com += thread_comList.get(i)+"&&";
+					con += conList.get(i)+"&&";
 				}else {
 					thread += threadList.get(i);
 					ratio += ratioList.get(i);
@@ -66,11 +66,11 @@ public class VoEdit {
 			ArrayList<String> weightList = new ArrayList<String>();
 			ArrayList<String> thread_comList = new ArrayList<String>();
 			ArrayList<String> conList = new ArrayList<String>();
-			String[] thread = vo.getThread().split("/");
-			String[] ratio = vo.getRatio().split("/");
-			String[] weight = vo.getWeight().split("/");
-			String[] thread_com = vo.getThread_com().split("/");
-			String[] con = vo.getCon().split("/");
+			String[] thread = vo.getThread().split("&&");
+			String[] ratio = vo.getRatio().split("&&");
+			String[] weight = vo.getWeight().split("&&");
+			String[] thread_com = vo.getThread_com().split("&&");
+			String[] con = vo.getCon().split("&&");
 			for(int i=0; i<thread.length; i++) {
 				threadList.add(thread[i]);
 				ratioList.add(ratio[i]);

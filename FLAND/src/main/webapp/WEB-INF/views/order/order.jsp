@@ -8,9 +8,11 @@ function add_row() {
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
 	cell1.innerHTML = '<input type="text" class="form-control color">' ;
 	cell2.innerHTML = '<input type="number" class="form-control ttl" placeholder="YD">';
     cell3.innerHTML = '<input type="text" class="form-control colorBt">';
+    cell4.className='selectSn';
 }
 function del_row() {
 	var my_tbody1 = document.getElementById('my-tbody1');
@@ -76,8 +78,9 @@ input{
 			</table>
 		</form>
 	</div>	
-	<div class="col-lg-5">
-		<table id="table1">
+	<div class="col-lg-5" align="center">
+	<h3>[발주서]</h3>
+		<table>
 			<tr>
 				<td width=30%>Order No</td>
 				<td colspan="2"><input type="text" class="form-control" id="orderNo" required></td>
@@ -89,7 +92,7 @@ input{
 			</tr>
 			<tr>
 				<td>S/#</td>
-				<td colspan="2"><input type="text" class="form-control" id="serial"></td>
+				<td colspan="2"><input type="text" class="form-control" id="serial" placeholder="ex) fl1245 / fl4321"></td>
 			</tr>
 			<tr>
 				<td>발주일</td>
@@ -112,34 +115,41 @@ input{
 				<td><input type="text" class="form-control" id="workWeight" placeholder="g/yd" required></td>
 				<td><input type="text" class="form-control" id="mWeight" placeholder="g/m2" required></td>
 			</tr>
+		</table>
+		<table>
 			<tr>
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px; width: 25%;">
 					컬러
-					<button type="button" onclick="add_row()" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
-					<button type="button" onclick="del_row()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
+					<button type="button" onclick="add_row()" id="plus" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
+					<button type="button" onclick="del_row()" id="minus" style="border-radius:5px; font-size: 10px;">&#8210;</button>
 				</td>
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">Order Length</td>
-				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">BT No.</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px; width: 25%;">Order Length</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px; width: 25%;">BT No.</td>
+				<td style="border-top: 1px solid blue; padding:5px 0px 0px; width: 25%;">S/#</td>
 			</tr>
 			<tbody id="my-tbody1">
 				<tr>
 					<td><input type="text" class="form-control color"></td>
 					<td><input type="number" class="form-control ttl" placeholder="YD"></td>
 					<td><input type="text" class="form-control colorBt"></td>
+					<td class="selectSn">	</td>
 				</tr>
 			</tbody>
 			<tr>
 				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><b>Order Total</b></td>
 				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><span id="ttl" style="color: red;"></span></td>
 				<td  style="border-bottom: 1px solid blue; padding:0px 0px 5px; text-align:left;">YD</td>
+				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"></td>
 			</tr>
+		</table>
+		<table>
 			<tr>
 				<td>단가</td>
-				<td colspan="2"><input type="text" class="form-control" id="price"></td>
+				<td><input type="text" class="form-control" id="price" required></td>
 			</tr>
 			<tr>
 				<td>기타</td>
-				<td colspan="2"><textarea class="form-control" id="etc"></textarea></td>
+				<td><textarea class="form-control" id="etc"></textarea></td>
 			</tr>
 		</table>
 		<button type="button" class="btn btn-primary" id="orderBtn">저장</button>
@@ -163,6 +173,24 @@ $("#mWeight").change(function(){
 	$("#workWeight").val(Math.round(gperyd)+" g/yd");
 	$("#mWeight").val(gperm+" g/m2");
 })
+function serial(){
+	var sn = $("#serial").val();
+	var snArr = sn.split('/');
+	var html="<select name='sn' class='form-control sn'>";
+	for(var i=0; i<snArr.length; i++){
+		html += "<option>"+snArr[i]+"</option>";
+	}
+	html +="</select>";
+	$(".selectSn").html(html);
+}
+$("#plus").click(function(){
+	serial();
+})
+
+$(document).on('change','#serial', function(){
+	serial();
+})
+
 
 $(document).on('change','.ttl', function(){
 	var total=0;
@@ -213,9 +241,9 @@ $("#orderBtn").click(function(){
 			}else{
 				window.alert("업데이트 완료");
 			}
-			window.location.href="/order/dye?color="+color
-					+"&&workWeight="+parseInt($("#workWeight").val())
-					+"&&orderLength="+orderLength
+			window.location.href="/order/dye?COLOR="+color
+					+"&&WORKWEIGHT="+parseInt($("#workWeight").val())
+					+"&&ORDERLENGTH="+orderLength
 					+"&&orderno="+$("#orderNo").val();
 		}
 	})

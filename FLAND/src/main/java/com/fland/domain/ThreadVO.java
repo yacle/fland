@@ -7,7 +7,8 @@ public class ThreadVO {
 	private String delivery;
 	private String knitloss;
 	private String threadweight;
-	private String etc;
+	private String btno;
+	private String threadetc;
 	public int getThreadno() {
 		return threadno;
 	}
@@ -44,15 +45,23 @@ public class ThreadVO {
 	public void setThreadweight(String threadweight) {
 		this.threadweight = threadweight;
 	}
-	public String getEtc() {
-		return etc;
+	public String getBtno() {
+		return btno;
 	}
-	public void setEtc(String etc) {
-		this.etc = etc;
+	public void setBtno(String btno) {
+		this.btno = btno;
+	}
+	public String getThreadetc() {
+		return threadetc;
+	}
+	public void setThreadetc(String threadetc) {
+		this.threadetc = threadetc;
 	}
 	@Override
 	public String toString() {
 		return "ThreadVO [threadno=" + threadno + ", orderno=" + orderno + ", company=" + company + ", delivery="
-				+ delivery + ", knitloss=" + knitloss + ", threadweight=" + threadweight + ", etc=" + etc + "]";
+				+ delivery + ", knitloss=" + knitloss + ", threadweight=" + threadweight + ", btno=" + btno
+				+ ", threadetc=" + threadetc + "]";
 	}
+	
 }

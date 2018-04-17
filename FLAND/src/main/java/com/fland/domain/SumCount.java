@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jsoup.select.Evaluator.IsEmpty;
-
 public class SumCount {
 	static String nhe;
 	static String nhi;
@@ -53,14 +51,14 @@ public class SumCount {
 		return total;
 	}
 	
-	public static String dyeSum(Map map) {
+	public static String dyeSum(Map<String, Object> map) {
 		String colors = (String) map.get("COLOR");
 		String color[] = colors.split("/");
 		String orderLengths = (String) map.get("ORDERLENGTH");
 		String orderLength[] = orderLengths.split("/");
 		String html="";
 		Double workWeight = Double.parseDouble(String.valueOf(map.get("WORKWEIGHT")));
-		Double loss = Double.parseDouble(String.valueOf(map.get("LOSS")));
+		Double loss =1.0+Double.parseDouble(String.valueOf(map.get("LOSS")))/100.0;
 		Double perkg = Double.parseDouble(String.valueOf(map.get("PERKG")));
 		Double rollttl=0.0;
 		Double perkgttl=0.0;
@@ -97,11 +95,11 @@ public class SumCount {
 		List<String> knitweight = new ArrayList<String>();
 		List<String> thread_com = new ArrayList<String>();
 		List<String> con = new ArrayList<String>();
-		String[] threadArr = data.get("THREAD").split("/");
-		String[] ratioArr = data.get("RATIO").split("/");
-		String[] KnitweightArr = data.get("WEIGHT").split("/");
-		String[] thread_comArr = data.get("THREAD_COM").split("/");
-		String[] conArr = data.get("CON").split("/");
+		String[] threadArr = data.get("THREAD").split("&&");
+		String[] ratioArr = data.get("RATIO").split("&&");
+		String[] KnitweightArr = data.get("WEIGHT").split("&&");
+		String[] thread_comArr = data.get("THREAD_COM").split("&&");
+		String[] conArr = data.get("CON").split("&&");
 		for(int i=0; i<threadArr.length; i++) {
 			thread.add(threadArr[i]);
 			ratio.add(ratioArr[i]);
@@ -129,9 +127,9 @@ public class SumCount {
 		List<Map<String, Object>> rstlist = new ArrayList<Map<String, Object>>();
 		for(Map<String, String> map : list) {
 			Map<String, Object> data = new HashMap<String, Object>	();
-			String[] threadArr = map.get("THREAD").split("/");
-			String[] weightArr = map.get("WEIGHT").split("/");
-			String[] ratioArr = map.get("RATIO").split("/");
+			String[] threadArr = map.get("THREAD").split("&&");
+			String[] weightArr = map.get("WEIGHT").split("&&");
+			String[] ratioArr = map.get("RATIO").split("&&");
 			List<String> thread = new ArrayList<String>();
 			List<String> weight = new ArrayList<String>();
 			List<String> ratio = new ArrayList<String>();

@@ -14,6 +14,19 @@ table, td, th{
 }
 tr:hover {background-color:#f5f5f5;}
 </style>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/home">Admin</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/order/new">발주서</a></li>
+			<li><a href="/order/dye">염색의뢰서</a></li>
+			<li><a href="/order/knit">편직의뢰서</a></li>
+			<li class="active"><a href="#">원사발주서</a></li>
+		</ul>
+	</div>
+</nav>
 <div align="center">
 	<h1>ORDER LIST</h1>
 	<table>

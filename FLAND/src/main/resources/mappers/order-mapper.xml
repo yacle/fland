@@ -25,9 +25,6 @@
 	<select id="orderread" resultType="int">
 		select count(*) from ORDER_TBL where orderno = #{orderno}
 	</select>
-	<select id="dyeread" resultType="int">
-		select count(*) from DYE_TBL where orderno = #{orderno}
-	</select>
 	<update id="orderupdate">
 		update ORDER_TBL set 
 			company=#{company},
@@ -45,6 +42,13 @@
 			person=#{person}
 		where orderno=#{orderno}
 	</update>
+	<select id="ordersearch" resultType="com.fland.domain.OrderVO">
+		select * from order_tbl where ORDERNO = #{orderno}
+	</select>
+<!--  염색의뢰서 -->
+	<select id="dyeread" resultType="int">
+		select count(*) from DYE_TBL where orderno = #{orderno}
+	</select>
 	<insert id="dyeadd">
 		insert into dye_tbl (dyeno,orderno,loss,perkg,mixed,method,detail,dyeetc,caution,delivery,testcolor,test,knitcompany,dyecompany,rolltotal,perkgtotal)
 			values(null,
@@ -83,6 +87,28 @@
 			perkgtotal=#{perkgtotal}
 		where orderno=#{orderno}
 	</update>
+	<select id="dyesearch" resultType="HashMap">
+		select o.WORKWEIGHT, 
+			o.ORDERLENGTH, 
+			o.COLOR, 
+			d.CAUTION, 
+			d.DELIVERY, 
+			d.DETAIL, 
+			d.DYECOMPANY, 
+			d.DYEETC, 
+			d.KNITCOMPANY, 
+			d.METHOD,
+			d.MIXED,
+			d.TEST,
+			d.TESTCOLOR,
+			d.LOSS,
+			d.PERKG
+		from order_tbl o 
+		join dye_tbl d 
+		on o.ORDERNO=d.ORDERNO 
+		where o.ORDERNO=#{orderno}
+	</select>
+<!-- 편직의뢰서 -->
 	<insert id="knitadd">
 		insert into knit_tbl (knitno,orderno,thread,ratio,weight,thread_com,con,rolltotal,perkgtotal,knitcompany,delivery,inch,gage,niddle,organ,looplength,lot)
 			values(null,
@@ -123,25 +149,9 @@
 				LOT=#{lot, jdbcType=VARCHAR}
 			where KNITNO=#{knitno}	
 	</update>
-	<select id="dyesearch" resultType="HashMap">
-		select o.WORKWEIGHT, 
-			o.ORDERLENGTH, 
-			o.COLOR, 
-			d.CAUTION, 
-			d.DELIVERY, 
-			d.DETAIL, 
-			d.DYECOMPANY, 
-			d.DYEETC, 
-			d.KNITCOMPANY, 
-			d.METHOD,
-			d.MIXED,
-			d.TEST,
-			d.TESTCOLOR
-		from order_tbl o 
-		join dye_tbl d 
-		on o.ORDERNO=d.ORDERNO 
-		where o.ORDERNO=#{orderno}
-	</select>
+	<delete id="knitdel">
+		delete from knit_tbl where knitno=#{knitno}
+	</delete>
 	<select id="knitsearch" resultType="HashMap">
 		select * from knit_tbl where orderno = #{orderno} order by KNITNO asc
 	</select>
@@ -150,17 +160,46 @@
 			from order_tbl o join dye_tbl d on o.orderno=d.ORDERNO 
 			where o.orderno=#{orderno}
 	</select>
-	<select id="threadsearch" resultType="HashMap">
+<!-- 원사발주서 -->	
+	<insert id="threadadd">
+		insert into thread_tbl (threadno, orderno, company, delivery, knitloss, threadweight, threadetc, btno)
+			values(null,
+				#{orderno},
+				#{company},
+				#{delivery},
+				#{knitloss},
+				#{threadweight},
+				#{threadetc},
+				#{btno}
+			)
+	</insert>
+	<update id="threadupdate">
+		update thread_tbl set
+			company = #{company},
+			delivery = #{delivery},
+			knitloss = #{knitloss},
+			threadweight = #{threadweight},
+			threadetc = #{threadetc},
+			btno = #{btno}
+		where threadno = #{threadno}	
+	</update>
+	<delete id="threaddel">
+		delete from thread_tbl where threadno=#{threadno}
+	</delete>
+	<select id="threaddata" resultType="HashMap">
 		SELECT KNITNO, THREAD, WEIGHT, PERKGTOTAL, RATIO
 		FROM knit_tbl
 		WHERE ORDERNO=#{orderno} order by KNITNO asc
 	</select>
-	<select id="thread" resultType="com.fland.domain.ThreadVO">
+	<select id="threadsearch" resultType="com.fland.domain.ThreadVO">
 		select * from thread_tbl where orderno = #{orderno} order by threadno asc
 	</select>
 	<select id="threadcheck" resultType="int">
 		select count(*) from thread_tbl where orderno=#{orderno}
 	</select>
+	
+	
+	
 <!-- paging ORACLE -->
 	<!-- 목록 조회 (페이징) -->
 	<select id="pageList" resultType="com.fland.domain.OrderVO" >

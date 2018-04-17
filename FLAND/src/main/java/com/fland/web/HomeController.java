@@ -80,4 +80,11 @@ public class HomeController {
 		}
 		return rst;
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ModelAndView testHandle() throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		mav.addObject("section", "test");
+		return mav;
+	}
 }
