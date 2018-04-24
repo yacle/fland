@@ -52,6 +52,8 @@ input{
 			<li><a href="/order/dye">염색의뢰서</a></li>
 			<li class="active"><a href="#">편직의뢰서</a></li>
 			<li><a href="/order/thread">원사발주서</a></li>
+			<li><a href="/order/work">가공의뢰서</a></li>
+			<li><a href="/precost/precosting">사전원가계산서</a></li>
 		</ul>
 	</div>
 </nav>

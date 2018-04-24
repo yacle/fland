@@ -12,7 +12,7 @@ public class SumCount {
 	static String kbi;
 	static String sh;
 	static String km;
-	public static Map accountSum(List<IncomeVO> list) {
+	public static Map<String, String> accountSum(List<IncomeVO> list) {
 		Map<String, String> accsum = new HashMap<String, String>();
 		for(int i=0; i<list.size(); i++){
 			String account = list.get(i).getACCOUNT();
@@ -87,7 +87,27 @@ public class SumCount {
 					"<tr>";
 		return html;
 	}
-	
+	public static Map<String, ArrayList<String>> dyeSum2(Map<String, String> map) {
+		String colors2 = (String) map.get("COLOR");
+		String color2[] = colors2.split("/");
+		String orderLengths2 = (String) map.get("ORDERLENGTH");
+		String orderLength2[] = orderLengths2.split("/");
+		Double workWeight2 = Double.parseDouble(String.valueOf(map.get("WORKWEIGHT")));
+		Double loss2 =1.0+Double.parseDouble(String.valueOf(map.get("LOSS")))/100.0;
+		Double perkg2 = Double.parseDouble(String.valueOf(map.get("PERKG")));
+		ArrayList<String> color_list = new ArrayList<>();
+		ArrayList<String> weight_list = new ArrayList<>();
+		for(int i=0; i<orderLength2.length; i++) {
+			Double length2 = Double.parseDouble(orderLength2[i]);
+			Double a2 = (loss2*length2*(workWeight2/1000))/perkg2;
+			color_list.add(color2[i]);	
+			weight_list.add(String.valueOf(Math.ceil(a2)*perkg2));
+		}
+		Map<String, ArrayList<String>> dyeData = new HashMap<>();
+		dyeData.put("color", color_list);
+		dyeData.put("weight", weight_list);
+		return dyeData;
+	}
 	public static Map<String, List<String>> knitData(Map<String, String> data){
 		Map<String, List<String>> map = new HashMap<String, List<String>>();
 		List<String> thread = new ArrayList<String>();

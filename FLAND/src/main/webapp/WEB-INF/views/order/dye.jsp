@@ -48,6 +48,8 @@ input{
 			<li class="active"><a href="#">염색의뢰서</a></li>
 			<li><a href="/order/knit">편직의뢰서</a></li>
 			<li><a href="/order/thread">원사발주서</a></li>
+			<li><a href="/order/work">가공의뢰서</a></li>
+			<li><a href="/precost/precosting">사전원가계산서</a></li>
 		</ul>
 	</div>
 </nav>
@@ -149,6 +151,10 @@ input{
 </div>
 	
 <script>
+var orderLength = $("#orderLength").val();
+var color = $("#color").val();
+var workWeight = $("#workWeight").val();
+
 $(document).ready(function(){
 	if($("#orderno").val()==""){
 		window.alert("Order No를 입력해주세요");
@@ -176,9 +182,6 @@ $(document).ready(function(){
 });
 // 염색의뢰서 컬러별 절수계산 버튼
 $("#dyeSum").click(function(){
-	var color = $("#color").val();
-	var workWeight = $("#workWeight").val();
-	var orderLength = $("#orderLength").val();
 	var loss = $("#loss").val();
 	var perkg = $("#perkg").val();
 	$.ajax({

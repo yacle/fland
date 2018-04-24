@@ -54,10 +54,28 @@ public class OrderController {
 		}
 	}	
 // 발주서 검색
-	@RequestMapping(value = "/orderSearch", method = RequestMethod.GET)
+	@RequestMapping(value = "/orderSearch", method = RequestMethod.POST)
 	public ModelAndView orderSearch(@RequestParam Map<String, String> map) throws Exception{
 		ModelAndView mav = new ModelAndView("temp");
-		
+		String orderno = map.get("orderno");
+		Map<String, String> data = orderdao.orderSearch(orderno);
+			String[] color_arr = data.get("COLOR").split("&&");
+			String[] orderlength_arr = data.get("ORDERLENGTH").split("&&");
+			String[] colorbt_arr = data.get("COLORBT").split("&&");
+			ArrayList<String> color_list = new ArrayList<String>();
+			ArrayList<String> orderlength_list = new ArrayList<String>();
+			ArrayList<String> colorbt_list = new ArrayList<String>();
+			for(int i=0; i<color_arr.length; i++) {
+				color_list.add(color_arr[i]);
+				orderlength_list.add(orderlength_arr[i]);
+				colorbt_list.add(colorbt_arr[i]);
+			}
+			
+		mav.addObject("section", "order/order");
+		mav.addObject("data", data);
+		mav.addObject("color", color_list);
+		mav.addObject("length", orderlength_list);
+		mav.addObject("colorbt", colorbt_list);
 		return mav;
 	}
 // new 염색의뢰서
@@ -227,12 +245,38 @@ public class OrderController {
 		 }
 		int r = orderdao.threadCheck(orderno);
 		if(r!=0) {
-			List<ThreadVO> volist = orderdao.threadList(orderno);
+			List<ThreadVO> volist = orderdao.threadSearch(orderno);
 			mav.addObject("volist", volist);
 			mav.addObject("map", volist.get(Integer.parseInt(index)));
 		}
 		return mav;
 	}
-	
+// 가공의뢰서
+	@RequestMapping(value = "/work", method = RequestMethod.GET)
+	public ModelAndView workGet() throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		mav.addObject("section", "order/work");
+		return mav;
+	}
+// 가공의뢰서 검색
+	@RequestMapping(value = "/work", method = RequestMethod.POST)
+	public ModelAndView workPOST(@RequestParam Map<String, String> map) throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		Map<String, String> color = orderdao.work(map.get("orderno"));
+		Map<String, String> data = orderdao.workSearch(map.get("orderno"));
+		mav.addObject("section", "order/work");
+		mav.addObject("data", data);
+		mav.addObject("color", color);
+		mav.addObject("orderno", map.get("orderno"));
+		return mav;
+	}
+// 가공의뢰서 저장
+	@RequestMapping(value = "/workAdd", method = RequestMethod.POST)
+	@ResponseBody
+	public String workAdd(@RequestParam Map<String, String> map)throws Exception{
+		String result = orderdao.workAdd(map);
+		return result;
+	}
+
 	
 }

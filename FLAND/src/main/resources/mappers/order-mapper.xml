@@ -197,7 +197,42 @@
 	<select id="threadcheck" resultType="int">
 		select count(*) from thread_tbl where orderno=#{orderno}
 	</select>
-	
+<!-- 가공의뢰서 -->
+	<insert id="workadd">
+		insert into work_tbl (WORKNO, ORDERNO, KNITDELIVERY, WORKCOMPANY, WORK, DETAIL, ETC, CAUTION, DELIVERY)
+			values(null,
+				#{ORDERNO},
+				#{KNITDELIVERY},
+				#{WORKCOMPANY},
+				#{WORK},
+				#{DETAIL},
+				#{ETC},
+				#{CAUTION},
+				#{DELIVERY}
+			)
+	</insert>
+	<update id="workupdate">
+		update work_tbl set
+			KNITDELIVERY = #{KNITDELIVERY},
+			WORKCOMPANY = #{WORKCOMPANY},
+			WORK = #{WORK},
+			DETAIL = #{DETAIL},
+			ETC = #{ETC},
+			CAUTION = #{CAUTION},
+			DELIVERY = #{DELIVERY}
+		where ORDERNO = #{ORDERNO}
+	</update>
+	<select id="work" resultType="HashMap">
+		select o.COLOR, o.ORDERLENGTH, o.WORKWEIGHT, d.LOSS, d.PERKG, d.MIXED
+		from order_tbl o join dye_tbl d on o.orderno=d.ORDERNO 
+		where o.orderno=#{orderno}
+	</select>
+	<select id="worksearch" resultType="HashMap">
+		select * from work_tbl where ORDERNO=#{orderno}
+	</select>
+	<select id="workcheck" resultType="int">
+		select count(*) from work_tbl where ORDERNO=#{orderno}
+	</select>
 	
 	
 <!-- paging ORACLE -->

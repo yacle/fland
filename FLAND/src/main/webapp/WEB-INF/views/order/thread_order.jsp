@@ -38,6 +38,8 @@ table, th, td, tr{
 			<li><a href="/order/dye">염색의뢰서</a></li>
 			<li><a href="/order/knit">편직의뢰서</a></li>
 			<li class="active"><a href="#">원사발주서</a></li>
+			<li><a href="/order/work">가공의뢰서</a></li>
+			<li><a href="/precost/precosting">사전원가계산서</a></li>
 		</ul>
 	</div>
 </nav>
@@ -118,12 +120,12 @@ table, th, td, tr{
 				<th width="10%">B/T No</th>
 				<th width="20%">비고</th>
 			</tr>
-			<c:forEach var="map" items="${list }">
-				<c:forEach var="i" begin="0" end="${map.thread.size()-1 }" step="1">
+			<c:forEach var="m" items="${list }">
+				<c:forEach var="i" begin="0" end="${m.thread.size()-1 }" step="1">
 					<tr>
-						<td><input type="text" class="thread" value="${map.thread[i] }"></td>
-						<td><input type="number" class="weight" value="${map.weight[i] }"></td>
-						<td><input type="number" class="threadweight" value=""></td>
+						<td><input type="text" class="thread" value="${m.thread[i] }"></td>
+						<td><input type="number" class="weight" value="${m.weight[i] }"></td>
+						<td><input type="text" class="threadweight" value=""></td>
 						<td><input type="text" class="btno" value=""></td>
 						<td><input type="text" class="threadetc" value=""></td>
 					</tr>
@@ -131,6 +133,7 @@ table, th, td, tr{
 			</c:forEach>
 		</table><hr/>
 		<button type="button" class="btn btn-primary" id="threadSave">저장</button>
+		<input type="hidden" id="threadweight" value="${map.threadweight }">
 	</div>
 </div>
 <script>
@@ -146,7 +149,12 @@ $(document).ready(function(){
 	if($("#orderno").val()==""){
 		window.alert("Order No를 입력해주세요");
 	}else{
-		loss();
+		var threadweight = $("#threadweight").val();
+		var weightarr = threadweight.split("&&");
+		var thread_class=  document.getElementsByClassName("threadweight");
+		for(var i=0; i<weightarr.length; i++){
+			thread_class[i].value=weightarr[i];
+		}
 	}
 });
 $("#count").click(function(){

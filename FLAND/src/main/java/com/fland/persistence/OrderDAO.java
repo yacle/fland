@@ -29,7 +29,10 @@ public class OrderDAO {
 	public void orderUpdate(Map map) throws Exception {
 		session.update("order.orderupdate", map);
 	}
-	
+	// 발주서 검색
+	public Map<String, String> orderSearch(String orderno)throws Exception{
+		return session.selectOne("order.ordersearch", orderno);
+	}
 	// 염색의뢰서 체크
 	public int dyeRead(String orderno) throws Exception {
 		return session.selectOne("order.dyeread", orderno);
@@ -84,15 +87,32 @@ public class OrderDAO {
 		return session.selectList("order.threaddata", orderno);
 	}
 	// 원사발주서 검색
-	public List<ThreadVO> threadList(String orderno)throws Exception{
+	public List<ThreadVO> threadSearch(String orderno)throws Exception{
 		return session.selectList("order.threadsearch", orderno);
 	}
 	// 원사발주서 체크
 	public int threadCheck(String orderno)throws Exception{
 		return session.selectOne("order.threadcheck", orderno);
 	}
-	
-	
+	// 가공의뢰서 data
+	public Map<String, String> work(String orderno)throws Exception{
+		return session.selectOne("order.work", orderno);
+	}
+	// 가공의뢰서 검색
+	public Map<String, String> workSearch(String orderno)throws Exception{
+		return session.selectOne("order.worksearch", orderno);
+	}
+	// 가공의뢰서 저장
+	public String workAdd(Map<String, String> map)throws Exception{
+		int r = session.selectOne("order.workcheck", map.get("orderno"));
+		if(r>0) {
+			session.insert("order.workupdate", map);
+			return "update";
+		}else {
+			session.insert("order.workadd", map);
+			return "add";
+		}
+	}
 	
 	
 	

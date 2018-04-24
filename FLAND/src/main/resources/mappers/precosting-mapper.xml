@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="precosting">
+	<select id="order" resultType="HashMap">
+		select FABRIC, PRICE, ORDERLENGTH from order_tbl where orderno=#{orderno}
+	</select>
+	<select id="thread" resultType="HashMap">
+		select t.threadweight, k.THREAD from thread_tbl t join knit_tbl k on t.orderno=k.ORDERNO where t.orderno =#{orderno}
+	</select>
+	<select id="knit" resultType="HashMap">
+		select THREAD, WEIGHT from knit_tbl where ORDERNO=#{orderno}
+	</select>
+	<select id="dye" resultType="HashMap">
+		select o.COLOR, o.WORKWEIGHT, o.ORDERLENGTH, d.LOSS, d.PERKG
+		from order_tbl o join dye_tbl d on o.ORDERNO=d.ORDERNO 
+		where o.ORDERNO=#{orderno}
+	</select>
+</mapper>

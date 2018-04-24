@@ -62,12 +62,14 @@ input{
 			<li><a href="/order/dye">염색의뢰서</a></li>
 			<li><a href="/order/knit">편직의뢰서</a></li>
 			<li><a href="/order/thread">원사발주서</a></li>
+			<li><a href="/order/work">가공의뢰서</a></li>
+			<li><a href="/precost/precosting">사전원가계산서</a></li>
 		</ul>
 	</div>
 </nav>
 <div class="row">
 	<div class="col-lg-3">
-		<form action="/order/searchOrder" method="POST">
+		<form action="/order/orderSearch" method="POST">
 			<table class="table2" style="margin-top:50px;">
 				<tr>
 					<td width="5%"></td>
@@ -87,32 +89,32 @@ input{
 			</tr>
 			<tr>
 				<td>발주처</td>
-				<td><input type="text" class="form-control" id="company" placeholder="발주회사"></td>
-				<td><input type="text" class="form-control" id="person" placeholder="담당자"></td>
+				<td><input type="text" class="form-control" id="company" value="${data.COMPANY }" placeholder="발주회사"></td>
+				<td><input type="text" class="form-control" id="person" value="${data.PERSON }" placeholder="담당자"></td>
 			</tr>
 			<tr>
 				<td>S/#</td>
-				<td colspan="2"><input type="text" class="form-control" id="serial" placeholder="ex) fl1245 / fl4321"></td>
+				<td colspan="2"><input type="text" class="form-control" id="serial" value="${data.SERIAL }" placeholder="ex) fl1245 / fl4321"></td>
 			</tr>
 			<tr>
 				<td>발주일</td>
-				<td colspan="2"><input type="date" class="form-control" id="orderDate"></td>
+				<td colspan="2"><input type="date" class="form-control" id="orderDate" value="${data.ORDERDATE }"></td>
 			</tr>
 			<tr>
 				<td>납기일</td>
-				<td colspan="2"><input type="date" class="form-control" id="endDate"></td>
+				<td colspan="2"><input type="date" class="form-control" id="endDate" value="${data.ENDDATE }"></td>
 			</tr>
 			<tr>
 				<td>원단명</td>
-				<td colspan="2"><input type="text" class="form-control" id="fabric"></td>
+				<td colspan="2"><input type="text" class="form-control" id="fabric" value="${data.FABRIC }"></td>
 			</tr>
 			<tr>
 				<td>가공폭(inch)</td>
-				<td colspan="2"><input type="number" class="form-control" id="workWidth"></td>
+				<td colspan="2"><input type="number" class="form-control" id="workWidth" value="${data.WORKWIDTH }"></td>
 			</tr>
 			<tr>
 				<td>가공중량</td>
-				<td><input type="text" class="form-control" id="workWeight" placeholder="g/yd" required></td>
+				<td><input type="text" class="form-control" id="workWeight" placeholder="g/yd" value="${WORKWEIGHT }" required></td>
 				<td><input type="text" class="form-control" id="mWeight" placeholder="g/m2" required></td>
 			</tr>
 		</table>
@@ -127,14 +129,27 @@ input{
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px; width: 25%;">BT No.</td>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px; width: 25%;">S/#</td>
 			</tr>
-			<tbody id="my-tbody1">
-				<tr>
-					<td><input type="text" class="form-control color"></td>
-					<td><input type="number" class="form-control ttl" placeholder="YD"></td>
-					<td><input type="text" class="form-control colorBt"></td>
-					<td class="selectSn">	</td>
-				</tr>
-			</tbody>
+			<c:choose>
+				<c:when test="${color.size() gt 0 }">
+					<c:forEach var="idx" begin="1" end="${color.size() }">
+					<tr>
+						<td><input type="text" class="form-control color" value="${color[i-1] }"></td>
+						<td><input type="number" class="form-control ttl" value="${orderlength[i-1] }placeholder="YD"></td>
+    					<td><input type="text" class="form-control colorBt" value="${colorbt[i-1] }"></td>
+						<td class="selectSn">	</td>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+				<tbody id="my-tbody1">
+					<tr>
+						<td><input type="text" class="form-control color"></td>
+						<td><input type="number" class="form-control ttl" placeholder="YD"></td>
+						<td><input type="text" class="form-control colorBt"></td>
+						<td class="selectSn">	</td>
+					</tr>
+				</tbody>
+				</c:otherwise>
+			</c:choose>
 			<tr>
 				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><b>Order Total</b></td>
 				<td style="border-bottom: 1px solid blue; padding:0px 0px 5px;"><span id="ttl" style="color: red;"></span></td>
@@ -145,11 +160,11 @@ input{
 		<table>
 			<tr>
 				<td>단가</td>
-				<td><input type="text" class="form-control" id="price" required></td>
+				<td><input type="text" class="form-control" id="price" value="${data.PRICE }" required></td>
 			</tr>
 			<tr>
 				<td>기타</td>
-				<td><textarea class="form-control" id="etc"></textarea></td>
+				<td><textarea class="form-control" id="etc" value="${data.ETC }"></textarea></td>
 			</tr>
 		</table>
 		<button type="button" class="btn btn-primary" id="orderBtn">저장</button>
@@ -211,9 +226,9 @@ $("#orderBtn").click(function(){
 	var orderLength = orderLengthList[0].value;
 	var colorBt = colorBtList[0].value;
 	for(var i=1; i<colorList.length; i++){
-		color += "/"+colorList[i].value;
-		orderLength += "/"+orderLengthList[i].value;
-		colorBt += "/"+colorBtList[i].value;
+		color += "&&"+colorList[i].value;
+		orderLength += "&&"+orderLengthList[i].value;
+		colorBt += "&&"+colorBtList[i].value;
 	}
 	$.ajax({
 		"type":"POST",
