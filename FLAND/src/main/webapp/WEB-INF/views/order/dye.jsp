@@ -165,8 +165,8 @@ $(document).ready(function(){
 		}else{
 			var testcolor = $("#testcolor").val();
 			var test = $("#test").val();
-			var colorArr = testcolor.split('/');
-			var testArr = test.split(',');
+			var colorArr = testcolor.split('&&');
+			var testArr = test.split('&&');
 			for(var i=1; i<colorArr.length; i++){
 				add_test();
 			}
@@ -207,8 +207,8 @@ $("#dyeBtn").click(function(){
 	var testColor = testColorList[0].value;
 	var test = testList[0].value;
 	for(var i=1; i<testColorList.length; i++){
-		testColor += "/"+testColorList[i].value;
-		test += ","+ testList[i].value;
+		testColor += "&&"+testColorList[i].value;
+		test += "&&"+ testList[i].value;
 	}
 	$.ajax({
 		"type":"POST",

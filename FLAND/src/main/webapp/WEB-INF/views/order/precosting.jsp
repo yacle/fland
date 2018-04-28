@@ -17,6 +17,16 @@ input{
 	box-sizing: border-box;
 	text-align:center;
 	margin: 0px;
+	border: none;
+	background-color: #E6E6FA;
+	height: 30px;
+}
+div.a{
+	display: inline;
+}
+.total{
+	font-size: 15px;
+	font-weight: bold;
 }
 </style>
 <nav class="navbar navbar-inverse">
@@ -59,18 +69,17 @@ input{
 			</tr>
 			<tr>
 				<td width="30%">${order.FABRIC }</td>
-				<td width="15%"><fmt:formatNumber value="${order.ORDERLENGTH }" groupingUsed="true"/> yd</td>
-				<td width="15%"><input type="number" id="order_price" value="${order.PRICE }"></td>
-				<td width="23%"><span id="order_sum"><fmt:formatNumber value="${order.ORDERLENGTH*order.PRICE }" groupingUsed="true"/></span> 원</td>
+				<td width="15%"><span id="orderlength "></span> yd</td>
+				<td width="15%"><input type="number" style="background-color: yellow;" id="order_price" value="${order.PRICE }"></td>
+				<td width="23%"><span id="order_sum"></span> 원</td>
 			</tr>
 		</table>
 		<h4>[원사발주서]</h4>
-		
 		<table>
 			<tr>
-				<td style="background-color: #7FFFD4; color: red;">calculator</td>
-				<td colspan="2" style="background-color: #7FFFD4"><input type="number" id="price_calcu"></td>
-				<td style="background-color: #7FFFD4"><span id="rst"></span></td>
+				<td style="color: blue;">Calculator(단가/181.44)</td>
+				<td colspan="2"><input type="number" id="price_calcu"></td>
+				<td><span id="rst"></span></td>
 			</tr>
 			<tr>
 				<td width="41%">원사종류</td>
@@ -87,9 +96,9 @@ input{
 			</tr>
 			</c:forEach>
 			<tr>
-				<td>총계</td>
+				<td><b>A</b> 총계</td>
 				<td>${threadMap.weight }	</td>
-				<td colspan="2" style="background-color: yellow;"><span id="price_total"></span></td>
+				<td colspan="2"><span id="price_total"></span></td>
 			</tr>
 		</table>
 	</div>
@@ -114,9 +123,9 @@ input{
 				</c:forEach>
 			</c:forEach>
 			<tr>
-				<td>총계</td>
+				<td><b>B</b> 총계</td>
 				<td><span id="knitweight_total"></span>	</td>
-				<td colspan="2" style="background-color: yellow;"><span id="knitprice_total"></span></td>
+				<td colspan="2"><span id="knitprice_total"></span></td>
 			</tr>
 		</table>
 		<h4>[염색의뢰서]</h4>
@@ -130,7 +139,7 @@ input{
 			</tr>
 			<c:forEach var="idx" begin="1" end="${dyeMap.weight.size() }">
 			<tr>
-				<td><input type="text" id="dyemethod"></td>
+				<td><input type="text" class="dyemethod"></td>
 				<td>${dyeMap.color[idx-1] }</td>
 				<td><span class="dyeweight">${dyeMap.weight[idx-1] }</span></td>
 				<td><input type="number" size="3" class="dye_price"></td>
@@ -138,9 +147,9 @@ input{
 			</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="2">총계</td>
+				<td colspan="2"><b>C</b> 총계</td>
 				<td><span id="dyeweight_total"></span></td>
-				<td colspan="2" style="background-color: yellow;"><span id="dyeprice_total"></span></td>
+				<td colspan="2"><span id="dyeprice_total"></span></td>
 			</tr>
 		</table>
 	</div>
@@ -167,38 +176,38 @@ input{
 				<td><span id="packing_price"></span></td>
 			</tr>
 			<tr>
-				<td colspan="2">총계</td>
-				<td colspan="2" style="background-color: yellow;"><span id="work_total"></span></td>
+				<td colspan="2"><b>D</b> 총계</td>
+				<td colspan="2"><span id="work_total"></span></td>
 			</tr>
 		</table>
-		<h4>총계산</h4>
-		<table style="background-color: yellow;">
+		<h4>[총계산]<button type="button" id="total_cal" class="btn btn-primary btn-xs">계산</button></h4>
+		<table>
 			<tr>
-				<td width="60%">순제조비</td>
-				<td width="40%"></td>
-				
+				<td rowspan="3" class="total">직접비</td>
+				<td width="30%" class="total">순제조비 (A+B+C+D)</td>
+				<td width="35%" class="total"><span id="manufacturing_cost"></span></td>
 			</tr>
 			<tr>
-				<td>샘플비</td>
-				<td></td>
+				<td class="total">샘플비</td>
+				<td class="total"><input type="number" name ="sample_price" id="sample_price" value="0"></td>
 			</tr>
 			<tr>
-				<td>물류비 및 기타비용</td>
-				<td></td>
-				
+				<td class="total">물류비 및 기타비용</td>
+				<td class="total"><input type="number" name="delivery_price" id="delivery_price" value="0"></td>
 			</tr>
 			<tr>
-				<td>직접비</td>
-				<td></td>
+				<td class="total">간접비</td>
+				<td class="total">일반관리비</td>
+				<td class="total"><span id="indirect_cost"></span></td>
 			</tr>
 			<tr>
-				<td>일반관리비</td>
-				<td></td>
-				
+				<td colspan="2" class="total">합계(직접비+간접비)</td>
+				<td class="total"><span id="total_cost"></span></td>
 			</tr>
 			<tr>
-				<td>직접비합계</td>
-				<td></td>
+				<td class="total">마진 및 마진율</td>
+				<td class="total" style="background-color: yellow;"><span id="margin_ratio"></span>%</td>
+				<td class="total"><span id="margin_cost"></span></td>
 			</tr>
 		</table>
 	</div>
@@ -220,11 +229,13 @@ $("#price_calcu").change(function(){
 	$("#rst").html(price_calcu/181.44);
 })
 // 발주서
+var order_total_price = 0;
 $("#order_price").change(function(){
 	var order_price = $("#order_price").val();
 	var order_length=$("#order_length").val()
 	var sum=order_price*order_length;
 	$("#order_sum").html(comma(sum));
+	order_total_price = sum;
 })
 // 원사발주서
 var thread_total_price = 0;
@@ -241,13 +252,16 @@ var knit_total_price = 0;
 $(".knit_price").change(function(){
 	var knit_price= $(this).val();
 	var prev2 = $(this).parent().prev().children().html();
-	console.log("prev2"+prev2);
 	var sum2 = knit_price*parseInt(prev2);
 	$(this).parent().next().html(comma(sum2)+"원");
 	knit_total_price +=sum2;
 	$("#knitprice_total").html(comma(knit_total_price)+"원");
 })
 $(document).ready(function(){
+	var order_price = $("#order_price").val();
+	var order_length = $("#order_length").val();
+	$("#order_sum").html(comma(parseInt(order_price)*parseInt(order_length)));
+	order_total_price=parseInt(order_price)*parseInt(order_length);
 	var knitweight = document.getElementsByClassName("knitweight");
 	var knitweight_total = 0;
 	for(var i=0; i<knitweight.length; i++){
@@ -270,13 +284,13 @@ var dye_total_price = 0;
 $(".dye_price").change(function(){
 	var dye_price= $(this).val();
 	var prev3 = $(this).parent().prev().children().html();
-	console.log(prev3);
 	var sum3 = dye_price*parseInt(prev3);
 	$(this).parent().next().html(comma(sum3)+"원");
 	dye_total_price +=sum3;
 	$("#dyeprice_total").html(comma(dye_total_price)+"원");
 })
 // 가공의뢰서
+var work_total_price=0;
 $("#napping").change(function(){
 	var napping = $("#napping").val();
 	var napping_total = $("#napping_total").html();
@@ -284,6 +298,7 @@ $("#napping").change(function(){
 	var packing_total = $("#packing_total").html();
 	$("#napping_price").html(comma(napping*parseInt(napping_total))+" 원");
 	$("#work_total").html(comma(napping*parseInt(napping_total)+packing*parseInt(packing_total))+" 원");
+	work_total_price = napping*parseInt(napping_total)+packing*parseInt(packing_total);
 })
 $("#packing").change(function(){
 	var napping = $("#napping").val();
@@ -292,9 +307,76 @@ $("#packing").change(function(){
 	var packing_total = $("#packing_total").html();
 	$("#packing_price").html(comma(packing*parseInt(packing_total))+" 원");
 	$("#work_total").html(comma(napping*parseInt(napping_total)+packing*parseInt(packing_total))+" 원");
+	work_total_price = napping*parseInt(napping_total)+packing*parseInt(packing_total);
+})
+var manufacturing_cost = 0;
+$("#total_cal").click(function(){
+	manufacturing_cost = thread_total_price + knit_total_price + dye_total_price + work_total_price;
+	$("#manufacturing_cost").html(comma(manufacturing_cost)+" 원");
+	var mcost = manufacturing_cost;
+	var sprice = $("#sample_price").val();
+	var dprice = $("#delivery_price").val();
+	var direct_price = mcost+parseInt(sprice)+parseInt(dprice);
+	$("#indirect_cost").html(comma(direct_price*0.1));
+	$("#total_cost").html(comma(parseInt(direct_price*1.1)));
+	$("#margin_cost").html(comma(order_total_price-parseInt(direct_price*1.1)));
+	$("#margin_ratio").html(((order_total_price-parseInt(direct_price*1.1))*100/order_total_price).toFixed(2));
+})
+// 총계
+$("#sample_price, #delivery_price, #order_price").change(function(){
+	var mcost = manufacturing_cost;
+	var sprice = $("#sample_price").val();
+	var dprice = $("#delivery_price").val();
+	var direct_price = mcost+parseInt(sprice)+parseInt(dprice);
+	$("#indirect_cost").html(comma(direct_price*0.1));
+	$("#total_cost").html(comma(parseInt(direct_price*1.1)));
+	$("#margin_cost").html(comma(order_total_price-parseInt(direct_price*1.1)));
+	$("#margin_ratio").html(((order_total_price-parseInt(direct_price*1.1))*100/order_total_price).toFixed(2));
 })
 </script>
 
+<script type="text/javascript">
+
+$("#precost_save").click(function(){
+	var threadpriceArr = document.getElementsByClassName(".thread_price");
+	var knitpriceArr = document.getElementsByClassName(".knit_price");
+	var dyepriceArr = document.getElementsByClassName(".dye_price");
+	var dyemethodArr = document.getElementsByClassName(".dyemethod");
+	var threadprice = threadpriceArr[0].value;
+	var knitprice = knitpriceArr[0].value;
+	var dyeprice = dyepriceArr[0].value;
+	var dyemethod = dyemethodArr[0].value;
+	for(var i=1; i<threadprice.length; i++){
+		threadprice += "&&"+threadpriceArr[i].value;
+	}
+	for(var i=1; i<knitpriceArr.length; i++){
+		knitprice += "&&"+knitpriceArr[i].value;
+	}
+	for(var i=1; i<dyepriceArr.length; i++){
+		dyeprice += "&&"+dyepriceArr[i].value;
+		dyemethod += "&&"+dyemethodArr[i].value;
+	}
+	$.ajax({
+		"type":"POST",
+		"async":false,
+		"url":"/order/knitDel",
+		"data":{
+			
+			"ORDERNO" : $("#orderno").val(),
+			"PRICE" : $("#order_price").val(),
+			"NAPPING" : $("#napping").val(),
+			"" : $("#packing").val(),
+			"" : $("#sample_price").val(),
+			"" : $("#delivery_price").val()
+		},
+		success:function(){
+			$("#knitsearchBtn").click();
+		}
+	})
+	
+	
+})
+</script>
 
 
 
