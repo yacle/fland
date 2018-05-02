@@ -114,7 +114,7 @@ input{
 			</tr>
 			<tr>
 				<td>가공중량</td>
-				<td><input type="text" class="form-control" id="workWeight" placeholder="g/yd" value="${WORKWEIGHT }" required></td>
+				<td><input type="text" class="form-control" id="workWeight" placeholder="g/yd" value="${data.WORKWEIGHT }" required></td>
 				<td><input type="text" class="form-control" id="mWeight" placeholder="g/m2" required></td>
 			</tr>
 		</table>
@@ -133,10 +133,10 @@ input{
 				<c:when test="${color.size() gt 0 }">
 					<c:forEach var="idx" begin="1" end="${color.size() }">
 					<tr>
-						<td><input type="text" class="form-control color" value="${color[i-1] }"></td>
-						<td><input type="number" class="form-control ttl" value="${orderlength[i-1] }placeholder="YD"></td>
-    					<td><input type="text" class="form-control colorBt" value="${colorbt[i-1] }"></td>
-						<td class="selectSn">	</td>
+						<td><input type="text" class="form-control color" value="${color[idx-1] }"></td>
+						<td><input type="number" class="form-control ttl" value="${length[idx-1] }" placeholder="YD"></td>
+    					<td><input type="text" class="form-control colorBt" value="${colorbt[idx-1] }"></td>
+						<td class="selectSn">${sn[idx-1] }</td>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
@@ -190,7 +190,7 @@ $("#mWeight").change(function(){
 })
 function serial(){
 	var sn = $("#serial").val();
-	var snArr = sn.split('/');
+	var snArr = sn.split(',');
 	var html="<select name='sn' class='form-control sn'>";
 	for(var i=0; i<snArr.length; i++){
 		html += "<option>"+snArr[i]+"</option>";
@@ -205,7 +205,13 @@ $("#plus").click(function(){
 $(document).on('change','#serial', function(){
 	serial();
 })
-
+$(document).ready(function(){
+	var gperyd = $("#workWeight").val();
+	var width = $("#workWidth").val();
+	var gperm = ((parseInt(gperyd)/0.465)/(parseInt(width)/2))*10;
+	$("#mWeight").val(Math.round(gperm)+" g/m2");
+	$("#workWeight").val(gperyd+" g/yd");
+})
 
 $(document).on('change','.ttl', function(){
 	var total=0;
@@ -222,13 +228,16 @@ $("#orderBtn").click(function(){
 	var colorList=document.getElementsByClassName("color");
 	var orderLengthList=document.getElementsByClassName("ttl");
 	var colorBtList=document.getElementsByClassName("colorBt");
+	var snList = document.getElementsByClassName("sn");
 	var color = colorList[0].value;;
 	var orderLength = orderLengthList[0].value;
 	var colorBt = colorBtList[0].value;
+	var sn = snList[0].value;
 	for(var i=1; i<colorList.length; i++){
 		color += "&&"+colorList[i].value;
 		orderLength += "&&"+orderLengthList[i].value;
 		colorBt += "&&"+colorBtList[i].value;
+		sn = "&&"+snList[i].value;
 	}
 	$.ajax({
 		"type":"POST",
@@ -248,6 +257,7 @@ $("#orderBtn").click(function(){
 			"color":color,
 			"orderlength":orderLength,
 			"colorbt":colorBt,
+			"sn":sn,
 			"etc":$("#etc").html()
 		},
 		success:function(obj){

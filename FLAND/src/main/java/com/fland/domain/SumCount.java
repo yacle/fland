@@ -53,9 +53,9 @@ public class SumCount {
 	
 	public static String dyeSum(Map<String, Object> map) {
 		String colors = (String) map.get("COLOR");
-		String color[] = colors.split("/");
+		String color[] = colors.split("&&");
 		String orderLengths = (String) map.get("ORDERLENGTH");
-		String orderLength[] = orderLengths.split("/");
+		String orderLength[] = orderLengths.split("&&");
 		String html="";
 		Double workWeight = Double.parseDouble(String.valueOf(map.get("WORKWEIGHT")));
 		Double loss =1.0+Double.parseDouble(String.valueOf(map.get("LOSS")))/100.0;
@@ -89,9 +89,9 @@ public class SumCount {
 	}
 	public static Map<String, ArrayList<String>> dyeSum2(Map<String, String> map) {
 		String colors2 = (String) map.get("COLOR");
-		String color2[] = colors2.split("/");
+		String color2[] = colors2.split("&&");
 		String orderLengths2 = (String) map.get("ORDERLENGTH");
-		String orderLength2[] = orderLengths2.split("/");
+		String orderLength2[] = orderLengths2.split("&&");
 		Double workWeight2 = Double.parseDouble(String.valueOf(map.get("WORKWEIGHT")));
 		Double loss2 =1.0+Double.parseDouble(String.valueOf(map.get("LOSS")))/100.0;
 		Double perkg2 = Double.parseDouble(String.valueOf(map.get("PERKG")));

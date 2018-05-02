@@ -17,4 +17,39 @@
 		from order_tbl o join dye_tbl d on o.ORDERNO=d.ORDERNO 
 		where o.ORDERNO=#{orderno}
 	</select>
+	<select id="read" resultType="HashMap">
+		select p.*, o.PRICE from precost_tbl p join order_tbl o on p.ORDERNO=o.ORDERNO where  p.ORDERNO = #{orderno}
+	</select>
+	<select id="check" resultType="int">
+		select count(*) from precost_tbl where ORDERNO = #{ORDERNO}
+	</select>
+	<insert id="add">
+		insert into precost_tbl (PRECOSTNO, ORDERNO, THREADPRICE, KNITPRICE, DYEPRICE, DYEMETHOD, NAPPING, PACKING, SAMPLEPRICE, DELIVERYPRICE)
+		values (null,
+			#{ORDERNO},
+			#{THREADPRICE},
+			#{KNITPRICE},
+			#{DYEPRICE},
+			#{DYEMETHOD},
+			#{NAPPING},
+			#{PACKING},
+			#{SAMPLEPRICE},
+			#{DELIVERYPRICE}
+			)
+	</insert>
+	<update id="update">
+		update precost_tbl set 
+			THREADPRICE = #{THREADPRICE},
+			KNITPRICE = #{KNITPRICE},
+			DYEPRICE = #{DYEPRICE},
+			DYEMETHOD = #{DYEMETHOD},
+			NAPPING = #{NAPPING},
+			PACKING = #{PACKING},
+			SAMPLEPRICE = #{SAMPLEPRICE},
+			DELIVERYPRICE = #{DELIVERYPRICE}
+		where ORDERNO = #{ORDERNO} 	
+	</update>
+	<update id="priceupdate">
+		update order_tbl set price = #{PRICE} where ORDERNO = #{ORDERNO}
+	</update>
 </mapper>

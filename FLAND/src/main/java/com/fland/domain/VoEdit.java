@@ -87,4 +87,38 @@ public class VoEdit {
 		}
 		return listMap;
 	}
+	public static Map<String, List<String>> precost(Map<String, String> map){
+		Map<String, List<String>> precost_data = new HashMap<>();
+		String[] thread_price = map.get("THREADPRICE").split("&&");
+		String[] knit_price = map.get("KNITPRICE").split("&&");
+		String[] dye_price = map.get("DYEPRICE").split("&&");
+		String[] dye_method = map.get("DYEMETHOD").split("&&");
+		List<String> thread_price_list = new ArrayList<>();
+		List<String> knit_price_list = new ArrayList<>();
+		List<String> dye_price_list = new ArrayList<>();
+		List<String> dye_method_list = new ArrayList<>();
+		for(int i=0; i<thread_price.length ; i++) {
+			thread_price_list.add(thread_price[i]);
+		}
+		for(int j=0; j<knit_price.length; j++) {
+			knit_price_list.add(knit_price[j]);
+		}
+		for(int k=0; k<dye_price.length; k++) {
+			dye_price_list.add(dye_price[k]);
+		}
+		for(int l=0; l<dye_method.length; l++) {
+			dye_method_list.add(dye_method[l]);
+		}
+		precost_data.put("threadprice", thread_price_list);
+		precost_data.put("knitprice", knit_price_list);
+		precost_data.put("dyeprice", dye_price_list);
+		precost_data.put("dyemethod", dye_method_list);
+		return precost_data;
+	}
 }
+
+
+
+
+
+

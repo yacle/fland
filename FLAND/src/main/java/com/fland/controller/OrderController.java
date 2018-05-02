@@ -62,13 +62,18 @@ public class OrderController {
 			String[] color_arr = data.get("COLOR").split("&&");
 			String[] orderlength_arr = data.get("ORDERLENGTH").split("&&");
 			String[] colorbt_arr = data.get("COLORBT").split("&&");
+			String[] sn_arr = data.get("SN").split("&&");
 			ArrayList<String> color_list = new ArrayList<String>();
 			ArrayList<String> orderlength_list = new ArrayList<String>();
 			ArrayList<String> colorbt_list = new ArrayList<String>();
+			ArrayList<String> sn_list = new ArrayList<String>();
 			for(int i=0; i<color_arr.length; i++) {
 				color_list.add(color_arr[i]);
 				orderlength_list.add(orderlength_arr[i]);
-				colorbt_list.add(colorbt_arr[i]);
+				sn_list.add(sn_arr[i]);
+			}
+			for(int j=0; j<colorbt_arr.length; j++) {
+					colorbt_list.add(colorbt_arr[j]);
 			}
 			
 		mav.addObject("section", "order/order");
@@ -76,6 +81,7 @@ public class OrderController {
 		mav.addObject("color", color_list);
 		mav.addObject("length", orderlength_list);
 		mav.addObject("colorbt", colorbt_list);
+		mav.addObject("sn", sn_list);
 		return mav;
 	}
 // new ¿°»öÀÇ·Ú¼­

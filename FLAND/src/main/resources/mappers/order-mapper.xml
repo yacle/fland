@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
 	<insert id="add">
-		insert into ORDER_TBL (no,orderno,company,serial,orderdate,enddate,fabric,workwidth,workweight,price,color,orderlength,colorbt,etc,person)
+		insert into ORDER_TBL (no,orderno,company,serial,orderdate,enddate,fabric,workwidth,workweight,price,color,orderlength,colorbt,etc,person, sn)
 		values (null,
 			#{orderno},
 			#{company},
@@ -19,7 +19,8 @@
 			#{orderlength},
 			#{colorbt, jdbcType=VARCHAR},
 			#{etc, jdbcType=VARCHAR},
-			#{person}
+			#{person},
+			#{sn}
 		)
 	</insert>
 	<select id="orderread" resultType="int">
@@ -42,7 +43,7 @@
 			person=#{person}
 		where orderno=#{orderno}
 	</update>
-	<select id="ordersearch" resultType="com.fland.domain.OrderVO">
+	<select id="ordersearch" resultType="HashMap">
 		select * from order_tbl where ORDERNO = #{orderno}
 	</select>
 <!--  염색의뢰서 -->
