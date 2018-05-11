@@ -115,6 +115,19 @@ public class VoEdit {
 		precost_data.put("dyemethod", dye_method_list);
 		return precost_data;
 	}
+	
+	public static Map<String, List<String>> dyePrint(Map<String, String> map){
+		Map<String, List<String>> dye_print_data = new HashMap<>();
+		String[] color_arr = map.get("COLOR").split("&&");
+		String[] roll_arr = map.get("ROLLTOTAL").split("&&");
+		String[] perkg_arr = map.get("PERKGTOTAL").split("&&");
+		String[] bt_arr = map.get("BT").split("&&");
+		String[] orderlength_arr = map.get("ORDERLENGTH"	).split("&&");
+		String[] testcolor_arr = map.get("TESTCOLOR").split("&&");
+		String[] test_arr = map.get("TEST").split("/");
+		
+		return dye_print_data;
+	}
 }
 
 

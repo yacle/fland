@@ -115,7 +115,7 @@ input{
 			<tbody id="test-tbody">
 				<tr>
 					<td><input type="text" size="5" class="form-control testColor" placeholder="컬러명"></td>
-					<td><input type="text" class="form-control test" placeholder="테스트내용"></td>
+					<td><input type="text" class="form-control test" placeholder="테스트내용 ex)염색견뢰도/축률"></td>
 				</tr>
 			</tbody>
 			<tr>
@@ -202,6 +202,15 @@ $("#dyeSum").click(function(){
 })
 // 염색의뢰서 저장 버튼
 $("#dyeBtn").click(function(){
+	var rollList = document.getElementsByClassName("roll");
+	var rollKGList = document.getElementsByClassName("rollKG");
+	var roll = rollList[0].innerHTML;
+	var rollKG = rollKGList[0].innerHTML;
+	for(var i=1; i<rollList.length; i++){
+		roll += "&&"+rollList[i].innHTML;
+		rollKG = "&&"+rollKGList[i].innerHTML;
+	}
+	
 	var testColorList=document.getElementsByClassName("testColor");
 	var testList=document.getElementsByClassName("test");
 	var testColor = testColorList[0].value;
@@ -228,8 +237,8 @@ $("#dyeBtn").click(function(){
 			"delivery":$("#delivery").val(),
 			"testcolor":testColor,
 			"test":test,
-			"rolltotal":$("#rollTotal").html(),
-			"perkgtotal":$("#perkgTotal").html()
+			"rolltotal":roll,
+			"perkgtotal":rollKG
 		},
 		success:function(obj){
 			if(obj=="new"){

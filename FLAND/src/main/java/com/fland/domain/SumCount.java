@@ -68,9 +68,9 @@ public class SumCount {
 			Double a = (loss*length*(workWeight/1000))/perkg;
 			html += "<tr>"+
 							"<td>"+color[i]+"</td>"+	
-							"<td>"+Math.ceil(a)+"</td>"+
-							"<td>"+(Math.ceil(a)*perkg)+
-								"(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
+							"<td><span class='roll'>"+Math.ceil(a)+"</span></td>"+
+							"<td><span class='rollKG'"+(Math.ceil(a)*perkg)+
+								"</span>(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
 							"<td>"+orderLength[i]+"</td>"+							
 						"<tr>";
 			rollttl += Math.ceil(a);

@@ -56,7 +56,7 @@ tr:hover {background-color:#f5f5f5;}
 				<td>${i.color}</td>
 				<td>${i.orderlength}</td>
 				<td>${i.enddate}</td>
-				<td><a href="/order/read?no=${i.no}"><input type="button" value="작업지시서"></a></td>
+				<td><a href="/print/read?orderno=${i.orderno}"><input type="button" value="작업지시서"></a></td>
 				<td></td>
 				<td></td>
 			</tr>
