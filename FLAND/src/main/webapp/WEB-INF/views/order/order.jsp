@@ -206,11 +206,13 @@ $(document).on('change','#serial', function(){
 	serial();
 })
 $(document).ready(function(){
-	var gperyd = $("#workWeight").val();
-	var width = $("#workWidth").val();
-	var gperm = ((parseInt(gperyd)/0.465)/(parseInt(width)/2))*10;
-	$("#mWeight").val(Math.round(gperm)+" g/m2");
-	$("#workWeight").val(gperyd+" g/yd");
+	if($("#workWeight").val()!=null){
+		var gperyd = $("#workWeight").val();
+		var width = $("#workWidth").val();
+		var gperm = ((parseInt(gperyd)/0.465)/(parseInt(width)/2))*10;
+		$("#mWeight").val(Math.round(gperm)+" g/m2");
+		$("#workWeight").val(gperyd+" g/yd");
+	}
 })
 
 $(document).on('change','.ttl', function(){

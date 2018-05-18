@@ -278,7 +278,7 @@
 					<table id="modalTable">
 						<tr>
 							<td>구분</td>
-							<td><input type="text" name="div" id="div" value=""></td>
+							<td><input type="text" name="divi" id="divi" value=""></td>
 						</tr>
 						<tr>
 							<td>수단</td>
@@ -345,18 +345,20 @@ $("#next").click(function(){
 $(".sel-com").dblclick(function(){
 	var no = $(this).attr("data");
 	var date = $("#modalDate").html();
-	$.getJSON("/inquiry/modify?no="+no, function(data){
-		$("#div").val(data.div);
-		$("#method").val(data.method);
-		$("#client").val(data.client);
-		$("#item").val(data.item);
-		$("#detail").val(data.detail);
-		$("#sum").val(data.sum);
-		$("#etc").val(data.etc);
-		$("#no").val(data.no);
-		$("#tran_date").val(date);
-		$("#myModal").modal();
-	})
+	if(no!=""){
+		$.getJSON("/inquiry/modify?no="+no, function(data){
+			$("#divi").val(data.divi);
+			$("#method").val(data.method);
+			$("#client").val(data.client);
+			$("#item").val(data.item);
+			$("#detail").val(data.detail);
+			$("#sum").val(data.sum);
+			$("#etc").val(data.etc);
+			$("#no").val(data.no);
+			$("#tran_date").val(date);
+			$("#myModal").modal();
+		})
+	}
 })
 
 $("#updateBtn").click(function(){

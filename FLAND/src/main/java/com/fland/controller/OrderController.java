@@ -116,11 +116,12 @@ public class OrderController {
 	@ResponseBody
 	public String dyeAdd(@RequestParam Map<String, String> map) throws Exception{
 		int r = orderdao.dyeRead( map.get("orderno"));
+		System.out.println(map.get("test01")+"/"+map.get("test02"));
 		if(r==0) {	// orderno 가 없는 경우
-			orderdao.dyeAdd(map);
+//			orderdao.dyeAdd(map);
 			return "new";
 		}else {		// 기존 orderno가 있는 경우
-			orderdao.dyeUpdate(map);
+//			orderdao.dyeUpdate(map);
 			return "update";
 		}
 	}

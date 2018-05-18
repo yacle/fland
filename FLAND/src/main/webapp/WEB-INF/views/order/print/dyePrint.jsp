@@ -32,7 +32,7 @@ p {
 .logo{
 	position: absolute;
 	left: 575px;
-	top: 1040px;
+	top: 1050px;
 }
 input{
 	text-align: center;

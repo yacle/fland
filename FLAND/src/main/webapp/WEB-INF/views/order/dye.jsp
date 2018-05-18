@@ -1,23 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
-	
-// 염색의뢰서 테스트 의뢰  
-function add_test(){
-	var test_tbody = document.getElementById('test-tbody');
-	var test_row = test_tbody.insertRow(test_tbody.rows.length);
-	var cell1 = test_row.insertCell(0);
-	var cell2 = test_row.insertCell(1);
-	cell1.innerHTML = '<input type="text" size="5" class="form-control testColor" style="text-align: center; box-sizing: border-box;">';
-	cell2.innerHTML = '<input type="text" class="form-control test">';
-}
-function del_test(){
-	var test_tbody = document.getElementById('test-tbody');
-	if (test_tbody.rows.length < 1) return;
-	test_tbody.deleteRow( test_tbody.rows.length-1 );
-}
+<head>
+	<link href="/resources_css/multiSelect.css" rel="stylesheet" type="text/css">
+</head>
 
-</script>
 <style>
 .col-lg-4{
     text-align: center;
@@ -106,19 +92,21 @@ input{
 		</table>
 		<table class="table3">
 			<tr>
-				<td width="30%">시험의뢰&nbsp;
-					<button type="button" onclick="add_test()" style="border-radius:5px; font-size: 10px;">+</button>&nbsp;
-					<button type="button" onclick="del_test()" style="border-radius:5px; font-size: 10px;">&#8210;</button>
-				</td>
-				<td>염색견뢰도/축률/필링/사행도</td>
+				<td width="30%">시험의뢰</td>
+				<td width="18%">염색견뢰도</td>
+				<td width="18%">축률</td>
+				<td width="17%">필링</td>
+				<td width="17%">사행도</td>
 			</tr>
-			<tbody id="test-tbody">
-				<tr>
-					<td><input type="text" size="5" class="form-control testColor" placeholder="컬러명"></td>
-					<td><input type="text" class="form-control test" placeholder="테스트내용 ex)염색견뢰도/축률"></td>
-				</tr>
-			</tbody>
 			<tr>
+				<td><input type="text" size="5" class="form-control testColor" placeholder="컬러명"></td>
+				<td><input type="checkbox" value="염색견뢰도"></td>
+				<td><input type="checkbox" value="축률"></td>
+				<td><input type="checkbox" value="필링"></td>
+				<td><input type="checkbox" value="사행도"></td>
+			</tr>
+			<tr>
+			
 				<td>기타사항</td>
 				<td><textarea id="dyeetc"  class="form-control" rows="3">${map.DYEETC !=null ? map.DYEETC : '야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람' }</textarea></td>
 			</tr>
@@ -164,17 +152,19 @@ $(document).ready(function(){
 		    $("#loss").focus();
 		}else{
 			var testcolor = $("#testcolor").val();
-			var test = $("#test").val();
+			var test01 = $("#test01").val();
+			var test02 = $("#test02").val();
 			var colorArr = testcolor.split('&&');
-			var testArr = test.split('&&');
-			for(var i=1; i<colorArr.length; i++){
-				add_test();
-			}
+			var test01Arr = test01.split('&&');
+			var test02Arr = test02.split('&&');
+			
 			var colorClass = document.getElementsByClassName("testColor");
-			var testClass = document.getElementsByClassName("test");
+			var test01Class = document.getElementsByClassName("test01");
+			var test02Class = document.getElementsByClassName("test02");
 			for(var i=0; i<colorArr.length; i++){
 				colorClass[i].value=colorArr[i];
-				testClass[i].value=testArr[i];
+				test01Class[i].value=test01Arr[i];
+				test02Class[i].value=test02Arr[i];
 			}
 			$("#dyeSum").click();
 		}
@@ -212,12 +202,17 @@ $("#dyeBtn").click(function(){
 	}
 	
 	var testColorList=document.getElementsByClassName("testColor");
-	var testList=document.getElementsByClassName("test");
+	var test01List=document.getElementsByClassName("test01");
+	var test02List=document.getElementsByClassName("test02");
 	var testColor = testColorList[0].value;
-	var test = testList[0].value;
+	var test01 = test01List[0].value;
+	var test02 = test02List[0].value;
 	for(var i=1; i<testColorList.length; i++){
 		testColor += "&&"+testColorList[i].value;
-		test += "&&"+ testList[i].value;
+	}
+	for(var j=1; j<test01List.length; j++){
+		test01 += "&&"+ test01List[i].value;
+		test02 += "&&"+ test02List[i].value;
 	}
 	$.ajax({
 		"type":"POST",
@@ -236,7 +231,8 @@ $("#dyeBtn").click(function(){
 			"dyecompany":$("#dyecompany").val(),
 			"delivery":$("#delivery").val(),
 			"testcolor":testColor,
-			"test":test,
+			"test01":test01List,
+			"test02":test02List,
 			"rolltotal":roll,
 			"perkgtotal":rollKG
 		},

@@ -125,7 +125,13 @@ public class VoEdit {
 		String[] orderlength_arr = map.get("ORDERLENGTH"	).split("&&");
 		String[] testcolor_arr = map.get("TESTCOLOR").split("&&");
 		String[] test_arr = map.get("TEST").split("/");
-		
+		List<String> color_list = new ArrayList<>();
+		List<String> roll_list = new ArrayList<>();
+		List<String> perkg_list = new ArrayList<>();
+		List<String> bt_list = new ArrayList<>();
+		List<String> orderlength_list = new ArrayList<>();
+		List<String> testcolor_list = new ArrayList<>();
+		List<String> test_list = new ArrayList<>();
 		return dye_print_data;
 	}
 }

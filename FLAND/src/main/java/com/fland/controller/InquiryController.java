@@ -386,6 +386,7 @@ ObjectMapper mapper;
 	@ResponseBody
 	public InquiryVO inquiryModifyHandle(@RequestParam Map param) throws Exception {
 		InquiryVO vo = inquiryDao.modify(param);
+		System.out.println(vo.toString());
 		return vo;
 	}
 	

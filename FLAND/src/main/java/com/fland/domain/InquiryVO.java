@@ -2,7 +2,7 @@ package com.fland.domain;
 
 public class InquiryVO {
 	private int no;	
-	private String div;
+	private String divi;
 	private String tran_date;	
 	private String account;	
 	private String method;	
@@ -18,11 +18,12 @@ public class InquiryVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getDiv() {
-		return div;
+
+	public String getDivi() {
+		return divi;
 	}
-	public void setDiv(String div) {
-		this.div = div;
+	public void setDivi(String divi) {
+		this.divi = divi;
 	}
 	public String getTran_date() {
 		return tran_date;
@@ -80,7 +81,7 @@ public class InquiryVO {
 	}
 	@Override
 	public String toString() {
-		return "InquiryVO [no=" + no + ", div=" + div + ", tran_date=" + tran_date + ", account=" + account
+		return "InquiryVO [no=" + no + ", divi=" + divi + ", tran_date=" + tran_date + ", account=" + account
 				+ ", method=" + method + ", client=" + client + ", item=" + item + ", detail=" + detail + ", begin_bal="
 				+ begin_bal + ", sum=" + sum + ", etc=" + etc + "]";
 	}
