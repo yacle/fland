@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<head>
-	<link href="/resources_css/multiSelect.css" rel="stylesheet" type="text/css">
-</head>
 
 <style>
 .col-lg-4{
@@ -44,7 +41,6 @@ input{
 		<form action="/order/dye" method="POST">
 			<table class="table2" style="margin-top:50px;">
 				<tr>
-					<td width="5%"></td>
 					<td width="25%">Order NO</td>
 					<td width="50%"><input type="text" class="form-control" name="orderno" id="orderno" value="${orderno }" required></td>
 					<td width="20%"><button type="submit" class="btn btn-info">Search</button></td>
@@ -68,45 +64,35 @@ input{
 		<table  class="table2">
 			<tr>
 				<td width="20%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
-				<td width="20%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">절수</td>
-				<td width="30%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">수량(KG)</td>
+				<td width="15%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">절수</td>
+				<td width="25%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">수량(KG)</td>
 				<td width="30%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">발주량(yard)</td>
+				<td width="10%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">테스트</td>
 			</tr>
 			<tbody id="my-tbody2">
 			</tbody>
 			<tr>
 				<td style="border-top: 1px solid blue; padding:5px 0px 0px;">원단혼용율</td>
-				<td colspan="3" style="border-top: 1px solid blue; padding:5px 0px 0px;">
+				<td colspan="4" style="border-top: 1px solid blue; padding:5px 0px 0px;">
 					<input type="text" id="mixed" value="${map.MIXED }" class="form-control">
 				</td>
 			</tr>
 			<tr>
 				<td>가공방법</td>
-				<td colspan="3"><input type="text" id="method" value="${map.METHOD }" class="form-control"></td>
+				<td colspan="4"><input type="text" id="method" value="${map.METHOD }" class="form-control"></td>
 			</tr>
 			<tr>
 				<td>세부사항</td>
-				<td colspan="3"><input type="text" id="detail" value="${map.DETAIL }" class="form-control"></td>
+				<td colspan="4"><input type="text" id="detail" value="${map.DETAIL }" class="form-control"></td>
 			</tr>
 			<tr>
 		</table>
 		<table class="table3">
 			<tr>
-				<td width="30%">시험의뢰</td>
-				<td width="18%">염색견뢰도</td>
-				<td width="18%">축률</td>
-				<td width="17%">필링</td>
-				<td width="17%">사행도</td>
+				<td><button id="test">시험의뢰</button></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td><input type="text" size="5" class="form-control testColor" placeholder="컬러명"></td>
-				<td><input type="checkbox" value="염색견뢰도"></td>
-				<td><input type="checkbox" value="축률"></td>
-				<td><input type="checkbox" value="필링"></td>
-				<td><input type="checkbox" value="사행도"></td>
-			</tr>
-			<tr>
-			
 				<td>기타사항</td>
 				<td><textarea id="dyeetc"  class="form-control" rows="3">${map.DYEETC !=null ? map.DYEETC : '야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람' }</textarea></td>
 			</tr>
@@ -151,23 +137,9 @@ $(document).ready(function(){
 		    window.alert("Loss와 kg/절을 입력해주세요");
 		    $("#loss").focus();
 		}else{
-			var testcolor = $("#testcolor").val();
-			var test01 = $("#test01").val();
-			var test02 = $("#test02").val();
-			var colorArr = testcolor.split('&&');
-			var test01Arr = test01.split('&&');
-			var test02Arr = test02.split('&&');
 			
-			var colorClass = document.getElementsByClassName("testColor");
-			var test01Class = document.getElementsByClassName("test01");
-			var test02Class = document.getElementsByClassName("test02");
-			for(var i=0; i<colorArr.length; i++){
-				colorClass[i].value=colorArr[i];
-				test01Class[i].value=test01Arr[i];
-				test02Class[i].value=test02Arr[i];
-			}
-			$("#dyeSum").click();
 		}
+		$("#dyeSum").click();
 	}
 });
 // 염색의뢰서 컬러별 절수계산 버튼
@@ -201,19 +173,6 @@ $("#dyeBtn").click(function(){
 		rollKG = "&&"+rollKGList[i].innerHTML;
 	}
 	
-	var testColorList=document.getElementsByClassName("testColor");
-	var test01List=document.getElementsByClassName("test01");
-	var test02List=document.getElementsByClassName("test02");
-	var testColor = testColorList[0].value;
-	var test01 = test01List[0].value;
-	var test02 = test02List[0].value;
-	for(var i=1; i<testColorList.length; i++){
-		testColor += "&&"+testColorList[i].value;
-	}
-	for(var j=1; j<test01List.length; j++){
-		test01 += "&&"+ test01List[i].value;
-		test02 += "&&"+ test02List[i].value;
-	}
 	$.ajax({
 		"type":"POST",
 		"async":false,
@@ -230,9 +189,6 @@ $("#dyeBtn").click(function(){
 			"knitcompany":$("#knitcompany").val(),
 			"dyecompany":$("#dyecompany").val(),
 			"delivery":$("#delivery").val(),
-			"testcolor":testColor,
-			"test01":test01List,
-			"test02":test02List,
 			"rolltotal":roll,
 			"perkgtotal":rollKG
 		},

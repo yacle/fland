@@ -42,6 +42,7 @@ public class SumCount {
 	}
 	
 	public static int itemSum(List<Map<String, Integer>> list) {
+		
 		int total=0;
 		for(Map<String, Integer> m : list) {
 			for(String key : m.keySet()) {
@@ -71,7 +72,8 @@ public class SumCount {
 							"<td><span class='roll'>"+Math.ceil(a)+"</span></td>"+
 							"<td><span class='rollKG'"+(Math.ceil(a)*perkg)+
 								"</span>(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
-							"<td>"+orderLength[i]+"</td>"+							
+							"<td>"+orderLength[i]+"</td>"+
+							"<td><button type='button' class='test' data='"+color[i]+"'>test</button></td>"+		
 						"<tr>";
 			rollttl += Math.ceil(a);
 			perkgttl += Math.ceil(a)*perkg;
@@ -84,6 +86,7 @@ public class SumCount {
 						"<td><b><span id='rollTotal'>"+rollTotal+"</span></b></td>"+
 						"<td><b><span id='perkgTotal'>"+perkgTotal+"</span></b></td>"+
 						"<td><b><span id='orderLength'>"+orderttl+"</span></b></td>"+
+						"<td></td>"+
 					"<tr>";
 		return html;
 	}
