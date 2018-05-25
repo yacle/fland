@@ -63,11 +63,11 @@ input{
 		</table>
 		<table  class="table2">
 			<tr>
-				<td width="20%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
-				<td width="15%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">절수</td>
+				<td width="15%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">컬러</td>
+				<td width="10%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">절수</td>
 				<td width="25%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">수량(KG)</td>
-				<td width="30%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">발주량(yard)</td>
-				<td width="10%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">테스트</td>
+				<td width="25%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">발주량(yard)</td>
+				<td width="25%"  style="border-top: 1px solid blue; padding:5px 0px 0px;">테스트</td>
 			</tr>
 			<tbody id="my-tbody2">
 			</tbody>
@@ -85,13 +85,8 @@ input{
 				<td>세부사항</td>
 				<td colspan="4"><input type="text" id="detail" value="${map.DETAIL }" class="form-control"></td>
 			</tr>
-			<tr>
 		</table>
 		<table class="table3">
-			<tr>
-				<td><button id="test">시험의뢰</button></td>
-				<td></td>
-			</tr>
 			<tr>
 				<td>기타사항</td>
 				<td><textarea id="dyeetc"  class="form-control" rows="3">${map.DYEETC !=null ? map.DYEETC : '야드지 요청 : 퀄리티 컨펌용 3yd / 컬러컨펌용 1yd/ 자체 시험성적 결과 회신 바람' }</textarea></td>
@@ -119,7 +114,6 @@ input{
 		<input type="hidden" id="color" value="${map.COLOR }">
 		<input type="hidden" id="workWeight" value="${map.WORKWEIGHT }">
 		<input type="hidden" id="orderLength" value="${map.ORDERLENGTH }">
-		<input type="hidden" id="testcolor"	value="${map.TESTCOLOR }">
 		<input type="hidden" id="test"	value="${map.TEST }">
 	</div>
 </div>
@@ -136,10 +130,16 @@ $(document).ready(function(){
 		if($("#loss").val()==""){
 		    window.alert("Loss와 kg/절을 입력해주세요");
 		    $("#loss").focus();
+		    $("#dyeSum").click();
 		}else{
-			
+			var test = $("#test").val();
+			var testList = test.split("&&");
+			$("#dyeSum").click();
+			for(var i=0; i<testList.length; i++){
+				 var testval = document.getElementsByClassName("test");
+				 testval[i].value=testList[i];
+			}
 		}
-		$("#dyeSum").click();
 	}
 });
 // 염색의뢰서 컬러별 절수계산 버튼
@@ -166,11 +166,14 @@ $("#dyeSum").click(function(){
 $("#dyeBtn").click(function(){
 	var rollList = document.getElementsByClassName("roll");
 	var rollKGList = document.getElementsByClassName("rollKG");
+	var testList = document.getElementsByClassName("test");
 	var roll = rollList[0].innerHTML;
 	var rollKG = rollKGList[0].innerHTML;
+	var test = testList[0].value;
 	for(var i=1; i<rollList.length; i++){
 		roll += "&&"+rollList[i].innHTML;
 		rollKG = "&&"+rollKGList[i].innerHTML;
+		test = "&&"+testList[i].value;
 	}
 	
 	$.ajax({
@@ -190,7 +193,8 @@ $("#dyeBtn").click(function(){
 			"dyecompany":$("#dyecompany").val(),
 			"delivery":$("#delivery").val(),
 			"rolltotal":roll,
-			"perkgtotal":rollKG
+			"perkgtotal":rollKG,
+			"test":test
 		},
 		success:function(obj){
 			if(obj=="new"){

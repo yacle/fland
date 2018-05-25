@@ -74,7 +74,7 @@ input{
 				<tr>
 					<td width="5%"></td>
 					<td width="25%">Order NO</td>
-					<td width="50%"><input type="text" class="form-control" name="orderno"></td>
+					<td width="50%"><input type="text" class="form-control" id="orderno" name="orderno" value="${data.ORDERNO }"></td>
 					<td width="20%"><button type="submit" class="btn btn-info">Search</button></td>
 				</tr>
 			</table>
@@ -85,7 +85,7 @@ input{
 		<table>
 			<tr>
 				<td width=30%>Order No</td>
-				<td colspan="2"><input type="text" class="form-control" id="orderNo" required></td>
+				<td colspan="2"><input type="text" class="form-control" id="orderNo" value="${data.ORDERNO }" required></td>
 			</tr>
 			<tr>
 				<td>발주처</td>
@@ -159,12 +159,16 @@ input{
 		</table>
 		<table>
 			<tr>
-				<td>단가</td>
-				<td><input type="text" class="form-control" id="price" value="${data.PRICE }" required></td>
+				<td width="25%">단가</td>
+				<td width="75%"><input type="text" class="form-control" id="price" value="${data.PRICE }" required></td>
 			</tr>
 			<tr>
 				<td>기타</td>
 				<td><textarea class="form-control" id="etc" value="${data.ETC }"></textarea></td>
+			</tr>
+			<tr>
+				<td>관련 Sample No</td>
+				<td><input class="form-control" id="sample" value="${data.SAMPLE }"></td>
 			</tr>
 		</table>
 		<button type="button" class="btn btn-primary" id="orderBtn">저장</button>
@@ -172,6 +176,7 @@ input{
 </div>	
 
 <script>
+
 // yard 중량 입력
 $("#workWeight").change(function(){
 	var gperyd = $("#workWeight").val();
@@ -260,7 +265,8 @@ $("#orderBtn").click(function(){
 			"orderlength":orderLength,
 			"colorbt":colorBt,
 			"sn":sn,
-			"etc":$("#etc").html()
+			"etc":$("#etc").html(),
+			"sample":$("#sample").val()
 		},
 		success:function(obj){
 			if(obj=='new'){

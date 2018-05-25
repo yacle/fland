@@ -70,10 +70,10 @@ public class SumCount {
 			html += "<tr>"+
 							"<td>"+color[i]+"</td>"+	
 							"<td><span class='roll'>"+Math.ceil(a)+"</span></td>"+
-							"<td><span class='rollKG'"+(Math.ceil(a)*perkg)+
+							"<td><span class='rollKG'>"+(Math.ceil(a)*perkg)+
 								"</span>(<span style='color:#DC143C;'>"+(int)((loss*length*(workWeight/1000))*100+0.5f)/100f+"</span>)</td>"+
 							"<td>"+orderLength[i]+"</td>"+
-							"<td><button type='button' class='test' data='"+color[i]+"'>test</button></td>"+		
+							"<td><input type='text' class='form-control test'></td>"+		
 						"<tr>";
 			rollttl += Math.ceil(a);
 			perkgttl += Math.ceil(a)*perkg;

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
 	<insert id="add">
-		insert into ORDER_TBL (no,orderno,company,serial,orderdate,enddate,fabric,workwidth,workweight,price,color,orderlength,colorbt,etc,person, sn)
+		insert into ORDER_TBL (no,orderno,company,serial,orderdate,enddate,fabric,workwidth,workweight,price,color,orderlength,colorbt,etc,person, sn, sample)
 		values (null,
 			#{orderno},
 			#{company},
@@ -20,7 +20,8 @@
 			#{colorbt, jdbcType=VARCHAR},
 			#{etc, jdbcType=VARCHAR},
 			#{person},
-			#{sn}
+			#{sn},
+			#{sample, jdbcType=VARCHAR}
 		)
 	</insert>
 	<select id="orderread" resultType="int">
@@ -40,7 +41,8 @@
 			orderlength=#{orderlength},
 			colorbt=#{colorbt, jdbcType=VARCHAR},
 			etc=#{etc, jdbcType=VARCHAR},
-			person=#{person}
+			person=#{person},
+			sample=#{sample}
 		where orderno=#{orderno}
 	</update>
 	<select id="ordersearch" resultType="HashMap">
