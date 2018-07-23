@@ -33,6 +33,7 @@
 			<li><a  id="daily" href="">조회</a></li>
 			<li><a href="/order/new"> NEW ORDER</a></li>
 			<li><a href="/order/orderList">ORDER LIST</a></li>
+			<li><a href="/sample/sample_order">SAMPLE</a></li>
 			<li><a href="/company/read">거래처</a></li>
 		</ul>
 	</div>

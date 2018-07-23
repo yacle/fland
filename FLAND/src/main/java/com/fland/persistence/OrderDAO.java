@@ -47,6 +47,7 @@ public class OrderDAO {
 	}
 	// ¿°»öÀÇ·Ú¼­ °Ë»ö
 	public Map<String, String> dyeSearch(String orderno) throws Exception {
+		System.out.println(orderno);
 		return session.selectOne("order.dyesearch", orderno);
 	}
 	

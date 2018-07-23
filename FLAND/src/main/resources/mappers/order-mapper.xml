@@ -94,6 +94,7 @@
 		select o.WORKWEIGHT, 
 			o.ORDERLENGTH, 
 			o.COLOR, 
+			o.ORDERNO,
 			d.CAUTION, 
 			d.DELIVERY, 
 			d.DETAIL, 

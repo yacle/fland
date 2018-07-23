@@ -53,6 +53,7 @@ public class SumCount {
 	}
 	
 	public static String dyeSum(Map<String, Object> map) {
+		System.out.println(map.toString());
 		String colors = (String) map.get("COLOR");
 		String color[] = colors.split("&&");
 		String orderLengths = (String) map.get("ORDERLENGTH");
