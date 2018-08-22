@@ -28,7 +28,7 @@
 		text-align: center;
 	}
 	tr{
-		display: table-row;
+		display:table-row;
 		height: 40px;
 	}
 	#mainTable{
@@ -108,8 +108,8 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td width="8%" rowspan="${in_nhi.size()+out_nhi.size()}" style="background-color:#E0FFFF">농협(매출)</td>
-			<td width="8%" class="num" rowspan="${in_nhi.size()+out_nhi.size()}"><fmt:formatNumber value="${begin.nhi}" groupingUsed="true"/></td>
+			<td width="8%" rowspan="${(in_nhi.size() + out_nhi.size())>0 ? (in_nhi.size() + out_nhi.size()):1 }" style="background-color:#E0FFFF">농협(매출)</td>
+			<td width="8%" class="num" rowspan="${(in_nhi.size() + out_nhi.size())>0 ? (in_nhi.size() +out_nhi.size()):1 }"><fmt:formatNumber value="${begin.nhi}" groupingUsed="true"/></td>
 			<td width="7%">${in_nhi[0].item }</td>
 			<td width="15%" class="sel-com" data="${in_nhi[0].no}">${in_nhi[0].detail}</td>
 			<td width="7%">${in_nhi[0].client }</td>
@@ -118,9 +118,9 @@
 			<td width="15%" class="sel-com" data="${out_nhi[0].no}">${out_nhi[0].detail}</td>
 			<td width="7%">${out_nhi[0].client }</td>
 			<td width="8%" class="num"><fmt:formatNumber value="${out_nhi[0].sum}" groupingUsed="true"/></td>
-			<td width="10%" class="num" rowspan="${in_nhi.size()+out_nhi.size()}"><fmt:formatNumber value="${end.nhi}" groupingUsed="true"/></td>
+			<td width="10%" class="num" rowspan="${(in_nhi.size() + out_nhi.size())>0 ? (in_nhi.size() + out_nhi.size()):1 }"><fmt:formatNumber value="${end.nhi}" groupingUsed="true"/></td>
 		</tr>
-		<c:forEach var="i" begin="1" end="${ in_nhi.size() + out_nhi.size() >0 ? (in_nhi.size() + out_nhi.size())-1 : (in_nhi.size()+out_nhi.size())}">
+		<c:forEach var="i" begin="1" end="${ in_nhi.size() + out_nhi.size() >0 ? (in_nhi.size() + out_nhi.size())-1 : (in_nhi.size() + out_nhi.size())}">
 			<tr>
 				<td>${in_nhi[i].item }</td>
 				<td class="sel-com" data="${in_nhi[i].no}">${in_nhi[i].detail}</td>
@@ -133,8 +133,8 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_nhe.size()+out_nhe.size()}" style="background-color:#E0FFFF">농협(경비)</td>
-			<td rowspan="${in_nhe.size()+out_nhe.size()}" class="num"><fmt:formatNumber value="${begin.nhe}" groupingUsed="true"/></td>
+			<td rowspan="${(in_nhe.size() + out_nhe.size())>0 ? (in_nhe.size() + out_nhe.size()):1}" style="background-color:#E0FFFF">농협(경비)</td>
+			<td rowspan="${(in_nhe.size() + out_nhe.size())>0 ? (in_nhe.size() + out_nhe.size()):1}" class="num"><fmt:formatNumber value="${begin.nhe}" groupingUsed="true"/></td>
 			<td>${in_nhe[0].item }</td>
 			<td class="sel-com" data="${in_nhe[0].no }">${in_nhe[0].detail }</td>
 			<td>${in_nhe[0].client }</td>
@@ -143,7 +143,7 @@
 			<td class="sel-com" data="${out_nhe[0].no }">${out_nhe[0].detail }</td>
 			<td>${out_nhe[0].client }</td>
 			<td class="num"><fmt:formatNumber value="${out_nhe[0].sum }" groupingUsed="true"/></td>
-			<td class="num" rowspan="${in_nhe.size()+out_nhe.size()}"><fmt:formatNumber value="${end.nhe}" groupingUsed="true"/></td>
+			<td class="num" rowspan="${(in_nhe.size() + out_nhe.size())>0 ? (in_nhe.size() + out_nhe.size()):1}"><fmt:formatNumber value="${end.nhe}" groupingUsed="true"/></td>
 		</tr>
 		<c:forEach var="i" begin="1" end="${in_nhe.size() + out_nhe.size()>0 ? (in_nhe.size() + out_nhe.size())-1 : (in_nhe.size()+out_nhe.size())}">
 			<tr>
@@ -158,8 +158,8 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_kbi.size()+out_kbi.size()}" style="background-color:#E0FFFF">기업(매출)</td>
-			<td rowspan="${in_kbi.size()+out_kbi.size()}" class="num"><fmt:formatNumber value="${begin.kbi}" groupingUsed="true"/></td>
+			<td rowspan="${in_kbi.size() + out_kbi.size() >0 ? in_kbi.size() + out_kbi.size():1}" style="background-color:#E0FFFF">기업(매출)</td>
+			<td rowspan="${in_kbi.size() + out_kbi.size() >0 ? in_kbi.size() + out_kbi.size():1}" class="num"><fmt:formatNumber value="${begin.kbi}" groupingUsed="true"/></td>
 			<td>${in_kbi[0].item }</td>
 			<td class="sel-com" data="${in_kbi[0].no }">${in_kbi[0].detail }</td>
 			<td>${in_kbi[0].client }</td>
@@ -168,7 +168,7 @@
 			<td class="sel-com" data="${out_kbi[0].no }">${out_kbi[0].detail }</td>
 			<td>${out_kbi[0].client }</td>
 			<td class="num"><fmt:formatNumber value="${out_kbi[0].sum }" groupingUsed="true"/></td>
-			<td class="num" rowspan="${in_kbi.size()+out_kbi.size()}"><fmt:formatNumber value="${end.kbi}" groupingUsed="true"/></td>
+			<td class="num" rowspan="${in_kbi.size() + out_kbi.size() >0 ? in_kbi.size() + out_kbi.size():1}"><fmt:formatNumber value="${end.kbi}" groupingUsed="true"/></td>
 		</tr>
 		<c:forEach var="i" begin="1" end="${(in_kbi.size() + out_kbi.size())>0 ? (in_kbi.size() + out_kbi.size())-1 : (in_kbi.size()+out_kbi.size())}">
 		<tr>
@@ -183,8 +183,8 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_kbe.size()+out_kbe.size()}" style="background-color:#E0FFFF">기업(경비)</td>
-			<td class="num" rowspan="${in_kbe.size()+out_kbe.size()}"><fmt:formatNumber value="${begin.kbe}" groupingUsed="true"/></td>
+			<td rowspan="${in_kbe.size() + out_kbe.size() >0 ? in_kbe.size() + out_kbe.size():1}" style="background-color:#E0FFFF">기업(경비)</td>
+			<td class="num" rowspan="${in_kbe.size() + out_kbe.size() >0 ? in_kbe.size() + out_kbe.size():1}"><fmt:formatNumber value="${begin.kbe}" groupingUsed="true"/></td>
 			<td>${in_kbe[0].item }</td>
 			<td class="sel-com" data="${in_kbe[0].no }">${in_kbe[0].detail }</td>
 			<td>${in_kbe[0].client }</td>
@@ -193,7 +193,7 @@
 			<td class="sel-com" data="${out_kbe[0].no }">${out_kbe[0].detail }</td>
 			<td>${out_kbe[0].client }</td>
 			<td class="num"><fmt:formatNumber value="${out_kbe[0].sum }" groupingUsed="true"/></td>
-			<td class="num" rowspan="${in_kbe.size()+out_kbe.size()}"><fmt:formatNumber value="${end.kbe}" groupingUsed="true"/></td>
+			<td class="num" rowspan="${in_kbe.size() + out_kbe.size() >0 ? in_kbe.size() + out_kbe.size():1}"><fmt:formatNumber value="${end.kbe}" groupingUsed="true"/></td>
 		</tr>
 		<c:forEach var="i" begin="1" end="${(in_kbe.size() + out_kbe.size())>0 ? (in_kbe.size() + out_kbe.size())-1 : (in_kbe.size()+out_kbe.size())}">
 		<tr>
@@ -208,8 +208,8 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_sh.size()+out_sh.size()}" style="background-color:#E0FFFF">신한(매출)</td>
-			<td rowspan="${in_sh.size()+out_sh.size()}" class="num"><fmt:formatNumber value="${begin.sh}" groupingUsed="true"/></td>
+			<td rowspan="${in_sh.size()+out_sh.size() >0 ? in_sh.size()+out_sh.size():1}" style="background-color:#E0FFFF">신한(매출)</td>
+			<td rowspan="${in_sh.size()+out_sh.size() >0 ? in_sh.size()+out_sh.size():1}" class="num"><fmt:formatNumber value="${begin.sh}" groupingUsed="true"/></td>
 			<td>${in_sh[0].item }</td>
 			<td class="sel-com" data="${in_sh[0].no }">${in_sh[0].detail }</td>
 			<td>${in_sh[0].client }</td>
@@ -218,7 +218,7 @@
 			<td class="sel-com" data="${out_sh[0].no }">${out_sh[0].detail }</td>
 			<td>${out_sh[0].client }</td>
 			<td class="num"><fmt:formatNumber value="${out_sh[0].sum }" groupingUsed="true"/></td>
-			<td class="num" rowspan="${in_sh.size()+out_sh.size()}"><fmt:formatNumber value="${end.sh}" groupingUsed="true"/></td>
+			<td class="num" rowspan="${in_sh.size()+out_sh.size() >0 ? in_sh.size()+out_sh.size():1}"><fmt:formatNumber value="${end.sh}" groupingUsed="true"/></td>
 		</tr>
 		<c:forEach var="i" begin="1" end="${(in_sh.size() + out_sh.size())>0 ? (in_sh.size() + out_sh.size())-1 : (in_sh.size()+out_sh.size())}">
 		<tr>
@@ -233,8 +233,8 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td rowspan="${in_km.size()+out_km.size()}" style="background-color:#E0FFFF">국민(매출)</td>
-			<td rowspan="${in_km.size()+out_km.size()}" class="num"><fmt:formatNumber value="${begin.km}" groupingUsed="true"/></td>
+			<td rowspan="${in_km.size() + out_km.size() >0 ? in_km.size() + out_km.size():1}" style="background-color:#E0FFFF">국민(매출)</td>
+			<td rowspan="${in_km.size() + out_km.size() >0 ? in_km.size() + out_km.size():1}" class="num"><fmt:formatNumber value="${begin.km}" groupingUsed="true"/></td>
 			<td>${in_km[0].item }</td>
 			<td class="sel-com" data="${in_km[0].no }">${in_km[0].detail }</td>
 			<td>${in_km[0].client }</td>
@@ -243,7 +243,7 @@
 			<td class="sel-com" data="${out_km[0].no }">${out_km[0].detail }</td>
 			<td>${out_km[0].client }</td>
 			<td class="num"><fmt:formatNumber value="${out_km[0].sum }" groupingUsed="true"/></td>
-			<td class="num" rowspan="${in_km.size()+out_km.size()}"><fmt:formatNumber value="${end.km}" groupingUsed="true"/></td>
+			<td class="num" rowspan="${in_km.size() + out_km.size() >0 ? in_km.size() + out_km.size():1}"><fmt:formatNumber value="${end.km}" groupingUsed="true"/></td>
 		</tr>
 		<c:forEach var="i" begin="1" end="${(in_km.size() + out_km.size())>0 ? (in_km.size() + out_km.size())-1 : (in_km.size()+out_km.size())}">
 		<tr>
