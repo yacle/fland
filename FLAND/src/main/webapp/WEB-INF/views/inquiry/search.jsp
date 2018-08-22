@@ -25,14 +25,13 @@
 	<ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
 		<form class="navbar-form navbar-right" action="/inquiry/search" method="post">
 			<div class="form-group">
-				<input name="startDate" placeholder="시작일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+				<input name="startDate" value="${vo.startDate }" placeholder="시작일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
 			</div>
 			<div class="form-group">
-				<input name="endDate" placeholder="종료일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
+				<input name="endDate" value="${vo.endDate }" placeholder="종료일자" class="form-control input-sm" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" size="5">
 			</div>
 			<div class="form-group">
-				<select name="condition"  class="form-control input-sm">
-					<option>조건선택</option>
+				<select name="condition" class="form-control input-sm">
 					<option value="내용">내용</option>
 					<option value="비고">비고</option>
 					<option value="금액">금액</option>
