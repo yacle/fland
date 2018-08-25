@@ -45,7 +45,7 @@
 <!-- 출금 -->
 	<!-- 대금결재 -->
 	<select id="item07" resultType="hashmap">
-		select day(tran_date) as day, SUM(sum) as sum from TRANSACTION where item='대금결제' and tran_date between #{date} and last_day(#{date}) group by tran_date
+		select day(tran_date) as day, SUM(sum) as sum from TRANSACTION where item='대금결재' and tran_date between #{date} and last_day(#{date}) group by tran_date
 	</select>
 	<!-- 물류비 -->
 	<select id="item08" resultType="hashmap">
