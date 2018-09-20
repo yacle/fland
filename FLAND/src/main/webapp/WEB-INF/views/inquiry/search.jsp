@@ -10,7 +10,7 @@
 </style>
 <nav class="navbar navbar-inverse">
 	<ul class="nav navbar-nav">
-		<li><a href="">일별</a></li>
+		<li><a id="date" href="">일별</a></li>
 		<li><a href="/inquiry/monthly?month=2018-01">월별</a></li>
 		<li><a href="/inquiry/yearly?year=2018">연별</a></li>
 		<form class="navbar-form navbar-right" action="/inquiry/daily" >
@@ -88,3 +88,17 @@
 		</tfoot>
 	</table>
 </div>
+<script type="text/javascript">
+//일일 조회로 이동
+var date=new Date();
+var yy=date.getFullYear();
+var mm=date.getMonth()+1;
+if(mm<10){
+	mm = '0'+mm;
+}
+var dd=date.getDate();
+if(dd<10){
+	dd = '0'+dd;
+}
+document.getElementById("date").href="/inquiry/daily?date="+yy+"-"+mm+"-"+dd;
+</script>

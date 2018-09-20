@@ -7,7 +7,7 @@
 		select * from transaction where no = #{no}
 	</select>
 	<update id="update">
-		update transaction set divi=#{div}, method=#{method, jdbcType=VARCHAR}, client=#{client}, item=#{item}, detail=#{detail}, sum=#{sum}, etc=#{etc, jdbcType=VARCHAR} where no=#{no}
+		update transaction set divi=#{divi}, method=#{method, jdbcType=VARCHAR}, client=#{client}, item=#{item}, detail=#{detail}, sum=#{sum}, etc=#{etc, jdbcType=VARCHAR} where no=#{no}
 	</update>
 	<delete id="delete">
 		delete from transaction where no=#{no}

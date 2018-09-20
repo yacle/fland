@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="new_order">
+<!-- 생산관리 입력페이지 -->
+	<insert id="order_add">
+		insert into new_order (NO, ORDER_DATE, ORDER_NO, FABRIC_NAME, COLOR, ORDER_QUANTITY, ORDER_PRICE) 
+			values (null,
+				#{ORDER_DATE},
+				#{ORDER_NO},
+				#{FABRIC_NAME},
+				#{COLOR},
+				#{ORDER_QUANTITY},
+				#{ORDER_PRICE}
+			)
+	</insert>
+	<insert id="yarn_add">
+		insert into new_yarn (NO, ORDER_NO, YARN, YARN_COM, YARN_PRICE, YARN_ORDER_DATE, YARN_ORDER_QUANTITY) 
+			values (null,
+				#{ORDER_NO},
+				#{YARN},
+				#{YARN_COM},
+				#{YARN_PRICE},
+				#{YARN_ORDER_DATE},
+				#{YARN_ORDER_QUANTITY}
+			)
+	</insert>
+	<insert id="knit_add">
+		insert into new_knit (NO, ORDER_NO, KNIT, KNIT_COM, KNIT_PRICE, KNIT_ORDER_DATE, KNIT_ORDER_QUANTITY) 
+			values (null,
+				#{ORDER_NO},
+				#{KNIT},
+				#{KNIT_COM},
+				#{KNIT_PRICE},
+				#{KNIT_ORDER_DATE},
+				#{KNIT_ORDER_QUANTITY}
+			)
+	</insert>
+	<insert id="dye_add">
+		insert into new_dye (NO, ORDER_NO, DYEING, DYEING_COM, DYE_COLOR,  DYE_PRICE, DYE_ORDER_DATE, DYE_ORDER_QUANTITY) 
+			values (null,
+				#{ORDER_NO},
+				#{DYEING},
+				#{DYEING_COM},
+				#{DYE_COLOR},
+				#{DYE_PRICE},
+				#{DYE_ORDER_DATE},
+				#{DYE_ORDER_QUANTITY}
+			)
+	</insert>
+	<insert id="process_add">
+		insert into new_process (NO, ORDER_NO, PROCESS, PROCESS_COM, PROCESS_PRICE, PROCESS_ORDER_DATE, PROCESS_ORDER_QUANTITY) 
+			values (null,
+				#{ORDER_NO},
+				#{PROCESS},
+				#{PROCESS_COM},
+				#{PROCESS_PRICE},
+				#{PROCESS_ORDER_DATE},
+				#{PROCESS_ORDER_QUANTITY}
+			)
+	</insert>
+<!-- 생산관리 뷰페이지-->
+	<select id="order_read" resultType="com.fland.domain.New_OrderVO">
+		select * from new_order where ORDER_NO = #{ORDER_NO}
+	</select>
+	<select id="yarn_read" resultType="com.fland.domain.New_YarnVO">
+		select * from new_yarn where ORDER_NO = #{ORDER_NO}
+	</select>
+	<select id="knit_read" resultType="com.fland.domain.New_KnitVO">
+		select * from new_yarn where ORDER_NO = #{ORDER_NO}
+	</select>
+	<select id="dye_read" resultType="com.fland.domain.New_DyeVO">
+		select * from new_dye where ORDER_NO = #{ORDER_NO}
+	</select>
+	<select id="process_read" resultType="com.fland.domain.New_ProcessVO">
+		select * from new_process where ORDER_NO = #{ORDER_NO}
+	</select>
+	
+<!-- paging ORACLE -->
+	<!-- 목록 조회 (페이징) -->
+	<select id="pageList" resultType="com.fland.domain.OrderVO" >
+		SELECT * FROM (
+			SELECT ROWNUM rnum, A.* FROM (
+				SELECT * FROM ORDER_TBL ORDER BY no DESC
+				) A WHERE ROWNUM <![CDATA[<]]>= #{page} * #{perPageNum}
+			) WHERE rnum <![CDATA[>]]>  (#{page} -1) * #{perPageNum}
+	</select>
+	<!-- 목록 총 개수 조회 (전체 조회)-->
+	<select id="countPaging" resultType="int">
+		SELECT COUNT(no) count FROM ORDER_TBL where no <![CDATA[>]]> 0
+	</select>
+	
+<!-- paging MySQL -->
+	<select id="listCriteria" resultType="com.fland.domain.OrderVO">
+		<![CDATA[
+		select * from order_tbl
+		where no > 0
+		order by no desc
+		limit #{pageStart}, #{perPageNum}
+		]]>
+	</select>
+</mapper>

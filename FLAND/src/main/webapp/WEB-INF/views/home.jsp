@@ -33,7 +33,7 @@
 			<li><a  id="daily" href="">조회</a></li>
 			<li><a href="/order/new"> NEW ORDER</a></li>
 			<li><a href="/order/orderList">ORDER LIST</a></li>
-			<li><a href="/sample/sample_order">SAMPLE</a></li>
+			<li><a href="/input/input_order">생산관리</a></li>
 			<li><a href="/company/read">거래처</a></li>
 		</ul>
 	</div>
@@ -50,13 +50,16 @@
 	</div>
 	<div class="row"></div>
 	<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-4" align="center">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-3">
+			<a class="btn" href="/input/input_order">생산관리</a>
+		</div>
+		<div class="col-lg-3" align="center">
 			<div class="btn" style="padding:30px 80px 50px 80px;"><b>ORDER</b><br/>
 				<span style="font-size: 35px;"><a href="/order/new">NEW</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/order/orderList">LIST</a></span>
 			</div>
 		</div>
-		<div class="col-lg-4" align="center">
+		<div class="col-lg-3" align="center">
 			<a class="btn" href="/company/read">거래처</a>
 		</div>
 	</div>
