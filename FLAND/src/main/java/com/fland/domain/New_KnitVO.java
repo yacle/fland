@@ -1,6 +1,7 @@
 package com.fland.domain;
 
 public class New_KnitVO {
+	private String KNIT_NO;
 	private String ORDER_NO;
 	private String KNIT;
 	private String KNIT_COM;
@@ -8,6 +9,12 @@ public class New_KnitVO {
 	private String KNIT_ORDER_DATE;
 	private String KNIT_ORDER_QUANTITY;
 	
+	public String getKNIT_NO() {
+		return KNIT_NO;
+	}
+	public void setKNIT_NO(String kNIT_NO) {
+		KNIT_NO = kNIT_NO;
+	}
 	public String getORDER_NO() {
 		return ORDER_NO;
 	}

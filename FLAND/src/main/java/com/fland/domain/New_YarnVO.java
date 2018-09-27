@@ -1,6 +1,7 @@
 package com.fland.domain;
 
 public class New_YarnVO {
+	private String YARN_NO;
 	private String ORDER_NO;
 	private String YARN;								// order 번호
 	private String YARN_COM;						// 발주처
@@ -8,6 +9,12 @@ public class New_YarnVO {
 	private String YARN_ORDER_DATE;			// 품명
 	private String YARN_ORDER_QUANTITY;	// 색상
 	
+	public String getYARN_NO() {
+		return YARN_NO;
+	}
+	public void setYARN_NO(String yARN_NO) {
+		YARN_NO = yARN_NO;
+	}
 	public String getORDER_NO() {
 		return ORDER_NO;
 	}
@@ -43,5 +50,11 @@ public class New_YarnVO {
 	}
 	public void setYARN_ORDER_QUANTITY(String yARN_ORDER_QUANTITY) {
 		YARN_ORDER_QUANTITY = yARN_ORDER_QUANTITY;
+	}
+	@Override
+	public String toString() {
+		return "New_YarnVO [YARN_NO=" + YARN_NO + ", ORDER_NO=" + ORDER_NO + ", YARN=" + YARN + ", YARN_COM=" + YARN_COM
+				+ ", YARN_PRICE=" + YARN_PRICE + ", YARN_ORDER_DATE=" + YARN_ORDER_DATE + ", YARN_ORDER_QUANTITY="
+				+ YARN_ORDER_QUANTITY + "]";
 	}
 }

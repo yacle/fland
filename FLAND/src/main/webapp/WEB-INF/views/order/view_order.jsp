@@ -7,11 +7,11 @@ th, td{
 </style>
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
-    <li class="active"><a href=""><b>발주서</b></a></li>
-    <li><a href="/manage/view_order"><b>생산관리</b></a></li>
+    <li class="active"><a href="/input/input_order"><b>발주서</b></a></li>
+    <li><a href=""><b>생산관리</b></a></li>
   </ul>
 </nav>
-<div class="col-lg-8">
+<div class="col-lg-7">
 	<h4>발주서</h4>
 	<table class="table table-bordered">
 		<tr>
@@ -39,18 +39,14 @@ th, td{
 			<th>원사명</th>
 			<th>단가</th>
 			<th>회사명</th>
-			<th>발주일자</th>
-			<th>발주수량</th>
-			<th>입고일자</th>
-			<th>입고수량</th>
+			<th><button type="button" data-toggle="modal" data-target="#yarn_order">발주현황</button></th>
+			<th><button type="button" data-toggle="modal" data-target="#yarn-in">입고현황</button></th>
 		</tr>
 		<c:forEach items="${yarn}" var="i">
 			<tr>
 				<td>${i.YARN }</td>
 				<td>${i.YARN_PRICE }</td>
 				<td>${i.YARN_COM }</td>		
-				<td>${i.YARN_ORDER_DATE }</td>		
-				<td>${i.YARN_ORDER_QUANTITY}</td>		
 				<td></td>		
 				<td></td>				
 			</tr>
@@ -62,18 +58,14 @@ th, td{
 			<th>편직명</th>
 			<th>단가</th>
 			<th>편직처</th>
-			<th>발주일자</th>
-			<th>발주수량</th>
-			<th>출고일자</th>
-			<th>출고수량</th>
+			<th>발주현황</th>
+			<th>출고현황</th>
 		</tr>
 		<c:forEach items="${knit}" var="i">
 			<tr>
 				<td>${i.KNIT }</td>
 				<td>${i.KNIT_PRICE }</td>	
 				<td>${i.KNIT_COM }</td>		
-				<td>${i.KNIT_ORDER_DATE }</td>		
-				<td>${i.KNIT_ORDER_QUANTITY }</td>		
 				<td></td>		
 				<td></td>				
 			</tr>
@@ -85,18 +77,14 @@ th, td{
 			<th>컬  러</th>
 			<th>단가</th>
 			<th>염색처</th>
-			<th>발주일자</th>
-			<th>발주수량</th>
-			<th>출고일자</th>
-			<th>출고수량</th>
+			<th>발주현황</th>
+			<th>출고현황</th>
 		</tr>
 		<c:forEach items="${dye}" var="i">
 			<tr>
 				<td>${i.DYEING }</td>
 				<td>${i.DYE_PRICE }</td>	
 				<td>${i.DYEING_COM }</td>	
-				<td>${i.DYE_ORDER_DATE }</td>		
-				<td>${i.DYE_ORDER_QUANTITY }</td>		
 				<td></td>		
 				<td></td>				
 			</tr>
@@ -108,19 +96,15 @@ th, td{
 			<th>가공방법</th>
 			<th>단가</th>
 			<th>가공처</th>
-			<th>발주일자</th>
-			<th>발주수량</th>
-			<th>출고일자</th>
-			<th>출고수량</th>
+			<th>발주현황</th>
+			<th>출고현황</th>
 		</tr>
 		<c:forEach items="${process}" var="i">
 			<tr>
 				<td>${i.PROCESS }</td>
 				<td>${i.PROCESS_PRICE }</td>		
 				<td>${i.PROCESS_COM }</td>		
-				<td>${i.PROCESS_ORDER_DATE }</td>
-				<td>${i.PROCESS_ORDER_QUANTITY }</td>			
-				<td></td>		
+				<td></td>			
 				<td></td>				
 			</tr>
 		</c:forEach>
@@ -131,7 +115,6 @@ th, td{
 			<th>발주량</th>
 			<th>출고량</th>
 			<th>과부족</th>
-			<th>출고일자</th>
 			<th>출고수량</th>
 			<th>단가</th>
 			<th>출고처</th>
@@ -141,13 +124,12 @@ th, td{
 				<td></td>		
 				<td></td>		
 				<td></td>		
-				<td></td>		
 				<td></td>	
 				<td></td>				
 			</tr>
 	</table><hr/>
 </div>
-<div class="col-lg-4">
+<div class="col-lg-5">
 	<h4>생산비</h4>
 	<table class="table table-bordered">
 		<tr>
@@ -183,4 +165,35 @@ th, td{
 			<td></td>		
 		</tr>
 	</table><hr/>
+</div>
+<!-- 원사 입고현황 모달 -->
+<div class="modal fade" id="yarn-in" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<form action="/manage/yarn_in" method="post">
+		<div class="modal-content">
+			<div class="modal-header"><h3>원사입고 현황</h3></div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<tr>
+						<th>원사명</th>
+						<th>발주일자</th>
+						<th>발주수량</th>
+					</tr>
+					<c:forEach begin="1" end="9" step="1">
+						<tr>
+							<td><input type="text" class="form-control" name="yarn" value=""></td>
+							<td><input type="date" class="form-control" name="yarn_date" value=""></td>
+							<td><input type="number" class="form-control" name="yarn_quantity" value=""></td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" name="ORDER_NO" value="${order_no}">
+				<button type="submit">저장</button>
+			</div>
+		</div>
+		</form>
+	</div>
 </div>

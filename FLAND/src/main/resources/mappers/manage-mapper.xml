@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manage">
+<!-- 생산관리 입력페이지 -->
+	<insert id="yarn_in">
+		insert into yarn_manage (ORDER_NO, YARN, YARN_ORDER_DATE, YARN_ORDER_QUANTITY) 
+			values (
+				#{ORDER_NO},
+				#{YARN},
+				#{YARN_ORDER_DATE},
+				#{YARN_ORDER_QUANTITY}
+			)
+	</insert>
+</mapper>

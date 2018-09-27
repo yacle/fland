@@ -1,12 +1,19 @@
 package com.fland.domain;
 
 public class New_ProcessVO {
+	private String PROCESS_NO;
 	private String ORDER_NO;
 	private String PROCESS;
 	private String PROCESS_COM;
 	private String PROCESS_PRICE;
 	private String PROCESS_ORDER_DATE;
 	private String PROCESS_ORDER_QUANTITY;
+	public String getPROCESS_NO() {
+		return PROCESS_NO;
+	}
+	public void setPROCESS_NO(String pROCESS_NO) {
+		PROCESS_NO = pROCESS_NO;
+	}
 	public String getORDER_NO() {
 		return ORDER_NO;
 	}

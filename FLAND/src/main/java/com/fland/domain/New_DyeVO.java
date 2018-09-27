@@ -1,6 +1,7 @@
 package com.fland.domain;
 
 public class New_DyeVO {
+	private String DYE_NO;
 	private String ORDER_NO;
 	private String DYEING;
 	private String DYEING_COM;
@@ -9,6 +10,12 @@ public class New_DyeVO {
 	private String DYE_ORDER_DATE;
 	private String DYE_ORDER_QUANTITY;
 	
+	public String getDYE_NO() {
+		return DYE_NO;
+	}
+	public void setDYE_NO(String dYE_NO) {
+		DYE_NO = dYE_NO;
+	}
 	public String getORDER_NO() {
 		return ORDER_NO;
 	}
