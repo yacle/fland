@@ -26,6 +26,7 @@ function add_row() {
     cell3.innerHTML = '<input type="text" name="company" required>';
     cell4.innerHTML = '<select name="item" required>'+
 						'<option></option>'+
+						'<option>매출</option>'+
 						'<option>업체환급</option>'+
 						'<option>경비이체</option>'+
 						'<option>금융이자</option>'+
@@ -46,6 +47,7 @@ function add_row() {
     my_tbody.deleteRow( my_tbody.rows.length-1 );
   }
 </script>
+
 <style>
 	.t1, .acctd{
 		text-align:center;
