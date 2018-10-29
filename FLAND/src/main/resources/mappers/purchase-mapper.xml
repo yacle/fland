@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="purchase">
+	<insert id="add">
+		insert into purchase_tbl (no, purchase_date, order_no, category, company, detail, sum)
+		values(null,
+			#{purchase_date},
+			#{order_no},
+			#{category},
+			#{company},
+			#{detail},
+			#{sum}
+		)
+	</insert>
+	<!-- 목록 총 개수 조회 (전체 조회)-->
+	<select id="countPaging" resultType="int">
+		SELECT COUNT(no) count FROM purchase_tbl where no <![CDATA[>]]> 0
+	</select>
+	
+<!-- paging MySQL -->
+	<select id="listCriteria" resultType="com.fland.domain.PurchaseVO">
+		<![CDATA[
+		select * from purchase_tbl
+		where no > 0
+		order by no desc
+		limit #{pageStart}, #{perPageNum}
+		]]>
+	</select>
+</mapper>

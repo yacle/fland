@@ -7,8 +7,8 @@ th, td{
 </style>
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
-    <li class="active"><a href="/input/input_order"><b>발주서</b></a></li>
-    <li><a href=""><b>생산관리</b></a></li>
+    <li><a href="/input/input_order"><b>발주서</b></a></li>
+    <li class="active"><a href=""><b>생산관리</b></a></li>
   </ul>
 </nav>
 <div class="col-lg-7">

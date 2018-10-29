@@ -96,6 +96,7 @@ function add_row() {
   <ul class="nav navbar-nav">
     <li class="active"><a href=""><b>지출</b></a></li>
     <li><a href="/input"><b>수입</b></a></li>
+    <li><a href="/purchase">매입</a></li>
   </ul>
 </nav>
 <div align="center" >

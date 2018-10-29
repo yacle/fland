@@ -27,6 +27,7 @@
   <ul class="nav navbar-nav">
     <li class="active"><a href="">수입</a></li>
     <li><a href="/input/expense">지출</a></li>
+    <li><a href="/purchase">매입</a></li>
   </ul>
 </nav>
 <div align="center" >

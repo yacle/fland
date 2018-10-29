@@ -40,12 +40,15 @@
 </nav>
 <!-- body -->
 	<div class="row" style="margin-top: 100px">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-4" align="center">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-3" align="center">
 			<a class="btn" href="/input/expense">입 력</a>
 		</div>
-		<div class="col-lg-4" align="center">
-			<a class="btn" id="daily2" href="">조 회</a>
+		<div class="col-lg-3" align="center">
+			<a class="btn" id="daily2" href="">자금현황조회</a>
+		</div>
+		<div class="col-lg-3" align="center">
+			<a class="btn" href="/purchase/read">매입조회</a>
 		</div>
 	</div>
 	<div class="row"></div>
