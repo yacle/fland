@@ -49,8 +49,8 @@ public class HomeController {
 		String user = (String)map.get("usrname");
 		String pw = (String)map.get("psw");
 		String keep = (String)map.get("keep");
-		if(user.equals("fabricland@kita.net")) {
-			if(pw.equals("land1027")) {
+		if(user.equals("11")) {
+			if(pw.equals("22")) {
 				if(keep.equals("on")) {
 					Cookie remember = new Cookie("keep", "fabricland");	// default 라는 이름의 쿠키(내용은 off) 생성
 					remember.setMaxAge(60*60*24);

@@ -1,6 +1,8 @@
 package com.fland.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,6 +11,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fland.domain.Criteria;
@@ -61,5 +64,43 @@ public class PurchaseController {
 			mav.addObject("list", purchaseDao.listCriteria(cri));
 			mav.addObject("pageMaker", pageMaker);
 			return mav;
+		}
+		
+		@RequestMapping(value = "/monthly", method = RequestMethod.GET)
+		public void purchaseOrder() throws Exception{
+			List<Map<String, String>> orderMap = purchaseDao.orderList();
+			for(int i=0; i<orderMap.size(); i++) {
+				Map<String, String> order =orderMap.get(i);
+				String order_no = order.get("order_no");
+				Map<String, String> map = new HashMap<>();
+				for(int j=0; j<3; j++) {
+					
+					map.put("order_no", order_no);
+					map.put(", value)
+				}
+				
+				purchaseDao.month(map)
+			}
+		}
+		
+		@RequestMapping(value = "/modify", method = RequestMethod.GET)
+		@ResponseBody
+		public PurchaseVO purchaseModify(@RequestParam String no) throws Exception {
+			PurchaseVO vo = purchaseDao.modify(no);
+			return vo;
+		}
+		
+		@RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String purchaseUpdate(PurchaseVO vo) throws Exception{
+			purchaseDao.update(vo);
+			return "2";
+		}
+		
+		@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String purchaseDelete(String	no) throws Exception{
+			purchaseDao.delete(no);
+			return "2";
 		}
 }

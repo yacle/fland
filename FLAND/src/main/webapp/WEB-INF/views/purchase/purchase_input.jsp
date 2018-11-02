@@ -97,7 +97,7 @@ function add_row() {
 				</td>
 				<td><input type="text" name="company"></td>
 				<td><input type="text" style="text-align: left" name="detail" required></td>
-				<td><input type="number" class="sum" style="text-align: right" name="sum" required></td>
+				<td><input type="number" class="sum" style="text-align: right" name="sum"></td>
 				<td>
 					<button onclick="add_row()">추가</button>
 				</td>
