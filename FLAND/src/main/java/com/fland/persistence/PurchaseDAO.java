@@ -40,6 +40,7 @@ public class PurchaseDAO {
 	public Map<String, String> month(Map<String, String> map){
 		return session.selectOne("purchase.month", map);
 	}
+	
 	// paging MySQL
 		public List<PurchaseVO> listCriteria(Criteria cri) throws Exception {
 			return session.selectList("purchase.listCriteria", cri);

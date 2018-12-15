@@ -73,13 +73,15 @@ public class PurchaseController {
 				Map<String, String> order =orderMap.get(i);
 				String order_no = order.get("order_no");
 				Map<String, String> map = new HashMap<>();
-				for(int j=0; j<3; j++) {
-					
+				Map<String, String> sum = new HashMap<>();
+				for(int j=10; j<13; j++) {
 					map.put("order_no", order_no);
-					map.put(", value)
+					map.put("date", "18-"+j+"-01");
+					Map<String, String> sumD = purchaseDao.month(map);
+					sum.put("month", j+"");
+					sum.put("sum", sumD.get("sum"));
+					System.out.println(sum.toString());
 				}
-				
-				purchaseDao.month(map)
 			}
 		}
 		
